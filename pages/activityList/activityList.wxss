@@ -1,0 +1,129 @@
+.seckill {
+  width: 710rpx;
+  height: 388rpx;
+  margin: 0 auto 40rpx;
+}
+.seckill image{
+  width: 710rpx;
+  height: 388rpx;
+  border-radius: 20rpx;
+}
+.activity-container {
+  /* padding-top: 30rpx; */
+  padding-bottom: 60rpx;
+}
+.navbar {
+  margin-bottom: 30rpx;
+}
+.activity-item {
+  width: 710rpx;
+  /* min-height: 763rpx; */
+  background: #fff;
+  border-radius: 20rpx;
+  margin: 0 auto 30rpx;
+  padding-bottom: 40rpx;
+}
+.activity-header {
+  padding-top: 30rpx;
+  height: 60rpx;
+  margin-bottom: 40rpx;
+}
+.addressWay {
+  width: 180rpx;
+  height: 60rpx;
+  border-radius: 0 44rpx 44rpx 0;
+  background: RGBA(65, 135, 248, 0.1);
+  color: RGBA(65, 135, 248, 0.7);
+  font-weight: bold;
+  padding-left: 24rpx;
+  box-sizing: border-box;
+  line-height: 60rpx;
+}
+.bg-pintu {
+  background: RGBA(255, 149, 31, 0.1);
+  color: RGBA(255, 149, 31, 0.7);
+}
+.bg-answer {
+  background: RGBA(252, 74, 115, 0.1);
+  color: RGBA(252, 74, 115, 0.7);
+}
+.bg-dice {
+  background: RGBA(145, 85, 222, 0.1);
+  color: RGBA(145, 85, 222, 0.7);
+}
+.total-num {
+  font-size: 30rpx;
+  font-weight: bold;
+  margin-right: 40rpx;
+}
+.total-num text {
+  font-size: 42rpx;
+}
+.pic-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 650rpx;
+  margin: 0 auto 40rpx;
+}
+.pic-list image {
+  width: 240rpx;
+  height: 240rpx;
+  margin-right: 26rpx;
+}
+.pic-list image:last-child {
+  margin: 0
+}
+.smallimg image {
+  width: 200rpx;
+  height: 200rpx;
+}
+.activity-title {
+  font-size: 34rpx;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 12rpx;
+}
+.activity-props {
+  color: #666666;
+  font-size: 30rpx;
+  width: 590rpx;
+  margin: 0 auto 48rpx;
+  line-height: 1.5;
+  text-align: center;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box; /** 对象作为伸缩盒子模型显示 **/
+  -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+  -webkit-line-clamp: 2; /** 显示的行数 **/
+  overflow: hidden;
+}
+.btn-godetails {
+  width: 590rpx;
+  height: 88rpx;
+  text-align: center;
+  line-height: 88rpx;
+  color: #fff;
+  font-size: 34rpx;
+  font-weight: bold;
+  border-radius: 44rpx;
+  background: linear-gradient(to right,#FB4D76,#FF2851);
+  margin: 0 auto 24rpx;
+}
+.btn-pink {
+  color: #FC426B;
+  background: RGBA(252, 66, 107, 0.1);
+}
+.activity-tips {
+  color: #FC426B;
+  font-size: 28rpx;
+  text-align: center;
+  font-weight: bold;
+}
+.bottom-tips {
+  color: #666666;
+  text-align: center;
+  width: 566rpx;
+  margin: 0 auto;
+  padding-top: 40rpx;
+}

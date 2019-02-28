@@ -1,0 +1,25 @@
+<view class='container'>
+  <block wx:if="{{ messageList.length >0 }}">
+    <view class='msg-container'>
+      <view class='body-box' wx:for="{{messageList}}" wx:key="{{index}}">
+        <view class='item-left'>
+          <image src='https://image.prise.shop/images/2018/07/25/1532520716283935.png'></image>
+        </view>
+        <view class='item-centent'>
+          <view class='item-top'>
+              <view class='item-content-top-text'>订单助手</view>
+              <view class='item-right'>
+                {{item.updated}}
+              </view>
+          </view>
+          <view class='item-content-bottom-text'>{{item.content}}</view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <!--无消息  -->
+  <view class='msg-empty' wx:else>
+    <image src='https://image.prise.shop/images/2018/07/25/1532520748269547.png'></image>
+    <text>暂无消息</text>
+  </view>
+</view>

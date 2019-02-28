@@ -1,0 +1,4 @@
+@import '../giftCard/giftCard.wxss';
+.card-top image{
+  border-radius: 50%;
+}

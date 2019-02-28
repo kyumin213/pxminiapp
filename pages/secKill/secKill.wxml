@@ -1,0 +1,166 @@
+<view class='container bottom-gap {{isPop?"noscroll ":""}}'>
+  <swiper class="banner" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{bannerImgList}}" wx:key="index">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" style='width:100%;' />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='seckill'>
+    <view class='seckill-left'>
+      <text class='price'>￥{{productInfo.basePrice}}</text>
+      <text class='beforePrice'>￥{{productInfo.beforePrice}}</text>
+      <text class='tipbtn'>限购一件</text>
+    </view>
+    <view class='seckill-right'>
+      <view class='rihgt-top'>距结束仅剩{{killdays}}天</view>
+      <view class='rihgt-bottom'>
+        <view class='time'>{{killhours}}</view>
+        <view class='dot'>：</view>
+        <view class='time'>{{killminutes}}</view>
+        <view class='dot'>：</view>        
+        <view class='time'>{{killseconds}}</view>
+      </view>
+    </view>
+  </view>
+  <view class='title-info'>
+    <view class='title'>
+      <image src='../../images/SeaAmoy.png' wx-if="{{productInfo.isSeaAmoy}}"></image>
+      {{productInfo.title}}
+    </view>
+    <view class='sellPoint'>{{productInfo.sellingPoint}}</view>
+    <view class='tips' wx-if="{{productInfo.isSeaAmoy}}">
+      * 凡客户购买海外商品需注意：因涉及商品清关事宜到货时间控制在7-14天左右；客户可依据实际情况安排商品购买以免造成因到货时间带来的不便。
+    </view>
+  </view>
+  <!--属性选择  -->
+  <view class='select-container' bindtap='toggleDialog'>
+    <block wx:if="{{selectedProp.propName}}">
+      <text class="gray">已选</text>
+      <text class='selected-prop'>{{selectedProp.propName}}</text>
+    </block>
+    <block wx:else>
+      <text class="gray">规格</text>
+      <text class='selected-prop'>选择</text>
+    </block>
+    <image src='../../images/arrow-down.png' mode='widthFix'></image>
+  </view>
+  <!-- 数量 -->
+
+  <view class='service'>
+    <text class="gray">数量</text>
+    <block wx:if="{{selectedProp.propName}}">
+      <text class='selected-prop'>x{{buyNumber}}</text>
+    </block>
+    <block wx:else>
+      <text class='selected-prop'>0</text>
+    </block>
+  </view>
+
+  <!-- 服务  -->
+  <view class='service'>
+    <text class="gray">服务</text>
+    <view class='service-row'>
+       <block wx:for="{{serves}}" wx:key="index">
+          <view class='service-items'>
+            <image src='../../images/service-option.png'></image>
+            <view class='service-item gray'>{{item.servesName}}</view>
+          </view>
+        </block>
+    </view>
+  </view>
+  <!-- 产品基本信息  -->
+  <view class='product-info'>
+    <text class='info-title'>产品信息</text>
+    <block wx:for="{{information}}" wx:key="index">
+      <view class='info-item'>
+        <text class='gray info-name'>{{item.infoName}}</text>
+        <text class='props'>{{item.value}}</text>
+      </view>
+    </block>
+  </view>
+  <!-- 图文详情  -->
+  <view class='details'>
+    <text class='info-title'>图文详情</text>
+    <block wx:for="{{detailsImgList}}" wx:key="index">
+      <image src="{{item}}" mode='widthFix' style='width:100%;' />
+    </block>
+  </view>
+  <!-- 底部购买栏  -->
+  <view class='fix-nav {{iphonex?"bottom60":""}}'>
+    <view class='index' bindtap='gotoIndex'>
+      <image src='../../images/goods_index.png'></image>
+      首页
+    </view>
+    <view class='car' bindtap='gotoCar'>
+      <image src='../../images/car.png' mode='widthFix'></image>
+      购物车
+      <view class='bage' wx:if="{{carNumber!=0}}">{{carNumber}}</view>
+    </view>
+    <view class='buy fix-btn {{buyQualification == -1 || buyQualification == 2 ? "gray-bg":""}}' bindtap='buyNow'>
+      <block wx:if="{{buyQualification == 0 || buyQualification == 1}}">
+        立即购买
+      </block>  
+      <block wx:if="{{buyQualification == -1}}">
+        抢光了
+      </block>
+      <block wx:if="{{buyQualification == 2}}">
+        活动已结束
+      </block>
+    </view>
+    <block wx:if="{{buyQualification == -1}}">
+      <view class='tips-box'>
+        <text>此商品已抢光，立即前往其他活动！</text>
+        <view bindtap='gotoIndex'>立即前往</view>
+      </view>
+    </block>
+    <block wx:if="{{buyQualification == 2}}">
+      <view class='tips-box'>
+        <text>本期抢购已结束，立即前往其他活动！</text>
+        <view bindtap='gotoIndex'>立即前往</view>
+      </view>
+    </block>
+  </view>
+  <block wx:if="{{iphonex}}">
+      <view class='iphonexspace'></view>
+  </block> 
+  <!--弹出框 属性  -->
+  <view class='dialog' wx:if='{{isShowDialog}}' catchtouchmove='true'>
+    <view class='mask' bindtap='toggleDialog' catchtouchmove='true'></view>
+    <view class='dialog-container {{iphonex?"bottom60":""}}' style='{{styletext}}'>
+      <view class='dialog-title'>
+        <image src='{{skuImg}}'></image>
+        <text class='dialog-price font27'>￥{{skuPrice}}</text>
+      </view>
+      <view class='close' bindtap='toggleDialog'>
+        <image src='../../images/close.png' mode='widthFix'></image>
+      </view>
+      <view class="section">
+        <scroll-view scroll-y class='dialog-content' catchtouchmove='true'>
+          <view class='prop-area'>
+            <text class='font27 item-title'>商品规格</text>
+            <block wx:for="{{skuList}}" wx:key="{{index}}">
+              <!--style="color:{{item.txtStyle}}"  -->
+              <text class='props-value {{item.isSelect ? "propred" : "propgray"}} {{item.stock > 0 ? "" : "colorGray"}}' bindtap='selectSku' data-index='{{index}}'>{{item.major}}</text>
+            </block>
+          </view>
+          <view class='buy-area'>
+            <text class='font27 buy-text'>购买数量</text>
+            <!-- catchtap='reduceNumber' -->
+            <image class='reduce' src='{{buyNumber==1?"../../images/reduce.png":"../../images/reduce-on.png"}}' mode='widthFix' ></image>
+            <input type='number' bindblur='bindkeyBlur' bindinput="bindKeyInput" value='{{buyNumber}}' class='buy-number' disabled="true" />
+            <image class='add' src='../../images/cart_add_no.png' mode='widthFix'></image>
+            <!--  catchtap='addNumber' -->
+          </view>
+
+        </scroll-view>
+      </view>
+      <view class='dialog-footer'>
+        <button class='select-btn' bindtap='getSelectSku'>确定</button>
+      </view>
+    </view>
+    <block wx:if="{{iphonex}}">
+      <view class='iphonexspace'></view>
+    </block> 
+  </view>
+</view>

@@ -1,0 +1,202 @@
+.bg-tree {
+  background: #A7C666;
+  overflow: hidden;
+}
+.tab-bar {
+  position: relative;
+  width: 554rpx;
+  height: 80rpx;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 40rpx;
+  display: flex;
+  align-items: center;
+  margin: 46rpx auto 34rpx;
+}
+.tab-item {
+  width: 50%;
+  line-height: 80rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 36rpx;
+  border-radius: 40rpx;
+}
+.on {
+  background: linear-gradient(to bottom, #FC5C56, #F72F2B);
+}
+.tab-content {
+  width: 676rpx;
+  height: 82vh;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 26rpx;
+  padding: 0 38rpx;
+  box-sizing: border-box;
+}
+.tab-content-x {
+  height: 85vh;  
+}
+.item {
+  width: 100%;
+  min-height: 200rpx;
+  padding-bottom: 20rpx;
+  box-sizing: border-box;
+}
+.item-desc {
+  color: #A9A9A9;
+  font-size: 26rpx;
+  margin: 10rpx 0;
+}
+.line {
+  width: 602rpx;
+  height: 1rpx;
+  background: #E1E1E1;
+  margin: 0 auto;
+  transform: scaleY(0.5);
+}
+.item-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 44rpx 0 0;
+}
+.item-title-left {
+  font-size: 32rpx;
+}
+.item-title-right {
+  color: #777777;
+  font-size: 24rpx;
+}
+.item-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 0;
+}
+.item-options-left {
+  display: flex;
+  align-items: center;
+}
+.item-options-left text {
+  color: #FF87AF;
+  font-size: 30rpx;
+}
+.item-options-left .blue {
+  color: #3173E7;
+}
+.item-options-left image {
+  width: 46rpx;
+  height: 46rpx;
+  margin-right: 8rpx;
+}
+.item-options-right {
+  width: 180rpx;
+  height: 60rpx;
+  border-radius: 6rpx;
+  background: linear-gradient(to bottom, #FC5C56, #F72F2B);
+  color: #fff;
+  font-size: 26rpx;
+  text-align: center;
+  line-height: 60rpx;
+}
+.gray {
+  background: #CFCFCF
+}
+.orange {
+  background: #FFCBA0;
+}
+.mask94, .mask50 {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.94);
+}
+.mask50 {
+  background: rgba(0, 0, 0, 0.5);  
+}
+.time-pop {
+  width: 716rpx;
+  height: 716rpx;
+  position: absolute;
+  background: url(https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20190107023022522427946.png) no-repeat;
+  background-size: contain;
+  left: 50%;
+  top: 220rpx;
+  transform: translate(-50%, 0);
+}
+.money-pop{
+  background: url(https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20190213042052070774149.png) no-repeat;
+  background-size: contain;
+}
+.time-pop-x {
+  top: 320rpx;
+}
+.time-pop-title {
+  font-size: 50rpx;
+  color: #fff;
+  text-align: center;
+  margin-top: -20rpx;
+}
+.time-pop-number {
+  font-size: 160rpx;
+  color: #fff;
+  text-align: center;
+}
+.time-pop-desc {
+  color: #fff;
+  font-size: 30rpx;
+  text-align: center;
+  margin: 270rpx auto 60rpx;
+}
+.time-pop-close {
+  width: 116rpx;
+  height: 116rpx;
+  position: absolute;
+  left: 50%;
+  bottom: -62rpx;
+  transform: translate(-50%, 0);
+  background: url(https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20190107025820990300176.png) no-repeat;
+  background-size: contain;
+}
+.energy-pop {
+  width: 356rpx;
+  height: 414rpx;
+  background: #fff;
+  border-radius: 34rpx;
+  position: absolute;
+  top: 340rpx;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+.energy-pop image {
+  width: 308rpx;
+  height: 202rpx;
+  margin: 0 auto 60rpx;
+  display: block;
+}
+.energy-pop-title {
+  color: #FF87AF;
+  text-align: center;
+  font-size: 34rpx;
+  margin-bottom: 18rpx;
+}
+.energy-pop-desc {
+  color: #777777;
+  text-align: center;
+  font-size: 26rpx;
+}
+.energy-pop-close {
+  position: absolute;
+  width: 240rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 26rpx;
+  background: linear-gradient(to bottom, #FC5C56, #F72F2B);
+  top: 798rpx;
+  left: 50%;
+  transform: translate(-50%, 0);
+  color: #fff;
+  font-size: 26rpx;
+  text-align: center;
+}

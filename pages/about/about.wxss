@@ -1,0 +1,44 @@
+.top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 70rpx 0;
+}
+
+.about-image{
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+}
+.bottom-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100rpx;
+  line-height: 100rpx;
+  background: #fff;
+  font-size: 34rpx;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.bottom-item-left {
+  font-size: 32rpx;
+  display: flex;
+  align-items: center;
+  margin-left: 30rpx;
+}
+
+.item-more {
+  color: #999;
+  display: flex;
+  align-items: center;
+}
+
+.item-more image {
+  width: 16rpx;
+  height: 26rpx;
+  margin-right: 30rpx;
+  margin-left: 15rpx;
+  margin-bottom: 4rpx;
+}

@@ -1,0 +1,39 @@
+@import '/pages/answerGameCenter/answerGameCenter.wxss';
+.question-box {
+  height: 83vh;
+}
+.invite-btn {
+  text-align: center;
+  margin: 0 auto 54rpx;
+}
+.white-btn {
+  width:520rpx;
+  height:88rpx;
+  line-height:88rpx;
+  background:#fff;
+  border-radius:44rpx;
+  color:#FD3B64;
+  font-size:32rpx;
+  border: 2rpx solid #FD3B64;
+  text-align: center;
+  margin: 0 auto; 
+}
+.result-box {
+  height: 780rpx;
+}
+.result {
+  text-align: center;
+  margin-bottom: 100rpx;
+}
+.tips {
+  height: 76rpx;
+  width: 500rpx;
+  margin: 0 auto 60rpx;
+  text-align: center;
+}
+.question-x {
+  margin-bottom: 140rpx;
+}
+.answer-x {
+  margin-bottom: 46rpx;
+}

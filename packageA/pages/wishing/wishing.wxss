@@ -1,0 +1,363 @@
+@import "../../wxParse/wxParse.wxss";
+.bg-wish {
+  background: url(https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181115104252567648602.jpg) no-repeat #0d2e3f;
+  background-size: contain;
+  position: relative;
+  overflow: hidden;
+  /* padding-bottom: 60rpx; */
+}
+.bg-iphoneX {
+  background: url(https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181114035505070590851.jpg) no-repeat #0d2e3f;
+  background-size: contain;
+}
+/* 愿望 */
+.wish-item {
+  position: absolute;
+  width: 122rpx;
+  text-align: center;
+  animation: wishmovedown 2s infinite linear; 
+}
+/* 愿望动画 */
+@keyframes wishmovedown{
+  0% {
+    transform: translateY(0);
+  }
+	50% {
+		transform: translateY(10rpx);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+@keyframes wishmoveup{
+  0% {
+    transform: translateY(0);
+  }
+	50% {
+		transform: translateY(-10rpx);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+@keyframes wishmove{
+  0% {
+    transform: translate(0,0);
+  }
+	25% {
+		transform: translate(10rpx,10rpx);
+	}
+	50% {
+		transform: translate(0,0);
+	}
+  75% {
+		transform: translate(-10rpx,10rpx);
+	}
+  100% {
+		transform: translate(0,0);
+	}
+}
+.wish-item:nth-child(1) {
+  left: 330rpx;
+  top: 114rpx;
+  animation: wishmove 3s infinite linear;
+}
+.wish-item:nth-child(2) {
+  left: 214rpx;
+  top: 22rpx;
+  animation: wishmoveup 2s infinite linear; 
+}
+.wish-item:nth-child(3) {
+  left: 80rpx;
+  top: 134rpx;
+}
+.wish-item:nth-child(4) {
+  right: 90rpx;
+  top: 114rpx;
+}
+.wish-item:nth-child(5) {
+  right: 202rpx;
+  top: 306rpx;
+}
+.wish-item:nth-child(6) {
+  left: 188rpx;
+  top: 344rpx;
+  animation: wishmoveup 2s infinite linear; 
+}
+.cover {
+  width: 122rpx;
+  height: 122rpx;
+  background: url(https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181114043746891719514.png) no-repeat;
+  background-size: contain;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+.wish-item:nth-child(3) .cover {
+  width: 106rpx;
+  height: 106rpx;
+  background: url(https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181114053012742688594.png) no-repeat;
+  background-size: contain;
+}
+.cover.on {
+  background: url(https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181114043751010259153.png) no-repeat;
+  background-size: contain;
+  border: 4rpx solid #FFF585;
+}
+.wish-item:nth-child(3) .cover.on {
+  background: url(https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181114054542223403306.png) no-repeat;
+  background-size: contain;
+  border: 4rpx solid #FFF585;  
+}
+.cover image{
+  width: 110rpx;
+  height: 110rpx;
+  /* width: 80rpx;
+  height: 80rpx; */
+  /* margin-bottom: 10rpx; */
+}
+/* .wish-item:nth-child(1) .cover image {
+  width: 62rpx;
+  height: 62rpx;
+} */
+.wish-item:nth-child(3) .cover image {
+  /* width: 70rpx;
+  height: 70rpx; */
+  width: 96rpx;
+  height: 96rpx;
+}
+.wish-item:nth-child(5) .cover image,.wish-item:nth-child(2) .cover image {
+  transform: rotate(15deg);
+}
+.title {
+  color: #fff;
+  font-size: 26rpx;
+  width: 108rpx;
+  margin: 0 auto;
+  /* overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; */
+}
+/* 萤火虫 */
+.light-item {
+  position: absolute;
+  width: 84rpx;
+  height: 84rpx;
+}
+.light-item:nth-child(1) {
+  left: 112rpx;
+  top: 476rpx;
+  animation: leftcirclemove 3s infinite linear;
+}
+.light-item:nth-child(2) {
+  right: 122rpx;
+  top: 466rpx;
+  animation: rightcirclemove 3s infinite linear; 
+  
+}
+.light-item:nth-child(3) {
+  width: 53rpx;
+  height: 53rpx;
+  top: 620rpx;
+  left: 22rpx;
+  animation: rightcirclemove2 3s infinite linear;
+}
+.light-item:nth-child(4) {
+  width: 45rpx;
+  height: 45rpx;
+  right: 70rpx;
+  top: 550rpx;
+  animation: leftcirclemove2 3s infinite linear
+  
+}
+.light-item:nth-child(5) {
+  width: 50rpx;
+  height: 50rpx;
+  right: 60rpx;
+  top: 650rpx;
+  animation: wishmoveup 2s infinite linear; 
+}
+.light-item-x:nth-child(1) {
+  top: 508rpx;
+}
+.light-item-x:nth-child(2) {
+  top: 500rpx;
+}
+.light-item-x:nth-child(3) {
+  top: 730rpx;
+}
+.light-item-x:nth-child(4) {
+  top: 600rpx;
+}
+.light-item-x:nth-child(5) {
+  top: 730rpx;
+}
+@keyframes rightcirclemove{
+  0% {
+    transform: translate(0,0);
+  }
+  10% {
+    transform: translate(15rpx,12rpx);
+  }
+  20% {
+    transform: translate(30rpx,24rpx);
+  }
+  30% {
+    transform: translate(30rpx,36rpx);
+  }
+  40% {
+    transform: translate(15rpx,48rpx);
+  }
+  50% {
+    transform: translate(0,60rpx);
+  }
+  60% {
+    transform: translate(-15rpx,48rpx);
+  }
+  70% {
+    transform: translate(-30rpx,36rpx);
+  }
+  80% {
+    transform: translate(-30rpx,24rpx);
+  }
+  90% {
+    transform: translate(-15rpx,12rpx);
+  }
+  100% {
+    transform: translate(0,0);
+  }	
+}
+@keyframes rightcirclemove2{
+  0% {
+    transform: translate(0,0);
+  }
+	25% {
+		transform: translate(40rpx,15rpx);
+	}
+	50% {
+		transform: translate(0,40rpx);
+	}
+  75% {
+		transform: translate(-40rpx,15rpx);
+	}
+  100% {
+		transform: translate(0,0);
+	}
+}
+@keyframes leftcirclemove2{
+  0% {
+    transform: translate(0,0);
+  }
+	10% {
+		transform: translate(-10rpx,15rpx);
+	}
+  25% {
+		transform: translate(-20rpx,25rpx);
+	}
+	40% {
+		transform: translate(-40rpx,30rpx);
+	}
+  55% {
+		transform: translate(0,20rpx);
+	}
+  70% {
+		transform: translate(15rpx,25rpx);
+	}
+  85% {
+		transform: translate(40rpx,15rpx);
+	}
+  100% {
+		transform: translate(0,0);
+	}
+}
+@keyframes leftcirclemove{
+  0% {
+    transform: translate(0,0);
+  }
+	25% {
+		transform: translate(-30rpx,15rpx);
+	}
+	50% {
+		transform: translate(0,30rpx);
+	}
+  75% {
+		transform: translate(30rpx,15rpx);
+	}
+  100% {
+		transform: translate(0,0);
+	}
+}
+/* 许愿按钮 */
+.btn-default {
+  border: 2rpx solid #FFF03D;
+  width: 614rpx;
+  /* width: 490rpx; */
+  height: 80rpx;
+  line-height: 80rpx;
+  margin: 755rpx auto 60rpx;    
+  font-size: 30rpx;
+  background: none;
+  border-radius: 44rpx;
+  color: #fff;
+  box-sizing: border-box;
+  transition: all .3s linear;
+}
+.btn-red {
+  background: linear-gradient(to bottom,#FC5C56,#F72F2B);
+  border: none;
+}
+.btn-default-iphonex {
+  margin: 950rpx auto 80rpx;  
+}
+.btn-default.on {
+  background: linear-gradient(to bottom,#FFF03D,#9D9100);
+  border: none;
+}
+.btn-default::after {
+  box-shadow: none;
+}
+.other-wish {
+  color: #fff;
+  font-size: 26rpx;
+  margin: 0 auto;
+  width: 594rpx;
+}
+.scroll-wish {
+  width: 594rpx;
+  height: 220rpx;
+  border-radius: 14rpx;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 36rpx 24rpx;
+  box-sizing: border-box;
+  font-weight: bold;
+  margin-top: 28rpx;
+}
+.scroll-wish view {
+  color: #fff;
+  margin-bottom: 20rpx;
+}
+.top-tips {
+  width: 158rpx;
+  height: 154rpx;
+  position: absolute;
+  left: 26rpx;
+  top: 470rpx;
+  background: url(https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181114042101495996116.png) no-repeat;
+  background-size: contain;
+  color: #fff;
+  font-size: 20rpx;
+  padding: 94rpx 0 0 14rpx;
+  box-sizing: border-box; 
+}
+.top-tips-iphonex {
+  top: 598rpx;
+}
+.scroll-ul {
+  transition: all 1s linear;
+}
+.scroll-swiper {
+  height: 160rpx;
+}

@@ -1,0 +1,480 @@
+/* pages/productDetails/productDetails.wxss */
+.bottom-gap{
+  padding-bottom: 100rpx;
+}
+.banner{
+  height: 750rpx;
+}
+.slide-image {
+  width: 750rpx;
+  height: 750rpx;
+}
+.title-info{
+  /* height: 265rpx; */
+  background: #fff;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 30rpx;
+  overflow: hidden;
+}
+.collect {
+  float: right;
+  font-size: 20rpx;
+}
+.collect image{
+  display: block;
+}
+.price{
+  color: #F72F2B;
+  font-size: 36rpx;
+  font-weight: bold;
+}
+.beforePrice {
+  color: #999;
+  font-size: 24rpx;
+  text-decoration: line-through;
+  margin-left: 20rpx;
+}
+.title{
+  font-size: 32rpx;
+  color: #333333;
+  line-height: 42rpx;
+  margin: 20rpx 0;
+}
+.title image {
+  width: 80rpx;
+  height: 42rpx;
+  margin-right: 10rpx;
+  vertical-align: top;
+}
+.tips {
+  color: #f00;
+  font-size: 24rpx;
+  margin-top: 16rpx;
+}
+.sellPoint{
+  font-size: 24rpx;
+  /* color: #999999; */
+  color: #666;
+}
+.select-container,.service{
+  width: 100%;
+  line-height: 108rpx;
+  margin-top:10rpx;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 30rpx;
+  background: #fff;
+  position: relative;
+}
+.service {
+  display: flex;
+}
+.service-items {
+  display: flex;
+  align-items: center;
+}
+.service-row {
+  flex-wrap: wrap;
+  display: flex;
+  width: 606rpx;
+  line-height: 60rpx;
+}
+.gray{
+  color: #999999;
+  font-size: 26rpx;
+  margin-right: 30rpx;
+}
+.selected-prop{
+  font-size: 28rpx;
+  width: 540rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: 28rpx;
+  display: inline-block;
+}
+.select-container image{
+  max-width: 100%;
+  width: 26rpx;
+  position: absolute;
+  right: 30rpx;
+  top: 46rpx;
+}
+.service image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 10rpx;
+}
+/* 产品信息  */
+.product-info{
+  background: #fff;
+  overflow: hidden;
+  padding: 30rpx;
+  margin-top: 10rpx;
+}
+.info-title{
+  text-align: center;
+  display: block;
+  padding: 10rpx 0 30rpx; 
+  font-size: 30rpx;
+}
+.info-name {
+  width: 140rpx;
+  display: inline-block;
+}
+.props{
+  font-size: 26rpx;
+}
+/* 图文详情  */
+.details{
+  background: #fff;
+  margin-top: 10rpx;
+  padding-top: 30rpx;
+}
+.details image {
+  width: 100%;
+  display: block;
+}
+/* 底部固定导航  */
+.fix-nav {
+  width: 100%;
+  height: 110rpx;
+  border-top:1rpx solid #D8D8D8;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  font-size: 20rpx;
+}
+.collect, .index {
+  width: 48rpx;
+  margin-left: 34rpx;
+  text-align: center;
+}
+.index {
+  height: 82rpx;
+  position: relative;
+}
+.collect image , .index image{
+  width: 48rpx;
+  height: 48rpx;
+  display: block;
+}
+.car {
+  width: 60rpx;
+  height: 82rpx;
+  margin: 0 24rpx;
+  position: relative;
+  font-size: 20rpx;
+  text-align: center;
+}
+.contact {
+  background: none;
+  padding: 0;
+  width: 60rpx;
+  height: 82rpx;
+  font-size: 20rpx;
+  text-align: center;
+  margin: 0 20rpx 0 0;
+  line-height: 1;
+  position: relative;
+}
+.contact view, .car view, .index view {
+  width: 60rpx;
+  text-align: center;
+  font-size: 20rpx;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+.contact view {
+  bottom: 4rpx;
+}
+.nocss {
+  background: none;
+  padding: 0;
+}
+.nocss::after, .contact::after {
+  border: none;
+  box-shadow: none;
+}
+.index {
+  font-size: 20rpx;
+}
+.car .bage {
+  position: absolute;
+  width: 29rpx !important;
+  height: 29rpx;
+  background: #F72F2B;
+  border-radius: 50%;
+  top: -5rpx;
+  right: -12rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 29rpx;
+  font-size: 24rpx;
+  left: auto;
+  transform: translate(0)
+}
+.bage:empty {
+  display: none;
+}
+.car image {
+  width: 48rpx;
+  height: 48rpx;
+}
+.contact image {
+  width: 48rpx;
+  height: 48rpx;
+}
+.fix-btn {
+  width: 220rpx;
+  height: 84rpx;
+  line-height: 84rpx;
+  color: #fff;
+  font-size: 30rpx;
+  display: inline-block;
+  border-radius: 6rpx;
+  text-align: center;
+}
+.add-car {
+  background: #333;
+  color: #fff;
+}
+.buy {
+  background: #F72F2B;
+  margin-right: 12rpx;
+   margin-left: 12rpx; 
+   /* border-radius: 4rpx; */
+}
+/* 属性弹框  */
+.dialog,.modal {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 9;
+}
+.mask {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+}
+.dialog-container {
+  background: #fff;
+  position: fixed;
+  height: 900rpx;
+  bottom: 0;
+  /* bottom: 0; */
+  width: 100%;
+  font-size: 26rpx;
+  padding: 30rpx;
+  padding-bottom: 80rpx;
+  box-sizing: border-box;
+  left: 0;
+  transition: all .2s linear;
+}
+.dialog-content {
+  height: 580rpx;
+  width: 100%;
+}
+.font27 {
+  font-size: 30rpx;
+}
+.dialog-title {
+  display: flex;
+  align-items: center;
+  height: 175rpx;
+  padding-bottom: 28rpx;
+  position: relative;
+}
+.dialog-title::after, .prop-area::after {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  content: '';
+  overflow: hidden;
+  height: 1rpx;
+  background: #eee;
+  transform: scaleY(0.5)
+}
+.dialog-price {
+  color: #F72F2B;
+  align-self: flex-end;
+  margin-bottom: 10rpx;
+  font-weight: bold;
+}
+.dialog-container image {
+  width: 175rpx;
+}
+.dialog-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100rpx;
+}
+.select-btn {
+  width:690rpx;
+  height:88rpx;
+  line-height:88rpx;
+  background:#F72F2B;
+  color:#fff;
+  font-size:30rpx;
+  border-radius:8rpx;
+}
+.footer-btn-group {
+  width:690rpx;
+  height:88rpx;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.select-btn-others, .select-btn-self {
+  width: 334rpx;
+  height: 88rpx;
+  line-height:88rpx;
+  background:#F72F2B;
+  color:#fff;
+  font-size:30rpx;
+  border-radius:8rpx;
+}
+.select-btn-others {
+  background: #F7882B;
+}
+.close {
+  position: absolute;
+  width: 50rpx;
+  top: 30rpx;
+  right: 30rpx;
+  height: 50rpx;
+}
+.close image {
+  width: 22rpx;
+  position: absolute;
+  top: 10rpx;
+  right: 10rpx;
+}
+.prop-area {
+  margin-top: 30rpx;
+  /* border-bottom: 2rpx solid #EEEEEE; */
+  padding-bottom: 28rpx;
+  width: 100%;
+  position: relative;
+}
+.props-value {
+  display: inline-block;
+  padding: 10rpx 34rpx;
+  margin: 0 20rpx 20rpx 0;
+  border-radius: 4rpx;
+}
+.propgray {
+  background: #F5F5F5;
+  color: #666666;
+}
+.propred {
+  background: #F72F2B;
+  color: #fff;
+}
+.item-title {
+  margin-bottom: 30rpx;
+  display: block;
+}
+.buy-area{
+  margin-top: 30rpx;
+  padding-bottom: 60rpx;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.buy-area image{
+  width: 48rpx;
+}
+.buy-text {
+  flex: 1;
+}
+.buy-number {
+  width: 76rpx;
+  text-align: center;
+}
+/* 绑定手机号弹窗  */
+.modal-container {
+  position: absolute;
+  width: 674rpx;
+  height: 555rpx;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  background: #fff;
+  border-radius: 10rpx;
+  padding: 48rpx 28rpx 32rpx;
+  box-sizing: border-box
+}
+.modal-title {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.agreement {
+  font-size: 22rpx;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+}
+.agreement image {
+  width: 35rpx;
+}
+.agree {
+  margin: 0 10rpx;
+}
+.form-group {
+  margin-top: 54rpx;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.text {
+  flex: 2;
+}
+.bind-btn {
+  background: #F72F2B;
+  color: #fff;
+  border-radius: 0;
+  font-size: 30rpx;
+  height: 80rpx;
+  width: 100%;
+}
+.get-code {
+  font-size: 24rpx;
+  color: #F72F2B;
+  border:2rpx solid #F72F2B;
+  border-radius: 2rpx;
+  width: 140rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+  text-align: center;
+}
+.noscroll {
+  height: 100%;
+  overflow: hidden;
+  position: fixed;
+}
+.bottom60 {
+  bottom: 60rpx;
+}
+.iphonexspace {
+  position: fixed;
+  height: 60rpx;
+  width: 100%;
+  background: #fff;
+  bottom: 0;
+  left: 0;
+}

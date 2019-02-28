@@ -1,0 +1,68 @@
+@import '../giftCard/giftCard.wxss';
+.send-status {
+  color: #333;
+  font-size: 28rpx;
+  margin: 40rpx auto;
+}
+.btn-groups {
+  width: 622rpx;
+  height: 88rpx;
+  overflow: hidden;
+  margin: 0 auto 40rpx;
+}
+.btn-groups .btn50 {
+  width: 290rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #F72F2B;
+  color: #fff;
+  border-radius: 8rpx;
+  font-size: 34rpx;
+}
+.line {
+  width: 622rpx;
+  height: 1rpx;
+  background: #eee;
+  transform: scaleY(0.5);
+  margin: 0 auto 20rpx;
+}
+.reply-title {
+  color: #999;
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+}
+.reply-item {
+  width: 622rpx;
+  margin: 0 auto;
+  padding-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+}
+.reply-item image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.reply-content {
+  font-size: 28rpx;
+  flex: 1;
+  width: 300rpx;
+  /* text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap; */
+}
+.reply-time {
+  font-size: 24rpx;
+  color: #999;
+}
+.item-title {
+  width: 390rpx;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box; /** 对象作为伸缩盒子模型显示 **/
+  -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+  -webkit-line-clamp: 2; /** 显示的行数 **/
+  overflow: hidden;
+
+}

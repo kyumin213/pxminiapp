@@ -1,0 +1,59 @@
+<view class="container bg-strategy {{iphonex?'bg-strategy-x':''}}">
+  <view class='guide'>
+    <view class='guide-bar'>
+      <view class='guide-title {{current == 1 ? "on":""}}' bindtap='switchTab' data-index='1'>新手指南</view>
+      <view class='guide-title {{current == 2 ? "on":""}}' bindtap='switchTab' data-index='2'>能量榜介绍</view>
+    </view>  
+    <block wx:if="{{current == 1}}">  
+      <view class='guide-content {{iphonex?"guide-content-x":""}}'>
+        <view class='p'>1、玩家进入游戏后，免费获得一颗许愿树种子。</view>
+        <view class='p'>2、可从许愿树6个愿望中选择1个，许下愿望。</view>
+        <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181120054928787982809.png' mode='widthFix' class='w600'></image>
+        <view class='p'>3、玩家通过能量收集让许愿树快速成长，收获愿望，就可以领到您心里的礼物啦。</view>
+        <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181120055039027980307.png' mode='widthFix' class='w600'></image>
+        <view class='p'>许愿树有6个成长状态，分别为：</view>
+        <view class='session'>
+          <view class='item'>
+            <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181120055254070473103.png'></image>
+            <text>树苗</text>
+          </view>
+          <view class='item'>
+            <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181120055337036458155.png'></image>
+            <text>成长中</text>
+          </view>
+          <view class='item'>
+            <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181120055347688506130.png'></image>
+            <text>成树</text>
+          </view>
+          <view class='item'>
+            <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181120055350692805218.png'></image>
+            <text>开花</text>
+          </view>
+          <view class='item'>
+            <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181120055353789126862.png'></image>
+            <text>结果</text>
+          </view>
+          <view class='item'>
+            <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181120055356953508215.png'></image>
+            <text>掉落</text>
+          </view>
+        </view>
+        <view class='p'>许愿树成长至结果状态后，玩家可收获愿望，收获后请认真填写收货地址哦。<text>（果实超过48小时不采摘将会掉落）</text>果实掉落后可重新许愿。</view>
+        <view class='p'>许愿树成长速度主要受能量收集影响，邀请好友帮忙浇水可加速成长哦！快去探索吧！</view>
+      </view>
+    </block>
+    <block wx:else>
+        <view class='guide-content {{iphonex?"guide-content-x":""}}'>
+        <view class='pp'>1. 能量榜</view>
+        <view class='p'>它是玩家拼图收集能量（包含系统奖励能量）的排名。排名统计前十名形成榜单，榜单实时更新。系统每周统计发布一次能量榜，榜单发布时间为每周一中午12:00:00，数据统计时间为每周一00:00:00至周日23:59:59。</view>
+        <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181221043313540651732.png'  mode='widthFix' class='w600'></image>
+        <view class='pp'>2.关于奖励</view>
+        <view class='p'>每期上榜玩家将会获得礼品和能量奖励哦，玩家可点击【<text bindtap='gotoRewards'>奖励说明</text>】查看具体奖励内容。玩家如有上榜，会收到服务通知【中奖结果通知】，点击进入领取相关奖励。也可于游戏内查看能量榜领取奖励。</view>
+        <view class='pp'>3.奖励内容</view>
+        <view class='p'>第一至第三名，将获得礼品奖励，每周礼品都会更新哦。请玩家接好小派给您精心准备的惊喜。十名上榜玩家均可获得非等额的能量奖励。</view>
+        <view class='p'><text>特别提示：请玩家及时领取上榜奖励，奖励时效为7天，过时将失效无法领取奖励。</text></view>
+      </view>
+    </block>
+    <view class='back' bindtap='goback'>返回</view>
+  </view>
+</view>

@@ -1,0 +1,195 @@
+.bg-rank {
+  background:  url(https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181219033846412844926.png) center center #A7C666 no-repeat;
+  background-size: contain;
+  padding-top: 60rpx;
+  position: relative;
+}
+/* 排行榜 */
+.white-mask {
+  /* width: 738rpx; */
+  height: 80vh;
+  border-radius: 26rpx;
+  background: rgba(255, 255, 255, 0.8);
+  margin: 0 40rpx 46rpx;
+  position: relative;
+  padding-top: 300rpx;
+  box-sizing: border-box;
+}
+.top-one {
+  width: 260rpx;
+  height: 334rpx;
+  background: url(https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181219045326707582364.png) no-repeat;
+  background-size: contain;
+  position: absolute;
+  left: 50%;
+  top: -54rpx;
+  transform: translate(-50%,0);
+  text-align: center;
+  padding-top: 24rpx;
+  box-sizing: border-box;
+}
+.top-two,.top-three {
+  position: absolute;
+  width: 192rpx;
+  height: 280rpx;
+  left: 0;
+  top: 0;
+  padding-top: 32rpx;
+  box-sizing: border-box;
+  text-align: center;
+}
+.top-three {
+  left: auto;
+  right: 0;
+}
+.bg-huangguan {
+  width: 118rpx;
+  height: 90rpx;
+  margin: 0 auto 132rpx;
+  display: block;
+}
+.picture-one {
+  width: 146rpx;
+  height: 146rpx;
+  border: 4rpx solid #F5CA61;
+  border-radius: 50%;
+  position: absolute;
+  top: 86rpx;
+  left: 50%;
+  transform: translate(-50%,0);
+  background: #F1F1F1;
+}
+.picture-two,.picture-three {
+  width: 146rpx;
+  height: 146rpx;
+  border: 4rpx solid #D3D3D3;
+  margin: 0 auto;
+  display: block;
+  border-radius: 50%;
+  background: #F1F1F1;
+}
+.picture-three {
+  border: 4rpx solid #E48E58;
+}
+.numbers {
+  width: 46rpx;
+  height: 46rpx;
+  position: absolute;
+  bottom: 96rpx;
+  right: 54rpx;
+}
+.r10 {
+  right: 20rpx;
+}
+.norank {
+  color: #AAAAAA;
+  font-size: 40rpx;
+  text-align: center;
+  padding-top: 240rpx;
+}
+.nickname {
+  color: #636363;
+  font-size: 32rpx;
+  width: 260rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  height: 40rpx;
+  line-height: 40rpx;
+}
+.fontcolor {
+  color: #959595;
+  width: 180rpx;
+  margin-top: 4rpx;
+}
+.grouthValue {
+  color: #333333;
+  font-size: 30rpx;
+  font-family: "Luminari"
+}
+.red {
+  color: #E73924;
+}
+.rank-item {
+  display: flex;
+  align-items: center;
+  margin: 6rpx 46rpx;
+}
+.rank-item-x {
+  margin: 12rpx 46rpx;
+}
+.scroller {
+  height: 55vh;
+}
+.scroller-x {
+  height: 59vh;
+}
+.index {
+  color: #636363;
+  font-size: 46rpx;
+  width: 56rpx;
+  text-align: center;
+  font-family: "Luminari"
+}
+.item-picture {
+  width: 98rpx;
+  height: 98rpx;
+  border-radius: 50%;
+  margin: 0 24rpx;
+}
+.item-nickname {
+  color: #636363;
+  font-size: 30rpx;
+  width: 280rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.item-grouth {
+  text-align: right;
+}
+.item-grouth text {
+  color: #B1B1B1;
+  font-size: 24rpx;
+}
+.item-grouth .grouth {
+  font-family: "Luminari";
+  font-size: 46rpx;
+}
+.line46 {
+  margin: 0 46rpx;
+  height: 1rpx;
+  background: #E4E4E4;
+  transform: scaleY(0.5);
+}
+/* 底部按钮 */
+.btn-groups {
+  margin: 0 26rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.btn-defaults {
+  width: 200rpx;
+  height: 70rpx;
+  border: 2rpx solid #fff;
+  color: #fff;
+  border-radius: 40rpx;
+  line-height: 70rpx;
+  font-size: 30rpx;
+  background: none;
+  box-sizing: border-box;
+  text-align: center;
+}
+.btn-defaults::after {
+  box-shadow: none;
+}
+.btn-m {
+  width: 240rpx;
+  background: linear-gradient(to bottom,#FC5C56,#F72F2B);
+  border: none;
+}
+.btn-disable {
+  background: #999999;
+  color: #E0E0E0;
+}

@@ -1,0 +1,155 @@
+@import '../giftCardDirect/giftCardDirect.wxss';
+.add-address {
+  width:470rpx;
+  height:92rpx;
+  border-radius:48rpx;
+  background:#FF476D;
+  margin-bottom:40rpx;
+  line-height: 92rpx;
+  text-align: center;
+}
+.gray-btn {
+  background: #ccc;
+}
+.address-dialog {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 9;
+}
+.mask {
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.address-container {
+  width: 702rpx;
+  height: 708rpx;
+  background: #fff;
+  border-radius: 32rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  padding: 0 26rpx;
+  box-sizing: border-box;
+}
+.close {
+  width: 27rpx;
+  height: 27rpx;
+  position: absolute;
+  right: 30rpx;
+  top: 30rpx;
+}
+.dialog-header {
+  font-size: 34rpx;
+  text-align: center;
+  margin: 60rpx auto 32rpx;
+  font-weight: bold;
+}
+.form-group {
+  width: 650rpx;
+  min-height: 40rpx;
+  display: flex;
+  align-items: center;
+  margin: 25rpx 0;
+}
+.form-group input,.form-group textarea{
+  width: 460rpx;
+  height: 50rpx;
+  padding: 0;
+}
+.form-group textarea{
+  /* align-self: flex-start; */
+  height: 100rpx;
+  margin: -10rpx 0 0 -6rpx;
+}
+.line-dialog {
+  width: 650rpx;
+  height: 1rpx;
+  background: #eee;
+  margin: 0 auto;
+  transform: scaleY(0.5);
+}
+.label {
+  width: 120rpx;
+  margin-left: 12rpx;
+  margin-right: 40rpx;
+}
+.address {
+  align-self: flex-start;
+}
+.confirm-address {
+  background: #F72F2B;
+  color: #fff;
+  width: 622rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  border-radius: 8rpx;
+  font-size: 34rpx;
+  margin: 80rpx auto 0;
+}
+.btn500 {
+  width:298rpx;
+  height: 88rpx;
+  border-radius: 8rpx;
+  font-size: 34rpx;
+  text-align: center;
+  line-height: 88rpx;
+  margin-top: 80rpx;
+}
+.save {
+  background: #F72F2B;
+  color: #fff;
+}
+.modify{
+  color: #F72F2B;
+  border: 1rpx solid #F72F2B;
+  background: #fff;
+}
+.receriver-pic {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+.winner {
+  width: 590rpx;
+  height: 340rpx;
+  box-shadow: 0 0 30rpx rgba(0,0,0,0.06);
+  margin: 0 auto;
+  background: url(https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181015113421428916380.png);
+  background-size: contain;
+  position: relative;
+  padding-top: 68rpx;
+  box-sizing: border-box;
+}
+.receriver-pic {
+  width: 140rpx;
+  height: 140rpx;
+  margin: 0 auto 60rpx;
+  display: block;
+}
+.icon1 {
+  width: 90rpx;
+  height: 90rpx;
+  top: 30rpx;
+  left: 184rpx;
+  position: absolute;
+}
+.icon2 {
+  width: 216rpx;
+  height: 54rpx;
+  top: 184rpx;
+  left: 188rpx;
+  position: absolute;  
+}
+.receriver-nickname {
+  font-weight: bold;
+  text-align: center;
+}

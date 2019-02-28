@@ -1,0 +1,52 @@
+<view class="container bg-direct">
+  <view class='big-title'>
+    <view>礼物已备好</view> 
+    <view class='smalltip'>订单支付成功，赶紧让好友填上地址吧！</view>
+  </view>
+  <!--卡片区域  -->
+  <view class='user-card'>
+      <view class='userbg'><image src='{{userMaker.picture}}'></image></view>
+      <text>{{userMaker.nickname}}送出{{ordersItemNum}}份礼物</text>
+      <view class='messages'><image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181015101348035381306.png'></image>
+      “{{remarks}}”</view>
+  </view>
+  <view class='card-wrap'>
+    <!--列表  -->
+    <scroll-view style='max-height:{{scrollHeight}}' scroll-y class='scroll-list'>
+        <block wx:for="{{itemList}}" wx:key="{{index}}">
+            <view class='gifts-item'>
+              <image src='{{item.productPicture}}'></image>
+              <view class='item-right'>
+                <view class='item-title'>{{item.productTitle}}</view>
+                <view class='item-count'>共{{item.num}}份</view>
+              </view>
+            </view>
+       </block> 
+    </scroll-view>
+    <block wx:if="{{isShowMore}}">
+      <image src='../../images/giftcard_icon_more.png' class='more' bindtap='showAllItem'></image>
+    </block>
+    <form report-submit='true' bindsubmit='open'>
+      <button class='sendBtn txt-center' formType="submit">送TA好礼</button>
+    </form>
+    <view class='tips'>礼物卡超过15天未领取将自动退款</view>    
+  </view>
+  <!--仿actionsheet  -->
+  <block wx:if="{{isShowActionsheet}}">
+     <view class='actionsheetDialog'>
+        <view class='mask' catchtouchmove='true' bindtap='close'></view>
+        <view class='btn-group'>
+            <button class='abtn' open-type='share'>发送给朋友</button>
+            <view class='line100'></view>
+            <button class='abtn' bindtap='saveCardPic'>生成卡片保存分享</button>
+            <button class='abtn cancel' bindtap='close'>取消</button>
+        </view>
+    </view>
+  </block>
+  <!--canvas  -->
+  <view class='canvas-box'>
+    <block wx:if="{{isShowCanvas}}">
+      <canvas canvas-id="shareCanvas" style="width:{{winWidth}};height:{{winHeight}}"></canvas>  
+    </block>
+  </view>
+</view>

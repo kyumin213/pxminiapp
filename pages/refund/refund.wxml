@@ -1,0 +1,22 @@
+<view class="container-protocol">
+  <view class='protocol-title'>售后政策</view>
+  <view class='content-title'>商品退换规定：</view>
+  <view class='content-p'>1. 我们不接受商品本身包装盒已被开封的商品的退换货（商品外包装盒上的透明封装胶纸已被撕开同样视为开封），请您谅解！</view>
+  <view class='content-p'>2. 所有未开封的商品如需退换请于签收日算起14日内办理，退货收到并确认无误后于一周内办理退款。</view>
+  <view class='content-p'>3. 如您需整单退换，请您务必将当次订单中所有商品（包括免费赠品、包装礼盒）全部退回。</view>
+  <view class='content-p'>4. 因顾客自身原因造成退换货时，由顾客承担商品退回时的邮资和再次发送时的运费。</view>
+  <view class='content-p'>5. 如该商品曾被积分，退货后，该笔金额产生的积分将被从积分数中扣除。</view>
+  <view class='content-p'>6. 如您希望调换其它等价商品，请您先为需要退回的订单办理退货，我们收到退货并确认无误后，将为您发送新的商品。若您希望调换的为非等价商品，请您先为您的订单办理退货及退款，然后至网站另行订购您喜欢的其它商品，我们将另行发送。</view>
+  <view class='protocol-title m20'>退款及退款说明：</view>
+  <view class='content-title'>退换申请：</view>
+  <view class='content-p'>请先拨打客服热线0755-86540417 (每天AM9:00-PM20:00) 进行退换货申请，申请通过后请您将需要退换的商品随产品发送清单，按退换货确认短信中的地址退回。如使用不可查询的递送手段退货，发生商品遗失、破损、误送等情况，本公司不承担责任，敬请谅解。</view>
+  <view class='content-p'><text>注：请您务必在运单的备注栏上注明订单号，谢谢配合。</text></view>
+  <view class='content-p'><text>特别提醒：</text>若你选择国内挂号的邮寄方式，请在邮局办理完邮寄包裹后，请保留您的“国内普通包裹详情单” 以作备查之用。</view>
+  <view class='content-title'>退换流程：</view>
+  <view class='content-p'>拨打客服电话进行退换货登记→提供退换商品图片→客服确认退换申请→寄回退换商品→退货确认→办理退款或换货</view>
+  <view class='content-title'>退款方法：</view>
+  <view class='content-p'>退货收到并确认无误后，如需退款，本公司将根据您的支付方式于一周为您办理相关退款：</view>
+  <view class='content-p'>使用货到付款，货款将退入您指定的银行卡中；</view>
+  <view class='content-p'>使用在线支付，货款将退入您当时支付的在线支付账户中。</view>
+  <view class='content-p'>如有疑问，请联系客服，热线：0755-86540417。</view>
+</view>

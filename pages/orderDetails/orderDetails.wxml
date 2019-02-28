@@ -1,0 +1,54 @@
+<view class="container">
+  <block>
+    <!-- <view class='order-status'>
+      <view class='status'>{{status[orderInfo.orders.status]}}</view>
+      <view class='tips'>{{statusTips[orderInfo.orders.status]}}</view>
+    </view> -->
+    <!--商品信息  -->
+    <view class='product-info' wx:for="{{itemList}}">
+      <image src='{{item.productPicture}}'></image>
+      <view class='product-right'>
+        <view class='product-top'>
+          <view class='product-title fl'>{{item.productTitle}}</view>
+          <view class='product-price fr'>￥{{item.productPrice}}</view>
+        </view>
+        <view class='product-bottom'>
+          <view class='product-prop fl'>{{item.productParamText.propName}}</view>
+          <view class='product-number fr'>x{{item.num}}</view>
+        </view>
+      </view>
+    </view>
+    <!--收货地址  -->
+    <view class='address'>
+      <view class='address-title'>收货地址</view>
+      <view class='lines'></view>
+      <view class='address-user'>
+        <text class='address-username fl'>{{orderInfo.address.receiver}}</text>
+        <text class='address-phone fr'>{{orderInfo.address.phone}}</text>
+      </view>
+      <view class='location'>{{orderInfo.address.location}}</view>
+    </view>
+    <!--订单信息  -->
+    <view class='order-info'>
+      <view>
+        <text class='fl'>订单编号</text>
+        <text class='fr'>{{orderInfo.orders.id}}</text>
+      </view>
+      <view>
+        <text class='fl'>下单时间</text>
+        <text class='fr'>{{orderInfo.orders.created}}</text>
+      </view>
+    </view>
+    <!--合计  -->
+    <view class='total-price-bar'>
+      <text class='fl'>合计</text>
+      <view class='price fr'>￥{{orderInfo.orders.priceTotal}}</view>
+    </view>
+    <block wx:if="{{orderInfo.orders.status == 1}}">
+      <button type='primary' class='wxpay-btn' bindtap='wxpay'>确认支付</button>
+    </block>
+    <block wx:if="{{orderInfo.orders.status == 3}}">
+      <button type='primary' class='wxpay-btn' bindtap='bindReceive'>确认收货</button>
+    </block>
+  </block>
+</view>

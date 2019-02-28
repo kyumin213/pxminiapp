@@ -1,0 +1,37 @@
+<view class="container pt24">
+  <block wx:for="{{couponList}}" wx:key="{{index}}">
+    <view class='item {{item.isOverdue == 1 || item.isOverdue == 2 ? "overdue" : ""}} {{item.fullType == 1 && pageFrom != 1 ? "hideItem":""}}' data-index='{{index}}' bindtap='selectedTicket'>
+      <view class='item-left'>
+        <view class='item-top'>
+          <view class='coupon-title'>{{item.couponName}}</view>
+          <block wx:if="{{item.fullType == 1}}">
+            <view class='tips'>无门槛</view>
+          </block>
+        </view>
+        <view class='deadline'>使用有效期：{{item.stateDate}}-{{item.endDate}}</view>
+      </view>
+      <view class='item-middle'></view>
+      <view class='item-right'>
+        <block wx:if="{{item.isOverdue == 1}}">
+          <image src='https://image.prise.shop/images/2018/09/11/1536649256354963.png' class='overpic'></image>
+        </block>
+        <view class='price'><text>￥</text>{{item.reducePrice}}</view>
+        <view class='use-btn'>
+          <block wx:if="{{item.isOverdue == 1}}">已过期</block>
+          <block wx:if="{{item.isOverdue == 0}}">立即使用</block>
+          <block wx:if="{{item.isOverdue == 2}}">已使用</block>
+        </view>
+      </view>
+      <block wx:if="{{item.choose == 1 && pageFrom != 1}}">
+        <image src='../../images/ticket_selected.png' class='selected'></image>
+      </block>
+    </view>
+  </block>
+  
+  <block wx:if="{{couponList.length == 0}}">
+    <view class='empty'>
+      <image src='https://image.prise.shop/images/2018/07/25/1532520884827597.png'></image>
+      <view>暂无可用优惠券</view>
+    </view>
+  </block>
+</view>

@@ -1,0 +1,36 @@
+@import '../giftCardGroup/giftCardGroup.wxss';
+.bg-dice {
+  background: url(https://image.prise.shop/images/2018/09/04/1536042200230824.png) no-repeat #20204B;
+  background-size: contain;
+  overflow: hidden;
+  padding-bottom: 120rpx;
+}
+.top-pic {
+  width: 480rpx;
+  height: 112rpx;
+  display: block;
+  margin: 222rpx auto 48rpx;
+}
+.gift-wrap::after,.gift-wrap::before {
+  background: none;
+}
+.product-title {
+  color: #261D4F;
+  font-size: 40rpx;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 48rpx;
+}
+.product-title image {
+  width: 32rpx;
+  height: 32rpx;
+}
+.sendBtn {
+  width: 606rpx;
+  height: 92rpx;
+  background: url(https://image.prise.shop/images/2018/09/10/1536549123539730.png) no-repeat center;
+  background-size: cover;
+}
+.refund-tips {
+  color: RGBA(255, 255, 255, 0.6);
+}

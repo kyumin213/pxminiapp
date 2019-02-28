@@ -1,0 +1,129 @@
+<view class="container bg-blues">
+  <view class='header'>
+    <view class='header-content'>
+      <view class='header-title'>{{freeOrders.remarks}}</view>
+      <view class='header-time'>活动截止时间：{{freeOrders.endTime}}</view>
+      <view class='header-rule'>获奖方式：
+        <text>点赞数最多前{{itemNumTotal}}名</text>用户将获得派喜随机送出的礼物
+      </view>
+    </view>
+  </view>
+  <!-- 礼物区域 内容 -->
+  <view class='gifts-wrap'>
+    <view class='btn-groups'>
+      <view class='receive-gift fl' bindtap='gotoInvite'>
+        <image src='https://image.prise.shop/images/2018/07/26/1532591931122565.png'></image>
+      </view>
+      <form bindsubmit='togglePopDialog' report-submit='true'>
+        <view class='start-talk fr'>
+          <button formType="submit" class='fx-zx-button'>
+            <image src='https://image.prise.shop/images/2018/07/26/1532591934893586.png'></image>
+          </button>
+        </view>
+      </form>
+    </view>
+    <!-- 礼物列表 -->
+    <view>
+      <block wx:for="{{freeOrdersItems}}" wx:key="{{index}}">
+        <view class='gifts-item'>
+          <view class='item-title'>礼物清单{{index+1}}：{{item.productTitle}}</view>
+          <image src='{{item.productPicture}}' class='item-pic'></image>
+          <view class='item-info'>{{item.productSelling}}</view>
+          <view class='item-num'>共{{item.num}}份</view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <!-- 吐槽 -->
+  <view class='message-wrap'>
+    <view class='wave-line'>
+      <image src='https://image.prise.shop/images/2018/07/26/1532593404805423.png'></image>
+    </view>
+    <!-- 吐槽导航 -->
+    <view class='talk-nav'>
+      <image src='https://image.prise.shop/images/2018/07/26/1532593892581011.png' class='pen'></image>
+      <view class='hot-talk fl {{currentTalk == 0?"on":""}}' data-index='0' bindtap='switchNav'>
+        <image src='https://image.prise.shop/images/2018/07/26/1532596261748326.png' class='default-img'></image>
+        <image src='https://image.prise.shop/images/2018/07/26/1532596265407603.png' class='active-img'></image>
+      </view>
+      <view class='new-talk fr {{currentTalk == 1?"on":""}}' data-index='1' bindtap='switchNav'>
+        <image src='https://image.prise.shop/images/2018/07/26/1532596603132308.png' class='default-img'></image>
+        <image src='https://image.prise.shop/images/2018/07/26/1532596258312084.png' class='active-img'></image>
+      </view>
+    </view>
+    <!-- 精彩吐槽 -->
+    <view class='hot-talk-content'>
+      <!-- <scroll-view scroll-y class='message-scroll'>  -->
+        <block wx:for="{{messageList}}" wx:key="{{index}}">
+          <view class='talk-item'>
+            <view class='order {{index > 2 ? "blue":""}}'>{{index + 1}}</view>
+            <view class='talk-header'>
+              <view class='user-pic'>
+                <image src='{{item.picture}}'></image>
+              </view>
+              <view class='user-middle'>
+                <view class='username'>{{item.nickname}}</view>
+                <view class='time'>{{item.created}}</view>
+              </view>
+              <!-- data-userId='{{item.userId}}' -->
+              <image data-index='{{index}}' bindtap='addLikes' src='https://image.prise.shop/images/2018/07/26/1532599104377457.png' class='like'></image>
+            </view>
+            <view class='message-box'>
+              <view class='message-content'>
+                <view class='white-space'></view>
+                <view class='messages'>{{item.fuckContent}}</view>
+                <view class='like-num' data-index='{{index}}' bindtap='addLikes'>
+                  <image src='https://image.prise.shop/images/2018/07/26/1532604963403500.png'></image>{{item.hitNum}}赞
+                  <view class='count' style='{{item.countstyle}}'>+1</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>
+      <!-- </scroll-view> -->
+      <!-- <block wx:if="{{messageList.length > 20}}">
+        <view class='showmore' bindtap='showMoreMessage'>点击查看更多</view>
+      </block> -->
+      <!-- 没有吐槽 -->
+      <block wx:if="{{messageList.length == 0}}">
+        <view class='empty'>
+          <image src='https://image.prise.shop/images/2018/07/26/1532597688081033.png' class='small-pen'></image>
+          <view class='talk-tip'>第一个来吐槽吧！</view>
+          <form bindsubmit='togglePopDialog' report-submit='true'>
+            <button formType="submit" class='fx-zx-button'>
+              <image src='https://image.prise.shop/images/2018/07/26/1532597694244130.png' class='start-talks-btn' bindtap='togglePopDialog'></image>
+            </button>
+          </form>
+        </view>
+      </block>
+    </view>
+    <!-- 最新吐槽 -->
+    <view class='new-talk-content'>
+
+    </view>
+  </view>
+  <!-- 吐槽弹框 -->
+  <block wx:if="{{isShowPop}}">
+    <view class='mask60' catchtouchmove='true'></view>
+    <view class='pop-box' catchtouchmove='true'>
+      <form bindsubmit='submitTalk' report-submit='true'>
+        <view class='talk-box'>
+          <view class='talk-title'>请开始你的吐槽</view>
+          <textarea bindblur="bindTextAreaBlur" placeholder='请开始你的吐槽，派喜有权对敏感词汇以及与主题无关的留言进行处理哦！' placeholder-style='color:rgba(0,29,102,0.3)' value="{{fuckText}}" fixed='true' maxlength='800'></textarea>
+          <view class='btn-confirm'>
+            <!-- 确认按钮 -->
+            <button formType="submit" class='fx-zx-button'>
+              <image src='https://image.prise.shop/images/2018/07/27/1532658443126918.png'></image>
+            </button>
+          </view>
+        </view>
+      </form>
+      <image src='../../images/index_pop_shut@3x.png' class='closeBtn' bindtap='togglePopDialog'></image>
+    </view>
+
+  </block>
+  <!-- <view class='count' style='{{countstyle}}'> -->
+    <!-- <image src='https://image.prise.shop/images/2018/07/26/1532604963403500.png' class='count' style='{{countstyle}}'></image> -->
+  <!-- </view> -->
+  <image class='gobackIndex' bindtap='gotoIndex' src='https://image.prise.shop/images/2018/08/01/1533108695200560.png'></image>
+</view>

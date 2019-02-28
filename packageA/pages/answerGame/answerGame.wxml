@@ -1,0 +1,68 @@
+<view class="container bg-blue">
+  <view class='top-status'>
+    <view class='top-left'>剩余免费次数<text>{{limitedChance - 1}}</text></view>
+    <view class='top-right'>已获取能量：<text>{{reward * totalCorrectNum}}</text></view>
+  </view>
+  <!--答题 题目区域  -->
+  <view class='question-box'>
+     <block wx:if="{{errorSelect}}"> 
+      <view class='wrongmask'>
+        <view class='topcircle' style='top:{{topValue}}rpx;'><view class='wrongmaskcircle'></view></view>
+      </view>
+     </block> 
+    <view class='timer'>
+       <view class="circleProgress_wrapper">
+          <view class="wrapper right">
+            <block wx:if="{{showTimeline}}">
+              <view class="circleProgress rightcircle" style='transform:rotate({{rotatenum}}deg);'></view>
+            </block>
+          </view>
+          {{seconds}}
+        </view>
+    </view>
+    <!--答题进度 成绩  -->
+    <view class='box-header'>
+      <view class='header-left'>
+        <text>答题进度</text>
+        <view class='progress'>{{currentQuestion + 1}}/{{qustionNumber}}</view>
+      </view>
+      <view class='middle'></view>
+      <view class='header-right'>
+        <text>答对题数</text>
+        <view class='grades'><text class='small'>{{totalCorrectNum}}</text></view>
+      </view>
+    </view>
+    <!--问答内容区  -->
+    <block wx:for="{{questionList}}" wx:key="{{index}}">
+      <block wx:if="{{currentQuestion == index}}"> 
+        <view class='question {{iphonex?"question-x":""}}'>{{item.problems}}</view>
+        <block wx:for="{{item.chooseAnswers}}">
+          <view class='answer {{iphonex?"answer-x":""}}  {{item.isCorrect?"correct":""}} {{item.isError?"error":""}}' data-index='{{index}}' bindtap='checkAnswer'>
+            {{item.chooseValue}}
+             <block wx:if="{{item.isCorrect}}"><image src='../../../images/answer_item_right.png'></image></block>
+             <block wx:if="{{item.isError}}"><image src='../../../images/answer_item_wrong.png'></image></block>
+          </view>
+        </block>
+      </block>
+    </block>
+  </view>
+  <!--答题结束弹出框  -->
+  <block wx:if='{{showResult}}'>
+      <view class='mask40' catchtouchmove='true'></view>
+      <view class='result-box' catchtouchmove='true'>
+        <image src='https://image.prise.shop/images/2018/07/25/1532521378266463.png' class='goalicon'></image>
+        <view class='result'>
+          答对<text>{{totalCorrectNum}}</text>题，共获得<text>{{growthValue}}</text>能量值
+        </view>
+        <block wx:if="{{chances > 0}}">
+          <view class='tips'>您还剩余{{chances}}次挑战机会！</view>
+          <view class='invite-btn' bindtap='continueGame'>继续挑战</view>
+        </block>
+        <block wx:else>
+          <view class='tips'>今日免费挑战机会已用完，请明日再来或分享好友获得新的挑战机会吧！</view>
+          <button class='invite-btn' open-type='share' id='answerHelp'>分享好友继续挑战</button>
+        </block>
+        <view class='white-btn' bindtap='gobackTree'>返回许愿树</view>
+      </view>
+  </block>
+</view> 

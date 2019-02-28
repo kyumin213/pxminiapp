@@ -1,0 +1,39 @@
+/* pages/feedback/feedback.wxss */
+.body {
+  height: 580rpx;
+  width: 100%;
+  margin-bottom: 30rpx;
+}
+.input-title {
+  font-size: 28rpx;
+  color: #999;
+  padding: 30rpx 0 20rpx 30rpx;
+}
+
+.input-feed {
+  width: 100%;
+  background: #fff;
+  height: 580rpx;
+  font-size: 28rpx;
+  padding: 20rpx 0 0 30rpx;
+  box-sizing: border-box;
+}
+
+.content {
+  margin-top: 20rpx;
+}
+
+.email {
+  padding-left: 30rpx; 
+  line-height: 88rpx;
+  font-size: 28rpx;
+  background: #fff;
+  height: 88rpx;
+}
+
+.botton{
+  margin-top: 40rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  background: #F72F2B;
+}

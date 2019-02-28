@@ -1,0 +1,99 @@
+<view class="container bg-tree">
+  <view class='tab-bar'>
+    <view class='tab-item {{current == 1 ? "on":""}}' data-index='1' bindtap='bindSwitch'>每日福利</view>
+    <view class='tab-item {{current == 2 ? "on":""}}' data-index='2' bindtap='bindSwitch'>成长福利</view>
+  </view>
+  <!-- 每日福利 -->
+  <scroll-view scroll-y class='tab-content {{iphonex?"tab-content-x":""}}' wx:if="{{current == 1}}">
+    <block wx:for="{{dailyTask}}"  wx:key="{{index}}">
+      <view class='item'>
+        <view class='item-title'>
+          <view class='item-title-left'>{{item.taskTitle}}</view>
+          <view class='item-title-right'>进度：{{item.taskRate}}/{{item.taskAim}}</view>
+        </view>
+        <view class='item-options'>
+          <view class='item-options-left'>
+            <block wx:if="{{item.rewardType == 0}}">
+              <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20190110023252827310665.png'></image>
+              <text>{{item.taskRewardContent}}</text>
+            </block>
+            <block wx:if="{{item.rewardType == 1 && item.topicOptType != 8}}">
+              <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20190107112538988654442.png'></image>     
+              <text class='blue'>{{item.taskRewardContent}}</text>
+            </block>
+            <!-- 红包 -->
+            <block wx:if="{{item.topicOptType == 8}}">
+              <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20190213064015681449433.png'></image>
+              <text class='blue'>{{item.taskRewardContent}}</text>
+            </block>
+          </view>
+          <view class='item-options-right {{item.taskStatus == 0?"gray":""}} {{item.taskStatus == 2?"orange":""}}' bindtap='bindClickDailyReward'  data-index='{{index}}'>
+             {{btnTxt[item.taskStatus]}}
+          </view>
+        </view>
+      </view>
+      <view class='line'></view>
+    </block>
+  </scroll-view>
+  <!-- 成长福利 -->
+  <scroll-view scroll-y class='tab-content {{iphonex?"tab-content-x":""}}' wx:if="{{current == 2}}">
+    <block wx:for="{{periodTask}}"  wx:key="{{index}}">
+        <view class='item'>
+          <view class='item-title'>
+            <view class='item-title-left'>{{item.taskTitle}}</view>
+            <view class='item-title-right'>进度：{{item.taskRate}}/{{item.taskAim}}</view>
+          </view>
+          <view class='item-desc'>{{item.taskSubtitle}}</view>
+          <view class='item-options'>
+            <view class='item-options-left'>
+                <block wx:if="{{item.rewardType == 0}}">
+                  <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20190110023252827310665.png'></image>
+                  <text>{{item.taskRewardContent}}</text>
+                </block>
+                <block wx:if="{{item.rewardType == 1 && item.topicOptType != 8}}">
+                  <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20190107112538988654442.png'></image> 
+                  <text class='blue'>{{item.taskRewardContent}}</text>
+                </block>
+                <!-- 红包 -->
+                <block wx:if="{{item.topicOptType == 8}}">
+                  <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20190213064015681449433.png'></image>
+                  <text class='blue'>{{item.taskRewardContent}}</text>
+                </block>
+            </view>
+            <view class='item-options-right {{item.taskStatus == 0?"gray":""}} {{item.taskStatus == 2?"orange":""}}' bindtap='bindClickPeriodReward' data-index='{{index}}'>{{btnTxt[item.taskStatus]}}</view>
+          </view>
+        </view>
+        <view class='line'></view>
+    </block>    
+  </scroll-view>
+  <!-- 时间卡弹框 -->
+  <block wx:if="{{showTimeTool}}">
+      <view class='mask94'></view>
+      <view class='time-pop {{iphonex?"time-pop-x":""}}'>
+        <view class='time-pop-title'>恭喜获得道具卡</view>
+        <view class='time-pop-number'>+1</view>
+        <view class='time-pop-desc'>可查看原图5s，且不消耗时间</view>
+        <view class='time-pop-close' bindtap='closeTimeTool'></view>
+      </view>
+  </block>  
+  <!-- 提现卡弹框 -->
+  <block wx:if="{{showMoneyTool}}">
+      <view class='mask94'></view>
+      <view class='time-pop money-pop {{iphonex?"time-pop-x":""}}'>
+        <view class='time-pop-title'>恭喜获得1元提现卡</view>
+        <view class='time-pop-number'>+1</view>
+        <view class='time-pop-desc'>可提现红包金额1元，有效期30天</view>
+        <view class='time-pop-close' bindtap='closeMoneyTool'></view>
+      </view>
+  </block>
+  <!-- 能量领取弹框 -->
+  <block wx:if="{{showEnergyTool}}">
+      <view class='mask50'></view>
+      <view class='energy-pop'>
+        <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20190107042020120122368.png'></image>
+        <view class='energy-pop-title'>能量值+{{growthValue}}点</view>
+        <view class='energy-pop-desc'>快返回许愿池接收能量吧</view>
+      </view>
+      <view class='energy-pop-close' bindtap='closeEnergyTool'>确定</view>      
+  </block>
+</view>

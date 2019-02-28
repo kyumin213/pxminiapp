@@ -1,0 +1,290 @@
+<view class="container bg-gray">
+  <view class='navbar'>
+    <!-- <view class='nav-left'> -->
+      <view class='nav-item' bindtap='gotoIndex'>礼物</view>
+      <view class='nav-item active-nav' bindtap='gotoGift'>送礼</view>
+      <view class='nav-item' bindtap='gotoActivity'>抽奖</view>
+      <view class='nav-item' bindtap='gotoWishing'>许愿树</view> 
+    <!-- </view> -->
+    <view class='nav-right'>
+      <image class='nav-icon' src='../../images/index_cart.png' bindtap='gotoCar'></image>
+      <view class='nav-bage'>{{goodsNumber}}</view>
+    </view>
+    <view class='nav-right'>
+      <image class='nav-icon' src='../../images/index_mine.png' bindtap='gotoUser'></image>
+    </view>
+  </view>
+  <view class='swiper-tab'>
+    <view class="tab-item {{currentNavtab == index ? 'navActive' : ''}}" wx:for="{{navTab}}" wx:key="index" data-index="{{index}}" bindtap="swichNav">{{item}}</view>
+  </view>
+  <!--选礼模块  -->
+<block wx:if="{{currentNavtab == 0}}">
+<form report-submit='true' bindsubmit='sendGifts'>
+  <view class='gift-wrap'>
+    <block wx:if="{{total<1}}">
+      <view class='select-gift' bindtap='gotoAllSpecial'>
+        <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181012032940332797994.png' class='bg-gift'></image>
+        <view class='gift-content'>
+          <image src='../../images/giftindex_icon_select.png' class='gifts'></image>
+          <view class='select-middle'>
+            <view class='title-left'>选择要送的礼物</view>
+            <text>对方填地址，礼物送上门</text>
+          </view>
+          <view class='gotoGift'>立即前往<image src='../../images/white-go.png' class='go'></image></view>
+        </view> 
+      </view>  
+    </block>
+    <!-- 礼物列表  -->
+    <block wx:if="{{total>0}}">
+      <view class='gift-list'>
+        <block wx:for="{{itemList}}" wx:key="{{index}}">
+          <view class='gift-item' data-index='{{index}}' bindtap='gotoDetails'>
+            <image src='{{item.productPicture}}' class='thumbnail'></image>
+            <view class='goods-right'>
+              <view class='goods-title'><image src='../../images/SeaAmoy.png' wx-if="{{item.isSeaAmoy}}"></image>{{item.productTitle}}</view>
+              <view class='goods-props'>{{item.productParamText.propName}}</view>
+              <view class='goods-bottom'>
+                <view class='price-left'>
+                  <text class='price'>￥{{item.productPrice}}</text>
+                  <text class='beforePrice'>¥{{item.productBeforePrice}}</text>
+                </view>
+                <image src='../../images/cart_add_reduce.png' catchtap='reduceNumber'  class='reduce' data-index="{{index}}"></image>
+                  <input type='number' min="0" data-index="{{index}}" value='{{item.num}}' bindinput="bindKeyInput" class='buy-number' disabled/>
+                  <image src='../../images/cart_add_add.png' class='add' catchtap='addNumber' data-index="{{index}}"></image>
+              </view>
+            </view>
+          </view>
+          <view class='line630'></view>
+        </block>
+        <!--合计件数  -->
+        <view class='bottom-options'>
+          <view class='options-left'>
+            <view class='total-num'>共{{total}}件礼物</view>
+            <block wx:if="{{rows>3&&isShowAll}}">
+              <view class='checkAll' bindtap='showAllItem'>查看全部</view>   
+            </block>    
+          </view>
+          <view class='options-right' bindtap='gotoAllSpecial'>
+            继续添加
+          </view>
+        </view>
+      </view> 
+    </block>
+  </view>
+  <!--海淘身份证  -->
+  <block wx:if="{{isSeaAmoy}}">
+    <view class='idCard'>
+      <view class='card-title'>
+        <text>身份证号</text>
+        <input type='idcard' placeholder='身份证号码' value='{{idcardNumber}}' bindinput='bindIdcardInput' placeholder-style="color:#ccc;" bindblur='blurIDcard' maxlength='18'  />
+      </view>
+      <view class='tips-container'>
+        <view class='tips'>
+          该礼品是海外进口商品，需填写正确的身份信息方可通过清关安检。身份信息会加密报关，派喜将确保您的信息安全。
+        </view>
+      </view>
+    </view>
+  </block>
+  <!--送礼方式  -->
+  <view class='send-gift-new'>
+    <!--  bindtap='togglePop' -->
+    <view class='select-top'>
+      <view class='select-left'>选择送礼方式</view>
+      <view class='select-right'>
+        <text bindtap='gotoPlayMethod'>玩法介绍</text>
+      </view>
+    </view>
+    <view class='tabBar'>
+      <view class='tabs {{tabsindexs == 1?"active":""}}' data-index='1' bindtap='toggleTab'><image src='../../images/index_title_icon_one.png'></image>最IN场景送礼</view>
+      <view class='line-middle'></view>
+      <view class='tabs {{tabsindexs == 2?"active":""}}' data-index='2' bindtap='toggleTab'><image src='../../images/index_title_icon_two.png'></image>最好玩游戏送礼</view>
+    </view>
+    <block wx:if="{{tabsindexs == 1}}">
+       <view class='tab-content'>
+          <view class='type-item {{current==7?"on":""}}' bindtap='toggleMode' data-index='7'>
+            <image src='../../images/index_play_one.png'></image>
+            <view class='type-h1'>直接送</view>
+          </view>
+          <view class='type-item {{current==5?"on":""}}' bindtap='toggleMode' data-index='5'>
+            <image src='../../images/index_play_two.png'></image>
+            <view class='type-h1'>AA送</view>
+          </view>
+          <view class='type-item {{current==1?"on":""}}' bindtap='toggleMode' data-index='1'>
+            <image src='../../images/index_play_three.png'></image>
+            <view class='type-h1'>悄悄送</view>
+          </view>
+        </view>
+    </block>
+    <block wx:if="{{tabsindexs == 2}}">
+       <view class='tab-content'>
+          <view class='type-item {{current==4?"on":""}}' bindtap='toggleMode' data-index='4'>
+            <image src='../../images/index_play_four.png'></image>
+            <view class='type-h1'>答题送</view>
+          </view>
+          <view class='type-item {{current==3?"on":""}}' bindtap='toggleMode' data-index='3'>
+            <image src='../../images/index_play_five.png'></image>
+            <view class='type-h1'>拼图送</view>
+          </view>
+          <view class='type-item {{current==6?"on":""}}' bindtap='toggleMode' data-index='6'>
+            <image src='../../images/index_play_six.png'></image>
+            <view class='type-h1'>摇骰送</view>
+          </view>
+          <view class='type-item {{current==2?"on":""}}' bindtap='toggleMode' data-index='2'>
+            <image src='../../images/index_play_seven.png'></image>
+            <view class='type-h1'>开箱送</view>
+          </view>
+          <view class='type-item {{current==10?"on":""}}' bindtap='toggleMode' data-index='10'>
+            <image src='../../images/index_play_more.png'></image>
+            <view class='type-h1'>敬请期待</view>
+          </view>
+        </view>
+    </block>
+    <view class='line630'></view>
+    <!--悄悄送礼  -->
+    <block wx:if="{{current == 1}}">
+        <input class='message' value='{{remarks}}' bindinput='bindremarkinput'  placeholder="写下给ta的悄悄话…" placeholder-style="color:#999999;" bindblur='bindremarkblur' maxlength="18"></input>
+    </block>
+    <!--开箱送礼  -->
+    <block wx:if="{{current == 2}}">
+      <view class='rule-box'>
+          <picker class='rule-item picker' bindchange="bindKeysNumPickerChange" value="{{keysindex}}" range="{{keysNumArr}}">
+              <text class='fl'>钥匙数量</text>
+              <text class='fr'>{{keysNumArr[keysindex]}} 把</text>          
+          </picker>
+          <view class='line630'></view>
+          <picker class='rule-item picker' bindchange="bindPickerChange" value="{{index}}" range="{{dayArr}}">
+              <text class='fl'>活动时间</text>
+              <text class='fr'>{{dayArr[index]}} 天</text>          
+          </picker>
+      </view>
+    </block>
+    <!--拼图送礼  -->
+    <block wx:if="{{current == 3}}">
+      <view class='rule-box'>
+        <view class='rule-item' bindtap='selectPicture'>
+          <text class='key-text'>选择图片</text>
+          <view class='g666'>
+            <block wx:if="{{selectedImg == ''}}">
+              <text>去选择</text>
+            </block>
+            <block wx:if="{{selectedImg}}">
+              <image src='{{selectedImg}}' class='pinImg'></image>
+            </block>
+            <!-- 去选择 -->
+            <image src='../../images/giftindex_icon_into.png' class='go'></image>
+          </view>
+        </view>
+        <view class='line630'></view>
+        <view class='rule-item' bindtap='selectNumber'>
+          <text class='key-text'>拼图数量</text>
+          <text class='fr'>{{numberArr[selectedNum]}}</text>
+        </view>
+        <view class='line630'></view>
+        <picker class='rule-item picker' bindchange="bindPickerChangePintu" value="{{pintuIndex}}" range="{{dayArr}}">
+            <text class='fl'>活动时间</text>
+            <text class='fr'>{{dayArr[pintuIndex]}} 天</text>          
+        </picker>
+      </view>
+    </block>
+    <!--答题送礼  -->
+    <block wx:if="{{current == 4}}">
+       <view class='rule-box'>
+         <picker class='rule-item picker' bindchange="bindAnswerNumPickerChange" value="{{answernumindex}}" range="{{answerNumArr}}">
+            <text class='fl'>问题数量</text>
+            <text class='fr'>{{answerNumArr[answernumindex]}} 题</text>          
+          </picker>
+        <view class='line630'></view>
+        <picker class='rule-item picker' bindchange="bindAnswerPickerChange" value="{{answerindex}}" range="{{dayArr}}">
+            <text class='fl'>活动时间</text>
+            <text class='fr'>{{dayArr[answerindex]}} 天</text>          
+        </picker>
+      </view>
+    </block>
+    <!-- 群送礼 -->
+    <block wx:if="{{current == 5}}">
+      <view class='rule-item'>
+        <text class='key-text'>总金额</text>
+        <text class='fr'>{{ordersPay}} 元</text>
+      </view>
+      <view class='line630'></view>
+      <picker class='rule-item picker' bindchange="bindPintuanPickerChange" value="{{peopleindex}}" range="{{peopleArr}}">
+          <text class='fl'>选择拼团人数</text>
+          <text class='fr'>{{peopleArr[peopleindex]}} 人</text>          
+      </picker>
+      <view class='line630'></view>
+      <textarea class='messagess' value='{{remarksGroup}}' bindinput='bindremarkinputGroup'  placeholder="写下给ta的祝福…" placeholder-style="color:#999999;" bindblur='bindremarkblurGroup'></textarea>
+    </block>
+    <!-- 摇骰子送礼 -->
+    <block wx:if="{{current == 6}}">
+      <picker class='rule-item picker' bindchange="bindDicePickerChange" value="{{diceindex}}" range="{{dayArr}}">
+          <text class='fl'>活动时间</text>
+          <text class='fr'>{{dayArr[diceindex]}} 天</text>          
+      </picker>
+      <view class='line630'></view>
+      <textarea class='messagess' value='{{remarksDice}}' bindinput='bindremarkinputDice'  placeholder="摇点数，比大小，你敢摇我敢送！" placeholder-style="color:#999999;" bindblur='bindremarkblurDice' maxlength='18'></textarea>
+    </block>
+    <!-- 直接送 -->
+    <block wx:if="{{current == 7}}">
+      <input class='message' value='{{remarksDirect}}' bindinput='bindremarkinputDirect'  placeholder="写下给ta的祝福…" placeholder-style="color:#999999;" bindblur='bindremarkblurDirect' maxlength="15"></input>
+    </block>
+  </view>
+  <!-- 优惠券 -->
+  <block wx:if="{{total>0}}">
+    <view class='coupon-box'>
+      <block wx:if="{{reducePrice != 0.00}}">
+        <view class='coupon-top'>
+          <view class='coupon-left'><text>券</text>下单立减</view>
+          <view class='coupon-right'>
+            <text class='red'>-{{reducePrice}}</text>
+          </view>
+        </view>
+        <view class='line630'></view>
+      </block>
+      <view class='coupon-bottom' bindtap='gotoCoupon'>
+        <view class='coupon-left'>优惠券</view>
+        <view class='coupon-right'>
+          <!-- <text class='red'>2张可用</text> -->
+          <block wx:if="{{reduceCoupon == '-0.00元'}}">
+            暂无可用
+          </block>
+          <block wx:else>
+            <text class='red'>{{reduceCoupon}}</text>
+          </block>          
+          <image src='../../images/giftindex_icon_into.png' class='go'></image>
+        </view>   
+      </view>
+    </view>
+    <!-- 钱包 -->
+    <!-- <view class='coupon-box'>
+      <view class='coupon-bottom'>
+        <view class='coupon-left'>钱包支付</view>
+        <view class='coupon-right'>
+          <text class='accounts'>余额 ￥190.00</text>
+          <switch checked="{{checked}}" bindchange="switchChange" />
+        </view>   
+      </view>
+    </view> -->
+  </block>
+  <!--价格  -->
+  <view class='total-price txt-center clearfix'>
+    <block wx:if="{{current!=5}}">￥{{ordersPay}}</block>
+    <block wx:else>￥{{priceSplit}}</block>
+  </view>
+  <!--送礼按钮  -->
+  <!-- <view class='sendBtn txt-center' bindtap='sendGifts'>送TA好礼</view> -->
+  <button formType="submit" class='sendBtn txt-center'>马上送出礼物</button>
+</form>
+  <view class='gift-record txt-center'>
+  <!--<text>玩法介绍 </text>|   -->
+    <text bindtap='gotoRecord'>送礼记录</text>
+  </view> 
+</block>
+<!-- 收礼 -->
+<block wx:if="{{currentNavtab == 1}}">
+  <view class='emptystatus'>
+    <image src='https://image.prise.shop/images/2018/07/25/1532518008510131.png'></image>
+    <text>小派正在加速开发中，敬请期待！</text>
+    <button class='gotoIndex' bindtap='gotoIndex'>先逛逛派喜</button>
+  </view>
+</block>
+</view>

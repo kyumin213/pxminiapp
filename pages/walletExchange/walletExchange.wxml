@@ -1,0 +1,45 @@
+<view class="container">
+  <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181227120509518988877.png' class='top-image'></image>
+  <form>
+    <view class='form-group'>
+      <view class='form-name'>礼品卡号</view>
+      <input class='form-input' type='text' placeholder='请输入礼品卡号' placeholder-style='color:#999999' maxlength='14' bindinput="bindNumberInput" bindblur='bindNumberBlur' value='{{cardNumber}}' focus="{{focusNumber}}"></input>
+      <block wx:if="{{showOne}}">
+        <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20190104023236460824308.png' class='delete-all' bindtap='clearCardNumber'></image>
+      </block>      
+    </view>
+    <view class='form-group'>
+      <view class='form-name'>礼品卡密匙</view>
+      <input class='form-input' type='password' placeholder='请输入礼品卡密匙' placeholder-style='color:#999999' maxlength='8' bindinput="bindPwdInput" bindblur='bindPwdBlur' value='{{cardPwd}}' focus="{{focusPwd}}"></input>
+      <block wx:if="{{showTwo}}">
+        <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20190104023236460824308.png' class='delete-all' bindtap='clearCardPwd'></image>
+      </block>   
+    </view>
+    <view class='form-group'>
+      <view class='form-name'>企业识别码<text>（解开礼品卡使用限制的号码）</text></view>
+      <input class='form-input' type='text' placeholder='请输入识别码' placeholder-style='color:#999999' maxlength='8' bindinput="bindCodeInput" bindblur='bindCodeBlur' value='{{cardCode}}' focus="{{focusCode}}"></input>
+      <block wx:if="{{showThree}}">
+        <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20190104023236460824308.png' class='delete-all' bindtap='clearCardCode'></image>
+      </block>   
+    </view>
+    <button class='next {{done ? "red":""}}' bindtap='showPop'>下一步</button>
+  </form>
+  <button  open-type='contact'  class='contact'>
+    <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181228111254690109573.png'></image>
+    联系客服
+  </button>
+  <block wx:if="{{showConfirm}}">
+      <view class='mask50' catchtouchmove='true'></view>
+      <view class='confirm-box {{iphonex?"confirm-box-x":""}}'>
+        <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181228023401588712150.png'></image>
+        <view class='color-gray'>礼品卡号：{{cardId}}</view>
+        <view class='color-gray' style='margin-bottom:40rpx;'>充值金额：{{rechargeMoney}}</view>
+        <view class='color-yellow'>您正在使用礼品卡充值……</view>
+        <view class='color-yellow'>充值后将无法撤回喔(o^^o)</view>
+        <view class='btn-group'>
+          <view class='btn-left' bindtap='closePop'>取消</view>
+          <view class='btn-right' bindtap='goExchange'>确定</view>
+        </view>
+      </view>
+  </block>  
+</view>

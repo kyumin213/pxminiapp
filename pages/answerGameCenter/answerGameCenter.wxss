@@ -1,0 +1,336 @@
+.bg-blue {
+  padding-bottom: 40rpx;
+}
+.top-status {
+  width: 100%;
+  height: 30rpx;
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  padding: 54rpx 50rpx 0;
+  box-sizing: border-box;
+}
+.top-status view {
+  color: rgba(255, 255, 255, 0.6)
+}
+.top-status view text {
+  font-family: "DIN";
+}
+.icon {
+  display: inline-block;
+  width: 8rpx;
+  height: 8rpx;
+  background: #27CD4A;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 12rpx;
+}
+.top-left {
+  flex: 1;
+}
+/*答题区域  */
+.question-box {
+  width: 672rpx;
+  min-height: 1014rpx;
+  border-radius: 16rpx;
+  background: #FFFFFF;
+  position: relative;
+  margin: 96rpx auto 0;
+  padding: 80rpx 0 46rpx;
+  box-sizing: border-box;
+}
+.wrongmask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 16rpx;
+  background: rgba(253, 59, 100, 0.3);
+  top: 0;
+  left: 0;
+  z-index: 99;
+  /* animation: shake-horizontal; */
+  /* animation: shake-horizontal 2s linear; */
+}
+.topcircle {
+  width: 140rpx;
+  height: 70rpx;
+  position: absolute;
+  left: 50%;
+  top: -70rpx;
+  transform: translate(-50%,0);
+  overflow: hidden;
+}
+.wrongmaskcircle {
+  position: absolute;
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%,0);
+  background: rgba(253, 59, 100, 0.3);
+}
+.box-header {
+  height: 80rpx;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+.header-left {
+  margin: 0 130rpx 0 90rpx;
+  width: 110rpx;
+}
+.header-right {
+  margin-left: 92rpx;
+}
+.header-left text,.header-right text {
+  color: #999999;
+  font-size: 26rpx;
+}
+.progress,.grades{
+  margin-top: 20rpx;
+}
+.progress,.grades text {
+  color: #666666;
+  font-size: 36rpx;
+  font-family: "DIN";
+}
+.small {
+  font-size: 28rpx;
+}
+.middle {
+  width: 2rpx;
+  height: 32rpx;
+  background: #CCCCCC;
+}
+.question {
+  width: 530rpx;
+  margin: 76rpx auto 68rpx;
+  color: #000000;
+  font-size: 38rpx;
+  text-align: center;
+}
+.answer {
+  width: 550rpx;
+  height: 100rpx;
+  background: #F7F8F9;
+  border: 2rpx solid #EEEEEE;
+  border-radius: 50rpx;
+  margin: 0 auto 40rpx;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 34rpx;
+  color: #000000;
+  position: relative;
+}
+.answer image {
+  width: 54rpx;
+  height: 54rpx;
+  position: absolute;
+  right: 40rpx;
+  top: 24rpx;
+}
+.correct {
+  background: #FD3B64;
+  color: #fff;
+}
+.error {
+  background: #000000;
+  color: #fff;
+}
+.line590 {
+  background: #EEEEEE;
+  height: 1rpx;
+  width: 590rpx;
+  margin: 0 auto;
+  transform: scaleY(0.5);
+}
+/*答题区域底部  */
+.box-footer {
+  display: flex;
+  width: 590rpx;
+  align-items: center;
+  margin: 46rpx auto 0;
+}
+.footer-left {
+  color: #1B0157;
+  font-size: 32rpx;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.footer-left image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+}
+.footer-left text {
+  font-family: "DIN";
+  margin-left: 20rpx;
+}
+.getRelive-btn {
+  width: 222rpx;
+  height: 68rpx;
+  border: 2rpx solid #FE355E;
+  border-radius: 34rpx;
+  background: #fff;
+  color: #FE355E;
+  font-size: 28rpx;
+}
+.getRelive-btn::after,.getRelive-btn::before{
+  border: 0;
+  box-shadow: none;
+}
+
+.timer {
+  width: 140rpx;
+  height: 140rpx;
+  background: #fff;
+  border-radius: 50%;
+  left: 50%;
+  top: -70rpx;
+  transform: translate(-50%,0);
+  position: absolute;
+}
+.circleProgress_wrapper{
+  width: 120rpx;
+  height: 120rpx;
+  position: absolute;
+  text-align: center;
+  line-height: 120rpx;
+  margin: 0 auto;
+  left: 50%;
+  top: 10rpx;
+  transform: translate(-50%,0);
+  font-size: 60rpx;
+  color: #321B68;
+  font-family: "DIN";
+  font-weight: bold;
+}
+.wrapper{
+  width: 120rpx;
+  height: 60rpx;
+  position: absolute;
+  top:0;
+  overflow: hidden;
+}
+.right{
+  right:0;
+}
+.circleProgress{
+  width: 100rpx;
+  height: 100rpx;
+  border:10rpx solid #fff;
+  border-radius: 50%;
+  position: absolute;
+  top:0;
+  transform: rotate(-45deg);
+}
+.rightcircle{
+  border-top:10rpx solid #F9BC02;
+  border-right:10rpx solid #F9BC02;
+  right:0;
+  transition: all 1s linear;   
+  /* -webkit-animation: circleProgressLoad_right 10s linear;
+  animation: circleProgressLoad_right 10s linear;   */
+}
+@keyframes circleProgressLoad_right{
+  0% {
+    -webkit-transform: rotate(-45deg);
+  }
+  100% {
+   -webkit-transform: rotate(135deg);
+  }
+}
+/*答题结果  */
+.mask40 {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99;
+}
+.result-box {
+  padding: 130rpx 0 46rpx;
+  width: 646rpx;
+  height: 836rpx;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 16rpx;
+  z-index: 100;
+}
+.goalicon {
+  width: 220rpx;
+  height: 220rpx;
+  position: absolute;
+  top: -110rpx;
+  left: 50%;
+  transform: translate(-50%,0);
+}
+.result {
+  font-size: 32rpx;
+  width: 500rpx;
+  margin: 0 auto 40rpx;
+}
+.result text {
+  color: #FD3B64;
+  font-size: 40rpx;
+  margin: 0 6rpx;
+  font-family: "DIN"
+}
+.tips {
+  color: #999999;
+  font-size: 26rpx;
+  line-height: 1.6;
+  width: 466rpx;
+  margin: 0 auto 60rpx;
+  text-align: center;  
+}
+.invite-btn {
+  width: 520rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #FD3B64;
+  border-radius: 44rpx;
+  color: #fff;
+  font-size: 32rpx;
+  margin-bottom: 50rpx;
+}
+.goindex {
+  color: #FD3B64;
+  font-size: 32rpx;
+  text-align: center;
+  margin-bottom: 60rpx;
+  background: none;
+  border: none;
+}
+.goindex::after{
+  background: none;
+  border: none;
+}
+.closebtn {
+  width: 48rpx;
+  height: 48rpx;
+  position: absolute;
+  bottom: -120rpx;
+  left: 50%;
+  transform: translate(-50%,0);
+  background: url(https://image.prise.shop/images/2018/07/20/1532075194926658.png) no-repeat;
+  background-size: contain;
+}
+.close {
+  width: 48rpx;
+  height: 48rpx;
+  position: absolute;
+  bottom: -120rpx;
+  left: 50%;
+  transform: translate(-50%,0);
+}
+@keyframes shake-horizontal{2%{transform:translate(-7px, 0) rotate(0)}4%{transform:translate(-5px, 0) rotate(0)}6%{transform:translate(4px, 0) rotate(0)}8%{transform:translate(-4px, 0) rotate(0)}10%{transform:translate(-6px, 0) rotate(0)}12%{transform:translate(2px, 0) rotate(0)}14%{transform:translate(-5px, 0) rotate(0)}16%{transform:translate(-3px, 0) rotate(0)}18%{transform:translate(2px, 0) rotate(0)}20%{transform:translate(3px, 0) rotate(0)}22%{transform:translate(-2px, 0) rotate(0)}24%{transform:translate(-3px, 0) rotate(0)}26%{transform:translate(-9px, 0) rotate(0)}28%{transform:translate(2px, 0) rotate(0)}30%{transform:translate(7px, 0) rotate(0)}32%{transform:translate(2px, 0) rotate(0)}34%{transform:translate(0px, 0) rotate(0)}36%{transform:translate(-1px, 0) rotate(0)}38%{transform:translate(6px, 0) rotate(0)}40%{transform:translate(-7px, 0) rotate(0)}42%{transform:translate(0px, 0) rotate(0)}44%{transform:translate(-1px, 0) rotate(0)}46%{transform:translate(-2px, 0) rotate(0)}48%{transform:translate(10px, 0) rotate(0)}50%{transform:translate(-8px, 0) rotate(0)}52%{transform:translate(-9px, 0) rotate(0)}54%{transform:translate(9px, 0) rotate(0)}56%{transform:translate(-2px, 0) rotate(0)}58%{transform:translate(-5px, 0) rotate(0)}60%{transform:translate(2px, 0) rotate(0)}62%{transform:translate(-4px, 0) rotate(0)}64%{transform:translate(1px, 0) rotate(0)}66%{transform:translate(-3px, 0) rotate(0)}68%{transform:translate(10px, 0) rotate(0)}70%{transform:translate(4px, 0) rotate(0)}72%{transform:translate(-6px, 0) rotate(0)}74%{transform:translate(-6px, 0) rotate(0)}76%{transform:translate(2px, 0) rotate(0)}78%{transform:translate(-2px, 0) rotate(0)}80%{transform:translate(-6px, 0) rotate(0)}82%{transform:translate(-1px, 0) rotate(0)}84%{transform:translate(-6px, 0) rotate(0)}86%{transform:translate(-5px, 0) rotate(0)}88%{transform:translate(-1px, 0) rotate(0)}90%{transform:translate(-1px, 0) rotate(0)}92%{transform:translate(-1px, 0) rotate(0)}94%{transform:translate(-3px, 0) rotate(0)}96%{transform:translate(-6px, 0) rotate(0)}98%{transform:translate(-6px, 0) rotate(0)}0%,100%{transform:translate(0, 0) rotate(0)}}

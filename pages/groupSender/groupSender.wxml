@@ -1,0 +1,147 @@
+<view class="container bg-group">
+  <view class='gift-wrap'>
+    <view class='pic-title'></view>
+    <block wx:for="{{ordersItems}}" wx:key="{{index}}">
+      <view class='gift-item'>
+        <image src='{{item.productPicture}}'></image>
+        <view class='gift-right'>
+          <view class='gift-title'>{{item.productTitle}}</view>
+          <view class='gift-props'>{{item.productParamText.propName}}</view>
+          <view class='gift-bottom'>
+            <view class='price'>￥{{item.productPrice}}</view><view class='number'>共{{item.num}}份</view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view class='total-price'>
+      <view class='fl'>合计</view>
+      <view class='fr'>¥{{priceTotal}}</view>
+    </view>
+    <view class='personal-price'>
+      人均应付金额
+      <view class='big-price'>¥{{priceSplit}}</view>
+    </view>
+    <view class='btn-group'>
+      <block wx:if="{{userPartakeStatus == 0 || userPartakeStatus == 3 || userPartakeStatus == 5}}">
+        <button class='btn-invite fl' open-type='share' id='invite'>召集好友</button>
+      </block>
+      <block wx:if="{{userPartakeStatus == 1}}">
+        <view class='btn-invite fl' bindtap='gotoGift'>再拼一次</view>
+      </block>
+      <block wx:if="{{userPartakeStatus == 2}}">
+        <view class='btn-invite fl' bindtap='gotoGift'>我也要送</view>
+      </block>
+      <block wx:if="{{userPartakeStatus == 4}}">
+        <view class='btn-invite fl' bindtap='gotoGift'>再拼一次</view>
+      </block>
+      <!-- 右 按钮 -->
+      <block wx:if="{{userPartakeStatus == 0}}">
+        <view class='btn-join fr' bindtap='joinGroup'>
+        立即参与<image src='../../images/btn_icon_go.png'></image></view>
+      </block>
+      <block wx:if="{{userPartakeStatus == 5}}">
+        <view class='btn-join fr' bindtap='joinGroup'>
+        立即支付<image src='../../images/btn_icon_go.png'></image></view>
+      </block>
+      <block wx:if="{{userPartakeStatus == 1}}">
+        <view class='btn-join fr' bindtap='open'>送出礼物</view>
+      </block>
+      <block wx:if="{{userPartakeStatus == 2}}">
+        <view class='btn-join fr' bindtap='gotoIndex'>已满员，逛逛派喜</view>
+      </block>
+      <block wx:if="{{userPartakeStatus == 3}}">
+        <view class='btn-join fr' bindtap='gotoIndex'>已参与，逛逛派喜</view>
+      </block>
+      <block wx:if="{{userPartakeStatus == 4}}">
+        <view class='btn-join fr' bindtap='gotoIndex'>已送出，逛逛派喜</view>
+      </block>
+    
+    </view>
+  </view>
+  <!-- 送礼人 -->
+  <view class='sender-list'>
+    <view class='sender-title'></view>
+    <view class='title-tip'>
+      <block wx:if="{{userGiveDisparityNum > 0}}">
+        还差<text>{{userGiveDisparityNum}}</text>份祝福，一起为好友送出礼物吧！”
+      </block>
+      <block wx:else>
+        “已召集好友完成拼单，快为好友送出礼物吧！”
+      </block>
+    </view>
+    <view class='sender'>
+      <block wx:for="{{userGiveList}}" wx:key="{{index}}">
+          <view class='item'>
+            <block wx:if="{{item.userId != 'PX_sss'}}">
+              <view class='pic-bg'><image src='{{item.picture}}'></image></view>
+              <view class='nickname'>{{item.nickname}}</view>
+              <block wx:if="{{index == 0}}"><view class='tag'>发起人</view></block>
+            </block>
+            <block wx:else>
+              <view class='pic-bg'><image src='https://image.prise.shop/images/2018/08/08/1533696792533539.png' class='empty-pic'></image></view>
+              <view class='nickname'>等待中</view>
+            </block>
+          </view>
+      </block>
+    </view>
+  </view>
+  <!-- 祝福墙 -->
+  <view class='blessing-wall'>
+    <view class='blessing-title'></view>
+    <block wx:if="{{messages.length > 0}}">
+      <block wx:for="{{messages}}" wx:key="{{index}}">
+        <view class='blessing-item'>
+          <view class='pic-bg-bless'>
+            <image src='{{item.picture}}'></image>
+          </view>
+          <view class='bless-right'>
+            <view class='bless-nickname'>{{item.nickname}}</view>
+            <view class='bless-time'>{{item.created}}</view>
+            <view class='bless-messages'>{{item.fuckContent}}</view>
+          </view>
+        </view>
+      </block>
+    </block>
+    <block wx:else>
+      <view class='empty-msg'>快来为好友送祝福吧！</view>
+    </block>
+    <image src='https://image.prise.shop/images/2018/08/06/1533547733510852.png' class='leave-message' bindtap='togglePop'></image>
+  </view>
+  <!-- 弹出框 -->
+  <block wx:if="{{showPop}}">
+    <view class='mask40' catchtouchmove='true' bindtap='togglePop'></view>
+    <view class='pop-box' catchtouchmove='true'>
+      <form bindsubmit='submitMessage' report-submit='true'>
+        <view class='talk-box'>
+          <view class='talk-title'>留下你的祝福</view>
+          <textarea bindblur="bindTextAreaBlur" placeholder='请留下你的祝福...' placeholder-style='color:rgba(0,29,102,0.3)' value="{{fuckText}}" fixed='true'></textarea>
+          <view class='btn-confirm'>
+            <!-- 确认按钮 -->
+            <button formType="submit" class='fx-zx-button'>
+              确认
+            </button>
+          </view>
+        </view>
+      </form>
+      <image src='../../images/index_pop_shut@3x.png' class='closeBtn' bindtap='togglePop'></image>
+    </view>
+  </block>
+  <!--仿actionsheet  -->
+  <block wx:if="{{isShowActionsheet}}">
+     <view class='actionsheetDialog' catchtouchmove='true'>
+        <view class='mask' catchtouchmove='true' bindtap='open'></view>
+        <view class='btn-groups'>
+            <button class='abtn' open-type='share' id='sendreceiver'>发送给朋友</button>
+            <view class='line100'></view>
+            <button class='abtn' bindtap='saveCardPic'>生成卡片保存分享</button>
+            <button class='abtn cancel' bindtap='open'>取消</button>
+        </view>
+    </view>
+  </block>
+  <!--canvas  -->
+  <view class='canvas-box'>
+    <block wx:if="{{isShowCanvas}}">
+      <canvas canvas-id="shareCanvas" style="width:{{winWidth}};height:{{winHeight}}"></canvas>  
+    </block>
+  </view>
+</view>

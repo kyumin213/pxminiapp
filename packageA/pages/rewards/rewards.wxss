@@ -1,0 +1,29 @@
+@import '../rankList/rankList.wxss';
+.maskbox {
+  height:80vh;
+  border-radius:26rpx;
+  background:rgba(255, 255, 255, 0.8);
+  position:relative;
+  box-sizing:border-box;
+  margin:0 40rpx 46rpx;
+  overflow: hidden;
+}
+.white-mask {
+  padding-top: 0;
+  background: #fff;
+  overflow: hidden;
+  width: 89vw;
+  margin: 0;
+}
+.white-mask image {
+  display: block;
+  width: 90%;
+  max-width: 90%;
+  margin: 0 auto; 
+}
+.wxParse-h2 image:first-child {
+  border-radius: 26rpx 26rpx 0 0;
+}
+.wxParse-h2 image:last-child {
+  border-radius: 0 0 26rpx 26rpx;
+}

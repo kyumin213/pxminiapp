@@ -1,0 +1,57 @@
+.bg-white {
+  background: #fff;
+}
+.tab-bar {
+  margin-bottom: 20rpx;
+  overflow: hidden;
+} 
+.line {
+  width: 100%;
+  height: 1rpx;
+  transform: scaleY(0.5);
+  background: #eee;
+}
+.special-name {
+  margin: 0 32rpx; 
+  display: inline-block;
+  font-size: 28rpx;
+  position: relative;
+  height: 72rpx;
+  line-height: 50rpx;
+  color: #999;
+}
+.active{
+  color: #333;
+  font-weight: bold;
+}
+ .active::after {
+  position: absolute;
+  height: 6rpx;
+  background: #F72F2B;
+  width: 44rpx;
+  bottom: 12rpx;
+  content: '';
+  left: 50%;
+  transform: translate(-50%,0);
+  border-radius: 4rpx;
+} 
+.scroll-view_H {
+  width: 100%;
+  white-space: nowrap;
+  padding: 0 20rpx;
+}
+/*图片列表  */
+.gallery-box {
+  width: 710rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+.gallery-box image {
+  width: 224rpx;
+  height: 224rpx;
+  border-radius: 4rpx;
+  margin-bottom: 20rpx;
+}

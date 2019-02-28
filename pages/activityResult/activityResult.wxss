@@ -1,0 +1,88 @@
+@import '../pintuResult/pintuResult.wxss';
+.code-img {
+  width:300rpx;
+  height:300rpx;
+  display: block;
+  margin: 0 auto;
+}
+.prise {
+  text-align: center;
+  font-size: 30rpx;
+  font-weight: bold;
+  line-height: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.join-prise {
+  color: #F72F2B;
+  text-align: center;
+  /* margin-bottom: 10rpx;   */
+}
+.join-tips {
+  text-align: center;
+  margin-bottom: 50rpx;
+}
+.userInfo {
+  width: 100%;
+  position: static;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 0;
+  padding-top: 60rpx;
+  height: auto;
+}
+.tips{
+  font-weight: bold;
+  font-size: 36rpx;
+  padding: 0 20rpx;
+  text-align: center;
+}
+.userpic {
+  width: 140rpx;
+  height: 140rpx;
+  margin: 0 0 40rpx;
+  border-radius: 0;
+}
+.form-group {
+  width: 630rpx;
+  min-height: 40rpx;
+  display: flex;
+  align-items: center;
+  margin: 25rpx auto;
+}
+.form-group input,.form-group textarea{
+  width: 400rpx;
+  height: 50rpx;
+  padding: 0;
+}
+.form-group textarea,.form-group .txtsss{
+  /* align-self: flex-start; */
+  height: 160rpx;
+  /* margin: -10rpx 0 0 -6rpx; */
+}
+.line-dialog {
+  width: 630rpx;
+  height: 1rpx;
+  background: #eee;
+  margin: 0 auto;
+  transform: scaleY(0.5);
+}
+.label {
+  width: 120rpx;
+  margin-left: 12rpx;
+  margin-right: 40rpx;
+}
+.address {
+  align-self: flex-start;
+}
+.modify-address {
+  color: #999;
+  font-size: 26rpx;
+  text-align: center;
+  padding-bottom: 60rpx;
+}
+.modify-address text {
+  color: #F72F2B
+}

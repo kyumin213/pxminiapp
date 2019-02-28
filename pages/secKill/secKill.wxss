@@ -1,0 +1,125 @@
+@import '../productDetails/productDetails.wxss';
+.seckill {
+  width: 100%;
+  height: 120rpx;
+  background: linear-gradient(to right,#FD2977,#FD2A39);
+  display: flex;
+  align-items: center;
+}
+.seckill-left {
+  display: flex;
+  align-items:flex-end;
+  flex: 1;
+  height: 70rpx;
+}
+.seckill-right {
+  width: 242rpx;
+  height: 120rpx;
+  background: #FFEFF5;
+  text-align: center;
+}
+.price {
+  font-size: 56rpx;
+  color: #fff;
+  font-weight: bold;
+  margin: 0 16rpx 0 30rpx;
+}
+.beforePrice {
+  color: #fff;
+  text-decoration: line-through;
+  font-size: 28rpx;
+  margin: 0 16rpx 10rpx 0;
+}
+.tipbtn {
+  width: 120rpx;
+  height: 40rpx;
+  border-radius: 20rpx;
+  background: #fff;
+  color: #FD2A39;
+  text-align: center;
+  line-height: 40rpx;
+  font-size: 22rpx;
+  display: inline-block;
+  margin-bottom: 10rpx;
+}
+.rihgt-top {
+  color: #FD2A39;
+  font-size: 24rpx;
+  font-weight: bold;
+  padding: 10rpx 0;
+}
+.rihgt-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+.dot {
+  color: #FD2A39;
+  font-size: 30rpx;
+  font-weight: bold;
+  margin: 0rpx -10rpx 0 4rpx;
+}
+.time {
+  width: 48rpx;
+  height: 48rpx;
+  background: linear-gradient(to bottom,#FD2977,#FD2A39);
+  line-height: 48rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 6rpx;
+}
+.fix-btn {
+  width: 480rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: linear-gradient(to right,#FD2977,#FD2A39);
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: bold;
+  border-radius: 44rpx
+}
+.car {
+  margin: 0 30rpx 0 60rpx;
+  text-align: center;
+}
+.index {
+  margin-left: 30rpx;
+}
+.tips-box {
+  position: absolute;
+  width: 100%;
+  height: 84rpx;
+  background: RGBA(245, 166, 35, 0.8);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  top: -84rpx;
+  left: 0
+}
+.tips-box text {
+  margin: 0 30rpx;
+}
+.tips-box view {
+  width: 130rpx;
+  height: 48rpx;
+  border: 2rpx solid #fff;
+  border-radius: 24rpx;
+  font-size: 24rpx;
+  background: transparent;
+  padding: 0;
+  color: #fff;
+  line-height: 48rpx;
+  text-align: center;
+  margin-left: 60rpx;
+}
+.colorGray {
+  color: #ccc;
+}
+.dialog-title image {
+  width: 174rpx;
+  height: 174rpx;
+}
+.gray-bg {
+  background: RGBA(210, 210, 210, 1)
+}

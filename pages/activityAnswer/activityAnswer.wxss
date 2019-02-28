@@ -1,0 +1,56 @@
+@import '../answerGame/answerGame.wxss';
+.statutips2 {
+  color: #fff;
+  text-align: center;
+  padding: 20rpx 0 40rpx;
+}
+.bingo-img {
+  width: 222rpx;
+  height: 66rpx;
+  display: block;
+  margin: 80rpx auto 24rpx;
+}
+.bingo-list {
+  border:2rpx solid rgba(255, 255, 255, 0.2);
+  background: #2d1564;
+  width: 630rpx;
+  max-height: 666rpx;
+  border-radius: 20rpx;
+  margin: 0 auto 80rpx;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-left: 32rpx;
+  box-sizing: border-box;
+  padding-top: 30rpx;
+}
+.bingo-items image{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-bottom: 16rpx;
+  display: block;
+  border: 4rpx solid rgb(253, 224, 11);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+.bingo-items {
+  width: 96rpx;
+  text-align: center;
+  margin-right: 20rpx;
+  margin-bottom: 30rpx;
+}
+.bingo-items:nth-child(5n) {
+  margin-right: 0;
+}
+.nicknames {
+  width: 96rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #fff;
+  font-size: 20rpx;
+}
+.rankscroll {
+  max-height: 1800rpx;
+}

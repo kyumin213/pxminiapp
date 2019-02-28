@@ -1,0 +1,8 @@
+<view class="container">
+  <view class='result-box'>
+    <image src='../../images/buy-success.png' mode='widthFix'></image>
+    <text class='state'>支付成功</text>
+    <text class='tip'>小派将马上为您安排送货</text>
+    <button class='go-shopping' bindtap='goShopping'>继续选购</button>
+  </view>
+</view>

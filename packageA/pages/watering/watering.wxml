@@ -1,0 +1,198 @@
+<view class='container {{bgMode}}' wx:if="{{isLoading}}">
+  <!-- 进度条 -->  
+  <block wx:if="{{canWatering}}">
+    <view class='progress'>
+      <!-- 圆环进度 -->
+      <view class='promise-pic {{growthStage == 4?"promise-pic-yellow":""}} {{growthStage == 5 || growthStage == 6?"promise-pic-orange":""}}'><image src='{{giftPictureCover}}'></image></view>
+      <!-- 长条进度 -->
+      <view class='bg-progress {{growthStage == 4?"bg-progress-yellow":""}} {{growthStage == 5||growthStage == 6?"bg-progress-orange":""}}'>
+        <text>{{ sessionName[growthStage] }}</text>
+        <view class='water {{step2&&isNew?"guidewater":""}} {{isWatering ? "water-scale" : ""}} {{growthStage == 4?"water-yellow":""}} {{growthStage == 5?"water-orange":""}}'>{{radicesValue}}x</view>
+        <view class='progress-bar {{growthStage == 4?"progress-bar-yellow":""}} {{growthStage == 5||growthStage == 6?"progress-bar-orange":""}}'>
+          <view class='progress-value {{growthStage == 4?"progress-value-yellow":""}} {{growthStage == 5||growthStage == 6?"progress-value-orange":""}}' style='width:{{progressBarWidth}}'></view>
+          <view class='numbers'><text class='valtxt {{showEnergy?"animationValue":""}}'>{{growthValue}}</text><text>/{{matureValue}}</text></view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <!-- 攻略 好友 icon-->
+  <view class='welfare {{iphonex?"welfare-x":""}}' bindtap='gotoWelfare'>
+    <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20190104034718793656473.png'></image>
+    <text>福利</text>
+  </view>
+  <view class='guidebg {{iphonex?"guidebg-x":""}}' wx:if="{{step3&&isNew}}"></view>   
+  <view class='strategy {{step3&&isNew?"guideon-zindex":""}} {{iphonex?"strategy-x":""}}' bindtap='gotoStrategy'>
+    <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181115023948701597059.png'></image>
+    <text>攻略</text>
+  </view>   
+  <view class='friends {{iphonex?"friends-x":""}}' bindtap='toggleFriendsDialog'>
+    <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181115023958643867400.png'></image>
+    <text>好友</text>
+  </view>
+  <view class='rank {{iphonex?"rank-x":""}}' bindtap='toggleRankDialog'>
+    <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181218060452773940719.png'></image>
+    <text>排行</text>
+  </view>
+  <block wx:if="{{canWatering}}">
+    <!-- 浇水次数 -->
+    <view class='water-self {{iphonex?"water-self-x":""}}'>
+      <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181115025138766716971.png'></image>
+      <text>{{waterMyself}}</text>
+    </view>
+    <view class='water-other {{iphonex?"water-other-x":""}}'>
+      <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181115025144371538377.png'></image>
+      <text>{{waterFriends}}</text>
+    </view>
+  </block>
+  <!-- 好友列表 -->
+  <block wx:if="{{showFriendList&&isLoadingFriends}}">
+    <view class='mask' bindtap='toggleFriendsDialog'></view>
+    <view class='friends-fix'>
+      <view class='title'>我的好友</view>
+      <view class='f-tips'>
+        <view class='tips-left'>你可以选择您想要浇水的好友喔~</view>
+        <view class='tips-right'>今日还可浇{{waterFriends}}次</view>
+      </view>
+      <block wx:if="{{treeFriendList.length > 0}}">
+        <scroll-view scroll-y class='scroll-friends' bindscrolltolower="lower">
+          <view class='friends-list'>
+            <block wx:for="{{treeFriendList}}" wx:key="{{index}}"> 
+              <view class='friends-item' bindtap='judgeIsHasTree' data-index='{{index}}'>
+                <image src='{{item.picture}}'></image>
+                <text>{{item.awayNow}}为我浇过水</text>
+                <view class='nickname'>{{item.nickname}}</view>
+              </view>
+            </block>   
+          </view>         
+        </scroll-view>
+      </block>
+      <block wx:else>
+        <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181115044601152504574.png' class='nonefriends'></image>
+        <block wx:if="{{!visiterHasTree}}">
+          <view class='none-tips'>您还没有好友喔，邀请好友一起来许愿池愿望会实现得更快喔~</view>        
+          <button class='invite-friends' bindtap='gotoWishing'>前往许愿</button>         
+        </block>
+        <block wx:else>
+          <view class='none-tips'>您还没有好友喔，邀请好友一起来许愿池愿望会实现得更快喔~</view>        
+          <button class='invite-friends' open-type='share' id='shareWatering'>邀请好友</button> 
+        </block>
+      </block>      
+    </view>
+  </block>  
+  <!-- 底部导航 -->
+  <block wx:if="{{canWatering}}">
+     <view class='bottom-menu'>
+        <view class='personal' bindtap='gobackMyTree'>
+          <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181128052827864172991.png'></image>
+          <text>我的许愿池</text>
+        </view>
+        <block wx:if="{{canWatering}}">     
+          <view class='watering {{step2&&isNew?"guideOn":""}}' bindtap='submitWatering'>
+            <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181128052831693903720.png'></image>
+            <text>浇水</text>      
+          </view>
+        </block>    
+      </view>
+  </block>  
+  <!-- 浇水动画 水壶 洒水水滴-->
+  <block wx:if="{{isWatering}}">
+    <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181119095800077619341.png' class='jug-animation {{iphonex?"jug-animation-x":""}}'></image>
+    <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181119095806168820849.png' class='water-drop {{iphonex?"water-drop-x":""}}'></image>
+    <block wx:if="{{wateringTimes != 0.0}}">
+      <view class='times-tip timesfirst'>
+        <block wx:if="{{growthStage == 4}}">
+          <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181119061326458145527.png'></image>        
+        </block>
+        <block wx:elif="{{growthStage == 5}}">
+          <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181119061338372274122.png'></image>
+        </block>
+        <block wx:else>
+          <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181119111136439785043.png'></image>
+        </block>
+        +{{wateringTimes}}倍
+      </view>
+      <view class='times-tip timessecond'>
+        <block wx:if="{{growthStage == 4}}">
+          <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181119061326458145527.png'></image>        
+        </block>
+        <block wx:elif="{{growthStage == 5}}">
+          <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181119061338372274122.png'></image>
+        </block>
+        <block wx:else>
+          <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181119111136439785043.png'></image>
+        </block>
+        +{{wateringTimes}}倍
+      </view>
+      <view class='times-tip timesthree'>
+        <block wx:if="{{growthStage == 4}}">
+          <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181119061326458145527.png'></image>        
+        </block>
+        <block wx:elif="{{growthStage == 5}}">
+          <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181119061338372274122.png'></image>
+        </block>
+        <block wx:else>
+          <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181119111136439785043.png'></image>
+        </block>
+        +{{wateringTimes}}倍
+      </view>
+    </block>       
+    <view class='success-tips a-water-tips'>
+      <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181116052859283116594.png'></image>你成功的浇了一次水！
+    </view>
+  </block>  
+   <!--浇水次数用完  -->
+   <block wx:if="{{noWaterChance}}">
+      <view class='mask' catchtouchmove='true' bindtap='closeNoWaterChance'></view>
+      <view class='pop-box bg-strive {{iphonex?"pop-box-x":""}}'>
+          <view class='pop-title'>您的浇水次数已用完</view>
+          <view class='pop-desc'>每日浇水限制给好友浇4次！您可以邀请其他好友帮ta浇水喔~</view>
+          <button class='pop-big-btn' open-type='share' id='shareWatering'>邀请好友浇水</button>
+      </view>
+   </block>
+   <!--浇水次数用完 总共十次  -->
+   <block wx:if="{{noWaterChanceTotal}}">
+      <view class='mask' catchtouchmove='true' bindtap='closeNoWaterChance'></view>
+      <view class='pop-box bg-strive {{iphonex?"pop-box-x":""}}'>
+          <view class='pop-title'>许愿树浇水次数已满</view>
+          <view class='pop-desc'>许愿树每日浇水限制为10次喔</view>
+          <button class='pop-small-btn' bindtap='closeNoWaterChance'>好的</button>
+      </view>
+   </block>
+   <!-- 好友没有许愿树 -->
+   <block wx:if="{{noTree}}">
+      <view class='mask' catchtouchmove='true' bindtap='closeNoWaterChance'></view>
+      <view class='pop-box bg-strive {{iphonex?"pop-box-x":""}}'>
+          <view class='pop-title'>没有许愿树可浇</view>
+          <view class='pop-desc'>对方很懒，什么愿望都没许下，无法给他浇水喔。</view>
+          <button class='pop-small-btn' bindtap='closeNoWaterChance'>返回</button>
+      </view>
+   </block>    
+   <block wx:if="{{!canWatering}}">   
+      <view class='mask' catchtouchmove='true'></view>
+      <view class='pop-box bg-strive {{iphonex?"pop-box-x":""}}'>
+          <view class='pop-title'>对方果实已成熟</view>
+          <view class='pop-desc'>果实成熟后就不需要浇水咯，你也可以自己来许愿哦~</view>
+          <button class='pop-small-btn' bindtap='gobackMyTree'> 去许愿池</button>
+      </view>
+   </block>
+   <!-- 点击愿望图片弹框 -->
+   <block wx:if="{{showPromise}}">
+     <view class='mask' catchtouchmove='true'></view>
+     <image src='{{giftPictureCover}}' class='pop-promise-pic' catchtouchmove='true'></image>
+     <view class='pop-promise' catchtouchmove='true'>
+        <view class='pop-title'>我的愿望</view>
+        <view class='pop-desc'>您正在养成愿望{{giftTitle}}，快去浇水来让它茁壮成长吧！</view>
+        <view class='btn-wishing' bindtap='chooseSelect'>重新选择愿望</view>
+        <view class='btn-help' bindtap='chooseCancel'>知道啦</view>
+    </view>
+   </block>   
+   <block wx:if="{{selectAgain}}">
+     <view class='mask' catchtouchmove='true'></view>
+     <view class='pop-again' catchtouchmove='true'>
+        <view class='pop-title'>重新选择愿望</view>
+        <view class='pop-desc'>您确定要重新选择吗？这样需要重新积累能量值喔~</view>
+        <view class='btn-wishing' bindtap='gotoWishing'>确认</view>
+        <view class='btn-help'  bindtap='closePopAgain'>取消</view>
+     </view>
+   </block>
+</view>

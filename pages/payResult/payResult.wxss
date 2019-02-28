@@ -1,0 +1,28 @@
+.result-box{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.state {
+  font-size: 32rpx;
+}
+.tip{
+  color: #999999;
+  font-size: 24rpx;
+  display: inline-block;
+  margin: 30rpx 0 90rpx
+}
+.result-box image {
+  width: 126rpx;
+  margin: 144rpx 0 36rpx;
+}
+.go-shopping{
+  background: #F72F2B;
+  color: #fff;
+  width: 288rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 30rpx;
+}

@@ -1,0 +1,32 @@
+<view class="container bg-white">    
+  <block wx:if="{{status == 0}}">
+    <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181129055622521154530.png' class='gou'></image>
+    <view class='result-status'>兑换成功</view>
+    <view class='exchange-info'>
+      礼品卡号：PR201901010001
+    </view>
+    <view class='exchange-info'>
+      兑换金额：{{rechargeMoney}}
+    </view>
+    <view class='exchange-info'>
+      钱包余额：{{amount}}
+    </view>
+  </block>
+  <block wx:else>
+    <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181228041253639624039.png' class='gou'></image>
+    <view class='result-status'>兑换失败</view>
+    <view class='exchange-info txt-center'>
+      <block wx:if="{{status == 1}}">该礼品卡已使用</block>
+      <block wx:if="{{status == 2}}">{{msg}}</block>
+      <block wx:if="{{status == 3}}">该礼品卡已过期</block>
+      <block wx:if="{{status == 4}}">{{msg}}</block>
+    </view>
+  </block>  
+  <view class='btn-back' bindtap='gobackWallet'>返回钱包</view>
+  <block wx:if="{{status == 0}}">
+    <view class='btn-index' bindtap='gobackIndex'>逛逛派喜</view>    
+  </block>
+  <block wx:else>
+    <view class='btn-index' bindtap='gobackWalletExchange'>重新充值</view>        
+  </block>
+</view>

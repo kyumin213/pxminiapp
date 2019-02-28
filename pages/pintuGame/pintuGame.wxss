@@ -1,0 +1,408 @@
+@import '../openBox/openBox.wxss';
+.bg-yellowdark{
+  padding-bottom: 60rpx;
+}
+/*top10排名  */
+.top-ten{
+  width: 670rpx;
+  min-height: 190rpx;
+  margin: 0 auto 30rpx;
+  background: #fff;
+  border-radius: 8rpx;
+  box-shadow: 0 0 26rpx rgba(245,174,112,0.6);
+  padding: 20rpx 40rpx 40rpx;
+  box-sizing: border-box;
+  /* max-height: 1800rpx; */
+}
+.scroller {
+  max-height: 1200rpx;
+}
+.title-box {
+  width: 360rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  margin: 0 auto 40rpx;
+  text-align: center;
+  position: relative;
+}
+.title-box::after{
+  content: '';
+  position: absolute;
+  height: 4rpx;
+  width: 360rpx;
+  background: #D8D8D8;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+.title-txt {
+  background: #fff;
+  width: 270rpx;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  font-size: 36rpx;
+  font-weight: bold;
+}
+.waiting {
+  color: #999;
+  text-align: center;
+}
+.rank-item{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 28rpx;
+}
+.rank-left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  max-width: 455rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 10rpx;
+}
+.times {
+  font-size: 26rpx;
+}
+.times text {
+  color: #333333;
+  margin-right: 10rpx;
+  letter-spacing: 2rpx;
+}
+.honghong text {
+  color: #FF951F;
+}
+.username {
+  font-size: 24rpx;
+  max-width: 170rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap; 
+}
+.firstTip {
+  display: inline-block;
+  width: 80rpx;
+  height: 28rpx;
+  line-height: 28rpx;
+  border: 2rpx solid #FE921D;
+  color: #FE921E;
+  font-size: 16rpx;
+  text-align: center;
+  border-radius: 2rpx;
+  margin-left: 10rpx;
+}
+.userpic {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  margin: 0 20rpx;
+}
+.rank-icon{
+  width: 38rpx;
+  height: 38rpx;
+  margin-right: 16rpx;
+}
+.circle{
+  width: 30rpx;
+  height: 30rpx;
+  background: #ccc;
+  color: #fff;
+  text-align: center;
+  line-height: 30rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+  font-size: 16rpx;
+}
+/*游戏区域  */
+.game-center{
+  width: 670rpx;
+  height: 822rpx;
+  margin: 0 auto 30rpx;
+  background: #fff;
+  border-radius: 8rpx;
+  box-shadow: 0 0 26rpx rgba(245,174,112,0.6);
+  padding-top: 30rpx;
+  box-sizing: border-box;
+  position: relative;
+}
+.game-center::before{
+  position: absolute;
+  width: 20rpx;
+  height: 20rpx;
+  background: #FF951F;
+  border-radius: 50%;
+  content: '';
+  bottom: 114rpx;
+  left: -10rpx;
+}
+.game-center::after{
+  position: absolute;
+  width: 20rpx;
+  height: 20rpx;
+  background: #FF951F;
+  border-radius: 50%;
+  content: '';
+  bottom: 114rpx;
+  right: -10rpx;
+}
+.bottom {
+  height: 120rpx;
+  border-top: 2rpx dashed #E2E2E2;
+  position: absolute;
+  bottom: 0;
+  left: 16rpx;
+  width: 640rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+.game-tip{
+  width: 590rpx;
+  text-align: center;
+  margin: 0 auto 6rpx;
+  font-size: 32rpx;
+}
+.pintu-img {
+  width: 320rpx;
+  height: 320rpx;
+  display: block;
+  margin: 0 auto 40rpx;
+  /* filter: blur(10px) */
+}
+.start-game{
+  width: 590rpx;
+  height: 88rpx;
+  border-radius: 44rpx;
+  background: #FF2740;
+  color: #fff;
+  margin-bottom: 30rpx;
+  font-size: 32rpx;
+}
+.over {
+  background: #CCCCCC;
+}
+.lasted{
+  text-align: center;
+  font-size: 30rpx;
+}
+.lasted text{
+  color: #FF951F;
+  /* font-weight: bold; */
+  /* margin-right: 10rpx; */
+}
+.bottom text{
+  font-size: 30rpx;
+  margin-left: 6rpx;
+}
+.bottom-left{
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.bottom-left image {
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 12rpx;
+}
+.get-live {
+  width: 200rpx;
+  height: 60rpx;
+  background: #FF2740;
+  border-radius: 44rpx;
+  color: #fff;
+  font-size: 24rpx;
+}
+.get-live::after {
+  border: none;
+  box-shadow: none;
+}
+.bottom-right {
+  position: relative;
+}
+.tips-card {
+  width: 380rpx;
+  height: 64rpx;
+  position: absolute;
+  bottom: -40rpx;
+  right: 20rpx;
+}
+.dispear {
+  animation: dispear 1s linear;
+}
+/*拼图弹出层  */
+.mask40{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 9;
+}
+.mask80{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.86);
+  z-index: 9;
+}
+.pintu-dialog{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  min-height: 100%;
+  z-index: 10;
+}
+.timeline {
+  width: 340rpx;
+  height: 68rpx;
+  border: 2rpx solid rgba(153, 153, 153, 0.6);
+  border-radius: 36rpx;
+  text-align: center;
+  line-height: 72rpx;
+  color: #fff;
+  font-size: 30rpx;
+  margin: 60rpx auto 60rpx;
+  /* margin: 120rpx auto 84rpx; */
+}
+.timeline text{
+  display: inline-block;
+  width: 50rpx;
+  /* text-align: center; */
+  /* min-width: 44rpx; */
+}
+.pintu {
+  width: 662rpx;
+  height: 662rpx;
+  margin: 0 auto 30rpx;
+  /* margin: 0 auto 44rpx; */
+  /* position: fixed;
+  left: 44rpx;
+  top: 280rpx;  */
+  /* background: pink; */
+}
+.pintu-space {
+  width: 662rpx;
+  height: 662rpx;
+  margin: 0 auto 44rpx;
+}
+.pintuDefault {
+  width: 662rpx;
+  height: 662rpx;
+  margin: 0 auto 44rpx;
+  border: 4rpx solid #fff;
+}
+.pintuDefault image {
+  width: 662rpx;
+  height: 662rpx;
+}
+.pintu-tips {
+  color: #999;
+  font-size: 28rpx;
+  margin-bottom: 80rpx; 
+  /* margin-bottom: 80rpx;  */
+  text-align: center;
+}
+.btn-group {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 60rpx;
+}
+.btn-see,.btn-cancel{
+  width: 280rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-bottom: 40rpx;
+  border-radius: 44rpx;
+  background: rgba(0, 0, 0, 0.4);
+  color: #999999;
+  font-size: 30rpx;
+}
+.btn-cancel{
+  /* background: #CCCCCC; */
+  margin-right: 70rpx;
+}
+/*拼图完成弹出  */
+.closebtn {
+  width: 48rpx;
+  height: 48rpx;
+  position: absolute;
+  bottom: -100rpx;
+  left: 50%;
+  transform: translate(-50%,0);
+  background: url(https://image.prise.shop/images/2018/07/20/1532075194926658.png) no-repeat;
+  background-size: contain;
+}
+.closebtn::after {
+  border: none;
+  box-shadow: none;
+}
+.result-dialog{
+  width: 690rpx;
+  min-height: 608rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 10;
+  padding: 60rpx 0;
+  box-sizing: border-box;
+}
+.btn-invite{
+  font-size: 32rpx;
+}
+.btn-white{
+  background: #fff;
+  border: 2rpx solid #F72F2B;
+  color: #F72F2B;
+  border-radius: 44rpx;
+  width: 550rpx;
+  height: 88rpx;
+  box-shadow: none;
+  font-size: 32rpx;
+}
+.w70{
+  width: 140rpx;
+  height: 140rpx;
+  margin: 0 auto 40rpx;
+  display: block;
+}
+/*拼图 方块  */
+.tui-puzzle-li{
+  /* width: 33.3333333%;
+  height: 33.3333333%; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing:border-box;
+  border: 2rpx solid #ffffff;
+  /* overflow: hidden; */
+  /* transition: all .3s linear; */
+}
+.active {
+  border: 2rpx solid transparent;
+}
+.active::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  left: -2rpx;
+  top: -2rpx;
+  border: 4rpx solid #F72F2B;
+  position: absolute;
+  z-index: 1;
+}
+.space {
+  height: 60rpx;
+  width: 100%;
+}

@@ -1,0 +1,27 @@
+<view class="container bg-white">
+  <view class='loginBox'>
+     <image class='logo' src='https://image.prise.shop/images/2018/07/25/1532518590447552.png'></image>
+     <view class='logo-text'>派喜</view>
+     <!-- <button type='primary' open-type="getUserInfo" bindgetuserinfo='bindgetuserinfo' class='wxlogin'><image class='wxlogo' src='../../images/icon_wechat.png'></image>微信登录</button>  -->
+     <!-- getPhoneNumber -->
+     <!-- <button open-type="getUserInfo"> -->
+       <button type='primary' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class='wxlogin'><image class='wxlogo' src='../../images/icon_wechat.png'></image>微信登录</button> 
+     <!-- </button> -->
+     <!-- 模态框 -->
+     <block wx:if="{{showPop}}">
+        <view class='mask40'></view>
+        <view class='modal-dialog'>
+          <view class='modal-title'>提示</view>
+          <view class='modal-content'>
+            <block wx:if="{{tipsmode}}">
+              授权成功
+            </block>
+            <block wx:else>
+              授权失败
+            </block>
+          </view>
+          <button class='comfirm-btn' open-type="getUserInfo" bindgetuserinfo='bindgetuserinfo'>确认</button> 
+        </view>
+     </block>
+  </view>
+</view>

@@ -1,0 +1,178 @@
+<view class="container bg-dice">
+  <image class='top-pic' src='https://image.prise.shop/images/2018/09/04/1536042204603888.png'></image>
+  <view class='dice'>
+      <image src='https://image.prise.shop/images/2018/09/05/1536114252298953.png' class='default-dice {{isClick?"active-dice":"default"}}'></image>
+  </view>
+  <view class='chance'>剩余机会：{{chances}}次</view>
+    <view class='btn-group'>
+      <form report-submit='true' bindsubmit='startGame'> 
+        <button formType="submit">
+          <image src='https://image.prise.shop/images/2018/09/04/1536043434251479.png' class='btn-pic'></image>
+        </button>   
+      </form>
+      <image src='https://image.prise.shop/images/2018/09/04/1536055918277669.png' class='btn-hand'></image>
+    </view>
+  <!-- 我的成绩 -->
+  <view class='dice-title'>
+    <image src='https://image.prise.shop/images/2018/09/04/1536043571831537.png'></image>
+    我的战绩
+    <image src='https://image.prise.shop/images/2018/09/04/1536043571831537.png'></image>
+  </view>
+  <view class='grades'>
+    <view class='grades-top'>
+      <view class='mygrades'>
+        <block wx:if="{{hitNum == ''}}">
+          <text>--</text>
+        </block>
+        <block wx:else>
+          <text>{{hitNum}}</text>
+        </block>
+        我的成绩
+      </view>
+      <view class='line-middle'></view>
+      <view class='myranks'>
+        <text>{{rankingNum}}</text>
+        我的排名
+      </view>
+    </view>
+    <view class='line710'></view>
+    <view class='grades-bottom'>
+      <view class='fl'>
+        <image src='https://image.prise.shop/images/2018/09/04/1536044218220194.png'></image>
+        复活卡 x {{chances}}
+      </view>
+      <view class='fr'>
+        <button class='getlive' open-type='share' id='getRelive'>分享复活再摇一次</button>
+      </view>
+    </view>
+  </view>
+  <!-- 礼物列表 -->
+  <view class='dice-title'>
+    <image src='https://image.prise.shop/images/2018/09/04/1536043571831537.png'></image>
+    好友为你准备的礼物
+    <image src='https://image.prise.shop/images/2018/09/04/1536043571831537.png'></image>
+  </view>
+  <view class='remarks'>"{{ordersInfo.remarks}}"</view>
+    <view class='gift-wraps'>
+      <block wx:for="{{ordersItems}}" wx:key="{{index}}">
+        <view class='gift-item'>
+          <image src='{{item.productPicture}}' class='product-pics'></image>
+          <view class='item-right'>
+            <view class='pro-titles'>{{item.productTitle}}</view>
+            <view class='pro-propss'>{{item.productParamText.propName}}</view>
+            <view class='pro-number'>共{{item.num}}份</view>
+          </view>
+        </view>
+      </block>
+    </view>
+  <!-- 好友PK战 -->
+  <view class='dice-title'>
+    <image src='https://image.prise.shop/images/2018/09/04/1536043571831537.png'></image>
+    好友PK战
+    <image src='https://image.prise.shop/images/2018/09/04/1536043571831537.png'></image>
+  </view>
+  <view class='joinner'>
+    <view class='joinner-title'>已有<text>{{userPartakeGeneralNum}}</text>人参加</view>
+    <block wx:if="{{userPartakeGeneral.length == 0}}">
+      <image src='../../images/answer_icon.png' class='anwser-icon'></image>
+    </block>
+    <block wx:else>
+      <view class='tx-list'>
+        <block wx:for="{{userPartakeGeneral}}" wx:key="{{index}}">
+          <image src='{{item.picture}}' class='tx-item'></image>
+        </block>
+      </view>
+    </block>
+    <button class='invite-btn' open-type='share'></button>
+  </view> 
+  <view class='dedeline'>
+    *活动截止时间：{{ordersInfo.endTime}}
+  </view>
+  <!-- 获奖者 -->
+  <block wx:if="{{status == 1}}">
+    <view class='dice-title'>
+      <image src='https://image.prise.shop/images/2018/09/04/1536043571831537.png'></image>
+      获奖者
+      <image src='https://image.prise.shop/images/2018/09/04/1536043571831537.png'></image>
+    </view>
+    <!-- <view class='bingo-list'> -->
+      <block wx:for="{{userBingoList}}" wx:key="{{index}}">
+        <view class='bingo-single'>
+          <image src='https://image.prise.shop/images/2018/07/25/1532518169187134.png' class='icon1'></image>
+          <image src='{{item.picture}}' class='winnerpic'></image>
+          <view class='icon2'>获奖者</view>
+          <view class='winnername'>{{item.nickname}}</view>
+        </view>
+      </block>
+    <!-- </view> -->
+  </block>
+  <!-- 排行榜 -->
+  <view class='dice-title'>
+    <image src='https://image.prise.shop/images/2018/09/04/1536043571831537.png'></image>
+    排行榜
+    <image src='https://image.prise.shop/images/2018/09/04/1536043571831537.png'></image>
+  </view>
+  <view class='rank'>
+      <view class='topten'>
+        <view class='colum-left'>名次</view>
+        <view class='colum-middle'>玩家</view>
+        <view class='colum-right'>得分</view>
+      </view>
+      <scroll-view  scroll-y class='rankscroll' lazy-load="true">
+        <block wx:for="{{userPartake}}" wx:key="{{index}}">
+          <view class='rank-item'>
+            <view class='rank-left'>
+              <block wx:if="{{index == 0}}"><image src='https://image.prise.shop/images/2018/09/04/1536052508288459.png'></image></block>
+              <block wx:if="{{index == 1}}"><image src='https://image.prise.shop/images/2018/09/04/1536052511708433.png'></image></block>
+              <block wx:if="{{index == 2}}"><image src='https://image.prise.shop/images/2018/09/04/1536052514707949.png'></image></block>
+              <block wx:if="{{index > 2 && index < 9}}">0{{index + 1}}</block>
+              <block wx:if="{{index > 8}}">{{index + 1}}</block>
+            </view>
+            <view class='rank-middle'>
+              <image src='{{item.picture}}'></image>
+              <text class='username {{index == 0 || index == 1 || index == 2?"cheng":""}}'>{{item.nickname}}</text>
+            </view>
+            <view class='rank-right'>
+              {{item.hitNum}}
+            </view>
+          </view>
+        </block>
+      </scroll-view>
+      <block wx:if="{{userPartake.length == 0}}">
+        <view class='nobody'>暂无排名</view>
+      </block>
+  </view>
+  <!-- 规则 -->
+  <view class='dice-title'>
+    <image src='https://image.prise.shop/images/2018/09/04/1536043571831537.png'></image>
+    活动规则
+    <image src='https://image.prise.shop/images/2018/09/04/1536043571831537.png'></image>
+  </view>
+  <view class='rules'>
+    <view>1.随机摇骰子，可摇出1-9999之间任意一个数字。</view>
+    <view>2.每位用户有一次免费挑战机会。</view>
+    <view>3.免费挑战机会使用完后，可点击获取复活卡分享给好友助力获得新的挑战机会。</view>
+    <view>4.根据得分以大到小的原则，得分最高的用户为本次活动的获奖者，将领取好友送出的礼物。</view>
+    <view>5.活动时间截止后，平台将通过服务信息通知获奖用户填写地址信息即可领取派喜送出的礼物。</view>
+    <view>6.本活动最终解释权归派喜科技所有。</view>
+  </view>
+  <!-- 成绩弹窗 -->
+  <block wx:if="{{isShowPop}}">
+    <view class='mask60' catchtouchmove='true'></view>
+    <view class='pop-grades' catchtouchmove='true'>
+      <image src='https://image.prise.shop/images/2018/09/05/1536118957961311.png' class='pop-title'></image>
+      <view class='grades-num'>{{diceNumber}}</view>
+      <view class='grades-tips'>得分最高的玩家将获得好友准备的礼物，您可继续参与或等待开奖结果，祝您好运！</view>
+      <form report-submit='true' bindsubmit='gotoIndexx'>
+        <button formType="submit" class='btn-index'>逛逛派喜</button>     
+      </form>
+      <button class='bin-invite2' open-type='share' id='getRelive2'>喊好友助力，挑战高分</button>
+    </view>
+    <form report-submit='true' bindsubmit='closePop'>
+      <button formType="submit" class='closebtn'>
+        <image class='close' src='../../images/index_pop_shut@3x.png'></image>
+      </button>     
+    </form>
+  </block>
+  <image class='gobackIndex' bindtap='gotoIndex' src='https://image.prise.shop/images/2018/08/01/1533108695200560.png'></image>  
+</view>

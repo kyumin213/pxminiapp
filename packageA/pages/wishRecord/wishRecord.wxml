@@ -1,0 +1,81 @@
+<view class="container order-wrap">
+  <view class='swiper-tab'>
+    <block wx:for="{{navName}}" wx:key="{{index}}">
+      <view class='tab-item {{currentNavtab==index ? "active" : ""}}' data-index="{{index}}" bindtap="swichNav">{{item}}</view>
+    </block>
+  </view>
+  <view class='line'></view>
+  <view class='swiper-view-item'>
+    <!--当前愿望  -->
+    <block wx:if="{{currentNavtab == 0}}">
+      <view class='swiper-view-item'>
+        <block wx:if="{{isLoading}}">
+          <view class='scroll-view-bottom' scroll-y="true"> 
+            <block wx:if="{{wishInfo}}">
+              <view class='item-box' bindtap='gotoDetail'>
+                <view class='item-title'>
+                  <view class='item-title-text'>{{wishInfo.created}}</view>
+                  <view class='item-title-text item-title-text-green {{wishInfo.growthStage == 4? "item-title-text-yellow":""}} {{wishInfo.growthStage == 5? "item-title-text-orange":""}} {{wishInfo.growthStage == 6? "gray":""}}'>{{statustxt[wishInfo.growthStage]}}</view>
+                </view>           
+                <view class='line-view'></view>
+                <view class='item-content'>
+                  <view class='item-content-left'>
+                    <image class='item-content-image' src='{{wishInfo.giftPictureCover}}'></image>
+                    <view class='item-content-attribute'>
+                      <view class='item-attribute-text'>{{wishInfo.giftTitle}}</view>
+                    </view>
+                  </view>
+                  <view class='item-content-right'>
+                    <!-- <view class='item-right-prise'> -->
+                      <view class='item-price'>￥{{wishInfo.giftPrice}}</view>
+                    <!-- </view> -->
+                  </view>
+                </view>     
+              </view>
+              <view class='go-btn' bindtap='gotoTree'>前往许愿树</view>
+            </block>
+            <view class='empty-order' wx:else>
+              <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181221031930309527498.png'></image>
+              <text>暂无愿望</text>
+            </view>
+          </view> 
+        </block>
+      </view>
+    </block>
+    <!--领取记录  -->
+    <block wx:if="{{currentNavtab == 1}}">
+      <view class='swiper-view-item'>
+        <block wx:if="{{isLoading}}">
+          <view class='scroll-view-bottom' scroll-y="true"> 
+            <block wx:if="{{recordList.length>0}}">
+              <view class='item-box' wx:for="{{recordList}}" wx:key="{{index}}" bindtap='gotoDetail' data-index="{{index}}">
+                <view class='item-title'>
+                  <view class='item-title-text'>{{item.created}}</view>
+                  <view class='item-title-text item-title-text-red '>{{orderStatus[item.ordersStatus]}}</view>
+                </view>           
+                <view class='line-view'></view>
+                <view class='item-content'>
+                  <view class='item-content-left'>
+                    <image class='item-content-image' src='{{item.giftPictureCover}}'></image>
+                    <view class='item-content-attribute'>
+                      <view class='item-attribute-text'>{{item.giftTitle}}</view>
+                    </view>
+                  </view>
+                  <view class='item-content-right'>
+                    <!-- <view class='item-right-prise'> -->
+                      <view class='item-price'>￥{{item.giftPrice}}</view>
+                    <!-- </view> -->
+                  </view>
+                </view>     
+              </view>
+            </block>
+            <view class='empty-order' wx:else>
+              <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181221031930309527498.png'></image>
+              <text>暂无领取记录</text>
+            </view>
+          </view> 
+        </block>
+      </view>
+    </block>
+  </view>
+</view>

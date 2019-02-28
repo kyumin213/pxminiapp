@@ -1,0 +1,27 @@
+<view class='container bg-gray'>
+  <block wx:if="{{collectList.length >0}}">
+    <view class='box'>
+        <view class='item-view' wx:for='{{collectList}}' data-index="{{index}}" bindtap='gotoDetail'>
+          <image src='{{item.pictureCover}}'></image>
+          <!--class='{{item.classname}}'  -->
+          <view class='{{item.classname}}'>
+             <view class='item-bottom'>
+                <text class='item-text'>{{item.title}}</text>
+              </view>
+              <view class='item-bottom-view'>
+                  <view wx:if="{{item.status == 0}}" class='invalid'>已失效</view>
+                  <text class='item-prise'>￥{{item.basePrice}}</text>
+                  <text class='beforePrice'>￥{{item.beforePrice}}</text>
+                  <!-- <image src='../../icon/cart.png'></image>  -->
+              </view>
+          </view>
+        </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class='collect-empty'>
+      <image src='https://image.prise.shop/images/2018/07/25/1532517934257646.png'></image>
+      <text>暂无收藏</text>
+    </view>
+  </block>
+</view>

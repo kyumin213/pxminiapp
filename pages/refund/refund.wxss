@@ -1,0 +1,26 @@
+/* pages/refund/refund.wxss */
+.container-protocol {
+  background: #fff;
+  padding: 20rpx 30rpx 50rpx;
+}
+.protocol-title {
+  font-size: 32rpx;
+  text-align: center;
+  font-weight: bold;
+}
+.content-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  margin: 20rpx 0;
+  text-align: justify;
+}
+.content-p {
+  font-size: 24rpx;
+  line-height: 2;
+}
+.content-p text {
+  font-weight: bold;
+}
+.m20 {
+  margin-top: 20rpx;
+}

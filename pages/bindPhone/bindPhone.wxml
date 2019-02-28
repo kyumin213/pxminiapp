@@ -1,0 +1,24 @@
+<view class='container phone-container'>
+  <view class='form-container'>
+    <form bindsubmit="formSubmit" bindreset="formReset">
+      <view class='form-group'>
+        <text class='label'>手机号</text>
+        <input type='number' value='{{phoneNumber}}' placeholder="请输入手机号" auto-focus bindinput='bindPhoneInput' class='text' placeholder-style="color:#ccc;" />
+      </view>
+       <view class='lines-box'> 
+         <view class='lines'></view> 
+       </view> 
+      <view class='form-group'>
+        <text class='label'>验证码</text>
+        <input type='number' value='{{codeNumber}}' placeholder="请输入验证码" class='text' bindinput='bindCodeInput' placeholder-style="color:#ccc;" />
+        <view class='get-code' style='{{txtcolor}}' bindtap='getCode'>{{btnText}}</view>
+      </view>
+      <view class='bind-btn' style='{{bgcolor}}' bindtap='bindPhone'>确认绑定</view>
+      <view class='agreement'>
+        <!-- <image src='../../images/service.png' mode='widthFix'></image> -->
+        <text class='agree'>确认即表示您同意</text> 
+        <navigator url='/pages/protocol/protocol' class='link'>《派喜科技服务协议》</navigator>  
+      </view>
+    </form>
+  </view>
+</view>

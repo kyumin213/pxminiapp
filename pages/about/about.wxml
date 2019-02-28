@@ -1,0 +1,26 @@
+<view class='container'>
+  <view class='top'>
+    <image bindtap="bindViewTap" class="about-image" src="../../icon/ic_launcher.png" background-size="cover"></image>
+    <text class="userinfo-nickname">v2.1.6</text>
+  </view>
+
+  <view class='botton-view'>
+    <view class="bottom-item" bindtap='goAgreement'>
+      <view class="bottom-item-left">
+        用户协议
+      </view>
+      <view class="item-more">
+        <image src="../../icon/more.png"></image>
+      </view>
+    </view>
+
+    <view class="bottom-item" bindtap='goRefund'>
+      <view class="bottom-item-left">
+        退换货政策
+      </view>
+      <view class="item-more">
+        <image src="../../icon/more.png"></image>
+      </view>
+    </view>
+  </view>
+</view>

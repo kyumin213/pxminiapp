@@ -1,0 +1,47 @@
+
+.container {
+  overflow: hidden;
+}
+.gou {
+  width: 120rpx;
+  height: 120rpx;
+  display: block;
+  margin: 160rpx auto 60rpx;
+}
+.result-status {
+  color: #333333;
+  font-weight: bold;
+  font-size: 50rpx;
+  text-align: center;
+  margin-bottom: 44rpx;
+}
+.exchange-info{
+  color: #A6A6A6;
+  font-size: 34rpx;
+  width: 468rpx;
+  margin: 0 auto 10rpx;
+}
+.btn-back, .btn-index {
+  width: 600rpx;
+  height: 88rpx;
+  text-align: center;
+  line-height: 88rpx;
+  /* margin: 130rpx auto 0; */
+  color: #F72F2B;
+  font-size: 32rpx;
+  border: 2rpx solid #F72F2B;
+  border-radius: 8rpx;
+  position: absolute;
+  bottom: 450rpx;
+  left: 50%;
+  transform: translate(-50%,0);
+}
+.btn-index {
+  color: #fff;
+  background: #F72F2B;
+  bottom: 320rpx;
+  /* margin: 40rpx auto 0;   */
+}
+.txt-center {
+  text-align: center;
+}

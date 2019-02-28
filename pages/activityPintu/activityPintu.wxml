@@ -1,0 +1,183 @@
+<view class="container bg-yellowdark">
+  <view class='sender-info'>    
+    <image src='{{userMaker.picture}}'  class='sender-pic'></image>
+    <view class='sender-name'>
+      <block wx:if="{{status==0}}">{{userMaker.nickname}}为你准备的礼物</block>
+      <block wx:if="{{status==1}}">{{userMaker.nickname}}送出的礼物已被领取</block>
+      <block wx:if="{{status == 6}}">活动已结束</block>
+    </view>
+  </view>
+  <!--礼物清单  -->
+  <view class='gift-list' style='height: {{heightstyle}}'>
+    <block wx:for="{{itemList}}" wx:key="{{index}}">
+        <view class='gift-item'>
+          <image src='{{item.productPicture}}'></image>
+          <view class='item-right'>
+            <view class='item-title'>{{item.productTitle}}</view>
+            <view class='item-props'>{{item.productParamText.propName}}</view>
+            <view class='item-count'>共{{item.num}}份</view>
+          </view>
+        </view>
+        <!-- <view class='line-630'></view> -->
+    </block> 
+    <block wx:if="{{isShowMore}}">  
+        <view class='more-row' bindtap='toggleItem'>
+          <image src='../../images/giftcard_icon_more.png' class='more {{up?"moreup":""}}'></image>
+        </view>
+    </block>   
+  </view>
+  <!--游戏区域  -->
+  <view class='game-center'>
+    <view class='game-tip'>
+      考眼力拼手速，拼图成功抢好礼！
+    </view>
+    <view class='deadline'>拼图截止时间：{{deadline}}</view>
+    <image src='{{imgUrl}}' class='pintu-img'></image>
+    <form report-submit='true' bindsubmit='startGame'>
+      <button formType="submit" class='start-game {{status==0?"":"over"}}'>开始挑战</button>     
+    </form>
+    <view class='lasted'>
+      我的成绩：<text>{{gameConsumeTime}}</text>
+      <!-- 剩余挑战次数：<text>{{chances}}</text>次 -->
+    </view>
+    <view class='bottom'>
+      <view class='bottom-left'>
+        <!-- 已挑战：<text>{{consumeChances}}</text>次 -->
+        <image src='https://image.prise.shop/images/2018/08/31/1535685512937152.png'></image>复活卡 x <text>{{chances}}</text>
+      </view>
+      <view class='bottom-right'>
+        <button class='get-live' open-type='share' id='getLive'>获得复活卡</button>  
+      </view>
+      <block wx:if="{{!hidetip}}"> 
+        <image class='tips-card {{showTips?"":"dispear"}}' src='https://image.prise.shop/images/2018/08/31/1535685516621476.png'></image>    
+      </block> 
+    </view>
+  </view>
+  <!-- 获奖者 -->
+  <block wx:if="{{status == 1}}">
+    <view class='bingo-list'>
+      <view class='title-box'>
+        <view class='title-txt'>拼图获奖者</view>
+      </view>
+      <view class='item-list'>
+        <block wx:for="{{userBingoList}}" wx:key="{{index}}">
+          <view class='items'>
+            <image src='{{item.picture}}'></image>
+            <view class='nickname'>{{item.nickname}}</view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </block>
+  
+  <!--排行榜  -->
+  <view class='top-ten'>
+    <view class='title-box'>
+      <view class='title-txt'>拼图排行榜</view>
+    </view>
+    <scroll-view scroll-y class='scroller' lazy-load="true" bindscrolltolower="lower" >
+      <block wx:if="{{userPartake.length>0}}">
+        <view class='rank-item' wx:for="{{userPartake}}" wx:key="{{index}}">
+          <view class='rank-left'>
+            <block wx:if="{{index == 0}}"><image src='../../images/top_one.png' class='rank-icon'></image></block>
+            <block wx:if="{{index == 1}}"><image src='../../images/top_two.png' class='rank-icon'></image></block>
+            <block wx:if="{{index == 2}}"><image src='../../images/top_three.png' class='rank-icon'></image></block>
+            <block wx:if="{{index!=0 && index != 1&&index != 2}}">
+              <view class='circle'>{{index + 1}}</view>
+            </block> 
+            <image src='{{item.picture}}'class="userpic"></image>
+            <view class='username'>
+              {{item.nickname}}
+            </view>
+            <block wx:if="{{index == 0}}"><text class='firstTip'>用时最短</text></block>
+          </view>
+          <view class='times {{index == 0 || index == 1 || index == 2 ? "honghong" : ""}}'><text>{{item.consumeTime}}</text></view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class='waiting'>等待领取中</view>
+      </block>
+    </scroll-view>
+    
+  </view>
+  <!--活动规则  -->
+  <view class='rules-box'>
+    <view class='winner-list'>活动规则</view>
+    <view class='rule-row'>1.每位用户有3次免费挑战拼图机会，超过3次，可通过其他好友点击活动页获得额外挑战机会。</view>
+    <view class='rule-row'>2.拼图挑战中时可通过在当前时长增加20s获得查看原图机会。 </view>
+    <view class='rule-row'>3.活动截止时间时，派喜将为拼图成功用时最短的前{{itemNumTotal}}名用户送出礼物，填上地址即可领取等待礼物的送达。     </view>
+  </view>
+  <!--拼图弹框  -->
+  <block wx:if="{{isStarted}}">
+    <view class='mask80' catchtouchmove='true'></view>
+    <view class='pintu-dialog' catchtouchmove='true'>
+      <view class='timeline'>用时
+        <text class='minutes'>{{minutes}}</text> :
+        <text class='seconds'>{{seconds}}</text>
+      </view>
+        <!--拼图开始  -->
+        <view class='pintu' style="background:url('{{imgUrl}}') no-repeat {{WIDTH}}px {{HEIGHT}}px">
+          <view style='height:{{HEIGHT}}px;width:{{WIDTH}}px;position:relative;margin:0 auto' bindtap='onTap'>
+            <view wx:for="{{imgPoints}}" wx:for-item="items" wx:key="content">
+              <view class='tui-puzzle-li {{list.active?"active":""}}' wx:for="{{items}}" wx:for-item="list" wx:key="items" style="top:{{list.y * height}}px;left:{{list.x * width}}px;background:url('{{imgUrl}}') no-repeat  {{-(list.px * width)}}px {{-(list.py * height)}}px/{{WIDTH}}px {{HEIGHT}}px;width:{{width}}px;height:{{height}}px;">
+              </view> 
+            </view>
+          </view>
+        </view>
+        <!--拼图结束  -->        
+        <view class='pintu-tips'>点击图块交换位置，用时最短将领取礼物</view>
+        <view class='btn-group'>
+          <button class='btn-cancel' bindtap='stopGame'>放弃挑战</button>
+          <button class='btn-see' bindtap='checkDefaultImg'>+20s 查看原图</button>          
+        </view>
+        <view class='space'></view>
+      <!-- </scroll-view> -->
+    </view> 
+  </block>
+  <!--查看原图弹出框  -->
+  <block wx:if="{{isCheakDefault}}">
+    <view class='mask80' catchtouchmove='true'></view>
+    <view class='pintu-dialog' catchtouchmove='true'>
+      <view class='default-img'>
+        <view class='timeline'>倒计时 {{countDownTime}}</view>
+        <view class='pintuDefault'>
+          <image src='{{imgUrl}}'></image>
+        </view>
+      </view> 
+    </view> 
+  </block>
+  <!--挑战成功弹出框  -->
+  <block wx:if="{{showSuccess}}">
+    <view class='mask40' catchtouchmove='true'></view>
+    <view class='result-dialog' catchtouchmove='true'>
+        <image src='../../images/buy_success.png' class='w70'></image>
+        <view class='status-txt'>恭喜你！用时{{mm}}分{{ss}}秒{{mins}}完成拼图！</view>
+        <view class='status-spec'>我们将在活动截止时间选出拼图用时最短的前{{itemNumTotal}}名用户送出礼物，祝你好运！</view>
+        <form report-submit='true' bindsubmit='closeSuccess'>
+          <button formType="submit" class='btn-invite'>提交时间</button>     
+        </form>
+        <form report-submit='true' bindsubmit='gotoGifts'>
+          <button formType="submit" class='btn-white'>我也要发起活动</button>     
+        </form>
+        <!-- <form report-submit='true' bindsubmit='gotoIndex'>
+          <button formType="submit" class='btn-white'>逛逛派喜</button>     
+        </form>  -->
+        <form report-submit='true' bindsubmit='closeSuccess'>
+          <button formType="submit" class='closebtn'>
+          </button>     
+        </form>
+    </view> 
+  </block>
+  <!--机会用完的弹框提示  -->
+  <block wx:if="{{noChance}}">
+    <view class='mask40' catchtouchmove='true' bindtap='closeTipDialog'></view>
+    <view class='result-dialog' catchtouchmove='true'>
+        <view class='status-txt'>很遗憾！挑战机会已用完</view>
+        <view class='status-spec'>免费挑战机会已用完，赶快分享好友获得新的挑战机会吧！</view>
+        <!--open-type='share'  bindtap='shareHelp' -->
+        <button class='btn-invite' bindtap='gotoIndex'>逛逛派喜</button>         
+        <button class='btn-white' open-type="share" id='getChance'>分享好友</button>
+    </view> 
+  </block>
+  <image class='gobackIndex' bindtap='gotoIndexx' src='https://image.prise.shop/images/2018/08/01/1533108695200560.png'></image>
+</view>

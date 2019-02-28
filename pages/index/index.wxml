@@ -1,0 +1,148 @@
+<!--index.wxml-->
+  <!-- <block wx:if="{{isShowVideo}}">
+    <view class='video-box' catchtouchmove='true'>
+      <view class='mask80' catchtouchmove='true'></view>
+      <image src='../../images/index_pop_shut@3x.png' class='closeVideo' bindtap='closeVideo'></image>
+      <video src='https://prise-wechat.oss-cn-shenzhen.aliyuncs.com/%E6%B4%BE%E5%96%9CPrise%20MG%E5%8A%A8%E7%94%BB%202.3%20%E3%80%90%E5%B0%8F%E6%A0%BC%E5%BC%8FMP4%E7%89%88%E3%80%91_x26....mp4?spm=5176.8466032.bucket-object.dopenurl.27c21450nk1n3o&file=%E6%B4%BE%E5%96%9CPrise%20MG%E5%8A%A8%E7%94%BB%202.3%20%E3%80%90%E5%B0%8F%E6%A0%BC%E5%BC%8FMP4%E7%89%88%E3%80%91_x26....mp4' catchtouchmove='true'></video>
+    </view>
+  </block> -->
+<block wx:if="{{showIndex}}"> 
+<view class="container index bg-white">
+  <view class='navbar'>
+    <!-- <view class='nav-left'> -->
+      <view class='nav-item active-nav' bindtap='gotoIndex'>礼物</view>
+      <view class='nav-item' bindtap='gotoGift'>送礼</view>
+      <view class='nav-item' bindtap='gotoActivity'>抽奖</view>   
+      <view class='nav-item' bindtap='gotoWishing'>许愿树</view>  
+    <!-- </view> -->
+    <view class='nav-right'>
+      <image class='nav-icon' src='../../images/index_cart.png' bindtap='gotoCar'></image>
+      <view class='nav-bage'>{{goodsNumber}}</view>
+    </view>
+    <view class='nav-right'>
+      <image class='nav-icon' src='../../images/index_mine.png' bindtap='gotoUser'></image>
+    </view>
+  </view>
+   
+  <!-- 视频 -->
+  <!-- <view class='video-play' bindtap='playVideo'>
+    <view class='play'>观看宣传片<image src='https://image.prise.shop/images/2018/08/30/1535620499459012.png'></image></view>
+  </view> -->
+  <!-- 专题滑动列表  -->
+  <view class='specialSlide'>
+    <swiper class='slider' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true" previous-margin="20rpx" next-margin="40rpx">
+      <block wx:for="{{topics}}" wx:key="{{index}}">
+          <swiper-item>
+            <image src="{{item.pictureCover}}" style='{{!imgLoading?"filter: blur(10px)":""}}' lazy-load='true' catchtap='gotoSpecial' data-index="{{index}}" bindload="imgLoadComplete"/>
+          </swiper-item>
+      </block>
+    </swiper>
+  </view>  
+  <!--秒杀专题 -->
+  <block wx:if="{{showSeckill}}">
+    <view class='weekend'>
+      <view class='weekend-title'>
+        <view class='title-left red'>限时抢购</view>
+        <block wx:if="{{showTime}}"> 
+          <view class='countdown red'>
+            <block wx:if="{{!isEnd}}">
+                <text>距结束仅剩{{killdays}}天</text>    
+                <view class='hours'>{{killhours}}</view>
+                <image src='https://image.prise.shop/images/prise-picture/20180918021826487312807.png'></image>
+                <view class='minutes'>{{killminutes}}</view>
+                <image src='https://image.prise.shop/images/prise-picture/20180918021826487312807.png'></image>          
+                <view class='seconds'>{{killseconds}}</view>
+            </block>
+            <block wx:else>
+                <text>活动已结束</text>
+            </block>
+          </view> 
+        </block>
+      </view>
+      <image src='{{specialTimeLimit.pictureCover}}' bindtap='gotoSpecialSeckill' style='{{!secKillLoading?"filter: blur(10px)":""}}' bindload="secKillLoadComplete"></image>
+    </view>
+  </block> 
+  <!--周周派喜  -->
+  <block wx:if="{{isShowWeek}}">
+    <view class='weekend'>
+      <view class='weekend-title'>
+        <view class='title-left'>周周派喜</view>
+        <block wx:if="{{showTime}}"> 
+          <view class='countdown'>
+            <text class='zh'>倒计时</text>        
+            <view class='days'>{{days}}</view><text class='zh'>天</text>
+            <view class='hours'>{{hours}}</view><text>：</text>
+            <view class='minutes'>{{minutes}}</view><text>：</text>
+            <view class='seconds'>{{seconds}}</view>
+          </view> 
+        </block>
+      </view>
+      <image src='{{weekend.pictureCover}}' bindtap='gotoSpecialsWeek' style='{{!weekendLoading?"filter: blur(10px)":""}}' bindload="weekendLoadComplete"></image>
+    </view>
+  </block>
+  <!-- 热销推荐 -->
+  <block wx:if="{{sellRecommend != null}}">
+    <view class='hotRecomend' bindtap='gotoHotSpecial'>
+      <view class='service-title'>
+        <view class='title-left'>全年种草清单</view>
+        <image src='../../images/index_know_go.png'></image>
+      </view>
+      <image src='{{sellRecommend.pictureCover}}' class='hotCover'></image>
+    </view>
+  </block>
+  <view class='item-list'>
+    <view class='item' wx:for="{{hotList}}" wx:key="{{index}}" bindtap='gotoProductDetails' data-id='{{item.relativeId}}'>
+      <block wx:if="{{index == 0}}">
+        <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20190108110757335607185.png' class='indexnum'></image>
+      </block>
+      <block wx:if="{{index == 1}}">
+        <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20190108110757430350796.png' class='indexnum'></image>
+      </block>
+      <block wx:if="{{index == 2}}">
+        <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20190108110757550738445.png' class='indexnum'></image>
+      </block>        
+      <image class='pro-picture' src='{{item.pictureCover}}'></image>
+      <view class='item-title'>{{item.title}}</view>
+      <view class='price'>￥{{item.basePrice}}</view>
+    </view>
+  </view>
+  <!--服务保障  -->
+  <view class='service'>
+    <view class='service-title'  bindtap='gotoDetails'>
+     <view class='title-left'>了解一下</view>
+     <image src='../../images/index_know_go.png'></image>
+    </view>
+    <view class='service-box'>
+      <view class='service-list'>
+        <view class='service-item'>
+          <image src='https://image.prise.shop/images/2018/07/26/1532588239773192.png'></image>
+          正品保障
+        </view>
+        <view class='service-item'>
+          <image src='https://image.prise.shop/images/2018/07/26/1532588217060073.png'></image>
+          顺丰包邮
+        </view>
+        <view class='service-item'>
+          <image src='https://image.prise.shop/images/2018/07/26/1532588189210436.png'></image>
+          精美赠品
+        </view>
+        <view class='service-item'>
+          <image src='https://image.prise.shop/images/2018/07/26/1532588153880799.png'></image>
+          个性包装
+        </view>
+      </view>
+      <button class='details' bindtap='gotoDetails'>查看详情</button>
+    </view>
+  </view>
+</view>
+<!-- 优惠券 -->
+  <block wx:if="{{!hasCoupon}}">
+    <view class='mask80' catchtouchmove='true'></view>
+    <view class='coupon-pop' catchtouchmove='true'>
+      <view class='coupon-box'>
+        <image src='https://image.prise.shop/images/2018/09/12/1536741792707701.png' class='coupon-img' bindtap='getCoupon'></image>
+      </view>
+    </view>
+      <image class='close' src='../../images/index_pop_shut@3x.png' catchtap='closePop'></image>    
+  </block>
+</block> 

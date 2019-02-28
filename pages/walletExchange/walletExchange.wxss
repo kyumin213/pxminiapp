@@ -1,0 +1,144 @@
+/* pages/walletExchange/walletExchange.wxss */
+.container {
+  overflow: hidden;
+}
+.top-image {
+  width: 214rpx;
+  height: 206rpx;
+  display: block;
+  margin: 60rpx auto;
+}
+.form-group {
+  width: 660rpx;
+  margin: 0 auto 30rpx;
+  position: relative;
+}
+.delete-all {
+  width: 33rpx;
+  height: 33rpx;
+  position: absolute;
+  right: 22rpx;
+  bottom: 24rpx;
+  z-index: 10;
+}
+.form-name {
+  font-size: 34rpx;
+  color: #000000;
+  margin: 0 0 20rpx 14rpx;
+}
+.form-input {
+  width: 660rpx;
+  height: 80rpx;
+  border-radius: 10rpx;
+  border: 1rpx solid #999999;
+  padding-left: 14rpx;
+  box-sizing: border-box;
+  background: #fff;
+}
+.form-name text {
+  font-size: 30rpx;
+  color: #F74541;
+}
+.next {
+  background: #C3C3C3;
+  width: 670rpx;
+  height: 88rpx;
+  border-radius: 8rpx;
+  color: #fff;
+  font-size: 32rpx;
+  margin-top: 80rpx;
+}
+.next::after {
+  box-shadow: none;
+  border: none;
+}
+.red {
+  background: #F72F2B;
+}
+.contact {
+  position: absolute;
+  bottom: 34rpx;
+  left: 50%;
+  transform: translate(-50%, 0);
+  color: #F74541;
+  font-size: 32rpx;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+}
+.contact::after {
+  box-shadow: none;
+  border: none;
+}
+.contact image {
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 10rpx;
+}
+.mask50 {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 9;
+}
+.confirm-box {
+  width: 600rpx;
+  height: 746rpx;
+  border-radius: 10rpx;
+  background: #F8F8F8;
+  position: absolute;
+  left: 50%;
+  top: 160rpx;
+  transform: translate(-50%, 0);
+  z-index: 10;
+}
+.confirm-box-x {
+  top: 280rpx;
+}
+.confirm-box image {
+  width: 186rpx;
+  height: 232rpx;
+  display: block;
+  margin: 26rpx auto 30rpx;
+}
+.color-gray {
+  color: #A5A5A5;
+  font-size: 34rpx;
+  width: 466rpx;
+  margin: 0 auto;
+}
+.color-yellow {
+  color: #FFA200;
+  font-size: 30rpx;
+  width: 466rpx;
+  margin: 0 auto;
+}
+.btn-group {
+  width: 490rpx;
+  margin: 110rpx auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.btn-left, .btn-right {
+  width: 238rpx;
+  height: 84rpx;
+  border-radius: 6rpx;
+  text-align: center;
+  line-height: 84rpx;
+  font-size: 30rpx;
+  box-sizing: border-box;
+}
+.btn-left {
+  background: #fff;
+  border: 2rpx solid #F72F2B;
+  color: #F72F2B;
+}
+.btn-right {
+  background: #F72F2B;
+  color: #FFFFFF;
+}

@@ -1,0 +1,4 @@
+@import '../special/special.wxss';
+.bg{
+  background: linear-gradient(to top, #fff, #f00)
+}

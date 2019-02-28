@@ -1,0 +1,21 @@
+.bg-img {
+  background: url(https://image.prise.shop/images/2018/07/27/1532661076370074.png) no-repeat;
+  background-size: cover;
+  height: 1448rpx;
+}
+.btn-invite-friend {
+  width: 504rpx;
+  height: 120rpx;
+  padding-top: 672rpx;
+  margin: 0 auto;
+}
+.btn-invite-friend button {
+  width: 504rpx;
+  height: 120rpx;
+  background: url(https://image.prise.shop/images/2018/07/27/1532661079444376.png) no-repeat;
+  background-size: contain;
+}
+.btn-invite-friend button::after {
+  border: none;
+  box-shadow: none
+}

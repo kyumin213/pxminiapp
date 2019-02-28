@@ -1,0 +1,136 @@
+<view class='container'>
+<block wx:if="{{isLoading}}">
+    <view class='add-address' bindtap='addAddress'  wx:if="{{!hasAddress || addressInfo == null}}">
+        <image src='../../images/position.png' mode='widthFix' class='position'></image>
+        <text>添加收货地址</text>
+      <image src='../../images/go.png' mode='widthFix' class='go'></image>
+    </view>
+    <view class='address-info'  bindtap='addAddress' wx:else>
+      <view class='address-left'>
+        <block wx:if="{{addressInfo.provinceName}}">
+           <view class='adddress-top'>
+            <text class='username'>{{addressInfo.userName}}</text>
+            {{addressInfo.telNumber}}
+          </view>
+          <view class='location'>
+            {{addressInfo.provinceName}}
+            {{addressInfo.cityName}}
+            {{addressInfo.countyName}}
+            {{addressInfo.detailInfo}}
+          </view>
+        </block>
+        <block wx:else>
+          <view class='adddress-top'>
+            <text class='username'>{{addressInfo.receiver}}</text>
+            {{addressInfo.phone}} 
+          </view>  
+          <view class='location'>     
+            {{addressInfo.location}}
+          </view>
+        </block>
+      </view>
+      <image src='../../images/go.png' mode='widthFix' class='go'></image>
+    </view>
+  <!-- 订单商品列表  -->
+  <view class='product-list'>
+    <block wx:for="{{itemList}}" wx:key="{{index}}">
+      <view class='product-info'>
+        <!--修改  -->
+        <view class='middle'>
+          <image src='{{item.productPicture}}' mode='widthFix' class='product-pic' bindtap='bindGoToDetail' data-index="{{index}}"></image> 
+        </view>
+        <view class='right'>
+          <view class='pro-title' bindtap='bindGoToDetail' data-index="{{index}}"><image src='../../images/SeaAmoy.png' mode='widthFix' wx-if="{{item.isSeaAmoy}}"></image>{{item.productTitle}}</view>
+          <view class='pro-props' bindtap='bindGoToDetail' data-index="{{index}}">{{item.productParamText.propName}}</view>
+          <view class='buy-info'>
+            <view class='buy-left'>
+              <text class='currentprice'>￥{{item.productPrice}}</text>
+              <text class='beforePricecar' wx:if="{{item.productBeforePrice && item.productBeforePrice!=''}}">￥{{item.productBeforePrice}}</text>
+            </view>
+            <image src='{{item.num==1?"../../images/cart_add_reduce_less.png":"../../images/cart_add_reduce.png"}}' bindtap='reduceNumber' class='reduce' data-index="{{index}}"></image>
+            <input type='number' value='{{item.num}}' bindinput='bindkeyInput' bindblur='bindkeyBlur' class='buy-number' data-index="{{index}}" disabled/>
+            <image class='add' src='../../images/cart_add_add.png' bindtap='addNumber' data-index="{{index}}"></image>
+          </view> 
+        </view>
+        <!--修改  -->
+      </view>
+    </block>
+  </view>
+  <view class='coupou-wrap'>
+    <!-- 下单立减券 -->
+    <block wx:if="{{reducePrice != 0.00}}">
+      <view class='coupou-row'>
+        <view class='coupou-left'><text class='icons'>券</text>下单立减</view>
+        <view class='coupou-right'>
+          <text class='red'>-{{reducePrice}}</text>
+        </view>
+      </view>
+    </block>  
+    <!-- 优惠券 -->
+    <view class='coupou-row' bindtap='gotoCoupon'>
+      <view class='coupou-left'>我的优惠券</view>
+      <view class='coupou-right'>
+        <block wx:if="{{isSeckill != 1}}">
+            <block wx:if="{{reduceCoupon == '-0.00元'}}">
+              暂无可用
+            </block>
+            <block wx:else>
+              <text class='red'>{{reduceCoupon}}</text>
+            </block> 
+        </block>  
+        <block wx:else>         
+          限时抢购类商品不可使用优惠券
+        </block>
+        <image src='../../images/giftindex_icon_into.png' class='go'></image>
+      </view>
+    </view>
+    <!-- 钱包支付 -->
+    <block wx:if="{{userAccounts != '0.00'}}">
+      <view class='coupou-row'>
+        <view class='coupou-left'>钱包支付<text class='redEnvelopes'>-￥{{deduction}}</text></view>
+        <view class='accouts'>余额 ￥{{userAccounts}}</view>
+        <switch checked="{{checked}}" bindchange="switchChange" />
+      </view> 
+    </block>   
+    <view class='coupou-row'>
+      <view class='coupou-left'>实付金额</view>
+      <view class='coupou-right red totalprice'>￥{{ordersPay}}</view>
+    </view>
+  </view>
+  <block wx:if="{{isSeaAmoy}}">
+      <view class='h94 idcard'>
+        <text>身份证号</text>
+        <input type='idcard' placeholder='身份证号码' value='{{idcardNumber}}' bindinput='bindIdcardInput' placeholder-style="color:#ccc;" maxlength='18'  />
+      </view>
+      <view class='tips-container'>
+        <view class='tips'>
+          该礼品是海外进口商品，需填写正确的身份信息方可通过清关安检。身份信息会加密报关，派喜将确保您的信息安全。
+        </view>
+      </view>
+  </block>
+  
+  <view class='h94 remark'>
+    <text>备注</text>
+    <input type='text' value='{{remarks}}' bindinput='bindInput' placeholder='选填' class='message' placeholder-style="color:#ccc;" />
+  </view>
+  <button type='primary' class='wxpay' bindtap='wxPay'>确认支付</button>
+  <!-- 钱包支付弹框 -->
+  <block wx:if="{{isShowWallet}}">
+    <view class='mask50' catchtouchmove='true'></view>
+    <view class='wallet-pop'>
+      <image src='../../images/guanbi.png' class='close' bindtap='closeWallet'></image>
+      <view class='pop-head'>支付</view>
+      <view class='pop-line'></view>
+      <view class='pop-logo'>派喜Prise</view>
+      <view class='pop-prise'>¥{{deduction}}</view>
+      <view class='pop-line-gray'></view>
+      <view class='pop-footer'>
+        <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20190128035440598585732.png'></image>
+        我的钱包
+      </view>
+      <view class='pop-line-gray'></view>
+      <view class='pop-btn' bindtap='confirmPayWallet'>确认支付</view>
+    </view>
+  </block>  
+</block>
+</view>

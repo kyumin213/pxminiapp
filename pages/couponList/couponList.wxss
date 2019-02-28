@@ -1,0 +1,34 @@
+.pt24 {padding-top: 24rpx;}
+.item {width: 702rpx;height: 200rpx;background: #fff;margin: 0 auto 24rpx;border-radius: 8rpx;position: relative;display: flex;align-items: center;}
+.item::before,.item::after{width: 24rpx; height: 24rpx;content: '';position: absolute;background: rgb(244,244,244);border-radius: 50%;
+             right: 200rpx;top: -12rpx;}
+.item::after{top: auto;bottom: -12rpx;}
+.item-left {width: 490rpx;height: 200rpx;box-sizing: border-box;padding-left: 32rpx;display: flex;flex-direction: column;justify-content: center;}
+.item-top {display: flex;align-items: center;margin-bottom: 18rpx;}
+.coupon-title{font-size: 32rpx; font-weight: bold;}
+.tips {width: 100rpx;height: 36rpx;border: 2rpx solid #F72F2B;border-radius: 4rpx;margin-left: 16rpx;color: #F72F2B;font-size: 24rpx;
+     text-align: center;line-height: 36rpx;}
+.deadline{color: #666666;font-size: 22rpx;}
+.item-middle{width: 0;height: 176rpx;border-right: 2rpx dashed rgb(244,244,244);}
+.item-right {width: 200rpx;height: 200rpx;}
+.price {font-size: 60rpx;font-weight: bold;color: #F72F2B;margin-bottom: 18rpx;text-align: center;padding-top: 30rpx;position: relative;}
+.price text {font-size: 32rpx;}
+.use-btn{width: 140rpx;height: 44rpx;line-height: 44rpx;text-align: center;color: #fff;font-size: 24rpx;border-radius: 22rpx;
+   background: #F72F2B;margin: 0 auto;}
+.overdue .coupon-title,.overdue .tips,.overdue .deadline,.overdue .price {color: #ccc;}
+.overdue .tips{border-color: #ccc;}
+.overdue .use-btn{background: #ccc;}
+.empty {display: flex;align-items: center;justify-content: center;flex-direction: column;}
+.empty image {margin-top: 200rpx;width: 180rpx;height: 180rpx;}
+.empty view {color: #999;font-size: 30rpx;}
+.selected {width: 60rpx;height: 60rpx;position: absolute;right: 0;top: 0}
+.hideItem {
+  display: none;
+}
+.overpic {
+  width: 100rpx;
+  height: 100rpx;
+  position: absolute;
+  right: 0;
+  top: 0;
+}

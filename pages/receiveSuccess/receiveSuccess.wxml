@@ -1,0 +1,10 @@
+<view class="contanier">
+  <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181015021103724852509.png' class='gou'></image>
+  <view class='status'>领取成功</view>
+  <view class='tips'>礼物领取成功，请耐心等待礼物派送到家吧！</view>
+  <view class='btnGroup'>
+    <view class='backBtn' bindtap='goBack'>发起活动</view>
+    <view class='redBtn' bindtap='goIndex'>逛逛派喜</view>
+  </view>
+  <view class='bottom' bindtap='gotoGame'>前往查看中奖商品</view>
+</view>

@@ -1,0 +1,127 @@
+/* pages/orderDetails/orderDetails.wxss */
+.order-status {
+  width: 100%;
+  height: 236rpx;
+  background: #fff;
+  text-align: center;
+  padding-top: 68rpx;
+  box-sizing: border-box;
+  border-top: 1rpx solid #d8d8d8;
+}
+.status {
+  font-size: 42rpx;
+  margin-bottom: 20rpx;
+  font-weight: bold;
+}
+.tips {
+  font-size: 24rpx;
+}
+.product-right {
+  width: 510rpx;
+}
+.product-info {
+ width: 100%;
+ padding: 20rpx 30rpx 20rpx 20rpx;
+ box-sizing: border-box;
+ background: #fff;
+ margin: 12rpx 0;
+ display: flex;
+ /* align-items: center; */
+}
+.product-info image {
+  width: 160rpx;
+  height: 160rpx;
+  margin-right: 20rpx;
+}
+.product-top {
+  font-size: 30rpx;
+  padding: 20rpx 0;
+  overflow: hidden;
+  /* margin-bottom: 20rpx; */
+  /* display: flex;
+  align-items: center; */
+}
+.product-title {
+  width: 416rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.product-prop{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 430rpx;
+}
+.product-bottom {
+  font-size: 26rpx;
+  color: #999;
+  clear: both;
+  /* display: flex;
+  align-items: center; */
+}
+/* .product-number {
+  flex: 1;
+} */
+.address {
+  /* height: 252rpx; */
+  overflow: hidden;
+  background: #fff;
+  color: #333;
+  font-size: 28rpx;
+  padding: 0 30rpx 30rpx 30rpx;
+  box-sizing: border-box;
+}
+.address-title {
+  /* font-size: 28rpx; */
+  color: #333;
+  height: 88rpx;
+  line-height: 88rpx;
+  /* margin-bottom: 30rpx; */
+}
+.address-user {
+  margin-bottom: 12rpx;
+  overflow: hidden;
+}
+.order-info {
+  height: 156rpx;
+  background: #fff;
+  font-size: 26rpx;
+  color: #999;
+  margin: 12rpx 0;
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.order-info view {
+  clear: both;
+  margin-bottom: 24rpx;
+  overflow: hidden;
+}
+.location {
+  clear: both;
+}
+.total-price-bar {
+  height: 104rpx;
+  line-height: 104rpx;
+  background: #fff;
+  padding: 0 30rpx;
+  /* display: flex;
+  align-items: center; */
+  font-size: 28rpx;
+  margin-bottom: 60rpx;
+}
+.price {
+  color: #F72F2B;
+  font-size: 36rpx;
+  /* flex:1; */
+}
+.wxpay-btn {
+  width: 720rpx;
+  margin-bottom: 60rpx;
+}

@@ -1,0 +1,30 @@
+<view class="container container-special bg-seckill">
+    <view class='count-down'>
+      <view class='txt'>抢购倒计时<view>{{killdays}}天</view></view>
+      <view class='hours bg-red'>{{killhours}}</view>
+      <image src='../../images/00.png'></image>
+      <view class='minutes bg-red'>{{killminutes}}</view>
+      <image src='../../images/00.png'></image>      
+      <view class='seconds bg-red'>{{killseconds}}</view>
+    </view>
+    <block wx:if="{{isLoading}}">
+      <view class='goods-list'>
+        <block wx:for="{{goodsList}}" wx:key="{{index}}">
+          <view class='goods-item' data-index='{{index}}' bindtap='gotoSeckill' data-id='{{index}}'>
+            <image src='{{item.picture}}'></image>
+            <block wx:if="{{!isEnd}}">
+              <block wx:if="{{item.stock < 1}}">
+                <view class='tips'>抢光啦</view>
+              </block>
+            </block>
+            <block wx:else>
+              <view class='tips'>已结束</view>
+            </block>
+          </view>
+        </block>
+      </view>
+      <view class='bottom-tips'>
+        下期抢购将于<text>{{secKillNextTime}}</text>开启！敬请期待！ 
+      </view>
+    </block>
+</view>

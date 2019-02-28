@@ -1,0 +1,57 @@
+<view class="container container-special bg-white">
+  <view class='tab-bar'>
+    <block wx:if="{{showNav}}">
+     <scroll-view class="scroll-view_H" scroll-x style="width: 100%" scroll-into-view="{{toView}}">
+        <block wx:for="{{specialName}}" wx:key="{{index}}">
+          <view id='name{{index}}' class='special-name {{currentNavtab==index ? "active" : ""}}' data-index="{{index}}" bindtap="swichNav">
+               <block wx:if="{{item.name.length>1}}">
+                  <view class='flexbox'>
+                    <text>{{item.name[0]}}</text>
+                    {{item.name[1]}}
+                  </view> 
+               </block>
+               <block wx:else>
+                  <view class='lineheight120'>{{item.name[0]}}</view>
+               </block>
+          </view>
+        </block>
+     </scroll-view>
+     </block>
+  </view>
+  <view class='label-bar'>
+     <!-- <scroll-view class="scroll-view_H" scroll-x style="width: 100%"> -->
+        <block wx:for="{{labelArr}}" wx:key="{{index}}">
+          <view class='label-name {{currentLabeltab==index ? "onon" : ""}}' data-index="{{index}}" bindtap="swichLabel">{{item.title}}</view>
+        </block>
+     <!-- </scroll-view> -->
+  </view>
+  <block wx:if="{{isLoading}}">
+    <view>
+      <block wx:for='{{specialList}}' wx:key='{{index}}'>
+        <block wx:for='{{item.productSpecialVos}}' wx:key='{{index}}'>
+          <view class='goods-item {{item.styleStatus}}' bindtap='gotoDetail' data-id='{{item.id}}'>
+            <image src='{{item.pictureCover}}' class='pro-pic' lazy-load='{{isLazy}}'></image>
+            <view class='mask'>
+              <view class='bg'></view>
+              <view class='mask-text'>已售罄</view>
+            </view>
+            <view class='item-right'>
+              <view class='title'><image src='../../images/SeaAmoy.png' wx-if="{{item.isSeaAmoy}}"></image>{{item.title}}</view>
+              <view class='describe'>{{item.sellingPoint}}</view>
+              <view class='item-bottom'>
+                <text class='price'>￥{{item.basePrice}}</text>
+                <text class='beforePrice' wx:if="{{item.beforePrice&&item.beforePrice!=''}}">￥{{item.beforePrice}}</text>
+              </view>
+            </view>
+          </view>
+        </block>
+      </block>
+    </view>
+    <view class='bottom-tips'>
+      <view>更多节日惊喜 更多送礼诀窍</view>
+      <view>关注公众号:“派喜” 等你来撩</view>
+    </view>
+  </block>
+  <!-- 分类筛选 -->
+  <view class='mask'></view>
+</view>

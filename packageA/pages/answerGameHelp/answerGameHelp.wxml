@@ -1,0 +1,60 @@
+<view class='container bg-wish {{iphonex?"bg-iphoneX":""}}'>
+   <!-- 愿望列表 -->
+   <view class='wish-list'>
+     <block wx:for="{{wishes}}" wx:key="{{index}}">
+       <view class='wish-item' bindtap='selectWish' data-index='{{index}}'>
+         <view class='cover {{currentIndex == index ? "on" : ""}}'><image src='{{item.giftPictureCover}}'></image></view>
+         <view class='title'>愿望{{ordersText[index]}}</view>
+       </view>
+     </block>
+   </view>
+   <!-- 选择提示 -->
+   <view class='top-tips {{iphonex?"top-tips-iphonex":""}}'>上方选择</view>
+   <!-- 萤火虫 -->
+   <view class='light'>
+     <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181120045206125967591.png' class='light-item {{iphonex?"light-item-x":""}}'></image> 
+     <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181120045209226787982.png' class='light-item {{iphonex?"light-item-x":""}}'></image>
+     <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181120045212235742706.png' class='light-item {{iphonex?"light-item-x":""}}'></image>
+     <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181120045215046343606.png' class='light-item {{iphonex?"light-item-x":""}}'></image>
+     <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181120045218263736144.png' class='light-item {{iphonex?"light-item-x":""}}'></image>
+   </view>
+   <block wx:if="{{!hasTree}}">
+      <button class='btn-default {{isSelect ? "on" : ""}} {{iphonex?"btn-default-iphonex":""}}' bindtap='gotoWishTree'>
+        <block wx:if="{{isSelect}}">
+          您选择了{{wishName}} 点击确认
+        </block>
+        <block wx:else>
+          请选择 您想许下的愿望！       
+        </block>
+      </button>
+   </block>
+   <block wx:else>
+     <button class='btn-default btn-red {{iphonex?"btn-default-iphonex":""}}' bindtap='gotoMyTree'>
+       您已许过愿喽 点击进入
+     </button>
+   </block>   
+   <!-- 他人愿望 -->
+   <view class='other-wish'>
+     <text>看看他们实现的愿望：</text>
+     <scroll-view scroll-y class='scroll-wish'>
+       <block wx:for="{{MessageList}}" wx:key="{{index}}">
+         <view>· {{item}}</view>         
+       </block>
+     </scroll-view>
+   </view>
+   <!-- 游戏助力弹框 -->
+   <block wx:if="{{!closeHelp}}">
+      <view class='mask80'></view>
+      <view class='pop-help {{iphonex?"pop-help-x":""}}'>
+        <view class='pop-title'>为您的好友实现愿望</view>
+        <view class='pop-desc'>我正在养成我的许愿树，快来为我增加一次游戏机会吧！</view>
+        <block wx:if="{{isSuccess}}">
+          <view class='btn-gray'>增长成功</view>          
+        </block>
+        <block wx:else>
+          <view class='btn-help' bindtap='gameAssist'>帮TA增长</view>
+        </block>
+        <view class='btn-wishing' bindtap='closeHelpPop'>我也要许愿</view>
+      </view>
+   </block>   
+</view>

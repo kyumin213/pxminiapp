@@ -1,0 +1,96 @@
+<view class="container bg-red">
+  <view class='big-title'>
+    <block wx:if="{{!isJoin}}">
+      <view>填写地址</view> 
+      <view>领取TA送你的礼物吧！</view>
+    </block>
+    <block wx:else>
+      <view>{{titleTxt[status][0]}}</view> 
+      <view>{{titleTxt[status][1]}}</view>
+    </block>
+    
+  </view>
+  <!--卡片区域  -->
+  <view class='card-wrap'>
+    <view class='card-top'>
+      <image src='https://image.prise.shop/images/2018/07/26/1532587944531157.png'></image>
+      <text>TA悄悄为你准备的{{ordersItemNum}}件礼物</text>
+    </view>
+    <!--列表  -->
+    <scroll-view style='max-height:{{scrollHeight}}' scroll-y class='scroll-list'>
+        <block wx:for="{{itemList}}" wx:key="{{index}}">
+            <view class='gifts-item'>
+              <image src='{{item.productPicture}}'></image>
+              <view class='item-right'>
+                <view class='item-title'>{{item.productTitle}}</view>
+                <view class='item-count'>共{{item.num}}份</view>
+              </view>
+            </view>
+       </block> 
+    </scroll-view>
+    <block wx:if="{{isShowMore}}">
+      <image src='../../images/giftcard_icon_more.png' class='more' bindtap='showAllItem'></image>
+    </block>
+    <view class='send-status txt-center'>
+      {{statusTip[status]}}
+    </view>
+    <view class='btn-groups'>
+      <block wx:if="{{!isJoin}}">
+        <view class='add-address' bindtap='toggleDialog'>填地址领礼物</view>
+      </block>
+      <block wx:else>
+        <block wx:if="{{status==0||status==1||status==6}}">
+          <view class='btn50 txt-center fl' bindtap='gotoGifts'>我也要发起送礼</view>
+          <view class='btn50 txt-center fr' bindtap='gontoIndex'>逛逛派喜</view>
+        </block>
+        <!-- <block wx:if="{{status==1}}">
+          <view class='btn50 txt-center fl' bindtap='gotoGifts'>我也要发起送礼</view>
+          <view class='btn50 txt-center fr' bindtap='gontoIndex'>逛逛派喜</view>
+        </block> -->
+      </block>
+      
+    </view>
+    <!--回应列表  -->
+    <!-- <block wx:if="{{status!=0}}"> -->
+      <view class='line'></view>
+      <view class='reply-title txt-center'>全部回应</view>
+      <block wx:for="{{userPartake}}" wx:key="{{key}}">
+        <view class='reply-item'>
+          <image src='{{item.picture}}'></image>
+          <view class='reply-content'>{{item.nickname}} 悄悄伸出了双手</view>
+          <view class='reply-time'>{{item.created}}</view>
+        </view>
+        <view class='line'></view>
+      </block>      
+    <!-- </block> -->
+    <!--填写地址弹框  -->
+    <block wx:if="{{isShowDialog}}">
+      <view class='address-dialog'>
+        <view class='mask' catchtouchmove='true' bindtap='toggleDialog'></view>
+        <view class='address-container'  catchtouchmove='true'>
+          <image src='../../images/gift_addresspop_shutdown.png' class='close' bindtap='toggleDialog'></image> 
+          <view class='dialog-header'>请确认收货地址哟！</view>
+          <view class='form-group'>
+            <view class='label'>姓名</view><input type='text' placeholder='姓名' value='{{username}}' placeholder-style="color:#ccc;" bindinput='bindNameInput'></input>
+          </view>
+          <view class='line-dialog'></view>
+          <view class='form-group'>
+            <view class='label'>手机号码</view><input type='number' placeholder='请输入手机号' value='{{userphone}}' placeholder-style="color:#ccc;" bindinput='bindPhoneInput'></input>
+          </view>
+          <view class='line-dialog'></view>
+          <view class='form-group'>
+            <view class='label address'>详细地址</view>
+            <textarea  catchtouchmove='true' placeholder="详细地址" value='{{addressDetail}}' placeholder-style="color:#ccc;" fixed="true" bindinput='bindAddressInput'></textarea>
+          </view>
+          <block wx:if="{{!hasAddress}}">
+             <view class='confirm-address' bindtap='confirmAddress'>确认地址</view> 
+          </block>
+          <block wx:else>
+             <view class='btn500  save fl' bindtap='joinGame'>确认</view>
+             <view class='btn500  modify fr' bindtap='modifyAddress'>修改</view>
+          </block>
+        </view>
+      </view>
+    </block>
+  </view> 
+</view>

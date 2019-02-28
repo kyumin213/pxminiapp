@@ -1,0 +1,25 @@
+<view class='container'>
+  <block wx:if="{{addressList.length >0}}">
+      <view class='top-item' wx:for="{{addressList}}">
+        <view class='item-top'>
+          <view class='text-item'>{{item.receiver}}</view>
+          <view class='text-item'>{{item.phone}}</view>
+        </view>
+        <view class='item-bottom'>
+          <view class='text-item'>
+            <image src='../../images/service-option.png' mode="widthFix" wx:if="{{item.isDefault == 1}}"></image>
+            {{item.location}}
+          </view>
+        </view>
+      </view>
+  </block>
+  <block wx:else>
+    <view class='address-empty'>
+      <image src='../../images/address_empty.png'></image>
+      <text>暂无收货地址</text>
+    </view>
+  </block>
+  <view class='add-address' bindtap='addAddress'>
+    添加地址
+  </view>
+</view>

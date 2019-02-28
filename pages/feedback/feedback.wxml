@@ -1,0 +1,13 @@
+<view class='container'>
+  <view class='input-title'>意见反馈</view>
+  <view class='body'>
+    <textarea bindinput='getFeedback' placeholder="请问遇到什么问题？您的反馈让小派变得更好" class='input-feed' placeholder-style="color:#ccc;" ></textarea>
+  </view>
+  <text class='input-title'>您的邮箱</text>
+  <view class='content'>
+    <input bindinput='getContact' class="email" name="userName" placeholder="选填,便于我们第一时间给您反馈" placeholder-style="color:#ccc;"  />
+  </view>
+  <view class='submit' bindtap='getSubmit'>
+    <button class='botton' type="warn"> 提交 </button>
+  </view>
+</view>

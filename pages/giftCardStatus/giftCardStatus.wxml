@@ -1,0 +1,55 @@
+<view class="container bg-red">
+  <view class='big-title'>
+    <view>{{titleTxt[status][0]}}</view> 
+    <view>{{titleTxt[status][1]}}</view>
+  </view>
+  <!--卡片区域  -->
+  <view class='card-wrap'>
+    <view class='card-top'>
+      <image src='https://image.prise.shop/images/2018/07/26/1532587944531157.png'></image>
+      <text>你悄悄地送出{{orderInfo.ordersItemNum}}件礼物</text>
+    </view>
+    <!--列表  -->
+    <scroll-view style='max-height:{{scrollHeight}}' scroll-y class='scroll-list'>
+        <block wx:for="{{itemList}}" wx:key="{{index}}">
+            <view class='gifts-item'>
+              <image src='{{item.productPicture}}'></image>
+              <view class='item-right'>
+                <view class='item-title'>{{item.productTitle}}</view>
+                <view class='item-count'>共{{item.num}}份</view>
+              </view>
+            </view>
+       </block> 
+    </scroll-view>
+    <block wx:if="{{isShowMore}}">
+      <image src='../../images/giftcard_icon_more.png' class='more' bindtap='showAllItem'></image>
+    </block>
+    <view class='send-status txt-center'>
+      {{statusTip[orderInfo.giftStatus]}}
+    </view>
+    <view class='btn-groups'>
+      <block wx:if="{{orderInfo.giftStatus==0}}">
+       <view class='btn50 txt-center fl' bindtap='selectReceiver'>选择收礼人</view>
+       <button class='btn50 txt-center fr' open-type='share'>发送给好友</button>
+      </block>
+      <block wx:if="{{orderInfo.giftStatus==1}}">
+         <view class='btn50 txt-center fl' bindtap='gotoGifts'>再次发起送礼</view>
+         <view class='btn50 txt-center fr' bindtap='gontoIndex'>逛逛派喜</view>
+      </block>
+    </view>
+    <!--回应列表  -->
+    <view class='line'></view>
+    <view class='reply-title txt-center'>全部回应</view>
+    <block wx:for="{{userPartake}}" wx:key="{{key}}">
+        <view class='reply-item'>
+          <image src='{{item.picture}}'></image>
+          <view class='reply-content'>{{item.nickname}} 悄悄伸出了双手</view>
+          <view class='reply-time'>{{item.created}}</view>
+        </view>
+        <view class='line'></view>
+    </block>
+    
+    
+   
+  </view> 
+</view>

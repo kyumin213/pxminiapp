@@ -1,0 +1,20 @@
+@import '../answerGameCenter/answerGameCenter.wxss';
+.getRelive-btn2 {
+  color: #FE355E;
+  font-size: 28rpx;
+  background: none;
+}
+.getRelive-btn2::after,.getRelive-btn2::before{
+  border: 0;
+  box-shadow: none;
+}
+.goindex {
+  width: 520rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  border: 2rpx solid #FE355E;
+  border-radius: 44rpx;
+  background: #fff;
+  color: #FE355E;
+  font-size: 32rpx;
+}

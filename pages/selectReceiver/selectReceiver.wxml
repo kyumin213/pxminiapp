@@ -1,0 +1,30 @@
+<view class="container bg-white">
+  <view class='line-top'></view>
+  <scroll-view scroll-y class='scroll-box'>
+     <view class='receiver-list'>
+       <block wx:for="{{userList}}" wx:key="{{index}}">
+          <view class='receiver-item {{current==index?"active":""}}' bindtap='selectOption' data-index='{{index}}'>
+            <image src='{{item.picture}}' class='user-pic'></image>
+            <image src='../../images/people_seletced.png' class='select-pic'></image>
+            <view class='username'>{{item.nickname}}</view>
+          </view>
+       </block>
+      </view>
+  </scroll-view>
+  <!--二次确认收礼人信息弹框  -->
+  <block wx:if="{{isShowDialog}}">
+    <view class='dialog' catchtouchmove='true'>
+      <view class='mask' bindtap='toggleDialog' catchtouchmove='true'></view>
+      <view class='confirm-box'>
+        <image src='../../images/gift_addresspop_shutdown.png' class='close' bindtap='toggleDialog'></image>
+        <view class='confirm-header'>请再次确认收礼人信息</view>
+        <image src='{{userPic}}' class='user-pic m80'></image>
+        <view class='names'>{{userName}}</view>
+        <view class='confirm-btn-inner' bindtap='confirmSecond'>确认</view>
+      </view>
+    </view>
+   </block>
+  <view class='confirm-bottom'>
+    <view class='confirm-btn' bindtap='sendGifts'>确认收礼人</view>
+  </view>
+</view>

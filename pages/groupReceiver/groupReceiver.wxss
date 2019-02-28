@@ -1,0 +1,91 @@
+@import '../groupSender/groupSender.wxss';
+.mask40 {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+.address-dialog {
+  width: 670rpx;
+  background: #fff;
+  border-radius: 8rpx;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  padding: 60rpx 50rpx;
+  box-sizing: border-box;
+}
+.form-group {
+  width: 590rpx;
+  min-height: 40rpx;
+  display: flex;
+  align-items: center;
+  margin: 25rpx auto;
+}
+.form-group input,.form-group textarea{
+  width: 400rpx;
+  height: 50rpx;
+  padding: 0;
+}
+.form-group textarea{
+  /* align-self: flex-start; */
+  height: 160rpx;
+  margin: -10rpx 0 0 -6rpx;
+}
+.line-dialog {
+  width: 590rpx;
+  height: 1rpx;
+  background: #eee;
+  margin: 0 auto;
+  transform: scaleY(0.5);
+}
+.label {
+  width: 120rpx;
+  margin-left: 12rpx;
+  margin-right: 40rpx;
+}
+.address {
+  align-self: flex-start;
+}
+.modify-address {
+  color: #999;
+  font-size: 26rpx;
+  text-align: center;
+}
+.modify-address text {
+  color: #FA4670
+}
+.form-group .address-text {
+  height: 160rpx;
+}
+.btn-confirm::after {
+  border:0;
+}
+.btn-confirm {
+  display: block;
+  padding-left: 3px;
+  padding-right: 3px;
+  background-color: rgba(255,255,255,0);
+  width: 520rpx;
+  height: 88rpx;
+  color: #fff;
+  background: url(https://image.prise.shop/images/2018/08/06/1533540536555979.png) no-repeat;
+  background-size: contain;
+  text-align: center;
+  line-height: 88rpx;
+  margin-bottom: 40rpx;
+}
+.address-title {
+  color: #FA4670;
+  font-size: 40rpx;
+  font-weight: bold;
+  margin-bottom: 48rpx;
+  text-align: center;
+}
+.number {
+  left: 0;
+  bottom: 20rpx;
+}

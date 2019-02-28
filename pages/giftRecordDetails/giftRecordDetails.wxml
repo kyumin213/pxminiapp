@@ -1,0 +1,76 @@
+<view class="container p100">
+  <!-- <view class='line-top'></view> -->
+  <view class='status-box'>
+    <view class='status'>
+      <block wx:if="{{orderInfo.giftStatus==0}}">等待开奖</block>
+      <block wx:if="{{orderInfo.giftStatus==1}}">已完成</block>
+      <block wx:if="{{orderInfo.giftStatus == 6}}">已退款</block>
+    </view>
+    <view class='status-tips'>{{statusTips[orderInfo.giftStatus]}}</view>
+    <block wx:if="{{orderInfo.giftStatus==1 && orderInfo.addressWay == 1}}"><view class='remarks'>{{remarks}}</view></block>
+  </view>
+  <!--收礼人信息  -->
+  <block wx:if="{{orderInfo.giftStatus==1}}">
+    <view class='send-userinfo'>
+      <image src='{{userReceiver.picture}}'></image>
+      <view class='user-right'>
+        <view class='username'>{{userReceiver.nickname}}</view>
+        <view class='times'>{{userReceiver.created}} 收到</view>
+      </view> 
+    </view>
+  </block>
+  <!--礼物列表  -->
+  <view class='gift-box'>
+    <block wx:for="{{itemList}}" wx:key="{{index}}">
+      <view class='item-list'>
+        <image src='{{item.productPicture}}'></image>
+        <view class='item-right'>
+          <view class='item-row'>
+            <view class='item-title item-left'>{{item.productTitle}}</view>
+            <view class='price'>¥{{item.productPrice}}</view>
+          </view>
+          <view class='item-row'>
+            <view class='item-props item-left'>{{item.productParamText.propName}}</view>
+            <view class='num'>x{{item.num}}</view>
+          </view>
+        </view>
+      </view>
+      <!-- <view class='line100'></view> -->
+    </block>
+  </view>
+  <!--total  -->
+  <view class='total'>
+    共{{orderInfo.ordersItemNum}}件商品 合计：<text>¥{{orderInfo.ordersPrice}}</text>
+  </view>
+  
+  <!--订单信息列表  -->
+  <view class='order-info'>
+    <view class='info-item'>
+      <view class='fl'>订单编号</view>
+      <view class='fr'>{{orderInfo.orderId}}</view>
+    </view>
+    <view class='info-item'>
+      <view class='fl'>下单时间</view>
+      <view class='fr'>{{orderInfo.created}}</view>
+    </view>
+    <view class='info-item'>
+      <view class='fl'>截止时间</view>
+      <view class='fr'>{{orderInfo.deadline}}</view>
+    </view>
+  </view>
+  
+  
+
+  <view class='btn-box {{iphonex?"bottom60":""}}'>
+    <block wx:if="{{orderInfo.giftStatus == 0}}">
+      <view class='send-btn fr' data-id="{{orderInfo.orderId}}" bindtap='sendCard'>送出礼物卡</view>
+      <view class='send-btn fr black-btn' data-id="{{orderInfo.orderId}}" bindtap='gotoGameCenter'>查看礼物卡</view>
+    </block>
+    <block wx:if="{{orderInfo.giftStatus == 1 || orderInfo.giftStatus == 6}}">
+      <view class='send-btn fr black-btn' bindtap='gotoCardStatus' data-id="{{orderInfo.orderId}}">查看礼物卡</view>
+    </block>
+  </view>
+    <block wx:if="{{iphonex}}">
+      <view class='iphonexspace'></view>
+    </block> 
+</view>

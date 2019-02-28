@@ -1,0 +1,62 @@
+<view class="container">
+  <block wx:if="{{accountDetail.length > 0}}">
+    <view class='detail-list'  id='month{{index}}' wx:for="{{accountDetail}}" wx:key="{{index}}" bindtap='bindclick'>
+        <view class='month {{scrollTop >= toTop ? "fixed" : ""}}'>
+          <view class='mouth-title'>{{item.createds}}</view>
+          <view class='mouth-total-info'>支出￥{{item.sumMoneyZ}} 收入￥{{item.sumMoneyO}}</view>
+        </view>
+        <block wx:if="{{item.userWaterVoList.length > 0}}">
+          <block wx:for="{{item.userWaterVoList}}" wx:key="{{index}}">
+            <view class='detail-item'>
+              <view class='item-left'>
+                <block wx:if="{{item.tradeTypes == 0}}">
+                  <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20190116051454660760210.png'></image>
+                </block>
+                <block wx:if="{{item.tradeTypes == 1}}">
+                  <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20190118103548325916634.png'></image>
+                </block>
+                <block wx:if="{{item.tradeTypes == 2}}">
+                  <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20190102041548437977394.png'></image>
+                </block>
+                <block wx:if="{{item.tradeTypes == 3}}">
+                  <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20190102041548334210797.png'></image>
+                </block>
+                <block wx:if="{{item.tradeTypes == 4}}">
+                  <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20190215114242459152957.png'></image>
+                </block>
+                <view class='item-left-goods'>
+                  <view class='goods-title'>{{item.tradeType}}</view>
+                  <view class='goods-time'>{{item.createds}}</view>
+                </view>
+              </view>
+              <view class='item-right {{item.incomeType == "收入" ? "red" : ""}}'>
+                <block wx:if='{{item.incomeType == "收入"}}'>+{{item.tradeMoney}}</block>
+                <block wx:else>-{{item.tradeMoney}}</block>
+              </view>
+            </view>
+          </block>
+        </block>
+        <block wx:else>
+          <view class='empty'>
+            <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181227113111439820706.png'></image>
+            <view class='text'>暂无记录</view>
+          </view>
+        </block>
+      </view>
+    <picker mode="date" value="{{date}}" end="{{end}}" fields="month" bindchange="bindDateChange">
+      <view class="picker">
+        <view class='time-filter'>
+          <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181227112418778557636.png'></image>
+          日期
+        </view>
+      </view>
+    </picker>
+  </block>
+  <block wx:else>
+    <view class='empty'>
+      <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181227113111439820706.png'></image>
+      <view class='text'>暂无记录</view>
+    </view>
+  </block>  
+        
+</view>

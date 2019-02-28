@@ -1,0 +1,24 @@
+/* pages/playMethod/playMethod.wxss */
+.btn-red {
+  width: 630rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  border-radius: 8rpx;
+  background: #FF2740;
+  color: #FFFFFF;
+  font-size: 34rpx;
+  margin: 0 auto;
+  text-align: center;
+}
+.play image {
+  width: 100%;
+}
+.play {
+  padding-bottom: 80rpx;
+}
+.tips {
+  margin: 40rpx auto 30rpx;
+  text-align: center;
+  color: #333;
+  font-size: 28rpx;
+}

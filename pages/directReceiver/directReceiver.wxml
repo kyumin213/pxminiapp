@@ -1,0 +1,80 @@
+<view class="container bg-direct">
+  <view class='big-title'>
+      <view>来自TA的祝福</view> 
+      <view class='smalltip'>填写地址，领取好友送你的礼物吧！</view>
+  </view>
+  <!--卡片区域  -->
+  <view class='user-card'>
+      <view class='userbg'><image src='{{userMaker.picture}}'></image></view>
+      <text>{{userMaker.nickname}}送你{{ordersItemNum}}份礼物</text>
+      <view class='messages'><image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181015101348035381306.png'></image>
+      “{{remarks}}”</view>
+  </view>
+  <view class='card-wrap'>
+    <!--列表  -->
+    <scroll-view style='max-height:{{scrollHeight}}' scroll-y class='scroll-list'>
+        <block wx:for="{{itemList}}" wx:key="{{index}}">
+            <view class='gifts-item'>
+              <image src='{{item.productPicture}}'></image>
+              <view class='item-right'>
+                <view class='item-title'>{{item.productTitle}}</view>
+                <view class='item-count'>共{{item.num}}份</view>
+              </view>
+            </view>
+       </block> 
+    </scroll-view>
+    <block wx:if="{{isShowMore}}">
+      <image src='../../images/giftcard_icon_more.png' class='more' bindtap='showAllItem'></image>
+    </block>
+    <view class='send-status txt-center'>
+      {{statusTip[status]}}
+    </view>
+    <view class='btn-groups'>
+      <block wx:if="{{partakeStatus == 1}}">
+         <!-- toggleDialog joinDirect-->
+        <view class='add-address sendBtn' bindtap='joinDirect'>领取礼物</view>
+      </block>
+      <block wx:if="{{partakeStatus != 1}}">
+        <view class='add-address sendBtn' bindtap='gotoGifts'>我也送一份</view>
+      </block>
+    </view>
+    <block wx:if="{{partakeStatus == 2}}"><view class='tips'>礼物卡到期未领取已失效</view></block>
+    <block wx:if="{{partakeStatus == 0}}">
+      <view class='winner'>
+        <image src='{{userPartake.picture}}' class='receriver-pic'></image>
+        <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181015113919873655778.png' class='icon1'></image>
+        <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181015113923480430588.png' class='icon2'></image>
+        <view class='receriver-nickname'>{{userPartake.nickname}}</view>
+      </view>
+    </block>
+    <!--填写地址弹框  -->
+    <block wx:if="{{isShowDialog}}">
+      <view class='address-dialog'>
+        <view class='mask' catchtouchmove='true' bindtap='toggleDialog'></view>
+        <view class='address-container'  catchtouchmove='true'>
+          <image src='../../images/gift_addresspop_shutdown.png' class='close' bindtap='toggleDialog'></image> 
+          <view class='dialog-header'>请确认收货地址哟！</view>
+          <view class='form-group'>
+            <view class='label'>姓名</view><input type='text' placeholder='姓名' value='{{username}}' placeholder-style="color:#ccc;" bindinput='bindNameInput'></input>
+          </view>
+          <view class='line-dialog'></view>
+          <view class='form-group'>
+            <view class='label'>手机号码</view><input type='number' placeholder='请输入手机号' value='{{userphone}}' placeholder-style="color:#ccc;" bindinput='bindPhoneInput'></input>
+          </view>
+          <view class='line-dialog'></view>
+          <view class='form-group'>
+            <view class='label address'>详细地址</view>
+            <textarea  catchtouchmove='true' placeholder="详细地址" value='{{addressDetail}}' placeholder-style="color:#ccc;" fixed="true" bindinput='bindAddressInput'></textarea>
+          </view>
+          <block wx:if="{{!hasAddress}}">
+             <view class='confirm-address' bindtap='confirmAddress'>确认地址</view> 
+          </block>
+          <block wx:else>
+             <view class='btn500  save fl' bindtap='joinGame'>确认</view>
+             <view class='btn500  modify fr' bindtap='modifyAddress'>修改</view>
+          </block>
+        </view>
+      </view>
+    </block>
+  </view> 
+</view>

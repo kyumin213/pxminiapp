@@ -1,0 +1,181 @@
+.p100 {
+  padding-bottom: 200rpx;
+}
+.line-top{
+  width: 100%;
+  height: 1rpx;
+  background: #d8d8d8;
+  transform: scaleY(0.5)
+}
+.line100 {
+  width: 100%;
+  height: 1rpx;
+  background: #eee;
+  transform: scaleY(0.5)
+}
+.status-box {
+  min-height: 206rpx;
+  width: 100%;
+  background: #FAFAFA;
+  text-align: center;
+  /* margin-bottom: 20rpx; */
+}
+.remarks {
+  margin-top: 30rpx; 
+  padding-bottom: 54rpx;
+}
+.status{
+  font-size: 44rpx;
+  font-weight: bold;
+  padding: 48rpx 0 16rpx;
+}
+.status-tips {
+  font-size: 24rpx;
+  color: #666;
+}
+/*商品列表  */
+.gift-box {
+  overflow: hidden;
+  margin-top: 20rpx;
+}
+.item-list{
+  height: 180rpx;
+  background: #fff;
+  padding: 20rpx 30rpx;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+.item-list image {
+  width: 140rpx;
+  height: 140rpx;
+  margin-right: 20rpx;
+}
+.item-right {
+  width: 520rpx;
+}
+.item-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20rpx;
+}
+.item-left {
+  /* flex: 1; */
+  width: 420rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-right: 40rpx;
+}
+.item-props  {
+  margin-right: 40rpx;
+}
+.item-props,.num {
+  color: #999;
+  font-size: 24rpx;
+}
+.price,.num {
+  width: 80rpx;
+  text-align: right;
+}
+.order-info{
+  height: 236rpx;
+  width: 100%;
+  padding: 32rpx;
+  box-sizing: border-box;
+  background: #fff;
+  margin-top:12rpx;
+}
+.info-item {
+  height: 36rpx;
+  margin-bottom: 32rpx;
+}
+.info-item view{
+  font-size: 26rpx;
+  color: #666;
+}
+/*合计  */
+.total{
+  font-size: 26rpx;
+  padding-right: 32rpx;
+  width: 100%;
+  height: 104rpx;
+  line-height: 104rpx;
+  text-align: right;
+  box-sizing: border-box;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+.total text {
+  font-size: 30rpx;
+}
+.btn-box {
+  height: 110rpx;
+  background: #fff;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  padding-right: 30rpx;  
+  box-sizing: border-box;
+}
+.bottom60 {
+  bottom: 60rpx;
+}
+.send-btn {
+  width: 180rpx;
+  height: 64rpx;
+  border-radius: 32rpx;
+  border: 2rpx solid #F72F2B;
+  color: #F72F2B;
+  line-height: 64rpx;
+  text-align: center;
+  margin-top: 24rpx;
+}
+.black-btn {
+  color: #333333;
+  border: 2rpx solid #EEEEEE;
+  margin-right: 20rpx;
+}
+.iphonexspace {
+  position: fixed;
+  height: 60rpx;
+  width: 100%;
+  background: #fff;
+  bottom: 0;
+  left: 0;
+}
+.check-card {
+  color: #F72F2B;
+  text-align: center;
+  padding: 40rpx 0;
+}
+.send-userinfo {
+  min-height: 136rpx;
+  background: #fff;
+  width: 100%;
+  padding: 20rpx 0 20rpx 36rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+.send-userinfo image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-right: 32rpx;
+}
+.times {
+  font-size: 26rpx;
+  color: #666666;
+}
+/* .info-item{
+  margin-bottom: 10rpx;
+} */
+.username {
+  margin-bottom: 10rpx;
+  color: #666666;
+}

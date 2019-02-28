@@ -1,0 +1,20 @@
+<view class="container bg-white play">
+  <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181015045529306153629.png' mode='widthFix'></image>
+  <view class='btn-red' bindtap='gotoGift' style='margin-bottom:20rpx;'>马上送出礼物</view>
+  <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181015045533561852684.png' mode='widthFix'></image>
+  <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181015045539792608942.png' mode='widthFix'></image>
+  <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181015045542750162207.png' mode='widthFix'></image>
+  <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181015045545662735026.png' mode='widthFix'></image>
+  <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181015045548674829671.png' mode='widthFix'></image>
+  <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181015045552006139028.png' mode='widthFix'></image>
+  <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181015045610483471380.png' mode='widthFix'></image>
+  <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181015045615552418955.png' mode='widthFix'></image>
+  <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181015045619607224437.png' mode='widthFix'></image>
+  <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181015045623334479663.png' mode='widthFix'></image>
+  <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181015045627335536370.png' mode='widthFix'></image>
+  <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181015045630857641891.png' mode='widthFix'></image>
+  <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181015045634486606952.png' mode='widthFix'></image>
+  <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181015045638027565192.png' mode='widthFix'></image>
+  <view class='tips'>get送礼新技能，前往解锁！</view>
+  <view class='btn-red' bindtap='gotoGift'>马上送出礼物</view>
+</view>

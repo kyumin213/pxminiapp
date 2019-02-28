@@ -1,0 +1,38 @@
+<view class="container bg-white">    
+  <block wx:if="{{status == 0}}">
+    <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181129055622521154530.png' class='gou'></image>
+    <view class='result-status'>提现成功</view>
+    <view class='exchange-info'>
+      提现码：{{keyCode}}  <text data-text="{{keyCode}}" bindtap='copyText'>复制</text>
+    </view>
+    <view class='exchange-info'>
+      提现金额：￥{{cashValue}}
+    </view>
+    <view class='exchange-info'>
+      客服微信：prise666
+    </view>
+    <view class='exchange-info'>
+      红包余额：{{redMoney}}元
+    </view>
+  </block>
+  <block wx:else>
+    <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181228041253639624039.png' class='gou'></image>
+    <view class='result-status'>提现失败</view>
+    <view class='exchange-info txt-center'>
+      <block wx:if="{{status == 1}}">红包余额不足，无法提现</block>
+      <block wx:if="{{status == 2}}">您无相应提现卡，无法提现<view>可前往许愿树获取提现卡</view></block>
+      <block wx:if="{{status == 3}}">您的提现卡已过期，无法提现</block>
+    </view>
+  </block>  
+  <view class='btn-back' bindtap='gobackWallet'>返回钱包</view>
+  <block wx:if="{{status == 0}}">
+    <view class='btn-index' bindtap='gobackIndex'>逛逛派喜</view>    
+    <view class='tips'><text>领取时间</text>周一至周五，上午10:00-12:00 下午14:00-18:00</view>
+  </block>
+  <block wx:if="{{status == 2}}">
+    <view class='btn-index' bindtap='gobackTree'>前往许愿树</view>    
+  </block>
+  <block  wx:if="{{status == 1 || status == 3}}">
+    <view class='btn-index' bindtap='gobackIndex'>逛逛派喜</view>         
+  </block>
+</view>

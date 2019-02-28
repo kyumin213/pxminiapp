@@ -1,0 +1,9 @@
+<view class="contanier">
+  <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181129055622521154530.png' class='gou'></image>
+  <view class='status'>领取成功</view>
+  <view class='tips'>礼物领取成功，小派正在加速为您 打包礼物</view>
+  <view class='btnGroup'>
+    <view class='backBtn' bindtap='gotoWishing'>再次许愿</view>
+    <view class='redBtn' bindtap='goIndex'>逛逛派喜</view>
+  </view>
+</view>

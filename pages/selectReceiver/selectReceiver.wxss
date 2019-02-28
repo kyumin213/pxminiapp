@@ -1,0 +1,128 @@
+.bg-white {
+  background: #fff;
+}
+.line-top {
+  width: 100%;
+  height: 1rpx;
+  background: #d8d8d8;
+  transform: scaleY(0.5);
+}
+.scroll-box {
+  height: 87vh;
+  overflow: hidden;
+}
+.receiver-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 40rpx 0 0 32rpx;
+}
+.receiver-item {
+  width: 100rpx;
+  margin-bottom: 48rpx;
+  margin-right: 46rpx;
+  text-align: center;
+  position: relative;
+}
+.user-pic {
+  width: 100rpx;
+  height: 100rpx;
+  margin-bottom: 12rpx;
+  border-radius: 50%;
+}
+.select-pic {
+  width: 28rpx;
+  height: 28rpx;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: none;
+}
+.active .select-pic{
+  display: block;
+}
+.username {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.confirm-bottom {
+  width: 100%;
+  height: 176rpx;
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.confirm-btn {
+  width: 686rpx;
+  height: 88rpx;
+  background: #F72F2B;
+  color: #fff;
+  border-radius: 8rpx;
+  font-size: 34rpx;
+  line-height: 88rpx;
+  text-align: center;
+}
+/*弹出框  */
+.confirm-box {
+  width: 670rpx;
+  height: 600rpx;
+  border-radius: 32rpx;
+  background: #fff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.dialog {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 9;
+}
+.mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0,0,0,0.4);
+}
+.close {
+  width: 27rpx;
+  height: 27rpx;
+  position: absolute;
+  right: 30rpx;
+  top: 30rpx;
+}
+.confirm-btn-inner {
+  width: 590rpx;
+  height: 88rpx;
+  background: #F72F2B;
+  color: #fff;
+  line-height: 88rpx;
+  text-align: center;
+  border-radius: 8rpx;
+  font-size: 34rpx;
+}
+.confirm-header {
+  font-size: 34rpx;
+  font-weight: bold;
+}
+.m80 {
+  margin: 80rpx 0 20rpx;
+}
+.names {
+  font-size: 32rpx;
+  margin-bottom: 60rpx;
+}

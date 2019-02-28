@@ -1,0 +1,55 @@
+<view class="container">
+  <view class='swiper-tab'>
+    <view class="tab-item {{currentNavtab == index ? 'navActive' : ''}}" wx:for="{{navTab}}" wx:key="index" data-index="{{index}}" bindtap="swichNav">{{item}}</view>
+  </view>
+  <block wx:if="{{currentNavtab == 0}}">
+    <view class='emptystatus'>
+      <image src='https://image.prise.shop/images/2018/07/25/1532518008510131.png'></image>
+      <text>小派正在加速开发中，敬请期待！</text>
+      <button class='gotoIndex' bindtap='gotoIndex'>先逛逛派喜</button>
+    </view>
+  </block>
+  <block wx:if="{{currentNavtab == 1}}">
+    <view class='gray-title'>提现金额（元）</view>
+    <view class='amount'>
+      {{cashValue}}
+      <view class='accounts'>红包余额￥{{accounts.redMoney}}</view>
+    </view>    
+    <view class='amount-select'>
+      <view class='amount-left'>金额选择</view>
+      <view class='amount-right'>
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+          <input type='text' value='{{array[index]}}' class='select-box' placeholder='请选择提现金额' placeholder-style='color:#999;' disabled='{{disable}}'></input>
+        </picker>
+        <text></text>
+      </view>
+    </view>
+    <view class='tips'>
+      <view class='tips-left'>提现必读</view>
+      <view class='tips-right'>
+        <text>1.提现消耗提现卡1张/次；</text> 
+        <text>2.提现卡可完成许愿树成长福利获得；</text> 
+        <text>3.发送提现码至微信客服领取红包；</text> 
+        <text>4.客服微信：prise666；</text>  
+        <text>5.红包发放时间：周一至周五，上午10:00-12:00 下午14:00-18:00</text> 
+      </view>
+    </view>
+    <!-- 提现按钮 -->
+    <view class='btn-get-cash {{isSelect?"active":""}}' bindtap='popComfirmBox'>确认提现</view>
+    <!-- 提现弹框 -->
+    <block wx:if="{{showPopCash}}">
+      <view class='mask'></view>
+      <view class='pop-cash-box'>
+        <view class='pop-title'>提现确认</view>
+        <view class='pop-prise'>{{cashValue}}</view>
+        <view class='pop-desc'>提现金额（元）</view>
+        <view class='color-yellow'>您正在使用提现卡提现……</view>
+        <view class='color-yellow'>提现后将无法撤回喔(o^^o)</view>
+        <view class='btn-group'>
+          <view class='btn-left' bindtap='closePop'>取消</view>
+          <view class='btn-right' bindtap='getCash'>确定</view>
+        </view>
+      </view>
+    </block>    
+  </block>
+</view>

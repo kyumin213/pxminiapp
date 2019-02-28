@@ -1,0 +1,9 @@
+<view class="container bg-white">
+  <image src='https://image.prise.shop/images/2018/06/26/1530002616420377.jpg'></image>
+  <image src='https://image.prise.shop/images/2018/06/26/1530002625701227.jpg'></image>
+  <image src='https://image.prise.shop/images/2018/06/26/1530002628824491.jpg'></image>
+  <image src='https://image.prise.shop/images/2018/06/26/1530002632680588.jpg'></image>
+  <image src='https://image.prise.shop/images/2018/06/26/1530002641318367.jpg'></image>
+  <image src='https://image.prise.shop/images/2018/06/26/1530002645070241.jpg'></image>
+  <image src='https://image.prise.shop/images/2018/06/29/1530238356850284.jpg' class='large'></image>
+</view>

@@ -1,0 +1,17 @@
+<view class="container bg-white">
+  <view class='tab-bar'>
+     <scroll-view class="scroll-view_H" scroll-x style="width: 100%">
+        <block wx:for="{{categoryName}}" wx:key="{{index}}">
+          <view class='special-name {{currentNavtab==index ? "active" : ""}}' data-index="{{index}}" bindtap="swichNav">{{item.classifyName}}</view>
+        </block>
+     </scroll-view>
+     <view class='line'></view>
+  </view>
+  <view class='tab-content'>
+    <view class='gallery-box'>
+      <block wx:for="{{gallery}}" wx:key="{{index}}">
+        <image src='{{item.imageUrl}}' bindtap='confirmPicture' data-index='{{index}}'></image>      
+      </block>
+    </view>
+  </view>
+</view>

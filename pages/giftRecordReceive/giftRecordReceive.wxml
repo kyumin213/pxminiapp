@@ -1,0 +1,101 @@
+<view class="container p60">
+  <!-- <view class='line-top'></view> -->
+  <view class='status-box'>
+    <view class='status'>
+      <block wx:if="{{orderInfo.orders.status==3}}">已发货</block>
+      <block wx:if="{{orderInfo.orders.status==4}}">未发货</block>
+    </view>
+    <view class='status-tips'>{{statusTips[orderInfo.orders.status]}}</view>
+  </view>
+  <!-- <block wx:if="{{orderInfo.addressWay == 3 || orderInfo.addressWay == 4}}"> -->
+     <!-- <block wx:if="{{orderInfo.addressId != 'PX_5555555555555' && orderInfo.addressId != 'PX_6666666666666'}}"> -->
+      <block wx:if="{{orderInfo.addressFill == 1}}">
+        <view class='address-box'>
+          <view class='address-header'>
+            <view class='row-left bold'>收货地址</view>
+          </view>
+          <view class='address-user'>
+            <view class='row-left'>
+              <block wx:if="{{orderInfo.orders.receiverName}}">
+                {{orderInfo.orders.receiverName}}
+              </block>
+              <block wx:else>
+                {{username}}
+              </block>            
+            </view>
+            <view class='row-right'>
+              <block wx:if="{{orderInfo.orders.receiverPhone}}">
+                {{orderInfo.orders.receiverPhone}}
+              </block>
+              <block wx:else>
+                {{userphone}}
+              </block>       
+            </view>
+          </view>
+          <view class='address-info'>
+            <block wx:if="{{orderInfo.orders.receiverLocation}}">
+              {{orderInfo.orders.receiverLocation}}
+            </block>
+            <block wx:else>
+              {{addressDetail}}
+            </block>
+          </view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class='add-address' bindtap='gotoAddAddress'>
+          <view class='address-left'>
+            <image src='../../images/position.png' class='position-icon'></image>
+            <text>添加收货地址</text>
+          </view>
+          <image class='gogo' src='../../images/index_know_go.png'></image>
+        </view>
+      </block>
+      <!-- </block> -->
+  <!-- </block> -->
+  
+  <!--礼物列表  -->
+  <block wx:for="{{itemList}}" wx:key="{{index}}">
+    <view class='item-list'>
+      <image src='{{item.productPicture}}'></image>
+      <view class='item-right'>
+        <view class='item-row'>
+          <view class='item-title item-left'>{{item.productTitle}}</view>
+          <!-- <view class='price'>¥{{item.productPrice}}</view> -->
+        </view>
+        <view class='item-row'>
+          <view class='item-props item-left'>{{item.productParamText.propName}}</view>
+          <view class='num'>x{{item.num}}</view>
+        </view>
+      </view>
+    </view>
+    <view class='line100'></view>
+  </block>
+  <!--送礼人信息  -->
+  <view class='send-userinfo'>
+    <image src='{{userMaker.picture}}'></image>
+    <view class='user-right'>
+      <view class='username'>{{userMaker.nickname}}</view>
+      <view class='times'>{{userMaker.created}} 送出</view>
+    </view> 
+  </view>
+  <!--订单信息列表  -->
+  <view class='order-info order-join'>
+    <view class='info-item'>
+      <view class='fl'>订单编号</view>
+      <view class='fr'>{{orderInfo.orders.id}}</view>
+    </view>
+    <view class='info-item'>
+      <view class='fl'>参与时间</view>
+      <view class='fr'>{{orderInfo.partakeTime}}</view>
+    </view>
+  </view>
+  
+  <!-- <view class='check-card' bindtap='gotoCardReceivers' data-id="{{orderInfo.orderId}}">查看礼物卡</view> -->
+  <view class='btn-box {{iphonex?"bottom60":""}}'>
+    <view class='send-btn fr black-btn' bindtap='gotoCardReceivers' data-id="{{orderInfo.orders.id}}">查看礼物卡  </view>
+  </view>
+  <block wx:if="{{iphonex}}">
+    <view class='iphonexspace'></view>
+  </block> 
+</view>

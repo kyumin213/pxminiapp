@@ -1,0 +1,202 @@
+<view class="container p88">
+  <view class='tab-bar'>
+    <block wx:for="{{navName}}" wx:key="{{index}}">
+      <view class='special-name {{currentNavtab==index ? "active" : ""}}' data-index="{{index}}" bindtap="swichNav">{{item.title}}</view>
+    </block>
+  </view>
+  <view class='line'></view>
+  <view class='tab-content'>
+    <!--送出的  -->
+    <block wx:if="{{currentNavtab==0}}">
+      <block wx:if="{{recordList.length>0}}">
+        <block wx:for="{{recordList}}" wx:key="{{index}}">
+            <view class='record-list' bindtap='gotoRecordDetails' data-index="{{index}}">
+              <view class='item-header'>
+                <view class='order-number fl'>
+                  <view>
+                    {{playMethod[item.addressWay]}}
+                  </view>
+                  订单编号：{{item.orderId}}
+                </view>
+                <view class='order-status fr'>
+                  <block wx:if="{{item.giftStatus == 0}}">等待开奖</block>
+                  <block wx:if="{{item.giftStatus == 1}}">已完成</block>
+                  <block wx:if="{{item.giftStatus == 6}}">已退款</block>
+                </view>
+              </view>
+              <view class='line100'></view>
+              <view class='item-content'>
+                <block wx:for="{{item.itemVoList}}" wx:key="{{index}}">
+                  <view class='item'>
+                    <image src='{{item.productPicture}}'></image>
+                    <view class='item-right'>
+                      <view class='right-top'>
+                        <view class='productTitle'>{{item.productTitle}}</view>
+                        <view class='productPrice'>{{item.productPrice}}</view>
+                      </view>
+                      <view class='right-bottom'>
+                        <view class='productSellpoint'>{{item.productParamText.propName}}</view>
+                        <view class='buynumbers'>x {{item.num}}</view>
+                      </view>
+                    </view>
+                  </view>
+                </block> 
+              </view>
+              <!-- <view class='line100'></view>          -->
+              <view class='item-footer'>共{{item.ordersItemNum}}件商品 合计：<text>￥{{item.ordersPrice}}</text></view>
+              <!--进行中可以显示按钮  -->
+              <view class='line100'></view>
+              <block wx:if="{{item.giftStatus == 0}}">
+                <view class='item-btn'>
+                  <block wx:if="{{item.addressWay == 1}}">
+                    <view class='send-btn fr' catchtap='gotoSendCard' data-id="{{item.orderId}}">送出礼物卡</view>
+                    <view class='send-btn fr black' catchtap='gotoSelsect' data-id="{{item.orderId}}">选择收礼人</view>
+                  </block>
+                  <block wx:if="{{item.addressWay == 2}}">
+                    <view class='send-btn fr' catchtap='gotoSendCardBox' data-id="{{item.orderId}}">送出礼物卡</view>
+                  </block>
+                  <block wx:if="{{item.addressWay == 3}}">
+                    <view class='send-btn fr' catchtap='gotoSendCardPintu' data-id="{{item.orderId}}">送出礼物卡</view>
+                  </block>
+                  <block wx:if="{{item.addressWay == 4}}">
+                    <view class='send-btn fr' catchtap='gotoSendCardAnswer' data-id="{{item.orderId}}">送出礼物卡</view>
+                  </block>
+                  <block wx:if="{{item.addressWay == 8}}">
+                    <view class='send-btn fr' catchtap='gotoSendCardGroup' data-id="{{item.orderId}}">送出礼物卡</view>
+                  </block>
+                </view>  
+              </block>
+              <block wx:if="{{item.giftStatus == 1 || item.giftStatus == 6}}">
+                <view class='item-btn'>
+                  <view class='send-btn fr' catchtap='gotoGift' >再送一次</view>
+                </view>
+              </block>       
+            </view>
+        </block>
+      </block>
+      <view class='empty-order' wx:else>
+        <image src='https://image.prise.shop/images/2018/07/25/1532520772105459.png'></image>
+        <text>暂无订单</text>
+      </view>
+    </block>
+    <!--收到的  -->
+    <block wx:if="{{currentNavtab==1}}">
+      <block wx:if="{{recordListReceived.length>0}}">
+        <block wx:for="{{recordListReceived}}" wx:key="{{index}}">
+            <view class='record-list' bindtap='gotoRecordReceived'  data-index="{{index}}">
+              <view class='item-header'>
+                <view class='order-number fl'>
+                  <view>
+                    {{playMethod[item.addressWay]}}
+                  </view>
+                  订单编号：{{item.orderId}}
+                </view>
+                <view class='order-status fr'>
+                  {{status[item.giftStatus]}}
+                </view>
+              </view>
+              <view class='line100'></view>
+              <view class='item-content'>
+                <block wx:for="{{item.itemVoList}}" wx:key="{{index}}">
+                  <view class='item'>
+                    <image src='{{item.productPicture}}'></image>
+                    <view class='item-right'>
+                      <view class='right-top'>
+                        <view class='productTitle'>{{item.productTitle}}</view>
+                        <view class='productPrice'>{{item.productPrice}}</view>
+                      </view>
+                      <view class='right-bottom'>
+                        <view class='productSellpoint'>{{item.productParamText.propName}}</view>
+                        <view class='buynumbers'>x {{item.num}}</view>
+                      </view>
+                    </view>
+                  </view>
+                </block> 
+              </view>
+              <view class='item-footer'>共{{item.ordersItemNum}}件商品</view> 
+                <block wx:if="{{item.giftStatus == 4 && item.addressId == 'PX_5555555555555' && item.addressWay == 3}}">
+                  <view class='line100'></view>
+                  <view class='item-btn'>
+                    <view class='send-btn fr' catchtap='gotoAddAddress' data-orderId='{{item.orderId}}'>填写地址</view>
+                  </view>
+                </block>
+                <block wx:if="{{item.giftStatus == 4 && item.addressId == 'PX_5555555555555' && item.addressWay == 4}}">
+                  <view class='line100'></view>
+                  <view class='item-btn'>
+                    <view class='send-btn fr' catchtap='gotoAddAddressAnswer' data-orderId='{{item.orderId}}'>填写地址</view>
+                  </view>
+                </block>
+              </view>
+        </block>
+      </block>
+      <view class='empty-order' wx:else>
+        <image src='https://image.prise.shop/images/2018/07/25/1532520772105459.png'></image>
+        <text>暂无订单</text>
+      </view>
+    </block>
+    <!--参与的  -->
+    <block wx:if="{{currentNavtab==2}}">
+      <block wx:if="{{recordListJoin.length>0}}">
+        <block wx:for="{{recordListJoin}}" wx:key="{{index}}">
+            <view class='record-list' bindtap='gotoRecordJoin' data-index="{{index}}">
+              <view class='item-header'>
+                <view class='order-number fl'>
+                  <view>
+                    {{playMethod[item.addressWay]}}
+                  </view>
+                  订单编号：{{item.orderId}}
+                </view>
+                <view class='order-status fr'>
+                  <block wx:if="{{item.giftStatus == 2}}">
+                    <image src='https://image.prise.shop/images/2018/07/25/1532517847566031.png'></image>
+                  </block>
+                  <block wx:else>
+                    {{status[item.giftStatus]}}
+                  </block>
+                </view>
+              </view>
+              <view class='line100'></view>
+              <view class='item-content'>
+                <block wx:for="{{item.itemVoList}}" wx:key="{{index}}">
+                  <view class='item'>
+                    <image src='{{item.productPicture}}'></image>
+                    <view class='item-right'>
+                      <view class='right-top'>
+                        <view class='productTitle'>{{item.productTitle}}</view>
+                        <view class='productPrice'>{{item.productPrice}}</view>
+                      </view>
+                      <view class='right-bottom'>
+                        <view class='productSellpoint'>{{item.productParamText.propName}}</view>
+                        <view class='buynumbers'>x {{item.num}}</view>
+                      </view>
+                    </view>
+                  </view>
+                </block> 
+              </view>     
+              <view class='item-footer'>共{{item.ordersItemNum}}件商品</view>
+              <block wx:if="{{item.giftStatus == 0&&item.addressWay!=8}}">
+                <view class='item-btn'>
+                  <block wx:if="{{item.addressWay == 1}}">
+                    <view class='send-btn fr black' catchtap='gotoQiaoQiao' data-id="{{item.orderId}}">查看礼物卡</view>
+                  </block>
+                  <block wx:if="{{item.addressWay == 2}}">
+                    <view class='send-btn fr black' catchtap='gotoBox' data-id="{{item.orderId}}">查看礼物卡</view>
+                  </block>
+                  <block wx:if="{{item.addressWay == 3}}">
+                    <view class='send-btn fr black' catchtap='gotoPintu' data-id="{{item.orderId}}">查看礼物卡</view>
+                  </block>
+                  <block wx:if="{{item.addressWay == 4}}">
+                    <view class='send-btn fr black' catchtap='gotoAnswer' data-id="{{item.orderId}}">查看礼物卡</view>
+                  </block>
+                </view>
+              </block>
+            </view>
+        </block>
+      </block>
+      <view class='empty-order' wx:else>
+        <image src='https://image.prise.shop/images/2018/07/25/1532520772105459.png'></image>
+        <text>暂无订单</text>
+      </view>
+    </block>
+  </view>
+</view>

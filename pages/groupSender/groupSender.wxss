@@ -1,0 +1,382 @@
+@import '../giftCardGroup/giftCardGroup.wxss';
+.total-price {
+  height: 30rpx;
+  margin: 40rpx 40rpx 40rpx 48rpx;
+}
+.total-price .fr {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.personal-price {
+  text-align: center;
+  margin-bottom: 60rpx;
+}
+.big-price {
+  font-size: 60rpx;
+  font-weight: bold;
+}
+.btn-group {
+  width: 630rpx;
+  height: 92rpx;
+  margin: 0 auto;
+}
+.btn-invite {
+  height: 92rpx;
+  width: 294rpx;
+  background: url(https://image.prise.shop/images/2018/08/06/1533542646684422.png) no-repeat;
+  background-size: contain;
+  text-align: center;
+  line-height: 92rpx;
+  color: RGBA(250, 70, 112, 1);
+  font-weight: bold;
+  font-size: 32rpx;
+}
+.btn-invite::after {
+  border: none;
+  box-shadow: none;
+}
+.btn-join {
+  background: url(https://image.prise.shop/images/2018/08/06/1533542650522030.png) no-repeat;
+  height: 92rpx;
+  width: 294rpx;
+  background-size: contain;
+  text-align: center;
+  line-height: 92rpx;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.btn-join image {
+  width: 30rpx;
+  height: 30rpx;
+}
+/* 送礼人 */
+.sender-list {
+  width: 686rpx;
+  min-height: 400rpx;
+  border-radius: 12rpx;
+  background: #fff;
+  margin: 32rpx auto;
+  padding: 30rpx 0;
+  /* box-sizing: border-box; */
+}
+.sender-title {
+  background: url(https://image.prise.shop/images/2018/08/06/1533543799934865.png) no-repeat;
+  width: 280rpx;
+  height: 80rpx;
+  background-size: contain;
+  margin: 0 auto;
+}
+.title-tip {
+  text-align: center;
+  margin: 40rpx auto 50rpx;
+}
+.title-tip text {
+  color: #F7456F;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+.sender {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 520rpx;
+  margin: 0 auto;
+}
+.item {
+  width: 100rpx;
+  position: relative;
+  text-align: center;
+  margin: 0 40rpx 40rpx 0;
+}
+.item:nth-child(4n) {
+  margin-right: 0;
+}
+.pic-bg {
+  width: 100rpx;
+  height: 100rpx;
+  background: #FF83A0;
+  border-radius: 50%;
+  padding-top: 4rpx;
+  box-sizing: border-box;
+  margin-bottom: 20rpx;
+}
+.item image {
+  width: 92rpx;
+  height: 92rpx;
+  display: block;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+.empty-pic {
+  width: 100rpx;
+  height: 100rpx;
+}
+.tag {
+  position: absolute;
+  width: 100rpx;
+  height: 36rpx;
+  border-radius: 18rpx;
+  background: #6AC475;
+  color: #fff;
+  text-align: center;
+  line-break: 36rpx;
+  top: 76rpx;
+  font-size: 22rpx;
+}
+.nickname {
+  font-size: 22rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+/* 祝福墙 */
+.blessing-wall {
+  width: 686rpx;
+  min-height:200rpx;
+  background: #fff;
+  border-radius: 12rpx;
+  margin: 0 auto; 
+  padding: 30rpx 0 48rpx;
+  position: relative;
+}
+.blessing-title {
+  width: 280rpx;
+  height: 80rpx;
+  background: url(https://image.prise.shop/images/2018/08/06/1533548831701145.png) no-repeat;
+  background-size: contain;
+  margin: 0 auto 40rpx;
+}
+.blessing-wall::before {
+  content: '';
+  position: absolute;
+  background: url(https://image.prise.shop/images/2018/08/06/1533546175331464.png) no-repeat;
+  background-size: contain;
+  left: -32rpx;
+  top: -32rpx;
+  width: 120rpx;
+  height: 134rpx;
+}
+.blessing-wall::after {
+  background: url(https://image.prise.shop/images/2018/08/06/1533546305501488.png) no-repeat;
+  content: '';
+  position: absolute;
+  background-size: contain;
+  right: -32rpx;
+  top: 160rpx;
+  width: 88rpx;
+  height: 144rpx;
+}
+.blessing-item {
+  display: flex;
+  align-items: center;
+  padding: 0 28rpx 0 16rpx;
+  margin-bottom: 40rpx;
+}
+.pic-bg-bless {
+  width: 80rpx;
+  height: 80rpx;
+  background: #FF83A0;
+  border-radius: 50%;
+  padding-top: 4rpx;
+  box-sizing: border-box;
+  text-align: center;
+  margin-right: 10rpx;
+  align-self: flex-start;
+}
+.pic-bg-bless image {
+  width: 72rpx;
+  height: 72rpx;
+  display: block;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+.bless-right {
+  width: 552rpx;
+  padding-top: 4rpx;
+}
+.bless-nickname {
+  font-size: 24rpx;
+  margin-bottom: 10rpx;
+}
+.bless-time {
+  color: #999;
+  font-size: 20rpx;
+  margin-bottom: 20rpx;
+}
+.bless-messages {
+  width: 500rpx;
+  padding: 18rpx 16rpx 22rpx;
+  background: RGBA(255, 131, 160, 0.06);
+  border-radius: 6rpx;
+  box-sizing: border-box;
+}
+.leave-message {
+  width: 400rpx;
+  height: 120rpx;
+  margin: 0 auto;
+  display: block;
+}
+.mask40 {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  left: 0;
+  top: 0;
+}
+.pop-dialog {
+  width: 100%;
+  height: 200rpx;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: #eee;
+  padding-top: 20rpx;
+  box-sizing: border-box;
+}
+.pop-dialog textarea {
+  width: 90%;
+  height: 160rpx;
+  margin: 0 auto;
+  background: #fff;
+  border: 1rpx solid #ccc;
+}
+.empty-msg {
+  color: #999999;
+  font-weight: 30rpx;
+  text-align: center;
+  margin-bottom: 70rpx;
+}
+/*actionsheetDialog  */
+.actionsheetDialog {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 9;
+}
+.mask {
+  background: rgba(0,0,0,0.4);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+.line100 {
+  width: 100%;
+  height: 1rpx;
+  background: #eee;
+  transform: scaleY(0.5);
+}
+.btn-groups {
+  position: absolute;
+  bottom: 0;
+  height: 282rpx;
+  width: 100%;
+  background: #efeff4;
+}
+.btn-groups .abtn {
+  width: 100%;
+  height: 90rpx;
+  border-radius: 0;
+  border: none;
+  background: #fff;
+}
+.btn-groups .abtn::after {
+  border-radius: 0;
+  border: none;
+}
+.cancel{
+  margin-top: 12rpx;
+}
+.canvas-box {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 70%;
+  background: rgba(0,0,0,0.2);
+  z-index: -1;
+}
+.canvas-box canvas {
+  z-index: -1;
+  position: relative;
+}
+
+.pop-box {
+  height: 796rpx;
+  width: 670rpx;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.talk-box {
+  width: 670rpx;
+  height: 676rpx;
+  border-radius: 20rpx;
+  background: #fff;
+  padding: 48rpx 40rpx 0;
+  box-sizing: border-box;
+  margin-bottom: 80rpx;
+}
+
+.talk-title {
+  color: #FA4670;
+  font-size: 40rpx;
+  font-weight: bold;
+  margin-bottom: 48rpx;
+  text-align: center;
+}
+
+.talk-box textarea {
+  width: 590rpx;
+  height: 320rpx;
+  background: #f7f8f9;
+  border-radius: 12rpx;
+  margin-bottom: 50rpx;
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+
+.btn-confirm image, .btn-confirm {
+  width: 504rpx;
+  height: 88rpx;
+  margin: 0 auto;
+}
+.closeBtn {
+  width: 48rpx;
+  height: 48rpx;
+  margin: 0 auto;
+  display: block;
+}
+.fx-zx-button::after {
+  border:0;
+}
+.fx-zx-button {
+  display: block;
+  padding-left: 3px;
+  padding-right: 3px;
+  background-color: rgba(255,255,255,0);
+  width: 520rpx;
+  height: 88rpx;
+  color: #fff;
+  background: url(https://image.prise.shop/images/2018/08/06/1533540536555979.png) no-repeat;
+  background-size: contain;
+  text-align: center;
+  line-height: 88rpx;
+}
+.message-scroll {
+  max-height: 2000rpx;
+}
+.number {
+  right: 0;
+  bottom: 0;
+  left: auto;
+}

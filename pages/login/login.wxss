@@ -1,0 +1,81 @@
+/* pages/login/login.wxss */
+.wxlogin {
+  width: 630rpx;
+  height: 88rpx;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.bg-white {
+  background: #fff;
+}
+.loginBox {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ overflow: hidden;
+ background: #fff;
+}
+.logo{
+  width: 120rpx;
+  height: 120rpx;
+  margin: 140rpx 0 28rpx 0;
+}
+.logo-text {
+  color: #000;
+  font-size: 36rpx;
+  margin-bottom: 80rpx;
+}
+.wxlogo {
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 8rpx;
+  font-weight: bold;
+}
+.mask40 {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+.modal-dialog {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 600rpx;
+  height: 300rpx;
+  background: #fff;
+  border-radius: 8rpx;
+ }
+ .modal-title {
+   text-align: center;
+   padding-top: 20rpx;
+   font-size: 36rpx;
+   /* font-weight: bold; */
+ }
+ .modal-content {
+   height: 160rpx;
+   line-height: 160rpx;
+   text-align: center;
+   font-size: 30rpx;
+ }
+ .comfirm-btn {
+   width: 100%;
+   height: 88rpx;
+   line-height: 88rpx;
+   position: absolute;
+   bottom: 0;
+   text-align: center;
+   color: rgb(33,185,33);
+   background: #fff;
+   border-top: 1rpx solid #eee;
+   border-radius: 0 0 8rpx 8rpx;
+ }
+ .comfirm-btn::after{
+   box-shadow: none;
+   border: 0;
+ }

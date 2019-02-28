@@ -1,0 +1,12 @@
+.container image {
+  width: 600rpx;
+  height: 600rpx;
+  margin-bottom: 40rpx;
+}
+.container .large {
+  width: 600rpx;
+  height: 881rpx;
+}
+.container {
+  text-align: center;
+}

@@ -1,0 +1,18 @@
+@import '../treeGameHelp/treeGameHelp.wxss';
+.pop-help {
+  background: url(https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181129034550079734580.png) no-repeat;
+  background-size: contain;
+  height: 518rpx;
+  top: 220rpx;
+  padding-top: 250rpx;
+}
+.btn-wishing {
+  width: 220rpx;
+}
+.pop-title {
+  width: 520rpx;
+  margin: 0 auto 18rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

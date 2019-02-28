@@ -1,0 +1,13 @@
+<view class="container bg-white">
+  <view class='line-top'></view>
+  <view class='result-box'>
+     <image src='../../images/gift_success.png' class='gift_success'></image>
+     <view class='result'>恭喜你！礼物已成功送出！</view>
+     <view class='result-tips'>小派将马上为你准备礼物</view>
+     <view class='btn-group'>
+       <view class='gotoshopping fl' bindtap='gotoIndex'>逛逛派喜</view>
+       <view class='checkOrder fr' bindtap='gotoRecord'>查看订单</view>
+     </view>
+  </view>
+  
+</view>

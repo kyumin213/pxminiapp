@@ -1,0 +1,34 @@
+<view class="container bg-white">
+  <view class='wallet-bg {{iphonex?"wallet-bg-x":""}}'>
+    <view class='bg-down'></view>
+    <view class='bg-up'></view>
+    <view class='content {{iphonex?"content-x":""}}'>
+       <view class='total-accouts'>
+          <view> 总余额（元）</view>
+          <text>{{accounts.amount}}</text>
+        </view>
+        <view class='accouts-info {{iphonex?"accouts-info-x":""}}'>
+          <view class='item-left'>
+            <text>{{accounts.money}}</text>
+            <view>兑换金额（元）</view>
+          </view>
+          <view class='item-middle'></view>
+          <view class='item-right'>
+            <text>{{accounts.redMoney}}</text>
+            <view>红包金额（元）</view>
+          </view>
+        </view>
+        <view class='accouts-detail' bindtap='gotoDetails'>
+          <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181227105740417361756.png'></image>
+          <text>明细</text>
+        </view>
+    </view>    
+  </view>
+  <view class='exchange {{iphonex?"exchange-x":""}}' bindtap='bindClickExchange'>兑换</view>
+  <view class='exchange btn-getcash' bindtap='getCash'>提现</view>
+  <view class='index' bindtap='gotoIndex'>逛逛派喜</view>
+  <button  open-type='contact'  class='contact'>
+    <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181228111254690109573.png'></image>
+    联系客服
+  </button>
+</view>

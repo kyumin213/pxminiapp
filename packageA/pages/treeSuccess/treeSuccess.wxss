@@ -1,0 +1,45 @@
+.gou {
+  width: 120rpx;
+  height: 120rpx;
+  display: block;
+  margin: 180rpx auto 60rpx;
+}
+.status {
+  text-align: center;
+  font-weight: bold;
+  font-size: 54rpx;
+  margin-bottom: 32rpx;
+}
+.tips {
+  width: 450rpx;
+  color: #CCCCCC; 
+  font-size: 30rpx;
+  margin: 0 auto 100rpx;
+  text-align: center;
+}
+.btnGroup {
+  margin:0 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.backBtn {
+  width: 280rpx;
+  height: 92rpx;
+  border: 2rpx solid #F72F2B;
+  border-radius: 50rpx;
+  font-size: 32rpx;
+  color: #F72F2B;
+  text-align: center;
+  line-height: 92rpx;
+}
+.redBtn {
+  width: 280rpx;
+  height: 92rpx;
+  background: #F72F2B;
+  color: #fff;
+  font-size: 32rpx; 
+  border-radius: 50rpx;  
+  text-align: center;
+  line-height: 92rpx; 
+}

@@ -1,0 +1,610 @@
+<view class='container {{bgMode}}' wx:if="{{isLoading}}">
+  <!-- 进度条 -->  
+  <view class='progress'>
+    <!-- 圆环进度 -->
+    <view class='promise-pic {{growthStage == 4?"promise-pic-yellow":""}} {{growthStage == 5 || growthStage == 6?"promise-pic-orange":""}}'><image src='{{giftPictureCover}}' bindtap='checkMyPromise'></image></view>
+    <!-- 长条进度 -->
+    <view class='bg-progress {{growthStage == 4?"bg-progress-yellow":""}} {{growthStage == 5 || growthStage == 6?"bg-progress-orange":""}}'>
+      <text>{{ sessionName[growthStage] }}</text>
+      <view class='water {{step2 && (isNew == true || isNew == "true")?"guidewater":""}} {{isWatering ? "water-scale" : ""}} {{growthStage == 4?"water-yellow":""}} {{growthStage == 5 || growthStage == 6?"water-orange":""}}'>{{radicesValue}}x</view>
+      <view class='progress-bar {{growthStage == 4?"progress-bar-yellow":""}} {{growthStage == 5 || growthStage == 6?"progress-bar-orange":""}}'>
+        <view class='progress-value {{growthStage == 4?"progress-value-yellow":""}} {{growthStage == 5 || growthStage == 6?"progress-value-orange":""}}' style='width:{{progressBarWidth}}'></view>
+        <view class='numbers'><text class='valtxt {{showEnergy?"animationValue":""}}'>{{growthValue}}</text><text>/{{matureValue}}</text></view>
+      </view>
+    </view>
+  </view>
+  <!-- 放假通知 -->
+  <!-- <block wx:if="{{taskShow}}">
+    <view class='notice'>
+      <view class='notice-wrap'>
+        <view class='notice-txt'>
+        春节放假期间，快递暂停服务，礼品将在2月11日后陆续安排发货。小派在这里给大家拜年啦：预祝大家猪年梦想成真！
+        </view>
+      </view>
+    </view>
+  </block>   -->
+  <!-- 惊喜红包 -->
+  <block wx:if="{{showRedEnvelopes}}">
+    <view class='surprise-bg' bindtap='bindClickSurprise'>
+      <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20190118053501757357155.png'></image>
+      <view>快点它</view>
+    </view>
+  </block>  
+  <!-- 攻略 好友 icon-->
+  <view class='welfare {{iphonex?"welfare-x":""}}' bindtap='gotoWelfare'>
+    <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20190104034718793656473.png'></image>
+    <text>福利</text>
+  </view>
+  <view class='guidebg {{iphonex?"guidebg-x":""}}' wx:if="{{step3 && (isNew == true || isNew == 'true')}}"></view>   
+  <view class='strategy {{step3 && (isNew == true || isNew == "true")?"guideon-zindex":""}} {{iphonex?"strategy-x":""}}' bindtap='gotoStrategy'>
+    <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181115023948701597059.png'></image>
+    <text>攻略</text>
+  </view>   
+  <view class='friends {{iphonex?"friends-x":""}}' bindtap='toggleFriendsDialog'>
+    <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181115023958643867400.png'></image>
+    <text>好友</text>
+  </view>
+  <view class='rank {{iphonex?"rank-x":""}}' bindtap='toggleRankDialog'>
+    <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181218060452773940719.png'></image>
+    <text>排行</text>
+  </view>
+  <!-- 道具 -->
+  <view class='tools {{iphonex?"tools-x":""}}' bindtap='bindClickTool'>
+    我的道具
+    <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20190104034718894190460.png'></image>
+  </view>
+  <!-- 道具弹框 -->
+  <block wx:if="{{showToolsInfo}}">
+    <view class='masktool' bindtap='closeTimeTool'></view>
+    <view class='time-tool-list'>
+      <view class='time-tool {{iphonex?"time-tool-x":""}}' wx:for="{{tools}}" wx:key="{{index}}" >
+        <block wx:if="{{!item.showUseInfo}}">
+          <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20190104044548685416885.png' bindtap='showToolInfo' data-index='{{index}}' wx:if='{{item.toolTitle == "时间静止卡"}}'></image>
+          <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20190213044157739239480.png' bindtap='showToolInfo' data-index='{{index}}' wx:if='{{item.toolTitle != "时间静止卡"}}'></image>
+        </block>
+        <block wx:else>
+          <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20190104044548765721752.png' class='bigimg' bindtap='hideToolInfo' data-index='{{index}}' wx:if='{{item.toolTitle == "时间静止卡"}}'></image>
+          <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20190213044157767967406.png' class='bigimg' bindtap='hideToolInfo' data-index='{{index}}' wx:if='{{item.toolTitle != "时间静止卡"}}'></image>
+        </block>
+        <text>{{ item.toolTitle }} x{{item.toolNum}}</text>
+      </view>
+    </view>
+    <view class='time-info {{iphonex?"time-info-x":""}}'>
+      <block wx:if="{{!showToolDescribe}}">
+        点击道具查看说明
+      </block>
+      <block wx:else>
+        <!-- 可查看原图5s且不消耗时间（在能量收集-拼图游戏中使用） -->
+        {{toolDescribe}}
+      </block>
+    </view>
+  </block>  
+  <!-- 浇水次数 -->
+  <view class='water-self {{iphonex?"water-self-x":""}}'>
+    <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181115025138766716971.png'></image>
+    <text>{{waterMyself}}</text>
+  </view>
+  <view class='water-other {{iphonex?"water-other-x":""}}'>
+    <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181115025144371538377.png'></image>
+    <text>{{waterFriends}}</text>
+  </view>
+  <!-- 好友列表 -->
+  <block wx:if="{{showFriendList&&isLoadingFriends}}">
+    <view class='mask' bindtap='toggleFriendsDialog' catchtouchmove='true'></view>
+    <view class='friends-fix'  catchtouchmove='true'>
+      <view class='title'>我的好友</view>
+      <view class='f-tips'>
+        <view class='tips-left'>你可以选择您想要浇水的好友喔~</view>
+        <view class='tips-right'>今日还可浇{{waterFriends}}次</view>
+      </view>
+      <block wx:if="{{treeFriendList.length > 0}}">
+        <scroll-view scroll-y class='scroll-friends' bindscrolltolower="lower">
+          <view class='friends-list'>
+            <block wx:for="{{treeFriendList}}" wx:key="{{index}}"> 
+              <view class='friends-item' bindtap='judgeIsHasTree' data-index='{{index}}'>
+                <image src='{{item.picture}}'></image>
+                <text>{{item.awayNow}}为我浇过水</text>
+                <view class='nickname'>{{item.nickname}}</view>
+              </view>
+            </block>   
+          </view>         
+        </scroll-view>
+      </block>
+      <block wx:else>
+        <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181115044601152504574.png' class='nonefriends'></image>
+        <view class='none-tips'>您还没有好友喔，邀请好友一起来许愿池愿望会实现得更快喔~</view>
+        <button class='invite-friends' open-type='share' id='shareWatering'>邀请好友</button> 
+      </block>      
+    </view>
+  </block>  
+  <!-- 底部导航 -->
+  <block wx:if="{{showBottomMenu}}">
+    <view class='bottom-menu'>
+      <view class='personal' bindtap='gotoPersonal'>
+        <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181115031419683748775.png'></image>
+        <text>个人中心</text>
+      </view>
+      
+      <view class='energy {{step1 && (isNew == true || isNew == "true")?"guideOn":""}}' bindtap='showGamePanel'>
+        <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181115031422541608054.png'></image>
+        <text>能量收集</text>      
+      </view>
+      <block wx:if="{{gatherValue > 0  && (isNew == false || isNew == 'false')}}">
+        <!-- 收取按钮 绿色-->
+        <block wx:if="{{!showEnergy}}">
+          <!-- <view class='energy get-energy {{growthStage == 4?"get-energy-yellow":""}}' bindtap='getEnergy'>+{{gatherValue}}</view> -->
+          <form report-submit='true' bindsubmit='getEnergy' class='form'>
+            <button formType="submit" class='energy get-energy {{growthStage == 4?"get-energy-yellow":""}}'>+{{gatherValue}}</button>     
+          </form>
+          <!-- wx:if="{{beforeReceive}}" -->      
+          <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181115055204562741952.png' class='gesture get-energy-hand'></image>
+        </block>
+          <!-- 上升水滴 -->
+          <block wx:if="{{growthStage == 4}}">
+            <!-- <view class='energy get-energy {{growthStage == 4?"get-energy-yellow":""}} {{showEnergy?"energyAnimation":""}}'  bindtap='getEnergy'>+{{gatherValue}}</view> -->
+            <form report-submit='true' bindsubmit='getEnergy' class='form'>
+              <button formType="submit" class='energy get-energy {{growthStage == 4?"get-energy-yellow":""}} {{showEnergy?"energyAnimation":""}}'>+{{gatherValue}}</button>     
+            </form>
+            <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181119061941715403693.png' class='upwater {{showEnergy?"w1":""}} {{showEnergy&&iphonex?"wx1":""}}'></image>        
+            <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181119061941715403693.png' class='upwater {{showEnergy?"w2":""}} {{showEnergy&&iphonex?"wx2":""}}'></image>
+          <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181119061941715403693.png' class='upwater {{showEnergy?"w3":""}} {{showEnergy&&iphonex?"wx3":""}}'></image>
+          </block>
+          <block wx:else>
+            <!-- <view class='energy get-energy {{growthStage == 4?"get-energy-yellow":""}} {{showEnergy?"energyAnimation":""}}'  bindtap='getEnergy'>+{{gatherValue}}</view> -->
+            <form report-submit='true' bindsubmit='getEnergy' class='form'>
+              <button formType="submit" class='energy get-energy {{growthStage == 4?"get-energy-yellow":""}} {{showEnergy?"energyAnimation":""}}' >+{{gatherValue}}</button>     
+            </form>
+            <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181116031959096584649.png' class='upwater {{showEnergy?"w1":""}}  {{showEnergy&&iphonex?"wx1":""}}'></image>
+            <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181116031959096584649.png' class='upwater {{showEnergy?"w2":""}}  {{showEnergy&&iphonex?"wx2":""}}'></image>
+          <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181116031959096584649.png' class='upwater {{showEnergy?"w3":""}}  {{showEnergy&&iphonex?"wx3":""}}'></image>
+          </block>      
+      </block>        
+      <view class='watering {{step2&& (isNew == true || isNew == "true")?"guideOn":""}}' bindtap='submitWatering'>
+        <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181115032024182605469.png'></image>
+        <text>浇水</text>      
+      </view>
+    </view>
+  </block>
+  <!-- 浇水动画 水壶 洒水水滴-->
+  <block wx:if="{{isWatering}}">
+    <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181119095800077619341.png' class='jug-animation {{iphonex?"jug-animation-x":""}}'></image>
+    <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181119095806168820849.png' class='water-drop {{iphonex?"water-drop-x":""}}'></image>
+    <block wx:if="{{wateringTimes != 0.0}}">
+      <view class='times-tip timesfirst'>
+        <block wx:if="{{growthStage == 4}}">
+          <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181119061326458145527.png'></image>        
+        </block>
+        <block wx:elif="{{growthStage == 5}}">
+          <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181119061338372274122.png'></image>
+        </block>
+        <block wx:else>
+          <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181119111136439785043.png'></image>
+        </block>
+        +{{wateringTimes}}倍
+      </view>
+      <view class='times-tip timessecond'>
+        <block wx:if="{{growthStage == 4}}">
+          <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181119061326458145527.png'></image>        
+        </block>
+        <block wx:elif="{{growthStage == 5}}">
+          <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181119061338372274122.png'></image>
+        </block>
+        <block wx:else>
+          <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181119111136439785043.png'></image>
+        </block>
+        +{{wateringTimes}}倍
+      </view>
+      <view class='times-tip timesthree'>
+        <block wx:if="{{growthStage == 4}}">
+          <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181119061326458145527.png'></image>        
+        </block>
+        <block wx:elif="{{growthStage == 5}}">
+          <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181119061338372274122.png'></image>
+        </block>
+        <block wx:else>
+          <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181119111136439785043.png'></image>
+        </block>
+        +{{wateringTimes}}倍
+      </view>
+    </block>       
+    <view class='success-tips a-water-tips'>
+      <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181116052859283116594.png'></image>你成功的浇了一次水！
+    </view>
+  </block>  
+  <!-- 能量收集成功 提示动画 -->
+  <view class='success-tips {{showEnergy?"a-tips":""}} {{newerTip?"":"w342"}}'>
+    <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181116052859283116594.png'></image>
+    <block wx:if="{{newerTip}}">
+      新手任务完成，成功获得{{addEnergyValue}}能量值！
+    </block>
+    <block wx:else>
+      成功获得{{addEnergyValue}}能量值！
+    </block>
+  </view>
+  <!-- 新手指引 -->
+  <block wx:if="{{isNew == true || isNew == 'true'}}">
+      <view class='mask'></view>
+      <view class='pop-girl {{iphonex ? "pop-girl-x" : ""}}'>
+        <view class='guide-title'>
+          <block wx:if="{{step1||step2}}">许愿树长成树苗啦!</block>
+          <block wx:else>
+            更多游戏规则
+          </block>
+        </view>
+        <view class='guide-desc {{step3?"tleft":""}}'>
+          <block wx:if="{{step1}}">许愿树需要能量才能成长喔~</block>
+          <block wx:if="{{step2}}">浇水可以加速能量值的倍数喔~</block>
+          <block wx:if="{{step3}}">您可以通过攻略来知晓更多的游戏规则喔~</block>
+        </view>
+        <block wx:if="{{step1||step2}}"><view class='btn-next' bindtap='gotoNext'>下一步</view></block>
+        <block wx:else><view class='btn-start' bindtap='closeGuide'>开启许愿树</view></block>
+      </view>
+  </block>  
+  <block wx:if='{{step1 && (isNew == true || isNew == "true")}}'>
+    <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181115063926863306853.png' class='gesture one'></image>
+  </block>
+  <block wx:if='{{step2 && (isNew == true || isNew == "true")}}'>
+    <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181115055204562741952.png' class='gesture two'></image>
+    <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181115055204562741952.png' class='gesture twotop'></image>
+  </block>  
+  <block wx:if='{{step3 && (isNew == true || isNew == "true")}}'>
+    <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181115055204562741952.png' class='gesture three {{iphonex?"three-x":""}}'></image>
+  </block>
+  <!-- 新手指引结束 -->
+  <!-- 弹框 -->
+   <!-- 点击愿望图片弹框 -->
+   <block wx:if="{{showPromise}}">
+     <view class='mask' catchtouchmove='true'></view>
+     <!-- <view class='bg-img-white'></view> -->
+     <image src='{{giftPictureCover}}' class='pop-promise-pic' catchtouchmove='true'></image>
+     <view class='pop-promise' catchtouchmove='true'>
+        <view class='pop-title'>我的愿望</view>
+        <view class='pop-desc'>您正在养成愿望{{giftTitle}}，快去浇水来让它茁壮成长吧！</view>
+        <view class='btn-wishing' bindtap='chooseSelect'>重新选择愿望</view>
+        <view class='btn-help' bindtap='chooseCancel'>知道啦</view>
+    </view>
+   </block>   
+   <block wx:if="{{selectAgain}}">
+     <view class='mask' catchtouchmove='true'></view>
+     <view class='pop-again' catchtouchmove='true'>
+        <view class='pop-title'>重新选择愿望</view>
+        <view class='pop-desc'>每天可重新选择一次愿望，重选后需要重新积累能量值喔~</view>
+        <view class='btn-wishing' bindtap='gotoWishing'>确认</view>
+        <view class='btn-help'  bindtap='closePopAgain'>取消</view>
+     </view>
+   </block>
+   <!-- 弹框4个时期 -->
+   <block wx:if="{{growthStage == 2 && isShowPop}}">
+    <view class='mask' bindtap='toggleTreePop'></view>
+    <view class='pop-box bg-happy {{iphonex?"pop-box-x":""}}'>
+      <view class='pop-title'>许愿树长成小树啦!</view>
+      <view class='pop-desc'>继续帮它浇水让它长成大树吧~</view>
+      <button class='pop-small-btn' bindtap='toggleTreePop'>知道啦</button>
+    </view>
+   </block>
+   <block wx:if="{{growthStage == 3 && isShowPop}}">
+    <view class='mask' bindtap='toggleTreePop'></view>
+    <view class='pop-box bg-happy {{iphonex?"pop-box-x":""}}'>
+      <view class='pop-title'>许愿树长成大树啦!</view>
+      <view class='pop-desc'>还差一点就可以开花了，加油~</view>
+      <button class='pop-small-btn' bindtap='toggleTreePop'>知道啦</button>
+    </view>
+   </block>
+   <block wx:if="{{growthStage == 4 && isShowPop}}">
+    <view class='mask' bindtap='toggleTreePop'></view>
+    <view class='pop-box bg-happy {{iphonex?"pop-box-x":""}}'>
+      <view class='pop-title'>许愿树成功开花!</view>
+      <view class='pop-desc'>你离实现愿望只差一步了，加油~</view>
+      <button class='pop-small-btn' bindtap='toggleTreePop'>知道啦</button>
+    </view>
+   </block>
+   <block wx:if="{{growthStage == 5 && isShowPop}}">
+    <view class='mask'></view>
+    <view class='pop-box bg-happy {{iphonex?"pop-box-x":""}}'>
+      <view class='pop-title'>恭喜!!许愿树结果喽</view>
+      <view class='pop-desc'>您成功实现了愿望，快来领取奖励吧~</view>
+      <button class='pop-small-btn' bindtap='toggleGainsPop'>收获果实</button>
+    </view>
+   </block>
+   <!-- 排行榜上榜弹框 -->
+   <block wx:if="{{rankReward}}">
+    <view class='mask'></view>
+    <view class='pop-box bg-rank {{iphonex?"bg-rank-x":""}}'>
+      <view class='pop-title'>恭喜您荣登榜单</view>
+      <view class='pop-desc'>通过自己的努力，您荣登本周能量排行榜{{rankOrdersName[rankOrders]}}，请注意领取奖励。奖励将在下次榜单更新时失效哦~</view>
+      <view class='btn-help' bindtap='checkLastRank'>查看排行</view>
+      <view class='btn-wishing' bindtap='bindClickGetReward'>领取奖励</view>
+    </view>
+   </block>    
+   <!-- 收货果实弹框 -->
+     <!-- 悬挂礼品 -->
+     <block wx:if="{{showGifts}}">
+       <view class='popGift {{iphonex?"popGift-x":""}}' bindtap='popAddressBox'>
+        <image src='{{giftPictureCover}}' class='gifts'></image>
+        <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181119040810611496114.png' class='hands'></image>
+       </view>
+     </block>
+     <block wx:if='{{showAddress && promiseType == 0}}'>
+        <view class='mask' bindtap='toggleGainbox'></view>
+        <view class='pop-box bg-gains {{iphonex?"pop-box-x":""}}'>
+          <view class='pop-title'>许愿树果实成熟啦</view>
+          <view class='pop-desc'>恭喜收获{{giftTitle}}!!!</view>
+          <view class='btn-line'></view>
+          <view class='btn-groups'>
+            <view class='btn left' bindtap='getGifts'>填写收货信息</view>
+            <view class='middle-line'></view>
+            <button class='btn btn-right' open-type='share' id='showFriend'>向好友炫耀</button>
+          </view>
+        </view>
+     </block>
+     <block wx:if='{{showAddress && promiseType == 1}}'>
+        <view class='mask' bindtap='toggleGainbox'></view>
+        <view class='pop-box bg-gains {{iphonex?"pop-box-x":""}}'>
+          <view class='pop-title'>许愿树果实成熟啦</view>
+          <view class='pop-desc'>恭喜收获{{giftTitle}}!!!</view>
+          <view class='btn-line'></view>
+          <view class='btn-groups'>
+            <view class='btn left' bindtap='bindReceiveMoney'>放入钱包</view>
+            <view class='middle-line'></view>
+            <button class='btn btn-right' open-type='share' id='showFriend'>向好友炫耀</button>
+          </view>
+        </view>
+     </block>    
+     <!-- 红包领取成功弹框 -->
+     <block wx:if='{{isGetMoneySuccess}}'>
+        <view class='mask'></view>
+        <view class='pop-help {{iphonex?"pop-help-x":""}}'>
+          <view class='pop-help-title'>领取红包成功</view>
+          <view class='pop-help-desc'>您的红包果实已成功放入您的钱包中，快去逛逛派喜使用它吧~</view>
+          <view class='btn-help' bindtap='goWishing'>重新许愿</view>
+          <view class='btn-wishing' bindtap='gotoWallent'>前往钱包</view>
+        </view>
+     </block>  
+   <!--果实掉落  -->
+   <block wx:if="{{growthStage == 6}}">
+      <view class='mask' catchtouchmove='true'></view>
+      <view class='pop-box bg-strive {{iphonex?"pop-box-x":""}}'  catchtouchmove='true'>
+          <view class='pop-title'>您的果实掉落了</view>
+          <view class='pop-desc'>您已超过48小时未采摘，果实已掉落，请重新许愿</view>
+          <button class='pop-small-btn' bindtap='gotoWishing'>重新许愿</button>
+      </view>
+   </block>  
+   <!--浇水次数用完  -->
+   <block wx:if="{{noWaterChance}}">
+      <view class='mask' catchtouchmove='true' bindtap='closeNoWaterChance'></view>
+      <view class='pop-box bg-strive {{iphonex?"pop-box-x":""}}'>
+          <view class='pop-title'>您的浇水次数已用完</view>
+          <view class='pop-desc'>每日浇水限制给自己2次，限制给好友浇4次喔~</view>
+          <button class='pop-big-btn' open-type='share' id='shareWatering'>邀请好友浇水</button>
+      </view>
+   </block>
+   <!--浇水次数用完 总共十次  -->
+   <block wx:if="{{noWaterChanceTotal}}">
+      <view class='mask' catchtouchmove='true' bindtap='closeNoWaterChance'></view>
+      <view class='pop-box bg-strive {{iphonex?"pop-box-x":""}}'>
+          <view class='pop-title'>许愿树浇水次数已满</view>
+          <view class='pop-desc'>许愿树每日浇水限制为10次喔</view>
+          <button class='pop-small-btn' bindtap='closeNoWaterChance'>好的</button>
+      </view>
+   </block>
+   <!-- 好友没有许愿树 -->
+   <block wx:if="{{noTree}}">
+      <view class='mask' catchtouchmove='true' bindtap='closeNoWaterChance'></view>
+      <view class='pop-box bg-strive {{iphonex?"pop-box-x":""}}'>
+          <view class='pop-title'>没有许愿树可浇</view>
+          <view class='pop-desc'>对方很懒，什么愿望都没许下，无法给他浇水喔。</view>
+          <button class='pop-small-btn' bindtap='closeNoWaterChance'>返回</button>
+      </view>
+   </block>
+   <!-- 拼图游戏 --> 
+   <block wx:if="{{isGameStart && firstGame}}">
+      <view class='mask80'></view>
+      <view class='gameIndex-pop'>
+        <view class='pop-title-pintu'>即将开始游戏!</view>
+        <view class='pop-desc-pintu'>您今日的挑战机会还剩{{chances}}次喔~</view>
+        <button class='btn-invite' bindtap='startChanllenge'>开始挑战</button>
+        <button class='btn-white' bindtap='gobackWishing'>返回许愿池</button>
+      </view>
+   </block>  
+   <block wx:if="{{isGameStart && !firstGame}}">
+      <view class='mask80'></view>
+      <view class='gameIndex-pop h700'>
+        <view class='pop-title-pintu'>即将开始游戏!</view>
+        <view class='pop-desc-pintu'>您今日的挑战机会还剩{{chances}}次喔~</view>
+        <button class='btn-invite' bindtap='goContinue'>继续挑战</button>
+        <button class='btn-white' style='margin-bottom: 38rpx;' bindtap='bindClickAgain'>重新闯关</button>
+        <button class='btn-white' bindtap='gobackWishing'>返回许愿池</button>
+      </view>
+   </block> 
+   <block wx:if="{{showConfirmBox}}">
+      <view class='mask80'></view>
+      <view class='gameIndex-pop'>
+        <view class='pop-title-pintu'>即将重新闯关</view>
+        <view class='pop-desc-pintu m60'>重新闯关将消耗本次机会，您今日的挑战机会还剩{{chances}}次。</view>
+        <button class='btn-invite' bindtap='goAfreshGame'>确认重新闯关</button>
+        <button class='btn-white' bindtap='goContinue'>继续当前关卡</button>
+      </view>
+   </block> 
+    <!--拼图弹框  -->
+      <block wx:if="{{isStarted}}">
+        <view class='mask80' catchtouchmove='true'></view>
+        <view class='pintu-dialog' catchtouchmove='true'>
+          <view class='time-box'>
+              <view class='timeline'>倒计时
+                <text class='minutes'>{{minutes}}</text> :
+                <text class='seconds'>{{seconds}}</text>
+              </view>
+              <view class='timeline'>
+                时间静止卡x{{toolNum}}
+              </view>
+          </view>          
+            <!--拼图开始  -->
+            <view class='pintu' style="background:url('{{jigsawPicture}}') no-repeat {{WIDTH}}px {{HEIGHT}}px">
+              <view style='height:{{HEIGHT}}px;width:{{WIDTH}}px;position:relative;margin:0 auto' bindtap='onTap'>
+                <view wx:for="{{imgPoints}}" wx:for-item="items" wx:key="content">
+                  <view class='tui-puzzle-li {{list.active?"active":""}}' wx:for="{{items}}" wx:for-item="list" wx:key="items" style="top:{{list.y * height}}px;left:{{list.x * width}}px;background:url('{{jigsawPicture}}') no-repeat  {{-(list.px * width)}}px {{-(list.py * height)}}px/{{WIDTH}}px {{HEIGHT}}px;width:{{width}}px;height:{{height}}px;">
+                  </view> 
+                </view>
+              </view>
+            </view>
+            <!--拼图结束  -->        
+            <view class='pintu-tips'>可任意点击两个图块交换位置！</view>
+            <view class='btn-group'>
+              <button class='btn-cancel' bindtap='stopGame'>放弃挑战</button>
+              <button class='btn-see' bindtap='checkDefaultImg'>-10s 查看原图</button>          
+            </view>
+            <view class='space'></view>
+          <!-- </scroll-view> -->
+        </view> 
+      </block>
+      <!--查看原图弹出框  -->
+      <block wx:if="{{isCheakDefault}}">
+        <view class='mask80' catchtouchmove='true'></view>
+        <view class='pintu-dialog' catchtouchmove='true'>
+          <view class='default-img'>
+            <view class='timeline'>倒计时 {{countDownTime}}</view>
+            <view class='pintuDefault'>
+              <image src='{{jigsawPicture}}'></image>
+            </view>
+          </view> 
+        </view> 
+      </block>
+      <!--挑战成功弹出框  -->
+      <block wx:if="{{showSuccess}}">
+        <view class='mask80' catchtouchmove='true'></view>
+        <view class='result-dialog' catchtouchmove='true'>
+            <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181121112347049744464.png' class='w70'></image>
+            <!-- {{mins}} -->
+            <view class='status-txt'>恭喜你！用时{{mm}}分{{ss}}秒完成拼图！</view>
+            <view class='status-spec'>您的许愿树成功增长了{{newEnergy}}点能量值喔~您还剩{{chances}}次挑战机会!</view>
+            <form report-submit='true' bindsubmit='goContinue'>
+              <button formType="submit" class='btn-invite'>继续挑战</button>     
+            </form>
+            <form report-submit='true' bindsubmit='gobackWishing'>
+              <button formType="submit" class='btn-white'>返回许愿池</button>     
+            </form> 
+        </view> 
+      </block>
+      <!--挑战失败弹框提示  -->
+      <block wx:if="{{showFail}}">
+        <view class='mask80' catchtouchmove='true' bindtap='closeTipDialog'></view>
+        <view class='result-dialog' catchtouchmove='true'>
+            <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181121112725392628569.png' class='w70'></image>
+            <view class='status-txt'>很遗憾！挑战失败</view>
+            <view class='status-spec'>因为您挑战失败，只增长了{{newEnergy}}点能量喔！</view>
+            <button class='btn-invite' bindtap='goContinue'>继续挑战</button>
+            <button class='btn-white' bindtap='gobackWishing'>返回许愿池</button> 
+        </view> 
+      </block>
+      <!--机会用完的弹框提示  -->
+      <block wx:if="{{noChance}}">
+        <view class='mask80' catchtouchmove='true' bindtap='closeTipDialog'></view>
+        <view class='result-dialog no-chance' catchtouchmove='true'>
+            <view class='status-txt fontbold'>很遗憾！挑战机会已用完</view>
+            <view class='status-spec'>免费挑战机会已用完，赶快分享好友获得新的挑战机会吧！</view>
+            <button class='btn-invite' open-type='share' id='shareHelp'>分享好友继续挑战</button>             
+            <button class='btn-white' bindtap='gobackWishing'>返回许愿池</button>
+        </view> 
+      </block>
+      <!-- 全部通关弹框 -->
+      <block wx:if="{{isPassAll}}">
+        <view class='mask80' catchtouchmove='true'></view>
+        <view class='result-dialog' catchtouchmove='true'>
+            <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181121112347049744464.png' class='w70'></image>
+            <!-- {{mins}} -->
+            <view class='status-txt'>恭喜你！用时{{mm}}分{{ss}}秒完成拼图！</view>
+            <block wx:if="{{chances > 0}}">
+              <view class='status-spec'>许愿树成功增长了{{newEnergy}}点能量值！本次机会的所有关卡已结束！继续挑战开启下一次机会！</view>           
+              <form report-submit='true' bindsubmit='goContinue'>
+                <button formType="submit" class='btn-invite'>继续挑战</button>     
+              </form> 
+            </block>
+            <block wx:else>
+              <view class='status-spec'>许愿树成功增长了{{newEnergy}}点能量值！本次机会的所有关卡已结束！今日你已用完3次机会。</view>      
+              <button formType="submit" class='btn-invite' open-type='share' id='shareHelp'>分享好友继续挑战</button>
+            </block>   
+            <form report-submit='true' bindsubmit='gobackWishing'>
+              <button formType="submit" class='btn-white'>返回许愿池</button>     
+            </form> 
+        </view> 
+      </block>
+      <!-- 福利弹框 -->
+      <block wx:if="{{taskShow}}">
+        <view class='mask'></view>
+        <view class='welfare-pop'>
+          <view class='welfare-pop-title'>新上福利</view>
+          <view class='welfare-pop-desc'>快来领取现金红包！</view>
+          <view class='welfare-pop-btn' bindtap='gotoWelfarePop'>点击查看</view>
+        </view>
+      </block>     
+       <!--惊喜红包弹框  -->
+      <block wx:if="{{hasRedEnvelopes}}">
+        <view class='mask'></view>
+        <view class='surprise-pop'>
+          <view class='money-number'>{{surprisePrice}}元</view>
+          <view class='surprise-pop-desc'>您可消耗{{consumeValue}}能量收获红包！</view>
+          <view class='btn-wishing' bindtap='closeSurprisePop'>不领取</view>
+          <view class='btn-help' bindtap='submitSurprise'>立即领取</view>
+        </view>
+      </block>
+      <block wx:if="{{surprisePopSuccess}}">
+        <view class='mask'></view>
+        <view class='surprise-pop'>
+          <view class='surprise-pop-title'>领取成功</view>
+          <view class='surprise-pop-desc'>您成功领取{{surprisePrice}}元红包，已放入钱包。</view>
+          <view class='btn-wishing' bindtap='gotoWallent'>前往钱包</view>
+          <view class='btn-help'  bindtap='closeSurprisePop'>好的</view>
+        </view>
+      </block>
+      <block wx:if="{{surprisePopFail}}">
+        <view class='mask'></view>
+        <view class='surprise-pop bg-fail bg-surprise'>
+          <view class='surprise-pop-title title-fail'>领取失败</view>
+          <view class='surprise-pop-desc'>领取红包所需能量值不足，请努力收集能量哦！</view>
+          <view class='pop-small-btn pop-sure' bindtap='closeSurprisePop'>确定</view>
+          <view class='pop-small-btn pop-bottom' bindtap='showGamePanel'>去获取能量</view>
+        </view>
+      </block>
+      <block wx:if="{{surprisePopSuccessNo}}">
+        <view class='mask'></view>
+        <view class='surprise-pop bg-fail'>
+          <view class='surprise-pop-title'>红包已派完</view>
+          <view class='surprise-pop-desc'>红包已领完，您来晚了呢。</view>
+          <view class='pop-small-btn'  bindtap='closeSurprisePop'>确定</view>
+        </view>
+      </block>
+      <!-- 两个游戏弹框面板 -->
+      <block wx:if="{{showGamePanel}}">
+        <view class='mask40' bindtap='closeGamePanel'></view>
+        <view class='pop-game-panel'>
+          <view class='panel-title'>能量收集</view>
+          
+          <view class='panel-item bg-answer-item' bindtap='joinAnswerGame'>
+            <view class='game-title'>答题游戏</view>
+            <view class='game-chance'>每天3次挑战机会</view>
+          </view>
+          <view class='panel-item' bindtap='startPintuGame'>
+            <view class='game-title'>拼图游戏</view>
+            <view class='game-chance'>每天3次挑战机会</view>
+          </view>
+        </view>
+      </block>      
+      <block wx:if="{{isAnswerGameStart}}">
+          <view class='mask80'></view>
+          <view class='gameIndex-pop answer-game-start'>
+            <view class='pop-title-pintu'>即将开始游戏!</view>
+            <view class='pop-desc-pintu'>您今日的挑战机会还剩{{answerChances}}次喔~</view>
+            <button class='btn-invite btn-invite-answer' bindtap='startAnswerGame'>开始</button>
+            <button class='btn-white btn-white-answer' bindtap='gobackWishing'>返回许愿池</button>
+          </view>
+      </block> 
+      <block wx:if="{{noAnswerChance}}">
+          <view class='mask80'></view>
+          <view class='gameIndex-pop answer-game-start'>
+            <view class='pop-title-pintu'>很遗憾！挑战机会已用完</view>
+            <view class='pop-desc-pintu'>今日免费挑战机会已用完，赶快分享好友获得新的挑战机会吧！</view>
+            <button class='btn-invite btn-invite-answer' open-type='share' id='answerHelp'>分享好友继续挑战</button>
+            <button class='btn-white btn-white-answer' bindtap='gobackWishing'>返回许愿池</button>
+          </view>
+      </block>
+</view>

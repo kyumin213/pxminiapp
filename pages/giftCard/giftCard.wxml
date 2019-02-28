@@ -1,0 +1,50 @@
+<view class="container bg-red">
+  <view class='big-title'>
+    <view>礼物已备好</view> 
+    <view>赶快为TA送出去吧！</view>
+  </view>
+  <!--卡片区域  -->
+  <view class='card-wrap'>
+    <view class='card-top'>
+      <image src='https://image.prise.shop/images/2018/07/26/1532587944531157.png'></image>
+      <text>你悄悄地送出{{ordersItemNum}}件礼物</text>
+    </view>
+    <!--列表  -->
+    <scroll-view style='max-height:{{scrollHeight}}' scroll-y class='scroll-list'>
+        <block wx:for="{{itemList}}" wx:key="{{index}}">
+            <view class='gifts-item'>
+              <image src='{{item.productPicture}}'></image>
+              <view class='item-right'>
+                <view class='item-title'>{{item.productTitle}}</view>
+                <view class='item-count'>共{{item.num}}份</view>
+              </view>
+            </view>
+       </block> 
+    </scroll-view>
+    <block wx:if="{{isShowMore}}">
+      <image src='../../images/giftcard_icon_more.png' class='more' bindtap='showAllItem'></image>
+    </block>
+    <view class='tips'>礼物卡超过15天未领取将自动退款</view>
+    <form report-submit='true' bindsubmit='open'>
+       <button class='sendBtn txt-center' form-type='submit'>送TA好礼</button>
+    </form>    
+  </view>
+  <!--仿actionsheet  -->
+  <block wx:if="{{isShowActionsheet}}">
+     <view class='actionsheetDialog'>
+        <view class='mask' catchtouchmove='true' bindtap='close'></view>
+        <view class='btn-group'>
+            <button class='abtn' open-type='share'>发送给朋友</button>
+            <view class='line100'></view>
+            <button class='abtn' bindtap='saveCardPic'>生成卡片保存分享</button>
+            <button class='abtn cancel' bindtap='close'>取消</button>
+        </view>
+    </view>
+  </block>
+  <!--canvas  -->
+  <view class='canvas-box'>
+    <block wx:if="{{isShowCanvas}}">
+      <canvas canvas-id="shareCanvas" style="width:{{winWidth}};height:{{winHeight}}"></canvas>  
+    </block>
+  </view>
+</view>

@@ -1,0 +1,110 @@
+@import '../pintuGame/pintuGame.wxss';
+/* 20列表 */
+.bingo-list {
+  width: 670rpx;
+  height: 786rpx;
+  border-radius: 8rpx;
+  background: #fff;
+  margin: 0 auto 40rpx;
+  padding-top: 40rpx;
+  box-sizing: border-box;
+}
+.item-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-left: 40rpx;
+  box-sizing: border-box;
+}
+.item-list image{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-bottom: 16rpx;
+  display: block;
+  margin: 0 auto;
+}
+.items {
+  width: 100rpx;
+  text-align: center;
+  margin-right: 30rpx;
+  margin-bottom: 40rpx;
+}
+.items:nth-child(5n) {
+  margin-right: 0;
+}
+.nickname {
+  width: 100rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.assistance-dialog{
+  width: 670rpx;
+  min-height: 620rpx;
+  background: #fff;
+  border-radius: 8rpx;
+  padding-top: 80rpx;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  overflow: hidden;
+  box-sizing: border-box;
+  padding-bottom: 40rpx;
+  /* animation: a 10s infinite linear; */
+}
+.status-spec {
+  height: 82rpx;
+}
+@keyframes a{
+	form{
+    /* top: 500rpx;
+    right: 200rpx;  */
+    font-size: 28rpx;
+    opacity: 0;
+    transform: translate3d(0,0,0)
+	}
+	to{
+		 /* top: 200rpx;
+    right: 120rpx;  */
+    font-size: 64rpx;
+    opacity: 1;
+    transform: translate3d(80rpx,-320rpx,0)       
+	}
+}
+.count {
+  position: absolute;
+  font-weight: bold;
+  color: #FFAC04;
+  right: 200rpx;
+  top: 520rpx;
+  font-size: 24rpx; 
+  animation: a .8s ease-in-out;
+  display: none
+}
+.status-spec {
+  height: 82rpx;
+}
+@keyframes a{
+	form{
+    /* top: 500rpx;
+    right: 200rpx;  */
+    font-size: 28rpx;
+    opacity: 0;
+    transform: translate3d(0,0,0)
+	}
+	to{
+		 /* top: 200rpx;
+    right: 120rpx;  */
+    font-size: 64rpx;
+    opacity: 1;
+    transform: translate3d(80rpx,-320rpx,0)       
+	}
+}
+.mask {
+  z-index: 10000000;
+}
+.assistance-dialog {
+  z-index: 10000001;
+}

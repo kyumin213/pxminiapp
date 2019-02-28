@@ -1,0 +1,37 @@
+<view class="container bg-group">
+  <view class='gift-wrap'>
+    <view class='pic-title'></view>
+    <block wx:for="{{itemList}}" wx:key="{{index}}">
+        <view class='gift-item'>
+          <image src='{{item.productPicture}}'></image>
+          <view class='gift-right'>
+            <view class='gift-title'>{{item.productTitle}}</view>
+            <view class='gift-props'>{{item.productParamText.propName}}</view>
+            <view class='number'>共{{item.num}}份</view>
+          </view>
+        </view>
+    </block> 
+    <form report-submit='true' bindsubmit='open'>
+      <button class='sendBtn' formType="submit">马上发起拼团</button>
+    </form>
+  </view>
+  <view class='refund-tips'>礼物卡在15天未拼团成功/未领取将自动退款</view>
+  <!--仿actionsheet  -->
+  <block wx:if="{{isShowActionsheet}}">
+     <view class='actionsheetDialog'>
+        <view class='mask' catchtouchmove='true' bindtap='close'></view>
+        <view class='btn-groups'>
+            <button class='abtn' open-type='share'>发送给朋友</button>
+            <view class='line100'></view>
+            <button class='abtn' bindtap='saveCardPic'>生成卡片保存分享</button>
+            <button class='abtn cancel' bindtap='close'>取消</button>
+        </view>
+    </view>
+  </block>
+  <!--canvas  -->
+  <view class='canvas-box'>
+    <block wx:if="{{isShowCanvas}}">
+      <canvas canvas-id="shareCanvas" style="width:{{winWidth}};height:{{winHeight}}"></canvas>  
+    </block>
+  </view>
+</view>

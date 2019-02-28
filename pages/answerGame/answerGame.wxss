@@ -1,0 +1,590 @@
+@import '../openBox/openBox.wxss';
+/*顶部banner  */
+.top-banner {
+  background: url(https://image.prise.shop/images/2018/07/03/1530606386160859.png) center;
+  width: 100%;
+  height: 534rpx;
+  background-size: contain;
+  position: relative;
+}
+.answer-rules {
+  width: 156rpx;
+  height: 42rpx;
+  background: #fff;
+  border-radius: 44rpx 0 0 44rpx;
+  position: absolute;
+  right: 0;
+  top: 30rpx;
+  color: #1B0157;
+  font-size: 24rpx;
+  line-height: 42rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.answer-rules image {
+  width: 24rpx;
+  height: 24rpx;
+  margin-left: 6rpx;
+}
+/*规则弹出框  */
+.mask40 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+}
+.pop-rules {
+  width: 630rpx;
+  height: 1088rpx;
+  border-radius: 16rpx;
+  background: #FFFFFF;
+  padding: 40rpx 48rpx 0;
+  box-sizing: border-box;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 100;
+}
+.pop-title {
+  color: #FD3B64;
+  font-size: 40rpx;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+.pop-item image {
+  width: 16rpx;
+  height: 16rpx;
+  margin-right: 12rpx;
+}
+.pop-item {
+  color: #888;
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+  line-height: 1.6;
+}
+.pop-item text {
+  color: #FD3B64;
+}
+.cancel-btn {
+  width: 480rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+  background: #FD3B64;
+  color: #fff;
+  font-size: 32rpx;
+  margin-top: 30rpx;
+}
+/* 我的成绩 */
+.nono {
+  color: #fff;
+  font-size: 48rpx;
+  text-align: center;
+}
+.mygrades {
+  padding: 48rpx 0 60rpx;
+  text-align: center;
+}
+.mygrades .txt {
+  font-size: 32rpx;
+  color: rgba(255, 255, 255, 0.6);
+}
+.mygrades view {
+  margin-top: 30rpx;
+}
+.mygrades .correctNum {
+  color: #fff;
+  font-size: 60rpx;
+  font-weight: bold;
+  font-family: "DIN"  
+}
+.mygrades .best-time {
+  color: #fff;
+  font-size: 40rpx;
+  font-weight: bold;  
+  font-family: "DIN"  
+}
+/*开始答题  */
+.start-answer {
+  width: 590rpx;
+  height: 100rpx;
+  background: linear-gradient(#FB4D76,#FF2851);
+  border-radius: 50rpx;
+  color: #fff;
+  font-size: 40rpx;
+}
+/*复活卡  */
+.relive-card {
+  width: 590rpx;
+  height: 120rpx;
+  background: #fff;
+  border-radius: 60rpx;
+  margin: 40rpx auto 80rpx;
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  padding: 0 32rpx 0 44rpx;
+  box-sizing: border-box;
+  color: #1B0157;
+}
+.relive-card image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 12rpx;
+}
+.relive-card text {
+  font-family: "DIN";
+  margin: 0 100rpx 0 10rpx;
+}
+.get-relive {
+  width: 220rpx;
+  height: 68rpx;
+  color: #fff;
+  font-size: 26rpx;
+  background: linear-gradient(#FB4D76,#FF2851);
+  border-radius: 34rpx;
+}
+.tips-card {
+  width: 546rpx;
+  height: 64rpx;
+  background: url(https://image.prise.shop/images/2018/07/03/1530610141238731.png) center;
+  color: #FEFEFE;
+  font-size: 24rpx;
+  position: absolute;
+  bottom: -40rpx;
+  right: 0;
+  background-size: contain;
+  text-align: center;
+  line-height: 80rpx;
+}
+.dispear {
+  animation: dispear 1s linear;
+}
+/*参与人列表  */
+.joinList {
+  width: 630rpx;
+  height: 370rpx;
+  /* border: 2rpx solid rgba(255, 255, 255, 0.3); */
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  margin: 0 auto 80rpx;
+  text-align: center;
+}
+.anwser-icon {
+  width: 80rpx;
+  height: 80rpx;
+  margin-bottom: 40rpx;
+}
+.btn-invite-answer {
+  width: 510rpx;
+  height: 78rpx;
+  border: 2rpx solid #FD3C66;
+  border-radius: 40rpx;
+  color: #FD3C66;
+  font-size: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+.btn-invite-answer::after {
+  box-shadow: 0;
+  border: 0;
+}
+.btn-icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+}
+.tx-item {
+  width: 76rpx;
+  height: 76rpx;
+  border-radius: 50%;
+  border: 6rpx solid #fff;
+  margin-bottom: 40rpx;
+  margin-left: -20rpx;
+  /* box-sizing: border-box; */
+}
+.tx-list {
+  margin-left: 20rpx
+}
+.join-title {
+  width: 100%;
+  text-align: center;
+  color: #1B0157;
+  margin-bottom: 30rpx;
+  padding-top:30rpx;
+}
+.join-title text {
+  font-size: 36rpx;
+  color: #FD3C66;
+  font-weight: bold;
+  font-family: "DIN";
+  margin: 0 10rpx;
+}
+.join-content {
+  /* display: flex;
+  align-items: center; */
+  width: 100%;
+  flex-wrap: wrap;
+  padding: 36rpx 0 0 20rpx;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.06);
+  height: 212rpx;
+}
+.join-content image {
+  width: 60rpx;
+  height: 60rpx;
+  margin-bottom: 20rpx;
+  margin-right: 16rpx;
+  border-radius: 50%;
+}
+/*礼物列表  */
+.big-title {
+  font-size: 40rpx;
+  color: #FFAF1F;
+  text-align: center;
+  margin-bottom: 24rpx;
+  font-weight: bold;
+}
+.big-title image {
+  width: 32rpx;
+  height: 32rpx;
+}
+.left-icon {
+  margin-right: 16rpx;
+}
+.right-icon {
+  margin-left: 16rpx;
+}
+.small-title {
+  font-size: 24rpx;
+  color: rgba(255, 175, 31, 0.8);
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+.gift-wrap {
+  width: 630rpx;
+  min-height: 400rpx;
+  border-radius: 20rpx;
+  background: #2d1564;
+  border: 2rpx solid rgba(255, 255, 255, 0.2);
+  margin: 100rpx auto 80rpx;
+  position: relative;
+  padding-top: 80rpx;
+}
+.halfcircle {
+  position: absolute;
+  width: 140rpx;
+  height: 70rpx;
+  top: -69rpx;
+  left: 50%;
+  transform: translate(-50%,0);
+  overflow: hidden;
+}
+.circle {
+  width: 140rpx;
+  height: 140rpx;
+  border: 2rpx solid rgba(255, 255, 255, 0.2);
+  background: #2d1564;
+  padding: 10rpx;
+  box-sizing: border-box;
+  border-radius: 50%;
+}
+.userMaker {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  position: absolute;
+  top: -60rpx;
+  left: 50%;
+  transform: translate(-50%,0);  
+}
+.usernames {
+  font-size: 32rpx;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+}
+.statutips {
+  text-align: center;
+  color: #fff;
+  font-size: 24rpx;
+  margin: 20rpx auto 40rpx;
+}
+.gift-list,.gift-item {
+  width: 550rpx;
+}
+.gift-item {
+  height: 180rpx;
+}
+.gift-item image {
+  width: 180rpx;
+  height: 180rpx;
+}
+.item-right {
+  width: 300rpx;
+  height: 180rpx;
+}
+.gift-list {
+  border-radius: 16rpx;
+  margin-bottom: 80rpx;
+}
+.item-count {
+  /* background: url(https://image.prise.shop/images/2018/07/13/1531466446375743.png) no-repeat; */
+  border: 2rpx solid #FF2851;
+  border-radius: 44rpx;
+  background-size: contain;
+  width: 120rpx;
+  height: 36rpx;
+  color: #FF2851;
+  text-align: center;
+  font-size: 24rpx;
+  margin-left: -20rpx;
+}
+/*获奖者  */
+.winner {
+  width: 630rpx;
+  height: 592rpx;
+  border-radius: 16rpx;
+  margin: 0 auto 80rpx;
+  border:2rpx solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  position: relative;
+  padding-top: 326rpx;
+  box-sizing: border-box;
+}
+.winnername {
+  color: #FEFEFE;
+  font-size: 32rpx;
+  margin-bottom: 40rpx;
+  text-align: center;
+}
+.icon1 {
+  width: 112rpx;
+  height: 112rpx;
+  position: absolute;
+  top: 32rpx;
+  left: 50%;
+  transform: translate(-50%,0)
+}
+.winnerpic {
+  width: 160rpx;
+  height: 160rpx;
+  position: absolute;
+  top: 108rpx;
+  left: 50%;
+  transform: translate(-50%,0);
+  border-radius: 50%;
+  border: 4rpx solid rgb(253,224,11); 
+}
+.icon2 {
+  width: 248rpx;
+  height: 72rpx;
+  position: absolute;
+  top: 234rpx;
+  left: 50%;
+  transform: translate(-50%,0);
+  background: url(https://image.prise.shop/images/2018/07/04/1530698548821558.png);
+  background-size: contain;
+  color: #FF8400;
+  font-size: 38rpx;
+  text-align: center;
+  line-height: 80rpx;
+  font-weight: bold;
+}
+.flex-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.row-left,.row-right {
+  width: 50%;
+}
+.row-title {
+  width: 188rpx;
+  height: 54rpx;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 28rpx;
+  text-align: center;
+  line-height: 54rpx;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 auto 32rpx;
+}
+.row-content {
+  color: #fff;
+  font-size: 48rpx;
+  font-family: "DIN";
+  text-align: center;
+}
+/*排行榜  */
+.topten {
+  width: 630rpx;
+  min-height: 300rpx;
+  border:2rpx solid rgba(255, 255, 255, 0.2);
+  background: #2d1564;
+  margin: 0 auto;
+  border-radius: 16rpx;
+  position: relative;
+  padding: 36rpx 0 20rpx; 
+  box-sizing: border-box;
+}
+.colum-left {
+  width: 86rpx;
+  height: 40rpx;
+  margin: 0 30rpx 40rpx 20rpx;
+  display: inline-block;
+}
+.colum-middle {
+  width: 340rpx;
+  height: 40rpx;
+  display: inline-block;  
+}
+.colum-right {
+  display: inline-block;
+  width: 110rpx;
+  height: 40rpx;
+}
+.titlebg {
+  width: 86rpx;
+  height: 40rpx;
+  border-radius: 20rpx;
+  background: #5006BE;
+  color: rgba(254, 254, 254, 0.6);
+  display: block;
+  text-align: center;
+  line-height: 40rpx;
+  font-size: 24rpx;
+}
+.goal {
+  width: 68rpx;
+  height: 68rpx;
+  position: absolute;
+  bottom: 210rpx;
+  left: 50%;
+  transform: translate(-50%,0);
+}
+.rank-item {
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 40rpx 0 30rpx;
+  margin-bottom: 20rpx;
+  box-sizing: border-box;
+}
+.rank-left {
+  font-size: 32rpx;
+  color: #FEFEFE;
+  width: 50rpx;
+  height: 50rpx;
+  text-align: center;
+  margin-right: 60rpx;
+}
+.rank-left image {
+  width: 50rpx;
+  height: 50rpx;
+}
+.rank-right {
+  color: #FEFEFE;
+  width: 140rpx;
+  text-align: center;
+}
+.rank-middle {
+  display: flex;
+  align-items: center;
+  width: 320rpx;
+}
+.rank-middle image {
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 20rpx;
+  border-radius: 50%;
+}
+.username {
+  font-size: 24rpx;
+  color: #FEFEFE;
+  width: 220rpx;
+  overflow: hidden;
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.rank-correct {
+  font-family: "DIN";
+  font-weight: bold;
+  font-size: 32rpx;
+}
+.rank-time {
+  font-family: "DIN";
+  font-weight: bold;
+  font-size: 20rpx;
+}
+.cheng {
+  color: #FFAF1F;
+}
+.nobody {
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 32rpx;
+}
+.bottom-num {
+  position: absolute;
+  bottom: 0;
+}
+.nickname {
+  width: 140rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  position: absolute;
+  bottom: 64rpx;
+  left: 50%;
+  transform: translate(-50%,0);
+  text-align: center;
+}
+.userpic {
+  width: 70rpx;
+  height: 70rpx;
+  border: 4rpx solid rgb(237,237,235);
+  border-radius: 50%;
+  position: absolute;  
+  bottom: 122rpx;
+  left: 50%;
+  transform: translate(-50%,0);
+}
+.bottom-tip {
+  color: rgba(255, 255, 255, 0.6);
+  padding-top: 60rpx;
+  text-align: center;
+}
+.big-correct-num {
+  font-weight: bold;
+  font-family: "DIN";
+  font-size: 48rpx;
+  color: #FEFEFE
+}
+.big-rank-time {
+  font-weight: bold;
+  font-family: "DIN";
+  color: #FEFEFE  
+}
+.top-three:nth-child(1) .big-correct-num, .top-three:nth-child(1) .big-rank-time {
+  color: #FFAF1F;
+}
+
+@keyframes dispear {
+  0% {
+    opacity: 1
+  }
+  100% {
+    opacity: 0;
+  }
+}

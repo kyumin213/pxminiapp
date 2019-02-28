@@ -1,0 +1,79 @@
+<view class="container bg-rank">
+  <view class='white-mask' wx:if="{{isloading}}">
+    <block wx:if="{{rankList.length > 0}}">
+      <block wx:for="{{rankList}}" wx:key="{{index}}">
+        <block wx:if="{{index == 0}}">
+          <view class='top-one'>
+            <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181219050542648202957.png' class='bg-huangguan'></image>
+            <image src='{{item.picture}}' class='picture-one'></image>
+            <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181219052420856717958.png' class='numbers'></image>
+            <view class='nickname'>{{item.nickname}}</view>
+            <view class='grouthValue red'>{{item.gatherValue}}</view>
+          </view>
+        </block>
+        <block wx:if="{{index == 1}}">
+          <view class='top-two'>
+            <image src='{{item.picture}}' class='picture-two'></image>
+            <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181219052426062331221.png' class='numbers r10'></image>
+            <view class='nickname fontcolor'>{{item.nickname}}</view>
+            <view class='grouthValue'>{{item.gatherValue}}</view>
+          </view>
+        </block>
+        <block wx:if="{{index == 2}}">
+          <view class='top-three'>
+            <image src='{{item.picture}}' class='picture-three'></image>
+            <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181219052426157470131.png' class='numbers r10'></image>
+            <view class='nickname fontcolor'>{{item.nickname}}</view>
+            <view class='grouthValue'>{{item.gatherValue}}</view>
+          </view>
+        </block>
+      </block>    
+      <scroll-view scroll-y class='scroller {{iphonex?"scroller-x":""}}'>
+        <block wx:for="{{rankList}}" wx:key="{{index}}">
+          <block wx:if="{{index > 2}}">
+            <view class='line46'></view>
+            <view class='rank-item {{iphonex?"rank-item-x":""}}'>
+              <view class='index'>{{index + 1}}</view>
+              <image src='{{item.picture}}' class='item-picture'></image>
+              <view class='item-nickname'>{{item.nickname}}</view>
+              <view class='item-grouth'>
+                <view class='grouth'>{{item.gatherValue}}</view>
+                <text>累积能量</text>
+              </view>
+            </view>
+          </block>    
+        </block>  
+      </scroll-view>  
+    </block>
+    <block wx:else>       
+          <view class='top-one'>
+            <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181219050542648202957.png' class='bg-huangguan'></image>
+            <view class='picture-one'></view>
+            <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181219052420856717958.png' class='numbers'></image>
+            <view class='nickname'>-</view>
+            <view class='grouthValue red'>-</view>
+          </view>       
+          <view class='top-two'>
+            <view class='picture-two'></view>
+            <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181219052426062331221.png' class='numbers r10'></image>
+            <view class='nickname fontcolor'>-</view>
+            <view class='grouthValue'>-</view>
+          </view>        
+          <view class='top-three'>
+            <view class='picture-three'></view>
+            <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181219052426157470131.png' class='numbers r10'></image>
+            <view class='nickname fontcolor'>-</view>
+            <view class='grouthValue'>-</view>
+          </view>   
+          <view class='line46'></view> 
+          <view class='norank'>暂无上榜玩家</view>   
+    </block>
+  </view>
+  <!-- <block wx:if="{{rankList.length > 0}}"> -->
+    <view class='btn-groups'>
+      <view class='btn-defaults btn-l' bindtap='gobackRank'>返回本期</view>
+      <view class='btn-defaults btn-m {{rankRewardTakeWait?"":"btn-disable"}}' bindtap='bindClickGetReward'>领取奖励</view>
+      <view class='btn-defaults btn-r' bindtap='gotoRewards'>奖励说明</view>
+    </view>
+  <!-- </block> -->
+</view>

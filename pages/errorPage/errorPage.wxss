@@ -1,0 +1,13 @@
+/* pages/errorPage/errorPage.wxss */
+.gotoshopping{
+  background: #F72F2B;
+  color: #fff;
+  width: 288rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  margin: 50rpx auto;
+}
+.text {
+  margin-top: 50rpx; 
+}

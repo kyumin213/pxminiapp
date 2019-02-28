@@ -1,0 +1,109 @@
+/* pages/walletDetails/walletDetails.wxss */
+.empty {
+  padding-top: 334rpx;
+  margin: 0 auto;
+  text-align: center;
+}
+.empty image {
+  width: 140rpx;
+  height: 140rpx;
+  margin-bottom: 48rpx;
+  margin-left: 20rpx;
+}
+.empty .text {
+  color: #999999;
+  font-size: 30rpx;
+}
+
+.month {
+  width: 100%;
+  height: 134rpx;
+  background: linear-gradient(to bottom, #FFFFFF, #F7F7F7);
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  flex-direction: column;
+  padding-left: 44rpx;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+/* .detail-list:first-child .month, */
+ /* .fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+} */
+
+.scroll-container {
+  width: 100%;
+  height: 100vh;
+}
+.mouth-title {
+  color: #000000;
+  font-size: 34rpx;
+  margin-bottom: 10rpx;
+}
+.mouth-total-info{
+  color: #999999;
+  font-size: 26rpx;
+}
+.detail-item {
+  width: 100%;
+  height: 134rpx;
+  background: #fff;
+  padding: 16rpx 44rpx;
+  box-sizing: border-box;
+}
+.item-left {
+  float: left;
+}
+.item-right {
+  float: right;
+}
+
+.item-left image {
+  width: 100rpx;
+  height: 100rpx;
+  margin-right: 24rpx;
+  float: left;
+}
+.goods-title {
+  color: #333333;
+  font-size: 30rpx;
+  margin-bottom: 14rpx;
+  padding-top: 10rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.goods-time {
+  color: #C7C7C7;
+  font-size: 26rpx;
+}
+.item-left-goods {
+  width: 400rpx;
+}
+.item-right {
+  color: #000000;
+  font-size: 36rpx;
+  font-weight: bold;
+  float: right;
+  margin-top: 10rpx;
+}
+.red {
+  color: #F74541;
+}
+.time-filter {
+  position: fixed;
+  right: 44rpx;
+  top: 44rpx;
+  height: 46rpx;
+  display: flex;
+  align-items: center;
+}
+.time-filter image {
+  width: 46rpx;
+  height: 46rpx;
+  margin-right: 10rpx;
+}

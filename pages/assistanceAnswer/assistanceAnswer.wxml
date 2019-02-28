@@ -1,0 +1,179 @@
+<view class="container bg-blue">
+  <view class='top-banner'>
+    <view class='answer-rules' bindtap='togglePopBox'>
+      活动规则 <image src='../../images/index_icon_rule_item.png'></image>
+    </view>
+  </view>
+  <!--规则弹框  -->
+  <block wx:if="{{showRuleBox}}">
+    <view class='mask40' catchtouchmove='true'></view>
+    <view class='pop-rules' catchtouchmove='true'>
+      <view class='pop-title'>活动规则</view>
+      <view class='pop-item'>
+        <image src='../../images/pop_rule_item.png'></image><text>参与资格：</text>每位用户每天可免费参与一次答题
+      </view>
+      <view class='pop-item'>
+        <image src='../../images/pop_rule_item.png'></image><text>复活卡：</text>免费答题资格使用完后，可通过其他好友点击活动页获得额外挑战机会。
+      </view>
+      <view class='pop-item'>
+        <image src='../../images/pop_rule_item.png'></image><text>题目设置：</text>每轮答题数量分别为10、15、20道题，具体数量由出题人决定
+      </view>
+      <view class='pop-item'>
+        <image src='../../images/pop_rule_item.png'></image><text>时间设置：</text>每道题目答题时间为10秒钟，超过10秒钟未作答将自动跳转至下一题
+      </view>
+      <view class='pop-item'>
+        <image src='../../images/pop_rule_item.png'></image><text>开奖规则：</text>活动时间截止后，平台将根据答题正确数最多且用时最短的原则，选出获胜用户作为本次答题活动的获奖者
+      </view>
+      <view class='pop-item'>
+        <image src='../../images/pop_rule_item.png'></image><text>领取方式：</text>活动时间截止后平台将通过服务信息通知获奖用户填写地址信息即可领取好友送出的礼物
+      </view>
+      <button class='cancel-btn' bindtap='togglePopBox'>我知道了</button>
+    </view>
+  </block>
+  <!--我的成绩  -->
+  <view class='mygrades'>
+    <text class='txt'>我的成绩</text>
+    <block wx:if="{{hitNum==0&&gameConsumeTime=='00:00:00'}}">
+      <view class='nono'>暂无</view>
+    </block>
+    <block wx:else>
+      <view><text class='correctNum'>{{hitNum}}/</text><text class='best-time'>{{gameConsumeTime}}</text></view>
+    </block>
+  </view>
+  <!--开始答题  -->
+  <!-- <button bindtap='gotoGameCenter' class='start-answer'>开始答题</button>  -->
+  <form report-submit='true' bindsubmit='gotoGameCenter'>
+      <button formType="submit" class='start-answer'>开始挑战</button>     
+    </form>
+  <view class='relive-card'>
+    <image src='../../images/index_icon_chance_more.png'></image>
+    复活卡 <text>{{chances}}</text>
+    <button class='get-relive' open-type='share' id='getRelive'>获得复活卡</button>
+     <block wx:if="{{!hidetip}}"> 
+      <view class='tips-card {{showTips?"":"dispear"}}'>仅一次答题机会，好友助力可获得新的复活机会</view>    
+     </block> 
+  </view>
+  <!--参与头像列表  -->
+  <view class='joinList'>
+    <view class='join-title'>
+      <block wx:if="{{userPartakeGeneral.length == 0}}">
+        {{userMaker.nickname}}邀请你参与答题
+      </block>
+      <block wx:if="{{userPartakeGeneral.length > 0}}">
+        已有<text>{{userPartakeGeneralNum}}</text>人参与
+      </block>
+    </view>
+    <block wx:if="{{userPartakeGeneral.length == 0}}">
+      <image src='../../images/answer_icon.png' class='anwser-icon'></image>
+    </block>
+    <block wx:else>
+      <view class='tx-list'>
+        <block wx:for="{{userPartakeGeneral}}" wx:key="{{index}}">
+          <image src='{{item.picture}}' class='tx-item'></image>
+        </block>
+      </view>
+    </block>
+    <button class='btn-invite-answer' open-type='share' id='joinGame'><image src='../../images/answer_icon_share.png' class='btn-icon'></image>喊Ta来挑战呀</button>
+  </view>
+  <!--礼物列表  -->
+  <view class='big-title'><image src='../../images/answer_icon_left.png' class='left-icon'></image>好友为你送出的礼物大公开<image src='../../images/answer_icon_right.png' class='right-icon'></image></view>
+  <view class='small-title'>—— 赶快参与答题 大奖机会不可错过 ——</view>
+  <view class='gift-wrap'>
+    <view class='halfcircle'>
+      <view class='circle'>
+      </view>
+    </view>
+    <image src='{{userMaker.picture}}' class='userMaker'></image>    
+    <view class='usernames'>
+      {{userMaker.nickname}}
+    </view>
+    <view class='statutips'>“快来带走它们吧”</view>
+    <view class='gift-list' style='height: {{heightstyle}}'>
+        <block wx:for="{{itemList}}" wx:key="{{index}}">
+            <view class='gift-item'>
+              <image src='{{item.productPicture}}'></image>
+              <view class='item-right'>
+                <view class='item-title'>{{item.productTitle}}</view>
+                <view class='item-props'>{{item.productParamText.propName}}</view>
+                <view class='item-count'>共{{item.num}}份</view>
+              </view>
+            </view>
+            <view class='line-630'></view>
+        </block> 
+        <block wx:if="{{isShowMore}}">  
+            <view class='more-row' bindtap='toggleItem'>
+              <image src='../../images/giftcard_icon_more.png' class='more {{up?"moreup":""}}'></image>
+            </view>
+        </block>   
+      </view>
+  </view>
+  
+  <!--获奖者  -->
+  <block wx:if="{{status == 1}}">
+    <view class='winner'>
+      <image src='https://image.prise.shop/images/2018/07/25/1532518169187134.png' class='icon1'></image>
+      <image src='{{userReceiver.picture}}' class='winnerpic'></image>
+      <!-- <image src='../../images/index_icon_winner_line.png' class='icon2'></image> -->
+      <view class='icon2'>获奖者</view>
+      <view class='winnername'>{{userReceiver.nickname}}</view>
+      <view class='flex-row'>
+        <view class='row-left'>
+          <view class='row-title'>答题正确数</view>
+          <view class='row-content'>{{userReceiver.hitNum}}</view>
+        </view>
+        <view class='row-right'>
+          <view class='row-title'>答题用时</view>
+          <view class='row-content'>{{userReceiver.consumeTime}}</view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <!--排行榜  -->
+  <view class='big-title'><image src='../../images/answer_icon_left.png' class='left-icon'></image>答题排行榜<image src='../../images/answer_icon_right.png' class='right-icon'></image></view>
+  <view class='small-title'>—— 答题截止时间：{{deadline}} ——</view>
+  <view class='topten'>
+    <view class='colum-left'><text class='titlebg'>名次</text></view>
+    <view class='colum-middle'><text class='titlebg'>玩家</text></view>
+    <view class='colum-right'><text class='titlebg'>成绩</text></view>
+    <block wx:for="{{userPartake}}" wx:key="{{index}}">
+        <view class='rank-item'>
+          <view class='rank-left'>
+            <block wx:if="{{index == 0}}"><image src='../../images/answer_icon_one.png'></image></block>
+            <block wx:if="{{index == 1}}"><image src='../../images/answer_icon_two.png'></image></block>
+            <block wx:if="{{index == 2}}"><image src='../../images/answer_icon_three.png'></image></block>
+            <block wx:if="{{index > 2}}">{{index + 1}}</block>
+          </view>
+          <view class='rank-middle'>
+            <image src='{{item.picture}}'></image>
+            <text class='username'>{{item.nickname}}</text>
+          </view>
+          <view class='rank-right'>
+            <text class='rank-correct'>{{item.hitNum}}/</text>
+            <text class='rank-time'>{{item.consumeTime}}</text>
+          </view>
+        </view>
+    </block>
+    <block wx:if="{{userPartake.length == 0}}">
+      <view class='nobody'>暂无排名</view>
+    </block>
+  </view>   
+  <view class='bottom-tip'>快来参与答题，即有机会领取好友送出的礼物！</view>
+  <!--助力弹出框  -->
+    <block wx:if="{{isShowAssis}}">  
+      <view class='mask40' catchtouchmove='true' bindtap='toggleAssisDialog'></view>
+      <view class='assistance-dialog' catchtouchmove='true'>
+        <view class='count' style='{{countstyle}}'>+1</view>
+        <image src='https://image.prise.shop/images/2018/07/25/1532521481512553.png'  class='help'></image>
+        <view class='status-txt'>
+          助力好友得复活卡
+        </view>
+        <view class='status-spec'>
+          你的小伙伴正在参加答题赢大礼活动，需要你的助力获得复活卡，快去帮TA复活吧！
+        </view>
+        <button class='relive' bindtap='addChance'>帮TA复活</button>
+        <view class='gotoindex' bindtap='toggleAssisDialog'>我也要参加</view>
+        <image src='../../images/help_icon_shutdown.png' class='close' bindtap='toggleAssisDialog'></image>
+      </view>
+    </block>  
+    <image class='gobackIndex' bindtap='gotoIndex' src='https://image.prise.shop/images/2018/08/01/1533108695200560.png'></image>
+</view>

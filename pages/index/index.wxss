@@ -1,0 +1,270 @@
+.specialSlide {
+  width: 100%;
+  height: 800rpx;
+  overflow: hidden;
+}
+.slider {
+  height: 800rpx;
+  /* width: 670rpx; */
+}
+.slider swiper-item {
+  width: 670rpx;
+}
+.specialSlide image{
+  width: 670rpx;
+  height: 800rpx;
+  border-radius: 26rpx; 
+  margin-left: 20rpx;
+  float: left;
+}
+.index {
+  padding-bottom: 80rpx;
+}
+.topic-container{
+  width: 100%;
+  overflow: hidden;
+}
+.weekend, .hotRecomend {
+  padding: 0 40rpx;
+  margin-top: 40rpx;
+}
+.weekend image, .hotRecomend .hotCover {
+  width: 670rpx;
+  height: 366rpx;
+  border-radius: 26rpx;
+  display: block;
+}
+.weekend-title {
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+  height: 52rpx;
+  overflow: hidden;
+}
+.title-left {
+  font-size: 38rpx;
+  font-weight: bold;
+  flex: 1;
+  color: #000;
+}
+
+.countdown {
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  padding-left: 12rpx;
+  box-sizing: border-box;
+  font-weight: bold;
+  color: #000;
+  font-size: 20rpx;
+}
+.countdown view {
+  width: 38rpx;
+  height: 38rpx;
+  border: 2rpx solid #000;
+  color: #000;
+  text-align: center;
+  line-height: 38rpx;
+  font-family: 'DIN';
+  font-weight: bold;
+  font-size: 26rpx;
+  margin-left: -4rpx;
+}
+.red {
+  color: #FD2A41;
+}
+.countdown .days {
+  font-size: 34rpx;
+  background: url(https://image.prise.shop/images/2018/06/26/1529980927317873.png);
+  width: 42rpx;
+  height: 42rpx;
+  background-size: contain;
+  border: none;
+  line-height: 42rpx;
+}
+.red view {
+  width: 48rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+  /* background: url(https://image.prise.shop/images/prise-picture/20180918021823231383650.png) no-repeat; */
+  background: linear-gradient(to bottom,#FD2977,#FD2A39);
+  border: none;
+  color: #fff;
+  border-radius: 6rpx;
+  font-family: "PingFangSC";
+  font-size: 30rpx;
+  margin: 0;
+}
+.red image {
+  width: 4rpx;
+  height: 14rpx;
+  margin: 0 6rpx;
+}
+.red text {
+  font-size: 26rpx;
+  font-weight: bold;
+  margin-right: 16rpx;
+}
+.countdown text {
+  margin-left: 8rpx;
+}
+.countdown .zh{
+  margin-right: 8rpx;
+}
+.service-title {
+  display: flex;
+  align-items: center;
+  font-size: 38rpx;
+  font-weight: bold;
+  width: 670rpx;
+  margin: 40rpx auto 20rpx;
+}
+/* 热销推荐 */
+.item-list {
+  display: flex; align-items: center; justify-content: space-between; padding: 0 20rpx; box-sizing: border-box; margin: 20rpx auto 0;width: 670rpx;
+}
+.item {
+  width: 174rpx; position: relative;
+}
+.indexnum {
+  width: 34rpx;height: 34rpx; position: absolute; left: 0; top: 0;
+}
+.item .pro-picture {
+  width: 174rpx; height: 174rpx;
+}
+.item-title {
+  color: #000; font-size: 24rpx; width: 174rpx; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; margin-bottom: 4rpx;
+}
+.price {
+  color: #F72F2B; font-size: 22rpx;
+}
+
+/*了解一下*/
+.service-title image {
+  width: 32rpx;
+  height: 32rpx;
+}
+.service-box {
+  width: 670rpx;
+  height: 290rpx;
+  box-shadow: 0 2rpx 34rpx rgba(0,0,0,0.06);
+  border-radius: 26rpx;
+  margin: 0 auto;
+  padding-top: 48rpx;
+  box-sizing: border-box;
+}
+.service-list {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-around;
+  margin-bottom: 40rpx;
+}
+.service-item {
+  width: 86rpx;
+  text-align: center;
+  font-size: 20rpx;
+}
+.service-item image {
+  width: 60rpx;
+  height: 60rpx;
+  display: block;
+  margin: 0 auto 20rpx;
+}
+.details {
+ width: 240rpx;
+ height: 54rpx;
+ background: #F72F2B;
+ color: #fff;
+ border-radius: 28rpx;
+ text-align: center;
+ line-height: 54rpx;
+ font-size: 20rpx;
+}
+.mask80 {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.8);
+  left: 0;
+  top: 0;
+}
+.coupon-pop {
+  width: 750rpx;
+  height: 1140rpx;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.coupon-box {
+  /* width: 620rpx;
+  height: 620rpx; */
+  width: 750rpx;
+  height: 1140rpx;
+  /* margin-bottom: 80rpx; */
+}
+.coupon-box .coupon-img {
+  width: 750rpx;
+  height: 1140rpx;
+}
+.close {
+  width: 48rpx;
+  height: 48rpx;
+  display: block;
+  margin: 0 auto;
+  position: fixed;
+  right: 48rpx;
+  top: 48rpx;
+  z-index: 999999;
+}
+.activity {
+  width: 112rpx;
+  height: 112rpx;
+  display: block;
+}
+.video-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+}
+video {
+  width: 100%;
+  position: fixed;
+  transform: translate(-50%,-50%);
+  left: 50%;
+  top: 50%;
+}
+.video-play {
+  width: 730rpx;
+  height: 294rpx;
+  background: url(https://image.prise.shop/images/2018/08/30/1535619616636813.png) no-repeat;
+  background-size: contain;
+  margin: -50rpx auto 0;
+  position: relative;
+}
+.play {
+  color: #F72F2B;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 40rpx;
+  justify-content: center;
+  width: 100%;
+}
+.play image {
+  width: 24rpx;
+  height: 24rpx;
+  margin-left: 14rpx;
+}
+.closeVideo {
+  width: 48rpx;
+  height: 48rpx;
+  position: absolute;
+  right: 40rpx;
+  top: 40rpx;
+}

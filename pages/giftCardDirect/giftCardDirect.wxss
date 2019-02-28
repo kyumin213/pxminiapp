@@ -1,0 +1,90 @@
+@import '../giftCard/giftCard.wxss';
+.card-top image{
+  border-radius: 50%;
+}
+.bg-direct {
+  background: url('https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181012055730719210214.png') no-repeat #F9F9F9;
+  background-size: contain;
+}
+.big-title .smalltip {
+  font-size: 28rpx;
+  font-weight: normal;
+}
+.user-card {
+  width: 670rpx;
+  height: 280rpx;
+  background: #fff;
+  border-radius: 8rpx;
+  margin: 80rpx auto 20rpx;
+  position: relative;
+  text-align: center;
+  padding-top: 100rpx;
+  box-sizing: border-box;
+}
+.user-card text {
+  margin-bottom: 40rpx;
+  display: block;
+}
+.messages {
+  font-size: 32rpx;
+  font-weight: bold;
+  /* margin: 0 60rpx;
+  line-height: 40rpx; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.messages image {
+  width: 36rpx;
+  height: 36rpx;
+}
+.userbg {
+  position: absolute;
+  width: 160rpx;
+  height: 160rpx;
+  background: #fff;
+  top: -80rpx;
+  left: 50%;
+  transform: translate(-50%,0);
+  border-radius: 50%;
+  padding: 8rpx;
+  box-sizing: border-box;
+}
+.userbg image {
+  width: 144rpx;
+  height: 144rpx;
+  border-radius: 50%;
+}
+.card-wrap {
+  width: 670rpx;
+  border-radius: 8rpx;
+  min-height: 50vh;
+  padding-bottom: 60rpx;
+}
+.gifts-item {
+  box-shadow: none;
+}
+.item-count {
+  color: #FF476D;
+  width: 92rpx;
+  height: 44rpx;
+  border-radius: 24rpx;
+  background: RGBA(255, 71, 109, 0.09);
+  border: 2rpx solid #FF476D;
+  text-align: center;
+  line-height: 44rpx;
+}
+.gifts-item {
+  padding: 0;
+}
+.gifts-item image {
+  width: 180rpx;
+  height: 180rpx;
+}
+.sendBtn {
+  width: 470rpx;
+  height: 92rpx;
+  border-radius: 48rpx;
+  background: #FF476D;
+  margin-bottom: 40rpx;
+}

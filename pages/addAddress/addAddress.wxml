@@ -1,0 +1,24 @@
+<!--pages/addAddress/addAddress.wxml-->
+<view class='container'>
+  <form bindsubmit="formSubmit" bindreset="formReset">
+    <view class='address-container'>
+      <view class='h94'>
+        <text>收件人</text>
+        <input type='text' placeholder='请输入收件人姓名' name="receiver" />
+      </view>
+      <view class='h94'>
+        <text>手机号码</text>
+        <input type='text' placeholder='请输入收件人手机号码' name="phone"  />
+      </view>
+      <view class='h94'>
+        <text>地区</text>
+        <input type='text' placeholder='请输入收件人地区' bindfocus='addAddress' />
+      </view>
+      <view class='h94'>
+        <text>详细地址</text>
+        <input  type='text' placeholder='请填写收件人详细地址' name="detailed"  />
+      </view>     
+    </view>
+    <button class='saveBtn' formType="submit">保存地址</button>
+  </form>
+</view>

@@ -1,0 +1,44 @@
+@import '../activityDice/activityDice.wxss';
+.help {
+  width: 120rpx;
+  height: 120rpx;
+  position: absolute;
+  top: -140rpx;
+  left: 260rpx;
+}
+.status-txt {
+  color: #20204B;
+  font-size: 48rpx;
+  margin-bottom: 48rpx;
+  text-align: center;
+  padding-top: 60rpx;
+}
+.status-spec {
+  text-align: center;
+  color: RGBA(32, 32, 75, 0.7);
+  font-size: 26rpx;
+  width: 466rpx;
+  margin: 0 auto 64rpx;
+}
+.count {
+  position: absolute;
+  font-weight: bold;
+  color: #FFA642;
+  right: 200rpx;
+  top: 300rpx;
+  font-size: 24rpx; 
+  animation: a .8s ease-in-out;
+  display: none
+}
+@keyframes a{
+	form{
+    font-size: 28rpx;
+    opacity: 0;
+    transform: translate3d(0,0,0)
+	}
+	to{
+    font-size: 64rpx;
+    opacity: 1;
+    transform: translate3d(120rpx,-320rpx,0)       
+	}
+}

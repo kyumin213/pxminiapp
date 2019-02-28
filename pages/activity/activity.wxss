@@ -1,0 +1,432 @@
+.header {
+  width: 100%;
+  height: 716rpx;
+  background: url(https://image.prise.shop/images/2018/07/26/1532590747609156.png) no-repeat;
+  background-size: contain;
+  box-sizing: border-box;
+  padding-top: 440rpx;
+}
+.gifts-wrap {
+  width: 100%;
+  overflow: hidden;
+  background: #2261ec;
+}
+.header-content {
+  width: 660rpx;
+  height: 250rpx;
+  margin: 0 auto;
+  padding: 60rpx 50rpx 0;
+  box-sizing: border-box;
+}
+.header-title {
+  color: #001d66;
+  font-size: 36rpx;
+  text-align: center;
+  margin: 0 auto 4rpx;
+  font-weight: bold;
+  width: 95%;
+}
+
+.header-time, .header-rule {
+  color: #001d66;
+  font-size: 20rpx;
+  line-height: 1.6;
+}
+
+.header-rule text {
+  color: #fb707d;
+}
+
+.btn-groups {
+  height: 150rpx;
+  padding: 30rpx 50rpx 0;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.receive-gift image, .start-talk image {
+  width: 300rpx;
+  height: 88rpx;
+}
+
+.gifts-item {
+  width: 670rpx;
+  height: 476rpx;
+  background: url(https://image.prise.shop/images/2018/07/26/1532592075004172.png) no-repeat;
+  background-size: contain;
+  margin: 0 auto 8rpx;
+  position: relative;
+  padding-top: 16rpx;
+  box-sizing: border-box;
+}
+
+.item-title {
+  width: 480rpx;
+  height: 68rpx;
+  text-align: center;
+  line-height: 68rpx;
+  color: #001d66;
+  font-weight: bold;
+  margin: 0 auto 24rpx;
+}
+
+.item-pic {
+  width: 220rpx;
+  height: 220rpx;
+  display: block;
+  margin: 0 auto 24rpx;
+}
+
+.item-info {
+  width: 480rpx;
+  color: #001d66;
+  font-size: 30rpx;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box; /** 对象作为伸缩盒子模型显示 **/
+  -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+  -webkit-line-clamp: 2; /** 显示的行数 **/
+  overflow: hidden;
+  line-height: 1.5;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.item-num {
+  position: absolute;
+  width: 80rpx;
+  text-align: center;
+  top: 140rpx;
+  right: 90rpx;
+  color: #fff;
+  font-size: 24rpx;
+}
+
+.wave-line image {
+  width: 100%;
+  height: 71rpx;
+}
+
+/* 吐槽 */
+
+.talk-nav {
+  width: 630rpx;
+  height: 160rpx;
+  margin: 0 auto;
+  position: relative;
+}
+
+.hot-talk, .new-talk {
+  position: relative;
+  width: 280rpx;
+  height: 160rpx;
+}
+
+.pen {
+  width: 120rpx;
+  height: 80rpx;
+  position: absolute;
+  top: -80rpx;
+  left: -30rpx;
+  /* display: none; */
+}
+
+.default-img, .active-img {
+  width: 280rpx;
+  height: 160rpx;
+}
+
+.active-img, .on .default-img {
+  display: none;
+}
+
+.on .active-img, .on .pen {
+  display: block;
+}
+
+/* 吐槽留言区域 */
+
+.hot-talk-content {
+  width: 630rpx;
+  height: auto;
+  margin: 0 auto;
+  /* overflow: hidden; */
+  background: #fbe61f;
+  border: 2rpx solid #001d66;
+  border-radius: 14rpx;
+}
+
+.small-pen {
+  width: 112rpx;
+  height: 112rpx;
+  display: block;
+  margin: 60rpx auto 30rpx;
+}
+
+.talk-tip {
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+
+.start-talks-btn {
+  width: 300rpx;
+  height: 88rpx;
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 48rpx;
+}
+
+/* 吐槽 留言区 */
+
+.talk-item {
+  width: 100%;
+  height: auto;
+  position: relative;
+  padding: 40rpx 0;
+  box-sizing: border-box;
+}
+
+.user-pic {
+  width: 92rpx;
+  height: 92rpx;
+  border: 2rpx solid #001d66;
+  border-radius: 50%;
+  background: #fb707d;
+  margin: 0 12rpx 0 30rpx;
+}
+
+.user-pic image {
+  width: 80rpx;
+  height: 80rpx;
+  margin: 6rpx auto 0;
+  display: block;
+  border-radius: 50%;
+}
+
+.order {
+  position: absolute;
+  background: url(https://image.prise.shop/images/2018/07/26/1532599302519947.png) no-repeat;
+  background-size: contain;
+  width: 50rpx;
+  height: 30rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 30rpx;
+  font-size: 24rpx;
+  left: -25rpx;
+  top: 70rpx;
+}
+
+.blue {
+  background: url(https://image.prise.shop/images/2018/07/27/1532656797943187.png) no-repeat;
+  background-size: contain;
+}
+
+.talk-header {
+  display: flex;
+  align-items: center;
+}
+
+.user-middle {
+  width: 280rpx;
+}
+
+.username {
+  color: #001d66;
+  font-weight: bold;
+}
+
+.time {
+  color: #001d66;
+  font-size: 24rpx;
+}
+
+.like {
+  width: 168rpx;
+  height: 60rpx;
+}
+
+.message-box {
+  width: 460rpx;
+  position: relative;
+  margin-left: 136rpx;
+  margin-top: 28rpx;
+}
+
+.message-box::after {
+  content: '';
+  position: absolute;
+  width: 490rpx;
+  height: 56rpx;
+  background: url(https://image.prise.shop/images/2018/07/26/1532602970056815.png) no-repeat;
+  background-size: contain;
+  bottom: -16rpx;
+  left: 50%;
+  transform: translate(-50%, 0);
+  /* z-index: -1 */
+}
+
+.message-content {
+  width: 460rpx;
+  min-height: 140rpx;
+  background: #fff;
+  border: 2rpx solid #001d66;
+  position: relative;
+  border-radius: 14rpx;
+  z-index: 9;
+}
+
+.messages {
+  color: #001d66;
+  font-size: 26rpx;
+  margin: 0 20rpx 20rpx;
+  line-height: 1.6;
+}
+
+.message-content::before {
+  content: '';
+  width: 32rpx;
+  height: 32rpx;
+  background: #fff;
+  border: 2rpx solid #001d66;
+  position: absolute;
+  left: 36rpx;
+  top: -10rpx;
+  transform: rotate(45deg);
+  border-radius: 4rpx;
+}
+.white-space {
+  width: 90%;
+  height: 32rpx;
+  background: #fff;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+.like-num image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+  vertical-align: middle;
+}
+.like-num {
+  color: #001d66;
+  font-weight: bold;
+  margin: 0 20rpx 20rpx 0;
+  /* display: flex;
+  align-items: center; */
+  text-align: right;
+  line-height: 40rpx;
+  position: relative;
+}
+.count {
+  position: absolute;
+  font-weight: bold;
+  color: #FB707D;
+  /* width: 0;
+  height: 0; */
+  right: 30rpx;
+  top: -30rpx;
+  font-size: 24rpx; 
+  animation: a .8s ease-in-out;
+  display: none;
+  z-index: 999999;
+  /* transform: translate(-50%,0);
+  transform-origin: center; */
+}
+@keyframes a{
+	form{
+    font-size: 28rpx;
+    /* width: 0;
+    height: 0; */
+    opacity: 0;
+    /* transform: translate(0,0) */
+    transform: translate3d(0,0,0)
+	}
+	to{
+    font-size: 64rpx;
+    /* width: 200rpx;
+    height: 200rpx; */
+    opacity: 1;
+    /* transform: translate(-50%,0) */
+    transform: translate3d(80rpx,-320rpx,0)       
+	}
+}
+
+.showmore {
+  color: #001d66;
+  font-size: 24rpx;
+  padding: 40rpx 0;
+  text-align: center;
+}
+
+.mask60 {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.pop-box {
+  height: 796rpx;
+  width: 670rpx;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.talk-box {
+  width: 670rpx;
+  height: 676rpx;
+  border-radius: 20rpx;
+  background: #fff;
+  padding: 48rpx 40rpx 0;
+  box-sizing: border-box;
+  margin-bottom: 80rpx;
+}
+
+.talk-title {
+  color: #001d66;
+  font-size: 40rpx;
+  font-weight: bold;
+  margin-bottom: 48rpx;
+  text-align: center;
+}
+
+.talk-box textarea {
+  width: 590rpx;
+  height: 320rpx;
+  background: #f7f8f9;
+  border-radius: 12rpx;
+  margin-bottom: 50rpx;
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+
+.btn-confirm image, .btn-confirm {
+  width: 504rpx;
+  height: 88rpx;
+  margin: 0 auto;
+}
+.closeBtn {
+  width: 48rpx;
+  height: 48rpx;
+  margin: 0 auto;
+  display: block;
+}
+.fx-zx-button::after {
+  border:0;
+}
+.fx-zx-button {
+  display: block;
+  padding-left: 3px;
+  padding-right: 3px;
+  line-height: 10px;
+  background-color: rgba(255,255,255,0);
+}
+.message-scroll {
+  max-height: 2000rpx;
+}

@@ -1,0 +1,98 @@
+<view class="container bg-blue">
+  <view class='top-status'>
+    <view class='top-left'><text class='icon'></text><text>{{partakers}}</text> 人正在参与答题</view>
+    <view class='top-right'>剩余免费次数：<text>0</text></view>
+  </view>
+  <!--答题 题目区域  -->
+  <view class='question-box'>
+     <block wx:if="{{errorSelect}}"> 
+      <view class='wrongmask'>
+        <view class='topcircle' style='top:{{topValue}}rpx;'><view class='wrongmaskcircle'></view></view>
+      </view>
+     </block> 
+    <view class='timer'>
+       <view class="circleProgress_wrapper">
+          <view class="wrapper right">
+            <block wx:if="{{showTimeline}}">
+              <view class="circleProgress rightcircle" style='transform:rotate({{rotatenum}}deg);'></view>
+            </block>
+          </view>
+          {{seconds}}
+        </view>
+    </view>
+    <!--答题进度 成绩  -->
+    <view class='box-header'>
+      <view class='header-left'>
+        <text>答题进度</text>
+        <view class='progress'>{{currentQuestion + 1}}/{{qustionNumber}}</view>
+      </view>
+      <view class='middle'></view>
+      <view class='header-right'>
+        <text>最佳成绩</text>
+        <view class='grades'><text class='big'>{{hitNum}}/</text><text class='small'>{{gameConsumeTime}}</text></view>
+      </view>
+    </view>
+    <!--问答内容区  -->
+    <block wx:for="{{questionList}}" wx:key="{{index}}">
+      <block wx:if="{{currentQuestion == index}}"> 
+        <view class='question'>{{item.problems}}</view>
+        <block wx:for="{{item.chooseAnswers}}">
+          <view class='answer  {{item.isCorrect?"correct":""}} {{item.isError?"error":""}}' data-index='{{index}}' bindtap='checkAnswer'>
+            {{item.chooseValue}}
+             <block wx:if="{{item.isCorrect}}"><image src='../../images/answer_item_right.png'></image></block>
+             <block wx:if="{{item.isError}}"><image src='../../images/answer_item_wrong.png'></image></block>
+          </view>
+        </block>
+      </block>
+    </block>
+    <view class='line590'></view>
+    <view class='box-footer'>
+      <view class='footer-left'>
+        <image src='../../images/index_icon_chance_more.png'></image>
+        复活卡
+        <block wx:if="{{chance == 0}}">
+          <text>0</text>
+        </block>
+        <block wx:else>
+          <text>{{chance}}</text>                
+        </block>
+      </view>
+      <button class='getRelive-btn' id='getRelive' open-type='share'>获得复活卡</button>
+    </view>
+  </view>
+  <!--答题结束弹出框  -->
+  <block wx:if='{{showResult}}'>
+      <view class='mask40' catchtouchmove='true'></view>
+      <view class='result-box' catchtouchmove='true'>
+        <image src='https://image.prise.shop/images/2018/07/25/1532521378266463.png' class='goalicon'></image>
+        <view class='result'>
+          答对<text>{{totalCorrectNum}}</text>题，用时<text>{{mm}}:{{ss}}:{{mins}}</text>，打败了<text>{{beatNum}}</text>人
+        </view>
+        <view class='tips'>幸运儿将在活动截止时间后产生，请关注服务通知</view>
+        <button class='invite-btn' open-type='share' id='joinGame'>邀请小伙伴一起参与答题</button>
+        <!-- <view class='goindex' bindtap='gotoIndex'>逛逛派喜</view> -->
+        <form report-submit='true' bindsubmit='gotoIndex'>
+          <button formType="submit" class='goindex'>逛逛派喜</button>     
+        </form>
+        <view class='line590'></view>
+        <view class='box-footer'>
+          <view class='footer-left'>
+            <image src='../../images/index_icon_chance_more.png'></image>
+            复活卡<text>{{chance}}</text>
+          </view>
+          <block wx:if="{{chance == 0}}">
+            <button class='getRelive-btn' id='getRelive' open-type='share'>获得复活卡</button>
+          </block>
+          <block wx:else>
+            <button class='getRelive-btn' bindtap='gotoGameAgain'>再答一次</button>
+          </block>
+        </view>
+        <form report-submit='true' bindsubmit='toggleResultBox'>
+          <button formType="submit" class='closebtn'>
+            <!-- <image src='../../images/help_icon_shutdown.png' class='close'></image>  -->
+          </button>     
+        </form>
+         <!-- <image src='../../images/help_icon_shutdown.png' class='close' bindtap='toggleResultBox'></image>  -->
+      </view>
+  </block>
+</view> 

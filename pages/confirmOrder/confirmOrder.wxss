@@ -1,0 +1,482 @@
+.add-address {
+  height: 108rpx;
+  background: #fff;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 30rpx;
+  box-sizing: border-box;
+  padding: 0 30rpx;
+  /* border-top: 1rpx solid #d8d8d8; */
+  position: relative;
+  /* flex-wrap: wrap */
+}
+.add-address::after,.address-info::after{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  left: 0;
+  content: '';
+  overflow: hidden;
+  height: 1rpx;
+  background: #d8d8d8;
+  transform: scaleY(0.5)
+}
+.add-address text {
+  flex: 2
+}
+.position {
+  width: 38rpx;
+  margin-right: 20rpx;
+}
+.location {
+  margin-top: 10rpx; 
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.username {
+  margin-right: 30rpx;
+}
+.address-info {
+  display: flex;
+  align-items: center;
+  font-size: 30rpx;
+  padding: 0 30rpx;
+  background: #fff;
+  height: 176rpx;
+  /* border-top: 1rpx solid #d8d8d8; */
+  position: relative;
+  width: 100%;
+}
+.address-info image {
+  margin-left: 30rpx;
+}
+.address-left {
+  align-self: flex-start;
+  width: 650rpx;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+}
+.add-address .go,.address-info .go {
+  width: 16rpx;
+  /* height: 28rpx; */
+}
+/* 列表  */
+.product-list {
+  background: #fff;
+  overflow: hidden;
+  margin: 20rpx 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+.add-address,.address-info {
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.pic image {
+  width: 200rpx;
+  margin-right: 18rpx;
+}
+.product-info {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 20rpx 30rpx 9rpx 9rpx;
+  box-sizing: border-box;
+  height: 220rpx;
+  /* border-bottom: 2rpx solid #eee; */
+}
+.info-right {
+  align-self: flex-start;
+  margin-top:20rpx;
+}
+.info-title{
+  font-size: 30rpx;
+  margin-bottom: 10rpx;
+}
+.info-title image{
+  width: 80rpx;
+  margin-right: 10rpx;
+}
+.info-title .pro-title {
+  width: 375rpx;
+   flex: 2; 
+   margin-right: 40rpx; 
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.titlename {
+  width: 300rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  height: 38rpx;
+  line-height: 38rpx;
+}
+.pro-title image {
+  width: 80rpx;
+}
+/* .info-price {
+   font-family: "DIN" 
+} */
+.select-prop{
+  color: #999;
+  font-size: 26rpx;
+}
+.propname {
+  /* flex: 2; */
+  color: #666;
+  width: 370rpx;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box; /** 对象作为伸缩盒子模型显示 **/
+  -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+  -webkit-line-clamp: 2; /** 显示的行数 **/
+  overflow: hidden;
+  /* background: pink; */
+  margin-right: 30rpx;
+}
+.info-title,.select-prop {
+  display: flex;
+  align-items: center;
+}
+.h94 {
+  width: 100%;
+  height: 100rpx;
+  background: #fff;
+  padding: 30rpx;
+  display: flex;
+  align-items: center;
+  font-size: 30rpx;
+  box-sizing: border-box;
+  margin-top: 20rpx;
+}
+.h94-content {
+  display: flex;
+  align-items: center;
+  height: 100rpx;
+  /* border-top:1rpx solid #eee; */
+  width: 100%;
+  position: relative;
+}
+.h94-content::after {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  left: 0;
+  content: '';
+  overflow: hidden;
+  height: 1rpx;
+  background: #eee;
+  transform: scaleY(0.5)
+}
+.noborder { border: none;}
+.buy-text {
+  flex: 1;
+}
+.select-prop text {
+  flex: 1;
+}
+.buy-number {
+  width: 76rpx;
+  text-align: center;
+}
+.h94-content image {
+  width: 44rpx;
+}
+.total {
+  color: #F72F2B;
+  font-weight: bold;
+}
+.total-text {
+  flex: 1
+}
+.wxpay {
+  width: 691rpx;
+  margin-top: 54rpx;
+  margin-bottom: 30rpx;
+}
+.idcard text,.remark text{
+  display: inline-block;
+  width: 140rpx;
+}
+.tips-container {
+  background: #fff;
+  padding-bottom: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tips{
+  color: #F5A623;
+  background: #FEF6E9;
+  width: 691rpx;
+  height: 94rpx;
+  font-size: 22rpx;
+  padding: 15rpx 18rpx;
+  box-sizing: border-box;
+}
+.modal {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+.mask {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  top: 0;
+  left: 0
+}
+.modal-container {
+  width: 540rpx;
+  height: 312rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 34rpx;
+  text-align: center;
+}
+.modal-title {
+  color: #030303;
+  margin: 60rpx auto 30rpx;
+}
+.modal-content{
+  color: #999999;
+  font-size: 26rpx;  
+}
+.modal-footer {
+  height: 88rpx;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  border-top: 1rpx solid #eee;
+}
+.modal-footer view {
+  width: 50%;
+  display: inline-block;
+  line-height: 88rpx;
+  height: 88rpx;
+  box-sizing: border-box;
+}
+.leave {
+  color: #999999;
+  font-size: 34rpx;
+  border-right: 1rpx solid #eee;
+}
+.product-pic {
+  width: 220rpx;
+  /* margin-right: 10rpx; */
+  margin: 20rpx 20rpx 0 10rpx; 
+}
+.beforePricecar {
+  color: #999;
+  font-size: 24rpx;
+  text-decoration: line-through;
+  margin-left: 20rpx;
+}
+
+.right {
+  width: 465rpx;
+  height: 100%;
+  align-self: flex-start;
+  position: relative;
+}
+.pro-title {
+  width: 465rpx;
+  font-size: 30rpx;
+  margin-bottom: 10rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  /* word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box; 
+  -webkit-box-orient: vertical; 
+  -webkit-line-clamp: 2; 
+  overflow: hidden; */
+}
+.pro-title image {
+  vertical-align: middle;
+  margin-right: 10rpx;
+}
+.pro-props {
+  font-size: 24rpx;
+  color: #999999;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box; /** 对象作为伸缩盒子模型显示 **/
+  -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+  -webkit-line-clamp: 2; /** 显示的行数 **/
+  overflow: hidden;
+}
+.buy-info {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: absolute;
+  bottom: 5rpx;
+}
+.buy-left {flex: 1}
+.buy-info .currentprice {
+  color: #F72F2B;
+  font-size: 30rpx;
+  /* flex: 1; */
+  font-weight: bold;
+  /* font-family: "DINbold" */
+}
+.buy-number {
+  width: 90rpx;
+  font-size: 30rpx;
+  text-align: center;
+}
+.reduce,.add {
+  width: 40rpx;
+  height: 40rpx;
+}
+.coupou-row {
+  width: 100%;
+  height: 100rpx;
+  background: #fff;
+  padding: 0 32rpx 0 40rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.coupou-left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.coupou-left .icons {
+  color: #fff;font-size: 20rpx;background: #F72F2B;border-radius: 4rpx;width: 32rpx;height: 32rpx;
+  display: inline-block;text-align: center;line-height: 32rpx;margin-right: 8rpx;
+}
+.coupou-left .redEnvelopes,.accouts {
+  color: #999999;
+  font-size: 26rpx;
+  margin-left: 28rpx;
+}
+.accouts {
+  margin-right: 110rpx;
+}
+.go {
+  width: 30rpx;
+  height: 30rpx;
+}
+.coupou-right {
+  display: flex;
+  align-items: center;
+  color: #CCCCCC
+}
+.red {
+  color: #F72F2B;
+  font-weight: bold;
+}
+.totalprice {
+  font-weight: bold;
+}
+switch {
+  transform: scale(0.7);
+  position: absolute;
+  right: 0;
+  top: 20rpx;
+}
+.mask50 {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 5;
+}
+.wallet-pop {
+  width: 486rpx;
+  height: 490rpx;
+  border-radius: 10rpx;
+  background: #FFFFFF;
+  left: 50%;
+  top: 300rpx;
+  transform: translate(-50%, 0);
+  position: absolute;
+  z-index: 6;
+}
+.close {
+  width: 22rpx;
+  height: 22rpx;
+  position: absolute;
+  left: 8rpx;
+  top: 18rpx;
+  padding: 20rpx;
+}
+.pop-head {
+  font-size: 30rpx;
+  font-weight: bold;
+  text-align: center;
+  height: 86rpx;
+  line-height: 86rpx;
+}
+.pop-line, .pop-line-gray {
+  width: 100%;
+  height: 1rpx;
+  background: #1AAD19;
+  transform: scaleY(0.5);
+}
+.pop-logo {
+  font-size: 30rpx;
+  text-align: center;
+  margin: 22rpx auto 12rpx;
+}
+.pop-prise {
+  font-size: 60rpx;
+  font-weight: bold;
+  margin-bottom: 28rpx;
+  text-align: center;
+}
+.pop-line-gray {
+  width: 432rpx;
+  margin: 0 auto;
+  background: #D8D8D8;
+}
+.pop-footer {
+  width: 432rpx;
+  height: 72rpx;
+  display: flex;
+  align-items: center;
+  color: #666;
+  font-size: 30rpx;
+  margin: 0 auto;
+}
+.pop-footer image {
+  width: 42rpx;
+  height: 41rpx;
+  margin-right: 22rpx;
+}
+.pop-btn {
+  width: 432rpx;
+  height: 80rpx;
+  background: #1AAD19;
+  border-radius: 6rpx;
+  margin: 0 auto;
+  line-height: 80rpx;
+  text-align: center;
+  color: #fff;
+  margin-top: 24rpx;
+  font-size: 34rpx;
+}

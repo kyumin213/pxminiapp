@@ -1,0 +1,86 @@
+<view class="container activity-container">
+  <view class='navbar'>
+    <!-- <view class='nav-left'> -->
+      <view class='nav-item' bindtap='gotoIndex'>礼物</view>
+      <view class='nav-item' bindtap='gotoGift'>送礼</view>
+      <view class='nav-item active-nav' bindtap='gotoActivity'>抽奖</view>
+      <view class='nav-item' bindtap='gotoWishing'>许愿树</view> 
+    <!-- </view> -->
+    <view class='nav-right'>
+      <image class='nav-icon' src='../../images/index_cart.png' bindtap='gotoCar'></image>
+      <view class='nav-bage'>{{goodsNumber}}</view>
+    </view>
+    <view class='nav-right'>
+      <image class='nav-icon' src='../../images/index_mine.png' bindtap='gotoUser'></image>
+    </view>
+  </view>
+  <!-- 秒杀活动 -->
+  <!-- {{killdays}}天:{{killhours}}:{{killminutes}}:{{killseconds}} -->
+  <block wx:if="{{showSeckill}}">
+    <view class='seckill' bindtap='gotoSpecialSeckill'>
+      <image src='{{seckillList.pictureCover}}' class='seckill-cover'></image>
+    </view>
+  </block>
+ <block wx:if="{{isLoadingComplete}}">
+    <block wx:for="{{activityList}}" wx:key="{{index}}">
+      <view class='activity-item'  bindtap='gotoActivity' data-index='{{index}}'>
+        <view class='activity-header'>
+          <block wx:if="{{item.userMaker.addressWay == 5}}">
+            <view class='addressWay fl'>{{addressWay[item.userMaker.addressWay]}}</view>
+          </block>
+          <block wx:if="{{item.userMaker.addressWay == 6}}">
+            <view class='addressWay fl bg-pintu'>{{addressWay[item.userMaker.addressWay]}}</view>          
+          </block>
+          <block wx:if="{{item.userMaker.addressWay == 7}}">
+            <view class='addressWay fl bg-answer'>{{addressWay[item.userMaker.addressWay]}}</view>          
+          </block>
+          <block wx:if="{{item.userMaker.addressWay == 9}}">
+            <view class='addressWay fl bg-dice'>{{addressWay[item.userMaker.addressWay]}}</view>          
+          </block>
+          <view class='total-num fr'>共<text>{{item.freeOrdersItemsNum}}</text>份</view>
+        </view>
+        <!-- 吐槽列表 -->
+        <block wx:if="{{item.userMaker.addressWay == 5}}">
+          <view class='pic-list {{item.userMaker.addressWay == 5 ? "smallimg" : ""}}'>
+          <block wx:for="{{item.freeOrdersItems}}" wx:key="{{index}}">
+            <image src='{{item.productPicture}}'></image>
+          </block>
+          </view>
+          <view class='activity-title'>{{item.freeOrdersRemarks.remarkTitle}}</view>
+          <view class='activity-props'>{{item.freeOrdersRemarks.remarkBody}}</view>
+        </block>
+        <block wx:else>
+          <block wx:for="{{item.freeOrdersItems}}" wx:key="{{index}}">
+            <view class='pic-list'>
+              <image src='{{item.productPicture}}'></image>
+            </view>
+          <view class='activity-title'>{{item.productTitle}}</view>
+          <view class='activity-props'>{{item.productSelling}}</view>
+          </block>
+        </block>
+        <!-- status 0未结束 1已结束 -->
+        <block wx:if="{{item.userMaker.status == 0}}">
+          <block wx:if="{{item.userPartakeStatus == 0}}">
+            <view class='btn-godetails'>去领礼物</view>
+          </block>
+          <block wx:else>
+            <view class='btn-godetails btn-pink'>已参与</view>          
+          </block>
+        </block>
+        <block wx:else>
+          <view class='btn-godetails btn-pink'>查看获奖者名单</view>        
+        </block>
+        <view class='activity-tips'>
+          <block wx:if="{{item.userMaker.status == 0}}">
+            {{item.dateArr[1]}}月{{item.dateArr[2]}}日 {{item.timeArr}} 将为前{{item.freeOrdersItemsNum}}名获胜者送出礼物
+          </block>
+          <block wx:else>
+            {{item.dateArr[1]}}月{{item.dateArr[2]}}日 {{item.timeArr}} 已成功送出礼物
+          </block>
+        </view>
+      </view>
+    </block>
+    <view class='bottom-tips'>{{nextTime}}</view>
+  </block>
+  <!-- <image class='gobackIndex' bindtap='gotoIndex' src='https://image.prise.shop/images/2018/08/01/1533108695200560.png'></image> -->
+</view>

@@ -1,0 +1,30 @@
+@import '../wishTree/wishTree.wxss';
+.bottom-menu {
+  width: 450rpx;
+  left: 150rpx;
+}
+.personal, .watering {
+  width: 182rpx;
+  height: 182rpx;
+}
+.watering image {
+  width: 88rpx;
+  height: 78rpx;
+  transform: rotate(25deg)
+}
+.personal image {
+  width: 82rpx;
+  height: 68rpx;
+  margin-bottom: 20rpx;
+}
+.personal text {
+  font-size: 24rpx;
+}
+.notree-bg {
+  background: url(https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181203031654859853019.png) no-repeat center top #a7c666;
+  background-size: contain;
+}
+.notree-bg-x {
+  background: url(https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181203031650850614903.png) no-repeat center top #a7c666;
+  background-size: contain;
+}

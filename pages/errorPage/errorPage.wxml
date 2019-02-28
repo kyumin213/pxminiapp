@@ -1,0 +1,4 @@
+<view class='contanier' style='text-align:center;font-size:28rpx;'>
+  <view class='text'>哇喔，您查看的宝贝下架了</view>
+  <view bindtap='gotoIndex' class='gotoshopping'>去逛逛</view>
+</view>

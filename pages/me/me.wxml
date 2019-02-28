@@ -1,0 +1,169 @@
+<!--pages/me/me.wxml-->
+<view class="container p60">
+  <!--基本信息  -->
+  <view class='userinfo'>
+    <view class='userinfo-left'>
+      <view>
+        <block wx:if="{{isLogin}}">
+          <view class="userinfo-avatar"><open-data type="userAvatarUrl"></open-data></view>
+        </block>
+        <block wx:else>
+          <image class="userinfo-avatar" src="https://image.prise.shop/images/2018/07/26/1532587944531157.png" background-size="cover"></image>
+        </block>
+      </view>
+      <view>
+        <block wx:if="{{isLogin}}">
+          <open-data type="userNickName"  class="userinfo-nickname"></open-data>
+          <block wx:if="{{userPhone==null || userPhone=='000' || userPhone==''}}">
+            <view class='phone' bindtap='bindPhone'>绑定手机号码</view>
+          </block>
+          <block wx:else>
+            <view class='phone' bindtap='bindPhone'>{{userPhone}}</view>
+          </block>
+        </block>
+        <block wx:else>
+          <view bindtap='gotoLogin'>
+            <view class="userinfo-nickname">登录</view>
+            <view class='phone'>登录后查看订单</view>
+          </view>
+        </block>  
+      </view>  
+    </view>
+    <view class='userinfo-right'>
+      <view class='message-center' bindtap='goWishRecord'>
+       <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181221112204350161234.png'></image>
+       许愿树愿望
+      </view>
+    </view>
+  </view> 
+  <!-- 我的钱包 -->
+  <view class='view-row'>
+    <view class='bottom-item' bindtap='goMoneyPackage'>
+      <view class="bottom-item-left bigtitle ml40">
+        我的钱包
+      </view>
+      <view class="item-more">
+        <block wx:if="{{isLogin}}">
+          ￥{{accounts}}        
+        </block>
+        <image src="../../images/mine_list_go.png"></image>
+      </view>
+    </view>
+  </view>  
+  <!--我的订单  -->
+  <view class='myorder'>
+    <view class='menu'>
+      <view class='bigtitle'>我的订单</view>
+      <view class='all' bindtap='goOrderList' data-index='0'>查看全部订单<image src="../../images/mine_list_go.png"></image></view>
+    </view>
+    <view class='line686'></view>
+    <view class='order-list'>
+      <view class='order-item' bindtap='goOrderList' data-index='1'>
+        <image src='../../images/mine_order_wait.png'></image>
+        待付款
+        <view class='bage-number'>{{pendingPay}}</view>
+      </view>
+      <view class='order-item' bindtap='goOrderList' data-index='2'>
+        <image src='../../images/mine_order_receive.png'></image>
+        待收货
+        <view class='bage-number'>{{pendingReceive}}</view>        
+      </view>
+      <view class='order-item' bindtap='goOrderList' data-index='3'>
+        <image src='../../images/mine_order_done.png'></image>
+        已完成
+        <!-- <view class='bage-number'>{{completed}}</view>         -->
+      </view>
+      <view class='order-item' bindtap='goOrderList' data-index='0'>
+        <image src='../../images/mine_order_all.png'></image>
+        全部
+      </view>
+    </view>
+  </view>
+  <!-- 礼物记录 -->
+  <view class='myorder'>
+    <view class='menu'>
+      <view class='bigtitle'>礼物记录</view>
+      <view class='all' bindtap='goRecordList' data-index='1'>查看礼物记录<image src="../../images/mine_list_go.png"></image></view>
+    </view>
+    <view class='line686'></view>
+    <view class='order-list'>
+      <view class='order-item record' bindtap='goRecordList' data-index='1'>
+        <image src='https://image.prise.shop/images/2018/08/09/1533802565008852.png'></image>
+        我送出的
+      </view>
+      <view class='order-item record' bindtap='goRecordListReceived' data-index='2'>
+        <image src='https://image.prise.shop/images/2018/08/09/1533802567761946.png'></image>
+        我收到的     
+      </view>
+      <view class='order-item record' bindtap='goRecordListJoin' data-index='3'>
+        <image src='https://image.prise.shop/images/2018/08/09/1533802562324440.png'></image>
+        我参与的
+      </view>
+    </view>
+  </view>
+  <view class='view-row'>
+    <view class='bottom-item' bindtap='goCoupon'>
+      <view class="bottom-item-left">
+        我的优惠券
+      </view>
+      <view class="item-more">
+        <block wx:if="{{isLogin}}">
+          <block wx:if="{{couponTotal == 0}}">
+            暂无可用
+          </block>
+          <block wx:if="{{couponTotal > 0}}">
+            <view class='red'>{{couponTotal}}张可用</view>
+          </block>          
+        </block>
+        <image src="../../images/mine_list_go.png"></image>
+      </view>
+    </view>
+    <view class='line686'></view>
+    <view class='bottom-item'  bindtap='goCollection'>
+      <view class="bottom-item-left">
+        我的收藏
+      </view>
+      <view class="item-more">
+        <image src="../../images/mine_list_go.png"></image>
+      </view>
+    </view>
+    <view class='line686'></view>
+    <view class='bottom-item'  bindtap='goMessageList'>
+      <view class="bottom-item-left">
+        消息中心
+      </view>
+      <view class="item-more">
+        <image src="../../images/mine_list_go.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class='bottom-view'>
+    <view class="bottom-item" bindtap='goFeedBack'>
+      <view class="bottom-item-left">
+        建议反馈
+      </view>
+      <view class="item-more">
+        <image src="../../images/mine_list_go.png"></image>
+      </view>
+    </view>
+    <view class='line686'></view>
+    <!-- bindtap='goService'  -->
+    <button open-type='contact' class="bottom-item btn-service">
+      <view class="bottom-item-left">
+        联系客服
+      </view>
+      <view class="item-more">
+        <image src="../../images/mine_list_go.png"></image>
+      </view>
+    </button>
+    <view class='line686'></view>
+    <view class="bottom-item" bindtap='goAbout'>
+      <view class="bottom-item-left">
+        关于我们
+      </view>
+      <view class="item-more">
+        <image src="../../images/mine_list_go.png"></image>
+      </view>
+    </view>
+  </view>
+</view>

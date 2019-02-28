@@ -1,0 +1,109 @@
+@import '../activityDice/activityDice.wxss';
+.gift-wraps {
+  background: #fff;
+  width: 710rpx;
+  min-height:280rpx;
+  border-radius: 8rpx;
+  margin: 0 auto 72rpx; 
+  box-sizing: border-box;
+  padding: 40rpx 32rpx;
+}
+.gift-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+.gift-item:last-child {
+  margin-bottom: 0;
+}
+.item-right {
+  position: relative;
+  height: 200rpx;
+}
+.product-pics {
+  width: 200rpx;
+  height: 200rpx;
+  margin-right: 20rpx;
+}
+.pro-titles {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 16rpx;
+}
+.pro-propss {
+  color: #999;
+  font-size: 26rpx;
+}
+.pro-number {
+  position: absolute;
+  bottom: 20rpx;
+  font-size: 26rpx;
+  left: 0;
+  padding-left: 4rpx;
+}
+.pro-number::before {
+  content: '';
+  width: 80rpx;
+  height: 16rpx;
+  background: RGBA(249, 123, 24, 0.1);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.bingo-single {
+  width: 710rpx;
+  height: 414rpx;
+  background: RGBA(255, 255, 255, 0.06);
+  border-radius: 8rpx;
+  position: relative;
+  margin: 0 auto 70rpx;
+}
+.icon1 {
+  width: 112rpx;
+  height: 112rpx;
+  position: absolute;
+  top: 32rpx;
+  left: 50%;
+  transform: translate(-50%,0)
+}
+.winnerpic {
+  width: 160rpx;
+  height: 160rpx;
+  position: absolute;
+  top: 108rpx;
+  left: 50%;
+  transform: translate(-50%,0);
+  border-radius: 50%;
+  border: 4rpx solid rgb(253,224,11); 
+}
+.icon2 {
+  width: 248rpx;
+  height: 72rpx;
+  position: absolute;
+  top: 234rpx;
+  left: 50%;
+  transform: translate(-50%,0);
+  background: url(https://image.prise.shop/images/2018/07/04/1530698548821558.png);
+  background-size: contain;
+  color: #FF8400;
+  font-size: 38rpx;
+  text-align: center;
+  line-height: 80rpx;
+  font-weight: bold;
+}
+.winnername {
+  color: #FFFFFF;
+  font-size: 30rpx;
+  text-align: center;
+  bottom: 50rpx;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%,0);
+}
+.remarks {
+  color: #fff;
+  font-size: 30rpx;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 auto 40rpx;
+}

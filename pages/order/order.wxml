@@ -1,0 +1,186 @@
+<view class='container order-wrap'>
+  <view class='swiper-tab'>
+    <view class="tab-item {{currentNavtab==index ? 'active' : ''}}" wx:for="{{navTab}}" wx:key="{{index}}" wx:for-item="itemName" data-index="{{index}}" bindtap="swichNav">{{itemName.topicName}}</view>
+  </view>
+  <block wx:if="{{currentNavtab == 0}}">
+    <view class='swiper-view-item'>
+       <view class='scroll-view-bottom' scroll-y="true"> 
+        <block wx:if="{{allOrder.length>0}}">
+          <view class='item-box' wx:for="{{allOrder}}" wx:key="{{index}}" bindtap='gotoDetailAll' data-index="{{index}}">
+            <view class='item-title'>
+              <view class='item-title-text'>{{item.ordersCreated}}</view>
+              <view class='item-title-text status-pendingPay {{item.status==0?"gray":""}}'>{{status[item.status]}}</view>
+            </view>
+            <block wx:for='{{item.itemVoList}}' wx:key="{{index}}">
+              <view class='line-view'></view>
+              <view class='item-content'>
+                <view class='item-content-left'>
+                  <image class='item-content-image' src='{{item.productPicture}}'></image>
+                  <view class='item-content-attribute'>
+                    <view class='item-attribute-text'>{{item.productTitle}}</view>
+                    <view class='item-attribute-specifications'>{{item.productParamText.propName}}</view>
+                  </view>
+                </view>
+                <view class='item-content-right'>
+           
+                    <view class='item-price'>￥{{item.productPrice}}</view>
+                    <view class='beforePrice' wx:if="{{item.productBeforePrice && item.productBeforePrice != ''}}">{{item.productBeforePrice}}</view>
+  
+                  <view class='item-right-num'> x{{item.num}}</view>
+                </view>
+              </view>
+              <view class='line-view'></view>
+            </block>
+            <view class='item-bottom'>
+              <view class='item-bottom-text'>共{{item.ordersItemNum}}件商品 合计：<text class='total-price'>￥{{item.ordersPrice}}</text></view>
+            </view>
+            <view class='line-view'></view>
+            <view class='item-bottom' wx:if="{{item.status == 1}}">
+              <text class='item-bottom-button payBtn' data-index="{{index}}" catchtap='gotoPayAll'>去支付</text>
+            </view>
+          </view>
+        </block>
+        <view class='empty-order' wx:else>
+          <image src='https://image.prise.shop/images/2018/07/25/1532520772105459.png'></image>
+          <text>暂无订单</text>
+        </view>
+       </view> 
+    </view> 
+  </block>
+  <block wx:if="{{currentNavtab == 1}}">
+    <view class='swiper-view-item'>
+       <view class='scroll-view-bottom' scroll-y="true"> 
+        <block wx:if="{{beforePay.length>0}}">
+          <view class='item-box' wx:for="{{beforePay}}" wx:key="{{index}}" bindtap='gotoDetail' data-index="{{index}}">
+            <view class='item-title'>
+              <view class='item-title-text'>{{item.ordersCreated}}</view>
+              <view class='item-title-text status-pendingPay {{item.status==1?"":"gray"}}'>{{status[item.status]}}</view>
+            </view>
+            <block wx:for='{{item.itemVoList}}' wx:key="{{index}}">
+              <view class='line-view'></view>
+              <view class='item-content'>
+                <view class='item-content-left'>
+                  <image class='item-content-image' src='{{item.productPicture}}'></image>
+                  <view class='item-content-attribute'>
+                    <view class='item-attribute-text'>{{item.productTitle}}</view>
+                    <view class='item-attribute-specifications'>{{item.productParamText.propName}}</view>
+                  </view>
+                </view>
+                <view class='item-content-right'>
+                  <!-- <view class='item-right-prise'> -->
+                    <view class='item-price'>￥{{item.productPrice}}</view>
+                    <view class='beforePrice' wx:if="{{item.productBeforePrice && item.productBeforePrice != ''}}">{{item.productBeforePrice}}</view>
+                  <!-- </view> -->
+                  <view class='item-right-num'> x{{item.num}}</view>
+                </view>
+              </view>
+              <view class='line-view'></view>
+            </block>
+            <view class='item-bottom'>
+              <view class='item-bottom-text'>共{{item.ordersItemNum}}件商品 合计：<text class='total-price'>￥{{item.ordersPrice}}</text></view>
+            </view>
+            <view class='line-view'></view>
+            <view class='item-bottom'>
+              <text class='item-bottom-button payBtn' data-index="{{index}}" catchtap='gotoPay'>去支付</text>
+            </view>
+          </view>
+        </block>
+        <view class='empty-order' wx:else>
+          <image src='https://image.prise.shop/images/2018/07/25/1532520772105459.png'></image>
+          <text>暂无订单</text>
+        </view>
+       </view> 
+    </view>
+  </block>
+  <block wx:if="{{currentNavtab == 2}}">
+    <view class='swiper-view-item'>
+       <view class='scroll-view-bottom' scroll-y="true"> 
+         <block wx:if="{{beforeReceive.length>0}}">
+          <view class='item-box' wx:for="{{beforeReceive}}" wx:key="{{index}}" bindtap='gotoDetailTwo' data-index="{{index}}">
+            <view class='item-title'>
+              <view class='item-title-text'>{{item.ordersCreated}}</view>
+              <view class='item-title-text status-pendingPay {{item.status==0?"gray":""}}'>{{status[item.status]}}</view>
+            </view>
+            <block wx:for='{{item.itemVoList}}' wx:key="{{index}}">
+              <view class='line-view'></view>
+              <view class='item-content'>
+                <view class='item-content-left'>
+                  <image class='item-content-image' src='{{item.productPicture}}'></image>
+                  <view class='item-content-attribute'>
+                    <view class='item-attribute-text'>{{item.productTitle}}</view>
+                    <view class='item-attribute-specifications'>{{item.productParamText.propName}}</view>
+                  </view>
+                </view>
+                <view class='item-content-right'>
+                  <!-- <view class='item-right-prise'> -->
+                    <view class='item-price'>￥{{item.productPrice}}</view>
+                    <view class='beforePrice' wx:if="{{item.productBeforePrice && item.productBeforePrice != ''}}">{{item.productBeforePrice}}</view>
+                  <!-- </view> -->
+                  <view class='item-right-num'> x{{item.num}}</view>
+                </view>
+              </view>
+              <view class='line-view'></view>
+            </block>
+            <view class='item-bottom'>
+              <view class='item-bottom-text'>共{{item.ordersItemNum}}件商品 合计：<text class='total-price'>￥{{item.ordersPrice}}</text></view>
+            </view>
+            <block wx:if="{{item.status==3}}">
+              <view class='line-view'></view>
+              <view class='item-bottom'>
+                <text class='item-bottom-button receiveBtn bgred' data-index="{{index}}"  catchtap='bindReceive'>确认收货</text>
+                <text class='item-bottom-button receiveBtn' data-index="{{index}}"  catchtap='bindLogiticts'>查看物流</text>
+              </view> 
+            </block>
+          </view>
+         </block>
+        <view class='empty-order' wx:else>
+          <image src='https://image.prise.shop/images/2018/07/25/1532520772105459.png'></image>
+          <text>暂无订单</text>
+        </view>
+       </view> 
+    </view>
+  </block>
+  <block wx:if="{{currentNavtab == 3}}">
+    <view class='swiper-view-item'>
+       <view class='scroll-view-bottom' scroll-y="true"> 
+         <block wx:if="{{completed.length>0}}">
+            <view class='item-box' wx:for="{{completed}}" wx:key="{{index}}" bindtap='gotoDetailThree' data-index="{{index}}">
+              <view class='item-title'>
+                <view class='item-title-text'>{{item.ordersCreated}}</view>
+                <view class='item-title-text status-pendingPay {{item.status==0?"gray":""}}'>{{status[item.status]}}</view>
+              </view>
+              <block wx:for='{{item.itemVoList}}' wx:key="{{index}}">
+                <view class='line-view'></view>
+                <view class='item-content'>
+                  <view class='item-content-left'>
+                    <image class='item-content-image' src='{{item.productPicture}}'></image>
+                    <view class='item-content-attribute'>
+                      <view class='item-attribute-text'>{{item.productTitle}}</view>
+                      <view class='item-attribute-specifications'>{{item.productParamText.propName}}</view>
+                    </view>
+                  </view>
+                  <view class='item-content-right'>
+      
+                    <view class='item-price'>￥{{item.productPrice}}</view>
+                    <view class='beforePrice' wx:if="{{item.productBeforePrice && item.productBeforePrice != ''}}">{{item.productBeforePrice}}</view>
+      
+                  <view class='item-right-num'> x{{item.num}}</view>
+                </view>
+                <view class='line-view'></view>
+                </view>
+              </block>
+              <view class='item-bottom'>
+                <view class='item-bottom-text'>共{{item.ordersItemNum}}件商品 合计：<text class='total-price'>￥{{item.ordersPrice}}</text></view>
+              </view>
+            </view>
+         </block>
+        <view class='empty-order' wx:else>
+          <image src='https://image.prise.shop/images/2018/07/25/1532520772105459.png'></image>
+          <text>暂无订单</text>
+        </view>
+       </view> 
+    </view>
+  </block>
+  
+  
+</view>

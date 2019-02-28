@@ -1,0 +1,160 @@
+.bg-red {
+  background: url('https://image.prise.shop/images/2018/05/16/1526437555708616.png') no-repeat #FE4C4B;
+  background-size: contain;
+}
+.big-title {
+  padding: 72rpx 0 46rpx 48rpx;
+  height: 162rpx;
+}
+.big-title view {
+  color: #fff;
+  font-size: 54rpx;
+  font-weight: bold;
+  line-height: 80rpx;
+  /* margin-bottom: 20rpx; */
+}
+.card-wrap {
+  width: 702rpx;
+  min-height: 82vh;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 32rpx 32rpx 0 0;
+  margin: 0 auto;
+  box-shadow: 0 0 26rpx rgba(0,0,0,0.06);
+}
+.card-top {
+  font-size: 30rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 32rpx;
+}
+.card-top image {
+  margin: 40rpx 0 32rpx 0;
+  width: 120rpx;
+  height: 120rpx;
+}
+.gifts-item {
+  width: 622rpx;
+  height: 200rpx;
+  box-shadow: 0 0 34rpx rgba(0,0,0,0.07);
+  margin: 20rpx auto 0;
+  padding: 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+.gifts-item:first-child {
+  margin-top: 34rpx;
+}
+.gifts-item:last-child {
+  margin-bottom: 34rpx;
+}
+.gifts-item image {
+  width: 160rpx;
+  height: 160rpx;
+  margin-right: 20rpx;
+}
+.item-right {
+  width: 390rpx;
+  display: flex;
+  flex-direction: column;
+}
+.item-title {
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box; 
+  -webkit-box-orient: vertical; 
+  -webkit-line-clamp: 2; 
+  overflow: hidden;
+  margin-bottom: 20rpx;
+}
+.item-count {
+  font-size: 24rpx;
+  color: #999;
+}
+.tips {
+  color: #999;
+  font-size: 24rpx;
+  text-align: center;
+  margin: 40rpx auto;
+}
+.sendBtn {
+  width: 622rpx;
+  height: 88rpx;
+  background: #F72F2B;
+  color: #fff;
+  border-radius: 44rpx;
+  line-height: 88rpx;
+  font-size: 34rpx;
+  margin: 20rpx auto 60rpx;
+}
+/*actionsheetDialog  */
+.actionsheetDialog {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 9;
+}
+.mask {
+  background: rgba(0,0,0,0.4);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+.line100 {
+  width: 100%;
+  height: 1rpx;
+  background: #eee;
+  transform: scaleY(0.5);
+}
+.btn-group {
+  position: absolute;
+  bottom: 0;
+  height: 282rpx;
+  width: 100%;
+  background: #efeff4;
+}
+.btn-group .abtn {
+  width: 100%;
+  height: 90rpx;
+  border-radius: 0;
+  border: none;
+  background: #fff;
+}
+.btn-group .abtn::after {
+  border-radius: 0;
+  border: none;
+}
+.cancel{
+  margin-top: 12rpx;
+}
+.more{
+  width: 36rpx;
+  height: 36rpx;
+   margin: 12rpx auto 40rpx; 
+  display: block;
+  /* position: absolute;
+  left: 50%;
+  bottom: -12rpx;
+  transform: translate(-50%,0) */
+}
+ .scroll-list {
+  position: relative;
+} 
+.canvas-box {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 70%;
+  background: rgba(0,0,0,0.2);
+  z-index: -1;
+}
+.canvas-box canvas {
+  z-index: -1;
+  position: relative;
+}
