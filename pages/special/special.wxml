@@ -23,6 +23,12 @@
           <view class='label-name {{currentLabeltab==index ? "onon" : ""}}' data-index="{{index}}" bindtap="swichLabel">{{item.title}}</view>
         </block>
   </view>
+  <!-- 被选标签 -->
+  <view class='selected-box selected-box-static'>      
+    <view wx:if='{{selectedScene}}'>{{selectedScene}}<text bindtap='cancelSceneSelect'>x</text></view>
+    <view wx:if='{{selectedReceiver}}'>{{selectedReceiver}}<text bindtap='cancelReceiverSelect'>x</text></view>
+    <view wx:if='{{selectedTypes}}'>{{selectedTypes}}<text bindtap='cancelTypeSelect'>x</text></view>      
+  </view>
   <block wx:if="{{isLoading}}">
     <view class='goods-list'>
       <block wx:for='{{specialList}}' wx:key='{{index}}'>
@@ -50,44 +56,42 @@
       <view>关注公众号:“派喜” 等你来撩</view>
     </view>
   </block>
+  <!-- 搜索按钮 -->
+  <!-- <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20190304110049537579354.png' class='search-btn' bindtap='bindClickSearch'></image> -->
   <!-- 分类筛选 -->
-  <!-- <view class='mask100'></view>
-  <view class='selected-box'>
-    <view>金榜题名<text>x</text></view>
-    <view>自己<text>x</text></view>
-    <view>文体<text>x</text></view>
-  </view> -->
-  <!-- <scroll-view class='category-box {{iphonex?"category-box-x":""}}' scroll-y>
-    <view class='category-bigtitle'>送礼场景</view>
-    <view class='category-list'>
-       <view class='category-item'>生日</view>
-       <view class='category-item'>结婚</view>
-       <view class='category-item'>新年</view>
-       <view class='category-item'>满月</view>
-       <view class='category-item'>升学</view>
-       <view class='category-item'>升职</view>
-       <view class='category-item selected-category'>金榜题名</view>
+  <block wx:if="{{showSearchPanel}}">
+    <view class='mask100' bindtap='closeSearchPanel'></view>
+    <view class='selected-box'>      
+      <view wx:if='{{selectedScene}}'>{{selectedScene}}<text bindtap='cancelSceneSelect'>x</text></view>
+      <view wx:if='{{selectedReceiver}}'>{{selectedReceiver}}<text bindtap='cancelReceiverSelect'>x</text></view>
+      <view wx:if='{{selectedTypes}}'>{{selectedTypes}}<text bindtap='cancelTypeSelect'>x</text></view>      
     </view>
-    <view class='category-bigtitle'>送礼场景</view>
-    <view class='category-list'>
-       <view class='category-item'>生日</view>
-       <view class='category-item'>结婚</view>
-       <view class='category-item'>新年</view>
-       <view class='category-item'>满月</view>
-       <view class='category-item'>升学</view>
-       <view class='category-item'>升职</view>
-       <view class='category-item'>金榜题名</view>
-    </view>
-    <view class='category-bigtitle'>送礼场景</view>
-    <view class='category-list'>
-       <view class='category-item'>生日</view>
-       <view class='category-item'>结婚</view>
-       <view class='category-item'>新年</view>
-       <view class='category-item'>满月</view>
-       <view class='category-item'>升学</view>
-       <view class='category-item'>升职</view>
-       <view class='category-item'>金榜题名</view>
-    </view>
-  </scroll-view>
-  <view class='btn-confirm'>确定</view> -->
+    <scroll-view class='category-box {{iphonex?"category-box-x":""}}' scroll-y>
+      <view class='category-bigtitle'>
+        <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20190304112531959958029.png'></image>送礼场景
+      </view>
+      <view class='category-list'>
+        <block wx:for="{{sceneOptions}}" wx:key="{{index}}">
+          <view class='category-item {{currentScene == index?"selected-category":""}}' data-index='{{index}}' bindtap='sceneSelect'>{{item}}</view>
+        </block>
+      </view>
+      <view class='category-bigtitle'>
+        <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20190304112532032691847.png'></image>送礼对象
+      </view>
+      <view class='category-list'>        
+        <block wx:for="{{receiverOptions}}" wx:key="{{index}}">
+          <view class='category-item {{currentReceiver == index?"selected-category":""}}' data-index='{{index}}' bindtap='receiverSelect'>{{item}}</view>
+        </block>
+      </view>
+      <view class='category-bigtitle'>
+        <image src='https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20190304112532067404404.png'></image>送礼喜好
+      </view>
+      <view class='category-list'>
+        <block wx:for="{{typesOptions}}" wx:key="{{index}}">
+          <view class='category-item {{currentTypes == index?"selected-category":""}}' data-index='{{index}}' bindtap='typeSelect'>{{item}}</view>
+        </block>
+      </view>
+    </scroll-view>
+    <view class='btn-confirm' bindtap='bindClickConfirm'>确定</view>
+  </block>
 </view>

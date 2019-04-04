@@ -52,39 +52,29 @@ Page({
     this.setData({
       canClick: false
     })
-    wx.request({
-      url: config.config.getWishTreeStatus,
-      data: {
-        token: this.data.token
-      },
-      dataType: 'json',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      success: (res) => {
-        this.setData({
-          canClick: true
-        })
-        if (res.data.status == 200) {       
-          if (res.data.bean == 0) {
-            wx.navigateTo({
-              url: '/packageA/pages/wishing/wishing?isNew=' + true,
-            })
-          } else if (res.data.bean == 1 || res.data.bean == 4) {
-            wx.navigateTo({
-              url: '/packageA/pages/wishing/wishing',
-            })
-          } else if (res.data.bean == 2 || res.data.bean == 3 || res.data.bean == 5) {
-            wx.navigateTo({
-              url: '/packageA/pages/wishTree/wishTree',
-              // url: '/packageA/pages/watering/watering'
-            })
-          }
-        } else if (res.data.status == 801) {
-          utils.getUserInfoFun(this.getUserStatus, this)
-        } else {
-          utils.showTips(res.data.msg)
+    utils.httpRequestGet(config.config.getWishTreeStatus, { token: this.data.token }, (res) => {
+      this.setData({
+        canClick: true
+      })
+      if (res.data.status == 200) {
+        if (res.data.bean == 0) {
+          wx.navigateTo({
+            url: '/packageA/pages/wishing/wishing?isNew=' + true,
+          })
+        } else if (res.data.bean == 1 || res.data.bean == 4) {
+          wx.navigateTo({
+            url: '/packageA/pages/wishing/wishing',
+          })
+        } else if (res.data.bean == 2 || res.data.bean == 3 || res.data.bean == 5) {
+          wx.navigateTo({
+            url: '/packageA/pages/wishTree/wishTree',
+            // url: '/packageA/pages/watering/watering'
+          })
         }
+      } else if (res.data.status == 801) {
+        utils.getUserInfoFun(this.getUserStatus, this)
+      } else {
+        utils.showTips(res.data.msg)
       }
     })
   },
@@ -148,6 +138,9 @@ Page({
       isShowVideo: false
     })
   },
+  onLoad: function () {
+    this.getSharePic('index') 
+  },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
@@ -158,13 +151,12 @@ Page({
   onShow: function () {
     var isLogin = wx.getStorageSync("isLogin") || false
     this.setData({
-      isLogin: isLogin
-    })
-    if (app.globalData.token) {
-      this.setData({
-        token: app.globalData.token
-      })
-    }
+      isLogin: isLogin,
+      token: 'paixi_123'
+    })    
+    this.getIndexData()
+    this.getCouponList()
+    this.getHotProduct()
     this.getSeconds()
     wx.getStorage({
       key: 'token',
@@ -174,17 +166,7 @@ Page({
         })
         // 有token可以获取购物车商品数量
         this.getGoodsNum()      
-        this.getIndexData()
-        this.getCouponList()
-        this.getSharePic('index')  
-        this.getHotProduct()
       },
-      fail: (res) => {
-        this.getIndexData()
-        this.getCouponList()
-        this.getSharePic('index')
-        this.getHotProduct()
-      }
     })
     wx.getSystemInfo({
       success: (res) => {
@@ -195,6 +177,10 @@ Page({
     })
   },
   onHide: function () {
+    clearInterval(this.data.timer)
+    clearInterval(this.data.timerkill)
+  },
+  onUnload: function () {
     clearInterval(this.data.timer)
     clearInterval(this.data.timerkill)
   },
@@ -237,32 +223,21 @@ Page({
    */
   getGoodsNum: function () {
     if (this.data.isLogin) {
-      wx.request({
-        url: config.config.getShoppingCarNumber,
-        data: {
-          token: this.data.token
-        },
-        dataType: 'json',
-        header: {
-          'content-type': 'application/x-www-form-urlencoded'
-        },
-        success: (res) => {
-          if (res.data.status == 200) {
-            if (res.data.bean != 0) {
-              this.setData({
-                goodsNumber: res.data.bean
-              })
-            } else {
-              this.setData({
-                goodsNumber: ''
-              })
-            }
-          } else if (res.data.status == 801) {
-            // this.getUserInfoFun(this.getGoodsNum)
-            utils.getUserInfoFun(this.getGoodsNum, this)
+      utils.httpRequestGet(config.config.getShoppingCarNumber, { token: this.data.token }, (res) => {
+        if (res.data.status == 200) {
+          if (res.data.bean != 0) {
+            this.setData({
+              goodsNumber: res.data.bean
+            })
           } else {
-            utils.showTips(res.data.msg) 
+            this.setData({
+              goodsNumber: ''
+            })
           }
+        } else if (res.data.status == 801) {
+          utils.getUserInfoFun(this.getGoodsNum, this)
+        } else {
+          utils.showTips(res.data.msg)
         }
       })
     }
@@ -271,34 +246,24 @@ Page({
    * 获取倒计时剩余秒数
    */
   getSeconds: function () {
-    wx.request({
-      url: config.config.getCountSeconds,
-      data: {
-        token: this.data.token
-      },
-      dataType: 'json',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      success: (res) => {
-        if (res.data.status == 200) {
-          this.setData({
-            leftTime: res.data.bean,
-            showTime: true
-          })
-          var days = Math.floor(this.data.leftTime / 60 / 60 / 24)
-          var hours = this.addNumber(Math.floor(this.data.leftTime / 60 / 60 % 24));
-          var minutes = this.addNumber(Math.floor(this.data.leftTime / 60 % 60));
-          var seconds = this.addNumber(Math.floor(this.data.leftTime % 60));
-          this.setData({
-            days: days,
-            hours: hours,
-            minutes: minutes,
-            seconds: seconds
-          })
-          // 开始倒计时
-          this.countDown()
-        }
+    utils.httpRequestGet(config.config.getCountSeconds, { token: this.data.token }, (res) => {
+      if (res.data.status == 200) {
+        this.setData({
+          leftTime: res.data.bean,
+          showTime: true
+        })
+        var days = Math.floor(this.data.leftTime / 60 / 60 / 24)
+        var hours = this.addNumber(Math.floor(this.data.leftTime / 60 / 60 % 24));
+        var minutes = this.addNumber(Math.floor(this.data.leftTime / 60 % 60));
+        var seconds = this.addNumber(Math.floor(this.data.leftTime % 60));
+        this.setData({
+          days: days,
+          hours: hours,
+          minutes: minutes,
+          seconds: seconds
+        })
+        // 开始倒计时
+        this.countDown()
       }
     })
   },
@@ -353,96 +318,84 @@ Page({
    */
   getIndexData: function () {
     wx.showNavigationBarLoading()
-    wx.request({
-      url: config.config.getIndexNew,
-      data: {
-        token: this.data.token
-      },
-      dataType: 'json',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      success: (res) => {
-        if (res.data.status == 200) {
-          var topics = res.data.bean.specials || []
-          var sellRecommend = res.data.bean.sellRecommend || null
-          var weekend = {}
-          var specialsWeekId = ''
-          if (res.data.bean.specialsWeek) {
-            weekend = res.data.bean.specialsWeek
-            specialsWeekId = res.data.bean.specialsWeek.id
-          } else {
-            this.setData({
-              isShowWeek: false
-            })
-          }
-          var specialTimeLimit = {}
-          var seckillLefttime = ''
-          if (res.data.bean.specialTimeLimit) {
-            specialTimeLimit = res.data.bean.specialTimeLimit.special || []
-            seckillLefttime = res.data.bean.specialTimeLimit.timeLeft
-            this.setData({
-              showSeckill: true
-            })
-          }
-          // console.log(this.data.showSeckill)
-          wx.setStorage({
-            key: 'specialsWeekId',
-            data: specialsWeekId,
-          })
-          this.setData({
-            topics: topics,
-            weekend: weekend,
-            sellRecommend: sellRecommend,
-            specialTimeLimit: specialTimeLimit
-          })
-          var name = []
-          for (var i in topics) {
-            name = topics[i].name.split('+')
-            this.setData({
-              ['topics[' + i + '].name']: name
-            })
-          }
-          wx.hideLoading()
-          setTimeout(() => {
-            this.setData({
-              showIndex: true
-            })
-          },500)
-
-          this.setData({
-            seckillLefttime: seckillLefttime,
-            showTimes: true
-          })
-          if (this.data.seckillLefttime > 0) {
-            var days = Math.floor(this.data.seckillLefttime / 60 / 60 / 24)
-            var hours = this.addNumber(Math.floor(this.data.seckillLefttime / 60 / 60 % 24));
-            var minutes = this.addNumber(Math.floor(this.data.seckillLefttime / 60 % 60));
-            var seconds = this.addNumber(Math.floor(this.data.seckillLefttime % 60));
-            this.setData({
-              killdays: days,
-              killhours: hours,
-              killminutes: minutes,
-              killseconds: seconds,
-              isEnd: false
-            })
-            // 开始倒计时
-            this.countDownKill()
-          } else {
-            this.setData({
-              killdays: 0,
-              killhours: '00',
-              killminutes: '00',
-              killseconds: '00',
-              isEnd: true
-              // showSeckill: false
-            })
-          }     
-          wx.stopPullDownRefresh()
-          wx.hideNavigationBarLoading()     
+    utils.httpRequestGet(config.config.getIndexNew, { token: this.data.token }, (res) => {
+      if (res.data.status == 200) {
+        var topics = res.data.bean.specials || []
+        var sellRecommend = res.data.bean.sellRecommend || null
+        var weekend = {}
+        var specialsWeekId = ''
+        if (res.data.bean.specialsWeek) {
+          weekend = res.data.bean.specialsWeek
+          specialsWeekId = res.data.bean.specialsWeek.id
         } else {
-          utils.showTips(res.data.msg) 
+          this.setData({
+            isShowWeek: false
+          })
         }
+        var specialTimeLimit = {}
+        var seckillLefttime = ''
+        if (res.data.bean.specialTimeLimit) {
+          specialTimeLimit = res.data.bean.specialTimeLimit.special || []
+          seckillLefttime = res.data.bean.specialTimeLimit.timeLeft
+          this.setData({
+            showSeckill: true
+          })
+        }
+        // console.log(this.data.showSeckill)
+        wx.setStorage({
+          key: 'specialsWeekId',
+          data: specialsWeekId,
+        })
+        this.setData({
+          topics: topics,
+          weekend: weekend,
+          sellRecommend: sellRecommend,
+          specialTimeLimit: specialTimeLimit
+        })
+        var name = []
+        for (var i in topics) {
+          name = topics[i].name.split('+')
+          this.setData({
+            ['topics[' + i + '].name']: name
+          })
+        }
+        wx.hideLoading()
+        setTimeout(() => {
+          this.setData({
+            showIndex: true
+          })
+        }, 500)
+        //秒杀倒计时
+        // this.setData({
+        //   seckillLefttime: seckillLefttime
+        // })
+        // if (this.data.seckillLefttime > 0) {
+        //   var days = Math.floor(this.data.seckillLefttime / 60 / 60 / 24)
+        //   var hours = this.addNumber(Math.floor(this.data.seckillLefttime / 60 / 60 % 24));
+        //   var minutes = this.addNumber(Math.floor(this.data.seckillLefttime / 60 % 60));
+        //   var seconds = this.addNumber(Math.floor(this.data.seckillLefttime % 60));
+        //   this.setData({
+        //     killdays: days,
+        //     killhours: hours,
+        //     killminutes: minutes,
+        //     killseconds: seconds,
+        //     isEnd: false
+        //   })
+        //   // 开始倒计时
+        //   this.countDownKill()
+        // } else {
+        //   this.setData({
+        //     killdays: 0,
+        //     killhours: '00',
+        //     killminutes: '00',
+        //     killseconds: '00',
+        //     isEnd: true
+        //   })
+        // }
+        wx.stopPullDownRefresh()
+        wx.hideNavigationBarLoading()
+      } else {
+        utils.showTips(res.data.msg)
       }
     })
   },
@@ -487,23 +440,13 @@ Page({
   },
   // 获取分享小图
   getSharePic: function (configKey) {
-    wx.request({
-      url: config.config.getSharePic,
-      data: {
-        configKey: configKey,
-      },
-      dataType: 'json',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      success: (res) => {
-        if (res.data.status == 200) {
-          // console.log(res.data.bean)
-          this.setData({
-            sharePic: res.data.bean.configValue,
-            shareText: res.data.bean.description
-          })
-        }
+    utils.httpRequestGet(config.config.getSharePic, { configKey: configKey }, (res) => {
+      if (res.data.status == 200) {
+        // console.log(res.data.bean)
+        this.setData({
+          sharePic: res.data.bean.configValue,
+          shareText: res.data.bean.description
+        })
       }
     })
   },
@@ -512,8 +455,6 @@ Page({
    */
   onShareAppMessage: function () {
     return {
-      // title: '为“礼”而造，派送惊喜。搞定你的每一个送礼难题！',
-      // imageUrl: 'https://prise-picture.oss-cn-shenzhen.aliyuncs.com/20181016051910007597927.jpg',
       title: this.data.shareText,
       imageUrl: this.data.sharePic
     }
@@ -522,42 +463,32 @@ Page({
    * 获取优惠券
    */
   getCouponList: function () {
-    wx.request({
-      url: config.config.getCouponIndex,
-      data: {
-        token: this.data.token
-      },
-      dataType: 'json',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      success: (res) => {
-        if (res.data.status == 200) {
-          if (res.data.bean) {
-            var couponList = res.data.bean
-            var couponArr = []
-            for (var i in couponList) {
-              couponArr.push(couponList[i].id)
-            }
-            this.setData({
-              couponArr: couponArr
-            })
-            console.log(couponArr)
-            console.log(couponArr.toString())
-            if (this.data.token != 'paixi_123' && this.data.token) {
-              // 判断是否领取过优惠券
-              this.userHasCoupon()
-            } else {
-              this.setData({
-                hasCoupon: false
-              })
-            }
+    utils.httpRequestGet(config.config.getCouponIndex, { token: this.data.token }, (res) => {
+      if (res.data.status == 200) {
+        if (res.data.bean) {
+          var couponList = res.data.bean
+          var couponArr = []
+          for (var i in couponList) {
+            couponArr.push(couponList[i].id)
           }
-        } else {
           this.setData({
-            hasCoupon: true
+            couponArr: couponArr
           })
+          console.log(couponArr)
+          console.log(couponArr.toString())
+          if (this.data.token != 'paixi_123' && this.data.token) {
+            // 判断是否领取过优惠券
+            this.userHasCoupon()
+          } else {
+            this.setData({
+              hasCoupon: false
+            })
+          }
         }
+      } else {
+        this.setData({
+          hasCoupon: true
+        })
       }
     })
   },
@@ -566,28 +497,17 @@ Page({
    */
   getCoupon: function () {
     if (this.data.isLogin) {
-      wx.request({
-        url: config.config.postAddCoupon,
-        data: {
-          token: this.data.token,
-          couponIds: this.data.couponArr
-        },
-        method: 'POST',
-        dataType: 'json',
-        header: {
-          'content-type': 'application/x-www-form-urlencoded'
-        },
-        success: (res) => {
-          if (res.data.status == 200) {
-            this.setData({
-              hasCoupon: true
-            })
-            utils.showTips('领取成功!') 
-          } else if (res.data.status == 801) {
-            utils.getUserInfoFun(this.getCoupon, this)
-          } else {
-            utils.showTips(res.data.msg) 
-          }
+      utils.httpRequestPost(config.config.postAddCoupon, { token: this.data.token, couponIds: this.data.couponArr}, 
+      (res) => {
+        if (res.data.status == 200) {
+          this.setData({
+            hasCoupon: true
+          })
+          utils.showTips('领取成功!')
+        } else if (res.data.status == 801) {
+          utils.getUserInfoFun(this.getCoupon, this)
+        } else {
+          utils.showTips(res.data.msg)
         }
       })
     } else {
@@ -600,18 +520,8 @@ Page({
    * 查询用户是否领取了优惠券
    */
   userHasCoupon: function () {
-    wx.request({
-      url: config.config.postHasCoupon,
-      data: {
-        token: this.data.token,
-        couponIds: this.data.couponArr
-      },
-      method: 'POST',
-      dataType: 'json',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      success: (res) => {
+    utils.httpRequestPost(config.config.postHasCoupon, { token: this.data.token, couponIds: this.data.couponArr },
+      (res) => {
         if (res.data.status == 200) {
           var hasCoupon = res.data.bean == 0 ? false : true
           this.setData({
@@ -620,9 +530,8 @@ Page({
         } else if (res.data.status == 801) {
           utils.getUserInfoFun(this.userHasCoupon, this)
         } else {
-          utils.showTips(res.data.msg)           
+          utils.showTips(res.data.msg)
         }
-      }
     })
   }
 })

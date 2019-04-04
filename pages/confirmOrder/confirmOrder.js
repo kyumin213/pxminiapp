@@ -29,7 +29,7 @@ Page({
   onLoad: function (options) {
     this.setData({
       isCart: options.isCart,
-      isOpen: options.isOpen
+      isOpen: options.isOpen || 1
     })
     // if (options.isSeckill) {
     //   this.setData({

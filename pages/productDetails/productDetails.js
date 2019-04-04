@@ -1,7 +1,6 @@
 // pages/productDetails/productDetails.js
 const app = getApp()
 var config = require('../../utils/config.js')
-var common = require('../../utils/commonRequest.js');
 const utils = require('../../utils/util.js')
 Page({
   data: {

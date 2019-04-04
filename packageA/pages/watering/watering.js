@@ -197,6 +197,7 @@ Page({
               })
             } else if (res.data.status == 202 || res.data.status == 203) {
               // 浇水次数用完 显示弹框 给自己2次 给他人4次
+              // utils.showTips('222')
               this.setData({
                 noWaterChance: true
               })

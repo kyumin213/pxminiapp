@@ -18,7 +18,14 @@ Page({
     currentLabeltab: 0,
     specialName: [],
     toView: '',
-    isLazy: true
+    isLazy: true,
+    sceneOptions: ["生日", "结婚", "新年", "满月", "升学", "升职", "金榜题名"],
+    currentScene: null,
+    receiverOptions: ["生日", "结婚", "新年", "满月", "升学", "升职", "金榜题名"],
+    currentReceiver: null,
+    typesOptions: ["生日", "结婚", "新年", "满月", "升学", "升职", "金榜题名"],
+    currentTypes: null,
+    selectedLabel: ""
   },
 
   /**
@@ -50,7 +57,7 @@ Page({
         }
       },
     })
-    // this.getAllSpecialInfo()
+    this.getAllSpecialInfo()
     // this.getSpecialList(this.data.id)
   },
 
@@ -72,6 +79,87 @@ Page({
         token: app.globalData.token
       })
     }
+  },
+  /**
+   * 点击搜索按钮 显示搜索面板
+   */
+  bindClickSearch: function () {
+    this.setData({
+      showSearchPanel: true
+    })
+  },
+  /**
+   * 关闭搜索面板
+   */
+  closeSearchPanel: function () {
+    this.setData({
+      showSearchPanel: false
+    })
+  },
+  /**
+   * 送礼场景选择
+   */
+  sceneSelect: function (e) {
+    var index = e.currentTarget.dataset.index
+    this.setData({
+      currentScene: index,
+      selectedScene: this.data.sceneOptions[index]
+    })
+  },
+  /**
+   * 送礼对象选择
+   */
+  receiverSelect: function (e) {
+    var index = e.currentTarget.dataset.index
+    this.setData({
+      currentReceiver: index,
+      selectedReceiver: this.data.receiverOptions[index]
+    })
+  },
+  /**
+   * 送礼喜好选择
+   */
+  typeSelect: function (e) {
+    var index = e.currentTarget.dataset.index
+    this.setData({
+      currentTypes: index,
+      selectedTypes: this.data.typesOptions[index]
+    })
+  },
+  /**
+   * 取消场景选择
+   */
+  cancelSceneSelect: function () {
+    this.setData({
+      selectedScene: null,
+      currentScene: null
+    })
+  },
+  /**
+   * 取消对象选择
+   */
+  cancelReceiverSelect: function () {
+    this.setData({
+      selectedReceiver: null,
+      currentReceiver: null
+    })
+  },
+  /**
+   * 取消喜好选择
+   */
+  cancelTypeSelect: function () {
+    this.setData({
+      selectedTypes: null,
+      currentTypes: null
+    })
+  },
+  /**
+   * 点击确定选择按钮
+   */
+  bindClickConfirm: function () {
+    this.setData({
+      showSearchPanel: false,
+    })
   },
   /**
    * 切换导航
@@ -184,7 +272,9 @@ Page({
             labelArr: res.data.bean
           })
           // 获取专题分类
-          this.getAllSpecialInfo()
+          // this.getAllSpecialInfo()
+          // 获取所有标签商品
+          this.getSpecialList(this.data.sId, this.data.labelArr[this.data.currentLabeltab].id)
         } else {
           wx.showToast({
             title: res.data.msg,
@@ -292,8 +382,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    // this.getAllLabel()
-    this.getFirstSpecialInfo()
+    this.getAllLabel()
+    // this.getFirstSpecialInfo()
   },
 
   /**

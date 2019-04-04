@@ -15,19 +15,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    wx.getStorage({
-      key: 'token',
-      success: (res) => {
-        console.log(res.data)
-        this.setData({
-          token: res.data
-        })
-        this.getMessageList()
-      },
-      fail: (res) => {
-        utils.getUserInfoFun(this.getMessageList, this)
-      }
+    var token = wx.getStorageSync("token") || 'paixi_123'
+    this.setData({
+      token: token
     })
+    this.getMessageList()
   },
 
   /**

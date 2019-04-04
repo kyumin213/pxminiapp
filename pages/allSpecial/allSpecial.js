@@ -51,7 +51,7 @@ Page({
       frontColor: '#ffffff',
       backgroundColor: '#F72F2B',
     })
-    // this.getAllSpecialInfo()
+    this.getAllSpecialInfo()
     // this.getSpecialList(this.data.id)
   },
 
@@ -155,7 +155,7 @@ Page({
             })
           }, 50)
           // var sId = this.data.specialName[this.data.currentNavtab].id
-          this.getSpecialList(this.data.sId, this.data.labelArr[this.data.currentLabeltab].id)
+          // this.getSpecialList(this.data.sId, this.data.labelArr[this.data.currentLabeltab].id)
         } else {
           utils.showTips(res.data.msg)
         }
@@ -182,7 +182,9 @@ Page({
             labelArr: res.data.bean
           })
           // 获取专题分类
-          this.getAllSpecialInfo()
+          // this.getAllSpecialInfo()
+          // 获取所有标签商品
+          this.getSpecialList(this.data.sId, this.data.labelArr[this.data.currentLabeltab].id)
         } else {
           utils.showTips(res.data.msg)
         }

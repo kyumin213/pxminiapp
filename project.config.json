@@ -5,10 +5,11 @@
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"autoAudits": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.1.0",
+	"libVersion": "2.0.1",
 	"appid": "wxabf48c687da2ad9e",
 	"projectname": "svn2.1.6",
 	"isGameTourist": false,

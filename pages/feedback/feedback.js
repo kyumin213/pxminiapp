@@ -17,17 +17,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    wx.getStorage({
-      key: 'token',
-      success: (res) => {
-        console.log(res.data)
-        this.setData({
-          token: res.data
-        })
-      },
-      fail: (res) => {
-        utils.getUserInfoFun(this.onShow, this)
-      }
+    var token = wx.getStorageSync("token") || 'paixi_123'
+    this.setData({
+      token: token
     })
   },
 
@@ -51,7 +43,6 @@ Page({
     that.setData({
       contact: e.detail.value
     })
-    console.log(e.detail.value);
   },
 
   getSubmit:function(){
@@ -68,7 +59,6 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       success: (res) => {
-        console.log(res)
         if (res.data.status == 200) {
           wx.showToast({
             title: '提交成功',
@@ -83,7 +73,7 @@ Page({
             }
           })
         } else if (res.data.status == 801) {
-          utils.getUserInfoFun(this.getSubmit)
+          utils.getUserInfoFun(this.getSubmit, this)
         } else {
           wx.showToast({
             title: res.data.msg,
